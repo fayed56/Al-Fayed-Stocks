@@ -1,1 +1,506 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أخبار السوق | Al Fayed Stocks</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div id="site-header"></div><main class="inner"><div class="wrap"><div class="pagehero"><div class="eyebrow">MARKET NEWS</div><h1>أخبار السوق 📰</h1><p>ملخص سريع للأحداث التي تستحق المتابعة قبل وأثناء الجلسة.</p><div class="updated">آخر تحديث: <span data-today></span></div></div><div class="newslist"><article><div class="newsbadge">🇸🇦 سعودي</div><small>افتتاح السوق</small><h2>افتتاح تاسي والسيناريوهات الفنية</h2><p>افتتح المؤشر عند 10,957.60 مع دعم رئيسي 10,950 ومقاومة أولى عند 11,000.</p><time>13 سبتمبر 2026</time></article><article><div class="newsbadge">🇺🇸 أمريكي</div><small>ناسداك</small><h2>مراقبة مستويات Nasdaq 100</h2><p>التركيز على 29,300–29,350 كدعم قريب و29,600–29,800 كمقاومة.</p><time>تحديث فني</time></article><article><div class="newsbadge">🌍 اقتصاد</div><small>أجندة اقتصادية</small><h2>بيانات التضخم والفائدة والنتائج</h2><p>قسم مخصص للأحداث الاقتصادية والنتائج الفصلية بعد ربط مصدر أخبار موثوق.</p><time>يومي</time></article><article><div class="newsbadge">🛢️ طاقة</div><small>النفط</small><h2>النفط كمحرك مهم للأسواق</h2><p>مساحة لعرض حركة النفط وأثرها على قطاعات الطاقة والتضخم والأسواق.</p><time>متابعة</time></article></div></div></main><div id="site-footer"></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أخبار الأسواق | Al Fayed Stocks</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Cairo,Arial,sans-serif;
+background:#071311;
+color:#f5f8f7;
+}
+
+.container{
+width:min(1150px,94%);
+margin:auto;
+}
+
+/* Header */
+
+.header{
+background:#081714;
+border-bottom:1px solid #1b3630;
+padding:20px 0;
+}
+
+.brand{
+font-size:24px;
+font-weight:800;
+}
+
+.brand span{
+color:#20c997;
+}
+
+/* Hero */
+
+.hero{
+padding:30px 0 20px;
+}
+
+.hero small{
+color:#20c997;
+font-weight:700;
+}
+
+.hero h1{
+font-size:34px;
+margin:8px 0;
+}
+
+.hero p{
+color:#9eb1ad;
+}
+
+/* Categories */
+
+.categories{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:10px 0 20px;
+}
+
+.category{
+white-space:nowrap;
+background:#0d1d1a;
+border:1px solid #1a3630;
+padding:9px 16px;
+border-radius:20px;
+color:#b8c8c4;
+font-size:13px;
+}
+
+.category.active{
+background:#163b32;
+color:#39d99b;
+}
+
+/* Main News */
+
+.main-news{
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:20px;
+padding:24px;
+margin-bottom:20px;
+}
+
+.main-news .tag{
+display:inline-block;
+background:#183c33;
+color:#39d99b;
+padding:5px 11px;
+border-radius:15px;
+font-size:11px;
+font-weight:700;
+}
+
+.main-news h2{
+font-size:25px;
+line-height:1.6;
+margin:14px 0 10px;
+}
+
+.main-news p{
+color:#a9bbb7;
+line-height:1.9;
+}
+
+.meta{
+color:#718984;
+font-size:12px;
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.read{
+display:inline-block;
+margin-top:15px;
+padding:9px 16px;
+border-radius:10px;
+background:#20c997;
+color:#06130f;
+text-decoration:none;
+font-weight:700;
+font-size:13px;
+}
+
+/* News Grid */
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:25px 0 15px;
+}
+
+.section-title h2{
+margin:0;
+font-size:21px;
+}
+
+.badge{
+font-size:11px;
+padding:5px 10px;
+border-radius:15px;
+background:#16352d;
+color:#45e0a8;
+}
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.news-card{
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:17px;
+padding:20px;
+}
+
+.news-card .tag{
+color:#39d99b;
+font-size:12px;
+font-weight:700;
+}
+
+.news-card h3{
+font-size:17px;
+line-height:1.7;
+margin:10px 0;
+}
+
+.news-card p{
+font-size:13px;
+color:#9eb1ad;
+line-height:1.8;
+}
+
+.news-card .meta{
+margin-top:12px;
+}
+
+/* Market Box */
+
+.market-box{
+margin-top:25px;
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:18px;
+padding:20px;
+}
+
+.market-row{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid #1b302d;
+}
+
+.market-row:last-child{
+border-bottom:0;
+}
+
+.market-name{
+font-weight:700;
+}
+
+.up{
+color:#39d99b;
+font-weight:700;
+}
+
+.down{
+color:#ff7070;
+font-weight:700;
+}
+
+/* Footer */
+
+footer{
+margin-top:35px;
+padding:25px;
+text-align:center;
+color:#718782;
+border-top:1px solid #19312d;
+font-size:12px;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:28px;
+}
+
+.news-grid{
+grid-template-columns:1fr;
+}
+
+.main-news h2{
+font-size:21px;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header class="header">
+
+<div class="container">
+
+<div class="brand">
+Al Fayed <span>Stocks</span>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- عنوان الصفحة -->
+
+<section class="hero">
+
+<small>MARKET NEWS</small>
+
+<h1>📰 أخبار الأسواق</h1>
+
+<p>
+أهم الأخبار الاقتصادية وأخبار الشركات والأسواق السعودية والأمريكية.
+</p>
+
+</section>
+
+
+<!-- التصنيفات -->
+
+<div class="categories">
+
+<div class="category active">
+🔥 أهم الأخبار
+</div>
+
+<div class="category">
+🇸🇦 السوق السعودي
+</div>
+
+<div class="category">
+🇺🇸 السوق الأمريكي
+</div>
+
+<div class="category">
+🛢️ النفط
+</div>
+
+<div class="category">
+🏢 الشركات
+</div>
+
+<div class="category">
+💰 الاقتصاد
+</div>
+
+</div>
+
+
+<!-- الخبر الرئيسي -->
+
+<section class="main-news">
+
+<span class="tag">
+🔥 الخبر الرئيسي
+</span>
+
+<h2>
+تحديثات الأسواق العالمية وتحركات المؤشرات والأسهم تحت المراقبة
+</h2>
+
+<p>
+تابع أهم التطورات المؤثرة على الأسواق، مع التركيز على حركة المؤشرات
+والأسهم القيادية والقطاعات الأكثر نشاطًا.
+</p>
+
+<div class="meta">
+
+<span>🕐 اليوم</span>
+
+<span>📊 الأسواق المالية</span>
+
+<span>Al Fayed Stocks</span>
+
+</div>
+
+<a href="#" class="read">
+اقرأ المزيد
+</a>
+
+</section>
+
+
+<!-- السعودية -->
+
+<div class="section-title">
+
+<h2>
+🇸🇦 أخبار السوق السعودي
+</h2>
+
+<span class="badge">
+Saudi Market
+</span>
+
+</div>
+
+
+<section class="news-grid">
+
+
+<article class="news-card">
+
+<div class="tag">
+السوق السعودي
+</div>
+
+<h3>
+تاسي يواصل متابعة مستويات الدعم والمقاومة مع تحركات السيولة
+</h3>
+
+<p>
+حركة المؤشر العام تظل تحت المراقبة مع التركيز على مستويات الدعم
+والمقاومة الرئيسية خلال الجلسة.
+</p>
+
+<div class="meta">
+<span>اليوم</span>
+<span>السوق السعودي</span>
+</div>
+
+</article>
+
+
+<article class="news-card">
+
+<div class="tag">
+شركات سعودية
+</div>
+
+<h3>
+الأسهم القيادية تحت المراقبة مع تغيرات أحجام التداول
+</h3>
+
+<p>
+المستثمرون يراقبون الأسهم ذات السيولة المرتفعة وحركة الشركات
+القيادية خلال جلسة التداول.
+</p>
+
+<div class="meta">
+<span>اليوم</span>
+<span>الشركات</span>
+</div>
+
+</article>
+
+
+<article class="news-card">
+
+<div class="tag">
+النفط
+</div>
+
+<h3>
+أسعار النفط تظل من أهم العوامل المؤثرة على السوق السعودي
+</h3>
+
+<p>
+تحركات أسعار النفط والبيانات الاقتصادية العالمية من العوامل
+التي قد تؤثر على شهية المستثمرين.
+</p>
+
+<div class="meta">
+<span>اليوم</span>
+<span>الطاقة</span>
+</div>
+
+</article>
+
+
+<article class="news-card">
+
+<div class="tag">
+اقتصاد السعودية
+</div>
+
+<h3>
+متابعة البيانات الاقتصادية وتأثيرها على القطاعات والأسهم
+</h3>
+
+<p>
+البيانات الاقتصادية والتطورات المحلية والعالمية تظل محور اهتمام
+المتعاملين في السوق.
+</p>
+
+<div class="meta">
+<span>اليوم</span>
+<span>اقتصاد</span>
+</div>
+
+</article>
+
+</section>
+
+
+<!-- أمريكا -->
+
+<div class="section-title">
+
+<h2>
+🇺🇸 أخبار السوق الأمريكي
+</h2>
+
+<span class="badge">
+US Market
+</span>
+
+</div>
+
+
+<section class="news-grid">
+
+
+<article class="news-card">
+
+<div class="tag">
+Nasdaq
+</div>
+
+<h3>
+أسهم التكنولوجيا تحت المراقبة مع تحركات Nasdaq
+</h3>
+
+<p>
+المستثمرون يراقبون أسهم التكنولوجيا والذكاء الاصطناعي مع تغير
