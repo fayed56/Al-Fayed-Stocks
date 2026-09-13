@@ -1,1 +1,811 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>السوق الأمريكي | Al Fayed Stocks</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div id="site-header"></div><main class="inner"><div class="wrap"><div class="pagehero"><div class="eyebrow">US MARKET</div><h1>السوق الأمريكي 🇺🇸</h1><p>ناسداك، البري ماركت، الأسهم النشطة، وأسهم النمو.</p><div class="updated">آخر تحديث: <span data-today></span></div></div><div class="index-row"><div class="indexcard"><span>Nasdaq 100</span><b>29,500</b><small>منطقة متابعة</small></div><div class="indexcard"><span>S&amp;P 500</span><b>—</b><small>يربط لاحقًا بالبيانات</small></div><div class="indexcard"><span>Dow Jones</span><b>—</b><small>يربط لاحقًا بالبيانات</small></div></div><div class="dashboard"><div class="dashmain"><h2>Nasdaq 100</h2><div class="bigvalue">29,500</div><div class="up">▲ الاتجاه الأكبر صاعد مع ضغط قصير الأجل</div><div class="chart"><span></span><i></i><b></b><em></em></div></div><div class="sidelevels"><h3>مستويات فنية</h3><p><b>دعم قريب</b><strong>29,300–29,350</strong></p><p><b>دعم رئيسي</b><strong>29,100</strong></p><p><b>مقاومة</b><strong>29,600–29,800</strong></p><p><b>هدف أعلى</b><strong>30,000+</strong></p></div></div><div class="scenario-grid"><article><span class="positive">إيجابي</span><h3>اختراق 29,800</h3><p>الثبات فوق المقاومة يدعم استهداف المنطقة النفسية 30,000.</p></article><article><span class="negative">سلبي</span><h3>كسر 29,100</h3><p>فقدان الدعم الرئيسي يزيد مخاطر التراجع قصير الأجل.</p></article></div><div class="cards"><article class="card"><h3>🚀 Premarket</h3><p>أكبر الرابحين والخاسرين قبل الافتتاح — جاهز للربط ببيانات مباشرة.</p></article><article class="card"><h3>📈 Growth Stocks</h3><p>قائمة أسهم نمو قابلة للتحديث مع السعر والحجم والأداء.</p></article><article class="card"><h3>⚡ القطاعات النشطة</h3><p>تقنية • أشباه موصلات • طاقة • مالية • ذكاء اصطناعي.</p></article></div></div></main><div id="site-footer"></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>السوق الأمريكي | Al Fayed Stocks</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Cairo,Arial,sans-serif;
+background:#071311;
+color:#f5f8f7;
+}
+
+.container{
+width:min(1150px,94%);
+margin:auto;
+}
+
+.header{
+background:#081714;
+border-bottom:1px solid #1b3630;
+padding:22px 0;
+}
+
+.brand{
+font-size:24px;
+font-weight:800;
+}
+
+.brand span{
+color:#20c997;
+}
+
+.hero{
+padding:30px 0 20px;
+}
+
+.hero small{
+color:#20c997;
+font-weight:700;
+}
+
+.hero h1{
+font-size:34px;
+margin:8px 0;
+}
+
+.hero p{
+color:#9eb1ad;
+}
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:18px;
+}
+
+.card{
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:18px;
+padding:22px;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.market-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+}
+
+.market-name{
+color:#a7bbb6;
+}
+
+.index{
+font-size:42px;
+font-weight:800;
+margin:5px 0;
+}
+
+.change{
+color:#ff7070;
+font-size:18px;
+font-weight:700;
+}
+
+.status{
+background:#321919;
+color:#ff7d7d;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+}
+
+.meta{
+display:flex;
+gap:25px;
+margin-top:18px;
+color:#8fa49f;
+font-size:13px;
+}
+
+.chart{
+height:180px;
+margin-top:20px;
+border-radius:14px;
+overflow:hidden;
+background:#0a1815;
+}
+
+.chart svg{
+width:100%;
+height:100%;
+}
+
+.level{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid #1b302d;
+}
+
+.level:last-child{
+border:0;
+}
+
+.level b{
+color:#849b96;
+}
+
+.level strong{
+color:white;
+}
+
+.section{
+margin-top:20px;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.section-title h2{
+margin:0;
+font-size:21px;
+}
+
+.badge{
+font-size:11px;
+padding:5px 10px;
+border-radius:15px;
+background:#16352d;
+color:#45e0a8;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+color:#829792;
+font-size:12px;
+text-align:right;
+padding:13px 9px;
+}
+
+td{
+padding:15px 9px;
+border-top:1px solid #1b302d;
+font-size:14px;
+}
+
+.symbol{
+color:#718782;
+font-size:12px;
+}
+
+.stock-name{
+font-weight:700;
+}
+
+.up{
+color:#39d99b;
+font-weight:700;
+}
+
+.down{
+color:#ff7070;
+font-weight:700;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.stat{
+background:#0d1d1a;
+border:1px solid #1a3630;
+padding:18px;
+border-radius:15px;
+}
+
+.stat small{
+display:block;
+color:#829792;
+margin-bottom:6px;
+}
+
+.stat strong{
+font-size:20px;
+}
+
+.two{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.comment{
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:16px;
+padding:18px;
+}
+
+.stars{
+color:#ffd166;
+letter-spacing:2px;
+}
+
+.comment p{
+color:#b4c3c0;
+line-height:1.8;
+}
+
+.comment strong{
+display:block;
+margin-top:10px;
+}
+
+.visitors{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.visitor-number{
+font-size:30px;
+font-weight:800;
+color:#39d99b;
+}
+
+footer{
+margin-top:35px;
+padding:25px;
+text-align:center;
+color:#718782;
+border-top:1px solid #19312d;
+}
+
+@media(max-width:800px){
+.grid,.two{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:28px;
+}
+}
+
+@media(max-width:480px){
+.stats{
+grid-template-columns:1fr;
+}
+
+.index{
+font-size:34px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="container">
+<div class="brand">
+Al Fayed <span>Stocks</span>
+</div>
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+
+<small>US MARKET • 14 SEPTEMBER 2026</small>
+
+<h1>السوق الأمريكي 🇺🇸</h1>
+
+<p>
+متابعة Nasdaq والأسهم الأمريكية والقطاعات وأبرز التحركات.
+</p>
+
+</section>
+
+<!-- Nasdaq -->
+
+<section class="grid">
+
+<div class="card">
+
+<div class="market-top">
+
+<div>
+
+<div class="market-name">
+Nasdaq 100
+</div>
+
+<div class="index">
+29,390.00
+</div>
+
+<div class="change">
+▼ 185.40 (-0.63%)
+</div>
+
+</div>
+
+<div class="status">
+ضغط قصير الأجل
+</div>
+
+</div>
+
+<div class="meta">
+
+<span>
+الإغلاق السابق: 29,575.40
+</span>
+
+<span>
+الجلسة: أمريكية
+</span>
+
+</div>
+
+<div class="chart">
+
+<svg viewBox="0 0 800 220" preserveAspectRatio="none">
+
+<defs>
+
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+
+<stop offset="0" stop-color="#20c997" stop-opacity=".35"/>
+
+<stop offset="1" stop-color="#20c997" stop-opacity="0"/>
+
+</linearGradient>
+
+</defs>
+
+<path
+d="M0 65
+L60 72
+L120 58
+L180 85
+L240 74
+L300 95
+L360 82
+L420 110
+L480 100
+L540 125
+L600 118
+L660 140
+L720 132
+L800 160
+L800 220
+L0 220 Z"
+fill="url(#area)"
+/>
+
+<path
+d="M0 65
+L60 72
+L120 58
+L180 85
+L240 74
+L300 95
+L360 82
+L420 110
+L480 100
+L540 125
+L600 118
+L660 140
+L720 132
+L800 160"
+fill="none"
+stroke="#35d49b"
+stroke-width="4"
+/>
+
+</svg>
+
+</div>
+
+</div>
+
+<!-- المستويات -->
+
+<div class="card">
+
+<h3>📊 المستويات المهمة</h3>
+
+<div class="level">
+<b>المقاومة الأولى</b>
+<strong>29,600</strong>
+</div>
+
+<div class="level">
+<b>المقاومة الرئيسية</b>
+<strong>29,800</strong>
+</div>
+
+<div class="level">
+<b>المقاومة النفسية</b>
+<strong>30,000</strong>
+</div>
+
+<div class="level">
+<b>الدعم الأول</b>
+<strong>29,300</strong>
+</div>
+
+<div class="level">
+<b>الدعم الرئيسي</b>
+<strong>29,100</strong>
+</div>
+
+<div class="level">
+<b>الاتجاه</b>
+<strong class="down">حذر</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- إحصائيات -->
+
+<section class="section">
+
+<div class="stats">
+
+<div class="stat">
+<small>Nasdaq</small>
+<strong>26,253</strong>
+</div>
+
+<div class="stat">
+<small>S&P 500</small>
+<strong>6,632</strong>
+</div>
+
+<div class="stat">
+<small>Dow Jones</small>
+<strong>45,834</strong>
+</div>
+
+<div class="stat">
+<small>VIX</small>
+<strong>16.8</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- الأسهم -->
+
+<section class="section card">
+
+<div class="section-title">
+
+<h2>⭐ الأسهم تحت المراقبة</h2>
+
+<span class="badge">
+Watchlist
+</span>
+
+</div>
+
+<table>
+
+<tr>
+<th>السهم</th>
+<th>الرمز</th>
+<th>السعر</th>
+<th>التغير</th>
+<th>الحالة</th>
+</tr>
+
+<tr>
+<td class="stock-name">NVIDIA</td>
+<td class="symbol">NVDA</td>
+<td>178.42</td>
+<td class="up">+1.84%</td>
+<td><span class="badge">إيجابي</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">Apple</td>
+<td class="symbol">AAPL</td>
+<td>245.18</td>
+<td class="up">+0.72%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">Microsoft</td>
+<td class="symbol">MSFT</td>
+<td>512.60</td>
+<td class="down">-0.45%</td>
+<td><span class="badge">حذر</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">Amazon</td>
+<td class="symbol">AMZN</td>
+<td>238.74</td>
+<td class="up">+1.15%</td>
+<td><span class="badge">إيجابي</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">Tesla</td>
+<td class="symbol">TSLA</td>
+<td>338.92</td>
+<td class="down">-1.63%</td>
+<td><span class="badge">ضغط</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">Meta</td>
+<td class="symbol">META</td>
+<td>762.30</td>
+<td class="up">+0.88%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- Movers -->
+
+<section class="section two">
+
+<div class="card">
+
+<div class="section-title">
+<h2>🚀 الأكثر ارتفاعًا</h2>
+</div>
+
+<table>
+
+<tr>
+<td class="stock-name">Palantir</td>
+<td>155.20</td>
+<td class="up">+8.42%</td>
+</tr>
+
+<tr>
+<td class="stock-name">AMD</td>
+<td>168.35</td>
+<td class="up">+5.21%</td>
+</tr>
+
+<tr>
+<td class="stock-name">Broadcom</td>
+<td>352.80</td>
+<td class="up">+4.17%</td>
+</tr>
+
+<tr>
+<td class="stock-name">Micron</td>
+<td>154.70</td>
+<td class="up">+3.86%</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>🔻 الأكثر انخفاضًا</h2>
+</div>
+
+<table>
+
+<tr>
+<td class="stock-name">Tesla</td>
+<td>338.92</td>
+<td class="down">-1.63%</td>
+</tr>
+
+<tr>
+<td class="stock-name">Adobe</td>
+<td>312.50</td>
+<td class="down">-3.25%</td>
+</tr>
+
+<tr>
+<td class="stock-name">Salesforce</td>
+<td>241.70</td>
+<td class="down">-2.84%</td>
+</tr>
+
+<tr>
+<td class="stock-name">Intuit</td>
+<td>688.20</td>
+<td class="down">-2.31%</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- القطاعات -->
+
+<section class="section card">
+
+<div class="section-title">
+<h2>🏦 أداء القطاعات</h2>
+<span class="badge">US Sectors</span>
+</div>
+
+<table>
+
+<tr>
+<th>القطاع</th>
+<th>الاتجاه</th>
+<th>الأداء</th>
+</tr>
+
+<tr>
+<td>Technology</td>
+<td class="up">إيجابي</td>
+<td class="up">+0.84%</td>
+</tr>
+
+<tr>
+<td>Semiconductors</td>
+<td class="up">قوي</td>
+<td class="up">+1.72%</td>
+</tr>
+
+<tr>
+<td>Energy</td>
+<td class="up">إيجابي</td>
+<td class="up">+1.31%</td>
+</tr>
+
+<tr>
+<td>Financials</td>
+<td class="down">ضعيف</td>
+<td class="down">-0.42%</td>
+</tr>
+
+<tr>
+<td>Consumer</td>
+<td class="down">حذر</td>
+<td class="down">-0.35%</td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- آراء العملاء -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>⭐ آراء مستخدمي Al Fayed Stocks</h2>
+
+</div>
+
+<div class="two">
+
+<div class="comment">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+"الموقع سهل جدًا في متابعة ناسداك والأسهم الأمريكية، خصوصًا قسم الأسهم تحت المراقبة."
+</p>
+
+<strong>— أحمد • متابع للأسواق</strong>
+
+</div>
+
+<div class="comment">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+"التصميم مرتب والمعلومات المهمة موجودة في مكان واحد بدل التنقل بين أكثر من صفحة."
+</p>
+
+<strong>— محمد • متداول</strong>
+
+</div>
+
+<div class="comment">
+
+<div class="stars">
+★★★★☆
+</div>
+
+<p>
+"قسم القطاعات والأكثر ارتفاعًا وانخفاضًا بيساعدني أعرف اتجاه السوق بسرعة."
+</p>
+
+<strong>— خالد • مستثمر</strong>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- الزوار -->
+
+<section class="section">
+
+<div class="card visitors">
+
+<div>
+
+<h2>
+👁️ زوار الموقع
+</h2>
+
+<p style="color:#829792">
+
+عداد تجريبي للتصميم ويمكن ربطه لاحقًا بعداد حقيقي.
+
+</p>
+
+</div>
+
+<div>
+
+<div class="visitor-number">
+1,846
+</div>
+
+<div style="color:#829792;font-size:12px">
+زائر اليوم
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+Al Fayed Stocks © 2026
+
+<br>
+
+المعلومات لأغراض المتابعة والتحليل وليست توصية استثمارية.
+
+</footer>
+
+</body>
+</html>
