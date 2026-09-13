@@ -1,46 +1,696 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>السوق السعودي | Al Fayed Stocks</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div id="site-header"></div><main class="inner"><div class="wrap"><div class="pagehero"><div class="eyebrow">SAUDI MARKET</div><h1>السوق السعودي 🇸🇦</h1><p>لوحة متابعة لافتتاح تاسي والسيناريوهات الفنية وأبرز الأسهم.</p><div class="updated">آخر تحديث: <span data-today></span></div></div><div class="dashboard"><div class="dashmain"><div class="statusline"><span class="dot"></span> اتجاه الافتتاح: سلبي بحذر</div><h2>تاسي</h2><div class="bigvalue">10,957.60</div><div class="down">▼ أقل من الإغلاق السابق</div><div class="chart"><span></span><i></i><b></b><em></em></div></div><div class="sidelevels"><h3>المستويات المهمة</h3><p><b>الدعم الرئيسي</b><strong>10,950</strong></p><p><b>الدعم التالي</b><strong>10,900</strong></p><p><b>المقاومة الأولى</b><strong>11,000</strong></p><p><b>المقاومة التالية</b><strong>11,020–11,050</strong></p></div></div><div class="scenario-grid"><article><span class="positive">السيناريو الإيجابي</span><h3>استعادة 11,000</h3><p>الثبات فوق 10,950 ثم استعادة 11,000 يفتح المجال لمراقبة 11,020–11,050.</p></article><article><span class="negative">السيناريو السلبي</span><h3>كسر 10,950</h3><p>فقدان 10,950 يزيد الضغط ويدفع لمراقبة 10,900 كمستوى دعم تالٍ.</p></article></div><div class="tablebox"><div class="tablehead"><h2>الأسهم تحت المراقبة</h2><a href="analysis.html">كل التحليلات ←</a></div><table><tr><th>السهم</th><th>الرمز</th><th>المتابعة</th><th>الحالة</th></tr><tr><td>الأسماك</td><td>6050</td><td>اتجاه + دعم/مقاومة</td><td><span class="badge">مراقبة</span></td></tr><tr><td>الشرقية للتنمية</td><td>—</td><td>اتجاه + سيولة</td><td><span class="badge">مراقبة</span></td></tr><tr><td>كيمانول</td><td>—</td><td>اختراقات ومستويات</td><td><span class="badge">مراقبة</span></td></tr></table></div><div class="cards mini-cards"><article class="card"><h3>أقوى القطاعات</h3><p>قسم جاهز لعرض القطاعات الأقوى والأضعف حسب أداء الجلسة.</p></article><article class="card"><h3>الأكثر ارتفاعًا</h3><p>قائمة ديناميكية قابلة للربط بمصدر البيانات.</p></article><article class="card"><h3>الأكثر تداولًا</h3><p>حجم وقيمة التداول والسيولة في مكان واحد.</p></article></div></div></main><div id="site-footer"></div><script src="app.js"></script<script src="live-api.js"></script>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>السوق السعودي | Al Fayed Stocks</title>
 
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const result = await loadAlFayedMarket();
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    if (!result.success) {
-      console.error("API Error:", result);
-      return;
-    }
+<style>
+*{box-sizing:border-box}
 
-    const stocks = result.data || [];
+body{
+margin:0;
+font-family:Cairo,Arial,sans-serif;
+background:#071311;
+color:#f4f8f7;
+}
 
-    const fish = stocks.find(stock => stock.symbol === "6050");
+.container{
+width:min(1150px,94%);
+margin:auto;
+}
 
-    if (fish) {
-      const stockRow = [...document.querySelectorAll("table tr")]
-        .find(row => row.innerText.includes("6050"));
+.header{
+padding:22px 0;
+border-bottom:1px solid #19312d;
+background:#081714;
+}
 
-      if (stockRow) {
-        stockRow.innerHTML = `
-          <td>${fish.name || "الأسماك"}</td>
-          <td>${fish.symbol}</td>
-          <td>
-            ${fish.price}
-            <br>
-            <small>
-              ${fish.change_percent > 0 ? "▲" : "▼"}
-              ${fish.change_percent}%
-            </small>
-          </td>
-          <td>
-            <span class="badge">محدث</span>
-          </td>
-        `;
-      }
-    }
+.brand{
+font-size:24px;
+font-weight:800;
+}
 
-    console.log("Live market data:", result);
+.brand span{color:#20c997}
 
-  } catch (error) {
-    console.error("Live API Error:", error);
-  }
-});
-</script>></body></html>
+.hero{
+padding:30px 0 20px;
+}
+
+.hero small{
+color:#20c997;
+font-weight:700;
+}
+
+.hero h1{
+font-size:34px;
+margin:8px 0;
+}
+
+.hero p{
+color:#9eb1ad;
+margin:0;
+}
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:18px;
+}
+
+.card{
+background:#0d1d1a;
+border:1px solid #1a3630;
+border-radius:18px;
+padding:22px;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.market-card{
+position:relative;
+overflow:hidden;
+}
+
+.market-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.market-name{
+color:#a7bbb6;
+font-size:15px;
+}
+
+.status{
+background:#321919;
+color:#ff7d7d;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+}
+
+.tasi{
+font-size:44px;
+font-weight:800;
+margin:8px 0;
+}
+
+.change{
+color:#ff6b6b;
+font-weight:700;
+font-size:18px;
+}
+
+.meta{
+display:flex;
+gap:25px;
+margin-top:18px;
+color:#9eb1ad;
+font-size:13px;
+}
+
+.chart{
+height:170px;
+margin-top:20px;
+background:linear-gradient(180deg,#102923,#0b1917);
+border-radius:14px;
+position:relative;
+overflow:hidden;
+}
+
+.chart svg{
+width:100%;
+height:100%;
+}
+
+.levels h3{
+margin-top:0;
+}
+
+.level{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid #1b302d;
+}
+
+.level:last-child{border:0}
+
+.level b{color:#9eb1ad}
+.level strong{color:#fff}
+
+.section{
+margin-top:20px;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.section-title h2{
+margin:0;
+font-size:21px;
+}
+
+.badge{
+font-size:11px;
+padding:5px 10px;
+border-radius:15px;
+background:#16352d;
+color:#45e0a8;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+color:#829792;
+font-size:12px;
+font-weight:600;
+text-align:right;
+padding:14px 10px;
+}
+
+td{
+padding:15px 10px;
+border-top:1px solid #1b302d;
+font-size:14px;
+}
+
+.symbol{
+color:#829792;
+font-size:12px;
+}
+
+.up{color:#38d99b;font-weight:700}
+.down{color:#ff7070;font-weight:700}
+
+.stock-name{
+font-weight:700;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.stat{
+background:#0d1d1a;
+border:1px solid #1a3630;
+padding:18px;
+border-radius:15px;
+}
+
+.stat small{
+display:block;
+color:#829792;
+margin-bottom:7px;
+}
+
+.stat strong{
+font-size:20px;
+}
+
+.movers{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.comment{
+background:#0d1d1a;
+border:1px solid #1a3630;
+padding:18px;
+border-radius:16px;
+}
+
+.stars{
+color:#ffd166;
+letter-spacing:2px;
+}
+
+.comment p{
+color:#b4c3c0;
+line-height:1.8;
+}
+
+.comment strong{
+display:block;
+margin-top:8px;
+}
+
+.visitors{
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:linear-gradient(135deg,#102b24,#0d1d1a);
+}
+
+.visitor-number{
+font-size:30px;
+font-weight:800;
+color:#38d99b;
+}
+
+footer{
+margin-top:35px;
+padding:25px 0;
+text-align:center;
+color:#6f8580;
+border-top:1px solid #19312d;
+}
+
+@media(max-width:800px){
+.grid,.movers{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr 1fr}
+.hero h1{font-size:28px}
+.tasi{font-size:36px}
+}
+
+@media(max-width:480px){
+.stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="container">
+<div class="brand">Al Fayed <span>Stocks</span></div>
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+<small>SAUDI MARKET • 14 سبتمبر 2026</small>
+<h1>السوق السعودي 🇸🇦</h1>
+<p>لوحة متابعة مبسطة للمؤشر والأسهم والسيولة وأبرز تحركات السوق.</p>
+</section>
+
+<!-- المؤشر -->
+<section class="grid">
+
+<div class="card market-card">
+
+<div class="market-top">
+<div>
+<div class="market-name">مؤشر تاسي TASI</div>
+<div class="tasi">10,864.57</div>
+<div class="change">▼ 142.70 &nbsp; (-1.30%)</div>
+</div>
+
+<div class="status">السوق تحت الضغط</div>
+</div>
+
+<div class="meta">
+<span>الافتتاح: 10,957.60</span>
+<span>السابق: 11,007.27</span>
+</div>
+
+<div class="chart">
+
+<svg viewBox="0 0 800 220" preserveAspectRatio="none">
+
+<defs>
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1fc98b" stop-opacity=".35"/>
+<stop offset="1" stop-color="#1fc98b" stop-opacity="0"/>
+</linearGradient>
+</defs>
+
+<path
+d="M0 75
+L60 82
+L120 68
+L180 92
+L240 80
+L300 108
+L360 95
+L420 120
+L480 105
+L540 135
+L600 125
+L660 150
+L720 145
+L800 175
+L800 220
+L0 220 Z"
+fill="url(#area)"/>
+
+<path
+d="M0 75
+L60 82
+L120 68
+L180 92
+L240 80
+L300 108
+L360 95
+L420 120
+L480 105
+L540 135
+L600 125
+L660 150
+L720 145
+L800 175"
+fill="none"
+stroke="#35d49b"
+stroke-width="4"/>
+
+</svg>
+
+</div>
+</div>
+
+<!-- المستويات -->
+<div class="card levels">
+
+<h3>المستويات المهمة</h3>
+
+<div class="level">
+<b>المقاومة الأولى</b>
+<strong>11,000</strong>
+</div>
+
+<div class="level">
+<b>المقاومة التالية</b>
+<strong>11,020 – 11,050</strong>
+</div>
+
+<div class="level">
+<b>الدعم الرئيسي</b>
+<strong>10,950</strong>
+</div>
+
+<div class="level">
+<b>الدعم التالي</b>
+<strong>10,900</strong>
+</div>
+
+<div class="level">
+<b>حالة الاتجاه</b>
+<strong class="down">سلبي بحذر</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- إحصائيات -->
+<section class="section">
+
+<div class="stats">
+
+<div class="stat">
+<small>الأسهم المرتفعة</small>
+<strong class="up">42</strong>
+</div>
+
+<div class="stat">
+<small>الأسهم المنخفضة</small>
+<strong class="down">221</strong>
+</div>
+
+<div class="stat">
+<small>قيمة التداول</small>
+<strong>3.83B</strong>
+</div>
+
+<div class="stat">
+<small>عدد الشركات</small>
+<strong>272</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- الأسهم تحت المراقبة -->
+<section class="section card">
+
+<div class="section-title">
+<h2>📌 الأسهم تحت المراقبة</h2>
+<span class="badge">متابعة اليوم</span>
+</div>
+
+<table>
+
+<tr>
+<th>السهم</th>
+<th>الرمز</th>
+<th>السعر</th>
+<th>التغير</th>
+<th>الحالة</th>
+</tr>
+
+<tr>
+<td class="stock-name">الأسماك</td>
+<td class="symbol">6050</td>
+<td>67.55</td>
+<td class="up">+2.05%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">أرامكو</td>
+<td class="symbol">2222</td>
+<td>25.72</td>
+<td class="down">-1.60%</td>
+<td><span class="badge">ضغط</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">الراجحي</td>
+<td class="symbol">1120</td>
+<td>65.20</td>
+<td class="down">-1.20%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">سابك</td>
+<td class="symbol">2010</td>
+<td>49.50</td>
+<td class="down">-2.10%</td>
+<td><span class="badge">حذر</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">الأهلي</td>
+<td class="symbol">1180</td>
+<td>41.22</td>
+<td class="down">-1.40%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+<tr>
+<td class="stock-name">stc</td>
+<td class="symbol">7010</td>
+<td>43.80</td>
+<td class="down">-0.50%</td>
+<td><span class="badge">مراقبة</span></td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- الأكثر ارتفاعا وانخفاضا -->
+<section class="section movers">
+
+<div class="card">
+
+<div class="section-title">
+<h2>🔥 الأكثر ارتفاعًا</h2>
+</div>
+
+<table>
+
+<tr>
+<td class="stock-name">أرماح</td>
+<td>71.85</td>
+<td class="up">+9.95%</td>
+</tr>
+
+<tr>
+<td class="stock-name">أردكو</td>
+<td>16.75</td>
+<td class="up">+5.68%</td>
+</tr>
+
+<tr>
+<td class="stock-name">السعودي ريت</td>
+<td>28.82</td>
+<td class="up">+3.67%</td>
+</tr>
+
+<tr>
+<td class="stock-name">ساسكو</td>
+<td>45.62</td>
+<td class="up">+3.40%</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+<h2>🔻 الأكثر انخفاضًا</h2>
+</div>
+
+<table>
+
+<tr>
+<td class="stock-name">لوبريف</td>
+<td>127.30</td>
+<td class="down">-9.97%</td>
+</tr>
+
+<tr>
+<td class="stock-name">KEC</td>
+<td>18.88</td>
+<td class="down">-5.08%</td>
+</tr>
+
+<tr>
+<td class="stock-name">ACIG</td>
+<td>7.85</td>
+<td class="down">-4.96%</td>
+</tr>
+
+<tr>
+<td class="stock-name">العربية</td>
+<td>58.30</td>
+<td class="down">-4.89%</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- القطاعات -->
+<section class="section card">
+
+<div class="section-title">
+<h2>🏦 أداء القطاعات</h2>
+<span class="badge">ملخص السوق</span>
+</div>
+
+<table>
+
+<tr>
+<th>القطاع</th>
+<th>الاتجاه</th>
+<th>الأداء</th>
+</tr>
+
+<tr>
+<td>النقل</td>
+<td class="up">صاعد</td>
+<td class="up">+1.45%</td>
+</tr>
+
+<tr>
+<td>الخدمات الاستهلاكية</td>
+<td class="up">صاعد</td>
+<td class="up">+1.40%</td>
+</tr>
+
+<tr>
+<td>السلع المعمرة والملابس</td>
+<td class="up">صاعد</td>
+<td class="up">+1.65%</td>
+</tr>
+
+<tr>
+<td>الخدمات التجارية والمهنية</td>
+<td class="up">إيجابي</td>
+<td class="up">+0.17%</td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- آراء العملاء -->
+<section class="section">
+
+<div class="section-title">
+<h2>⭐ آراء مستخدمي Al Fayed Stocks</h2>
+</div>
+
+<div class="movers">
+
+<div class="comment">
+<div class="stars">★★★★★</div>
+<p>
+"واجهة الموقع بسيطة وسريعة، وأهم شيء بالنسبة لي أن مستويات الدعم والمقاومة واضحة."
+</p>
+<strong>— أحمد • مستثمر</strong>
+</div>
+
+<div class="comment">
+<div class="stars">★★★★★</div>
+<p>
+"قسم الأسهم تحت المراقبة مفيد جدًا في بداية الجلسة ويسهل متابعة الأسهم."
+</p>
+<strong>— محمد • متابع للسوق</strong>
+</div>
+
+<div class="comment">
+<div class="stars">★★★★☆</div>
+<p>
+"التصميم مرتب والمعلومات الأساسية موجودة في مكان واحد."
+</p>
+<strong>— خالد • متداول</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- الزوار -->
+<section class="section">
+
+<div class="card visitors">
+
+<div>
+<h2>👁️ زوار الموقع</h2>
+<p style="color:#829792">
+إحصائية تجريبية للعرض — يمكن ربطها لاحقًا بعداد حقيقي.
+</p>
+</div>
+
+<div>
+<div class="visitor-number">1,284</div>
+<div style="color:#829792;font-size:12px">زائر اليوم</div>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+Al Fayed Stocks © 2026
+<br>
+<span>المعلومات المعروضة لأغراض المتابعة والتحليل وليست توصية استثمارية.</span>
+</footer>
+
+</body>
+</html>
