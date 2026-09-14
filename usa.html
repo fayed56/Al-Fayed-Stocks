@@ -4,807 +4,854 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>السوق الأمريكي | Al Fayed Stocks</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Al Fayed Stocks | السوق الأمريكي</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-margin:0;
-font-family:Cairo,Arial,sans-serif;
-background:#071311;
-color:#f5f8f7;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#050807;
+  color:#f2f5f3;
+  line-height:1.7;
+}
+
+header{
+  height:175px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #18251f;
+  background:
+    radial-gradient(circle at center,#10251b 0%,#050807 60%);
+}
+
+.logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:#20c997;
 }
 
 .container{
-width:min(1150px,94%);
-margin:auto;
-}
-
-.header{
-background:#081714;
-border-bottom:1px solid #1b3630;
-padding:22px 0;
-}
-
-.brand{
-font-size:24px;
-font-weight:800;
-}
-
-.brand span{
-color:#20c997;
+  width:min(1180px,92%);
+  margin:auto;
 }
 
 .hero{
-padding:30px 0 20px;
+  padding:35px 0 25px;
 }
 
 .hero small{
-color:#20c997;
-font-weight:700;
+  color:#20c997;
+  font-weight:800;
+  letter-spacing:1.5px;
 }
 
 .hero h1{
-font-size:34px;
-margin:8px 0;
+  font-size:42px;
+  margin-top:8px;
 }
 
 .hero p{
-color:#9eb1ad;
-}
-
-.grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:18px;
+  color:#9aa7a0;
+  margin-top:8px;
 }
 
 .card{
-background:#0d1d1a;
-border:1px solid #1a3630;
-border-radius:18px;
-padding:22px;
-box-shadow:0 10px 30px rgba(0,0,0,.18);
+  background:
+    linear-gradient(145deg,#0d1511,#080c0a);
+  border:1px solid #1b3026;
+  border-radius:25px;
+  padding:28px;
+  margin-bottom:24px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.market-top{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
+.card-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
 }
 
-.market-name{
-color:#a7bbb6;
-}
-
-.index{
-font-size:42px;
-font-weight:800;
-margin:5px 0;
-}
-
-.change{
-color:#ff7070;
-font-size:18px;
-font-weight:700;
-}
-
-.status{
-background:#321919;
-color:#ff7d7d;
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
-}
-
-.meta{
-display:flex;
-gap:25px;
-margin-top:18px;
-color:#8fa49f;
-font-size:13px;
-}
-
-.chart{
-height:180px;
-margin-top:20px;
-border-radius:14px;
-overflow:hidden;
-background:#0a1815;
-}
-
-.chart svg{
-width:100%;
-height:100%;
-}
-
-.level{
-display:flex;
-justify-content:space-between;
-padding:14px 0;
-border-bottom:1px solid #1b302d;
-}
-
-.level:last-child{
-border:0;
-}
-
-.level b{
-color:#849b96;
-}
-
-.level strong{
-color:white;
-}
-
-.section{
-margin-top:20px;
-}
-
-.section-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:14px;
-}
-
-.section-title h2{
-margin:0;
-font-size:21px;
+.card-title h2{
+  font-size:22px;
 }
 
 .badge{
-font-size:11px;
-padding:5px 10px;
-border-radius:15px;
-background:#16352d;
-color:#45e0a8;
+  padding:6px 13px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.red{
+  background:#301412;
+  color:#ff756d;
+  border:1px solid #63302c;
+}
+
+.green{
+  background:#102b20;
+  color:#20c997;
+  border:1px solid #205b44;
+}
+
+.index-price{
+  font-size:52px;
+  font-weight:900;
+  direction:ltr;
+  text-align:right;
+}
+
+.change{
+  color:#ff6b61;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:2px;
+}
+
+.market-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  margin-top:20px;
+  color:#a8b1ac;
+}
+
+.market-meta strong{
+  color:#fff;
+  display:block;
+  font-size:17px;
+}
+
+.chart{
+  margin-top:30px;
+  padding:15px;
+  border-radius:18px;
+  background:#07100c;
+  border:1px solid #14261d;
+}
+
+.chart svg{
+  width:100%;
+  height:280px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.info{
+  background:#0a120e;
+  border:1px solid #17271f;
+  border-radius:18px;
+  padding:20px;
+}
+
+.info span{
+  color:#8f9d95;
+  font-size:14px;
+}
+
+.info strong{
+  display:block;
+  margin-top:6px;
+  font-size:21px;
+}
+
+.section-title{
+  font-size:25px;
+  margin-bottom:18px;
+}
+
+.levels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.level-box{
+  background:#09110d;
+  border:1px solid #1a2d23;
+  border-radius:18px;
+  padding:22px;
+}
+
+.level-box h3{
+  margin-bottom:12px;
+}
+
+.level-box ul{
+  list-style:none;
+}
+
+.level-box li{
+  padding:8px 0;
+  border-bottom:1px solid #15221b;
+}
+
+.resistance h3{
+  color:#ff766c;
+}
+
+.support h3{
+  color:#20c997;
+}
+
+.scenarios{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.scenario{
+  padding:22px;
+  border-radius:18px;
+  border:1px solid #1a2c23;
+}
+
+.scenario h3{
+  margin-bottom:10px;
+}
+
+.scenario p{
+  color:#aab3ad;
+}
+
+.table-wrap{
+  overflow-x:auto;
 }
 
 table{
-width:100%;
-border-collapse:collapse;
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:14px 12px;
+  text-align:right;
+  border-bottom:1px solid #18251f;
 }
 
 th{
-color:#829792;
-font-size:12px;
-text-align:right;
-padding:13px 9px;
-}
-
-td{
-padding:15px 9px;
-border-top:1px solid #1b302d;
-font-size:14px;
-}
-
-.symbol{
-color:#718782;
-font-size:12px;
-}
-
-.stock-name{
-font-weight:700;
+  color:#8e9b94;
+  font-size:14px;
 }
 
 .up{
-color:#39d99b;
-font-weight:700;
+  color:#20c997;
+  font-weight:bold;
 }
 
 .down{
-color:#ff7070;
-font-weight:700;
+  color:#ff7168;
+  font-weight:bold;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
+.watch{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.stat{
-background:#0d1d1a;
-border:1px solid #1a3630;
-padding:18px;
-border-radius:15px;
+.stock{
+  padding:18px;
+  background:#09110d;
+  border:1px solid #182b21;
+  border-radius:17px;
 }
 
-.stat small{
-display:block;
-color:#829792;
-margin-bottom:6px;
+.stock b{
+  color:#20c997;
+  font-size:19px;
 }
 
-.stat strong{
-font-size:20px;
+.stock span{
+  display:block;
+  color:#a2aaa5;
+  margin-top:4px;
 }
 
-.two{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
-.comment{
-background:#0d1d1a;
-border:1px solid #1a3630;
-border-radius:16px;
-padding:18px;
+.review{
+  background:#09110d;
+  border:1px solid #182b21;
+  border-radius:18px;
+  padding:20px;
 }
 
-.stars{
-color:#ffd166;
-letter-spacing:2px;
+.review p{
+  color:#b4bdb7;
 }
 
-.comment p{
-color:#b4c3c0;
-line-height:1.8;
-}
-
-.comment strong{
-display:block;
-margin-top:10px;
-}
-
-.visitors{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.visitor-number{
-font-size:30px;
-font-weight:800;
-color:#39d99b;
+.review small{
+  display:block;
+  color:#20c997;
+  margin-top:12px;
 }
 
 footer{
-margin-top:35px;
-padding:25px;
-text-align:center;
-color:#718782;
-border-top:1px solid #19312d;
+  margin-top:45px;
+  padding:30px 0;
+  text-align:center;
+  color:#6f7b74;
+  border-top:1px solid #16231c;
 }
 
-@media(max-width:800px){
-.grid,.two{
-grid-template-columns:1fr;
+@media(max-width:850px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .watch,
+  .review-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
 }
 
-.stats{
-grid-template-columns:1fr 1fr;
-}
+@media(max-width:600px){
+  header{
+    height:130px;
+  }
 
-.hero h1{
-font-size:28px;
-}
-}
+  .logo{
+    font-size:30px;
+  }
 
-@media(max-width:480px){
-.stats{
-grid-template-columns:1fr;
-}
+  .index-price{
+    font-size:39px;
+  }
 
-.index{
-font-size:34px;
-}
+  .grid,
+  .levels,
+  .scenarios,
+  .watch,
+  .review-grid{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-<div class="container">
-<div class="brand">
-Al Fayed <span>Stocks</span>
-</div>
-</div>
+<header>
+  <div class="logo">
+    Al Fayed <span>Stocks</span>
+  </div>
 </header>
 
 <main class="container">
 
 <section class="hero">
+  <small>US MARKET • 14 SEPTEMBER 2026</small>
+  <h1>🇺🇸 السوق الأمريكي</h1>
+  <p>
+    متابعة مؤشر Nasdaq 100 وأهم المؤشرات والأسهم والقطاعات
+    مع قراءة فنية لجلسة اليوم.
+  </p>
+</section>
 
-<small>US MARKET • 14 SEPTEMBER 2026</small>
+<!-- NASDAQ 100 -->
+<section class="card">
 
-<h1>السوق الأمريكي 🇺🇸</h1>
+  <div class="card-title">
+    <h2>Nasdaq 100</h2>
+    <span class="badge red">ضغط قصير الأجل</span>
+  </div>
 
-<p>
-متابعة Nasdaq والأسهم الأمريكية والقطاعات وأبرز التحركات.
-</p>
+  <div class="index-price">29,368.44</div>
+
+  <div class="change">
+    +264.93 ▲ (+0.91%)
+  </div>
+
+  <div class="market-meta">
+
+    <div>
+      الإغلاق السابق
+      <strong>29,103.51</strong>
+    </div>
+
+    <div>
+      افتتاح الجمعة
+      <strong>29,331.48</strong>
+    </div>
+
+    <div>
+      أعلى مستوى
+      <strong>29,473.12</strong>
+    </div>
+
+    <div>
+      أدنى مستوى
+      <strong>29,313.51</strong>
+    </div>
+
+  </div>
+
+  <div class="chart">
+
+    <svg viewBox="0 0 1000 280"
+         preserveAspectRatio="none">
+
+      <defs>
+        <linearGradient id="fill"
+                        x1="0"
+                        x2="0"
+                        y1="0"
+                        y2="1">
+
+          <stop offset="0%"
+                stop-color="#20c997"
+                stop-opacity=".30"/>
+
+          <stop offset="100%"
+                stop-color="#20c997"
+                stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <polyline
+        points="
+        0,210
+        70,205
+        140,220
+        210,190
+        280,198
+        350,175
+        420,185
+        490,145
+        560,155
+        630,125
+        700,138
+        770,105
+        840,120
+        910,85
+        1000,65"
+        fill="none"
+        stroke="#20c997"
+        stroke-width="5"
+      />
+
+      <polygon
+        points="
+        0,210
+        70,205
+        140,220
+        210,190
+        280,198
+        350,175
+        420,185
+        490,145
+        560,155
+        630,125
+        700,138
+        770,105
+        840,120
+        910,85
+        1000,65
+        1000,280
+        0,280"
+        fill="url(#fill)"
+      />
+
+    </svg>
+
+  </div>
 
 </section>
 
-<!-- Nasdaq -->
-
+<!-- MARKET STATS -->
 <section class="grid">
 
-<div class="card">
+  <div class="info">
+    <span>الاتجاه</span>
+    <strong class="down">محايد مائل للسلبية</strong>
+  </div>
 
-<div class="market-top">
+  <div class="info">
+    <span>الدعم الأول</span>
+    <strong>29,300</strong>
+  </div>
 
-<div>
+  <div class="info">
+    <span>المقاومة الأولى</span>
+    <strong>29,600</strong>
+  </div>
 
-<div class="market-name">
-Nasdaq 100
-</div>
-
-<div class="index">
-29,390.00
-</div>
-
-<div class="change">
-▼ 185.40 (-0.63%)
-</div>
-
-</div>
-
-<div class="status">
-ضغط قصير الأجل
-</div>
-
-</div>
-
-<div class="meta">
-
-<span>
-الإغلاق السابق: 29,575.40
-</span>
-
-<span>
-الجلسة: أمريكية
-</span>
-
-</div>
-
-<div class="chart">
-
-<svg viewBox="0 0 800 220" preserveAspectRatio="none">
-
-<defs>
-
-<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-
-<stop offset="0" stop-color="#20c997" stop-opacity=".35"/>
-
-<stop offset="1" stop-color="#20c997" stop-opacity="0"/>
-
-</linearGradient>
-
-</defs>
-
-<path
-d="M0 65
-L60 72
-L120 58
-L180 85
-L240 74
-L300 95
-L360 82
-L420 110
-L480 100
-L540 125
-L600 118
-L660 140
-L720 132
-L800 160
-L800 220
-L0 220 Z"
-fill="url(#area)"
-/>
-
-<path
-d="M0 65
-L60 72
-L120 58
-L180 85
-L240 74
-L300 95
-L360 82
-L420 110
-L480 100
-L540 125
-L600 118
-L660 140
-L720 132
-L800 160"
-fill="none"
-stroke="#35d49b"
-stroke-width="4"
-/>
-
-</svg>
-
-</div>
-
-</div>
-
-<!-- المستويات -->
-
-<div class="card">
-
-<h3>📊 المستويات المهمة</h3>
-
-<div class="level">
-<b>المقاومة الأولى</b>
-<strong>29,600</strong>
-</div>
-
-<div class="level">
-<b>المقاومة الرئيسية</b>
-<strong>29,800</strong>
-</div>
-
-<div class="level">
-<b>المقاومة النفسية</b>
-<strong>30,000</strong>
-</div>
-
-<div class="level">
-<b>الدعم الأول</b>
-<strong>29,300</strong>
-</div>
-
-<div class="level">
-<b>الدعم الرئيسي</b>
-<strong>29,100</strong>
-</div>
-
-<div class="level">
-<b>الاتجاه</b>
-<strong class="down">حذر</strong>
-</div>
-
-</div>
+  <div class="info">
+    <span>المقاومة الرئيسية</span>
+    <strong>30,000</strong>
+  </div>
 
 </section>
 
-<!-- إحصائيات -->
+<br>
 
-<section class="section">
+<!-- LEVELS -->
+<section class="card">
 
-<div class="stats">
+  <h2 class="section-title">
+    📊 أهم المستويات الفنية
+  </h2>
 
-<div class="stat">
-<small>Nasdaq</small>
-<strong>26,253</strong>
-</div>
+  <div class="levels">
 
-<div class="stat">
-<small>S&P 500</small>
-<strong>6,632</strong>
-</div>
+    <div class="level-box resistance">
+      <h3>🔴 المقاومات</h3>
 
-<div class="stat">
-<small>Dow Jones</small>
-<strong>45,834</strong>
-</div>
+      <ul>
+        <li>29,600 — مقاومة أولى</li>
+        <li>29,800 — مقاومة مهمة</li>
+        <li>30,000 — مقاومة رئيسية</li>
+        <li>30,175 — اختراقها يعزز الإيجابية</li>
+      </ul>
+    </div>
 
-<div class="stat">
-<small>VIX</small>
-<strong>16.8</strong>
-</div>
+    <div class="level-box support">
+      <h3>🟢 الدعوم</h3>
 
-</div>
+      <ul>
+        <li>29,300 — دعم أول</li>
+        <li>29,100 — دعم رئيسي</li>
+        <li>28,800 — دعم تالٍ</li>
+        <li>28,400 — كسرها يضعف الاتجاه</li>
+      </ul>
+    </div>
 
-</section>
-
-<!-- الأسهم -->
-
-<section class="section card">
-
-<div class="section-title">
-
-<h2>⭐ الأسهم تحت المراقبة</h2>
-
-<span class="badge">
-Watchlist
-</span>
-
-</div>
-
-<table>
-
-<tr>
-<th>السهم</th>
-<th>الرمز</th>
-<th>السعر</th>
-<th>التغير</th>
-<th>الحالة</th>
-</tr>
-
-<tr>
-<td class="stock-name">NVIDIA</td>
-<td class="symbol">NVDA</td>
-<td>178.42</td>
-<td class="up">+1.84%</td>
-<td><span class="badge">إيجابي</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">Apple</td>
-<td class="symbol">AAPL</td>
-<td>245.18</td>
-<td class="up">+0.72%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">Microsoft</td>
-<td class="symbol">MSFT</td>
-<td>512.60</td>
-<td class="down">-0.45%</td>
-<td><span class="badge">حذر</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">Amazon</td>
-<td class="symbol">AMZN</td>
-<td>238.74</td>
-<td class="up">+1.15%</td>
-<td><span class="badge">إيجابي</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">Tesla</td>
-<td class="symbol">TSLA</td>
-<td>338.92</td>
-<td class="down">-1.63%</td>
-<td><span class="badge">ضغط</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">Meta</td>
-<td class="symbol">META</td>
-<td>762.30</td>
-<td class="up">+0.88%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-</table>
+  </div>
 
 </section>
 
-<!-- Movers -->
+<!-- SCENARIOS -->
+<section class="card">
 
-<section class="section two">
+  <h2 class="section-title">
+    🎯 السيناريوهات المتوقعة
+  </h2>
 
-<div class="card">
+  <div class="scenarios">
 
-<div class="section-title">
-<h2>🚀 الأكثر ارتفاعًا</h2>
-</div>
+    <div class="scenario">
+      <h3 class="up">🟢 السيناريو الإيجابي</h3>
 
-<table>
+      <p>
+        الحفاظ على 29,300–29,100 ثم اختراق
+        29,600 بإغلاق قوي قد يدفع المؤشر نحو
+        29,800 ثم 30,000.
+      </p>
+    </div>
 
-<tr>
-<td class="stock-name">Palantir</td>
-<td>155.20</td>
-<td class="up">+8.42%</td>
-</tr>
+    <div class="scenario">
+      <h3 class="down">🔴 السيناريو السلبي</h3>
 
-<tr>
-<td class="stock-name">AMD</td>
-<td>168.35</td>
-<td class="up">+5.21%</td>
-</tr>
+      <p>
+        كسر 29,300 ثم 29,100 قد يفتح المجال
+        للهبوط نحو 28,800، وكسر 28,400
+        يضعف الاتجاه الصاعد بشكل واضح.
+      </p>
+    </div>
 
-<tr>
-<td class="stock-name">Broadcom</td>
-<td>352.80</td>
-<td class="up">+4.17%</td>
-</tr>
-
-<tr>
-<td class="stock-name">Micron</td>
-<td>154.70</td>
-<td class="up">+3.86%</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="card">
-
-<div class="section-title">
-<h2>🔻 الأكثر انخفاضًا</h2>
-</div>
-
-<table>
-
-<tr>
-<td class="stock-name">Tesla</td>
-<td>338.92</td>
-<td class="down">-1.63%</td>
-</tr>
-
-<tr>
-<td class="stock-name">Adobe</td>
-<td>312.50</td>
-<td class="down">-3.25%</td>
-</tr>
-
-<tr>
-<td class="stock-name">Salesforce</td>
-<td>241.70</td>
-<td class="down">-2.84%</td>
-</tr>
-
-<tr>
-<td class="stock-name">Intuit</td>
-<td>688.20</td>
-<td class="down">-2.31%</td>
-</tr>
-
-</table>
-
-</div>
+  </div>
 
 </section>
 
-<!-- القطاعات -->
+<!-- MAIN INDICES -->
+<section class="card">
 
-<section class="section card">
+  <h2 class="section-title">
+    📈 المؤشرات الأمريكية
+  </h2>
 
-<div class="section-title">
-<h2>🏦 أداء القطاعات</h2>
-<span class="badge">US Sectors</span>
-</div>
+  <div class="table-wrap">
 
-<table>
+    <table>
 
-<tr>
-<th>القطاع</th>
-<th>الاتجاه</th>
-<th>الأداء</th>
-</tr>
+      <thead>
+        <tr>
+          <th>المؤشر</th>
+          <th>الإغلاق</th>
+          <th>التغير</th>
+        </tr>
+      </thead>
 
-<tr>
-<td>Technology</td>
-<td class="up">إيجابي</td>
-<td class="up">+0.84%</td>
-</tr>
+      <tbody>
 
-<tr>
-<td>Semiconductors</td>
-<td class="up">قوي</td>
-<td class="up">+1.72%</td>
-</tr>
+        <tr>
+          <td>Nasdaq Composite</td>
+          <td>26,333.04</td>
+          <td class="up">+0.96%</td>
+        </tr>
 
-<tr>
-<td>Energy</td>
-<td class="up">إيجابي</td>
-<td class="up">+1.31%</td>
-</tr>
+        <tr>
+          <td>S&P 500</td>
+          <td>7,656.98</td>
+          <td class="up">+0.86%</td>
+        </tr>
 
-<tr>
-<td>Financials</td>
-<td class="down">ضعيف</td>
-<td class="down">-0.42%</td>
-</tr>
+        <tr>
+          <td>Dow Jones</td>
+          <td>52,573.29</td>
+          <td class="up">+0.98%</td>
+        </tr>
 
-<tr>
-<td>Consumer</td>
-<td class="down">حذر</td>
-<td class="down">-0.35%</td>
-</tr>
+        <tr>
+          <td>Russell 2000</td>
+          <td>2,903.94</td>
+          <td class="up">+0.45%</td>
+        </tr>
 
-</table>
+      </tbody>
 
-</section>
+    </table>
 
-<!-- آراء العملاء -->
-
-<section class="section">
-
-<div class="section-title">
-
-<h2>⭐ آراء مستخدمي Al Fayed Stocks</h2>
-
-</div>
-
-<div class="two">
-
-<div class="comment">
-
-<div class="stars">
-★★★★★
-</div>
-
-<p>
-"الموقع سهل جدًا في متابعة ناسداك والأسهم الأمريكية، خصوصًا قسم الأسهم تحت المراقبة."
-</p>
-
-<strong>— أحمد • متابع للأسواق</strong>
-
-</div>
-
-<div class="comment">
-
-<div class="stars">
-★★★★★
-</div>
-
-<p>
-"التصميم مرتب والمعلومات المهمة موجودة في مكان واحد بدل التنقل بين أكثر من صفحة."
-</p>
-
-<strong>— محمد • متداول</strong>
-
-</div>
-
-<div class="comment">
-
-<div class="stars">
-★★★★☆
-</div>
-
-<p>
-"قسم القطاعات والأكثر ارتفاعًا وانخفاضًا بيساعدني أعرف اتجاه السوق بسرعة."
-</p>
-
-<strong>— خالد • مستثمر</strong>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-<!-- الزوار -->
+<!-- WATCHLIST -->
+<section class="card">
 
-<section class="section">
+  <h2 class="section-title">
+    👀 الأسهم تحت المراقبة
+  </h2>
 
-<div class="card visitors">
+  <div class="watch">
 
-<div>
+    <div class="stock">
+      <b>NVDA</b>
+      <span>NVIDIA — الذكاء الاصطناعي</span>
+    </div>
 
-<h2>
-👁️ زوار الموقع
-</h2>
+    <div class="stock">
+      <b>AAPL</b>
+      <span>Apple — التكنولوجيا</span>
+    </div>
 
-<p style="color:#829792">
+    <div class="stock">
+      <b>MSFT</b>
+      <span>Microsoft — السحابة والذكاء الاصطناعي</span>
+    </div>
 
-عداد تجريبي للتصميم ويمكن ربطه لاحقًا بعداد حقيقي.
+    <div class="stock">
+      <b>AMZN</b>
+      <span>Amazon — التجارة والسحابة</span>
+    </div>
 
-</p>
+    <div class="stock">
+      <b>TSLA</b>
+      <span>Tesla — السيارات والذكاء الاصطناعي</span>
+    </div>
 
-</div>
+    <div class="stock">
+      <b>META</b>
+      <span>Meta — الإعلانات والذكاء الاصطناعي</span>
+    </div>
 
-<div>
+  </div>
 
-<div class="visitor-number">
-1,846
-</div>
+</section>
 
-<div style="color:#829792;font-size:12px">
-زائر اليوم
-</div>
+<!-- SECTORS -->
+<section class="card">
 
-</div>
+  <h2 class="section-title">
+    🏭 أهم القطاعات
+  </h2>
 
-</div>
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>القطاع</th>
+          <th>النظرة</th>
+          <th>الملاحظة</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>التكنولوجيا</td>
+          <td class="down">⚠️ حذر</td>
+          <td>ضغط على أسهم AI</td>
+        </tr>
+
+        <tr>
+          <td>أشباه الموصلات</td>
+          <td class="down">⚠️ حذر</td>
+          <td>حساسة لحركة Nasdaq</td>
+        </tr>
+
+        <tr>
+          <td>الطاقة</td>
+          <td class="up">🟢 إيجابي</td>
+          <td>دعم من ارتفاع النفط</td>
+        </tr>
+
+        <tr>
+          <td>الماليات</td>
+          <td>محايد</td>
+          <td>ترقب الفيدرالي والعوائد</td>
+        </tr>
+
+        <tr>
+          <td>الصناعة</td>
+          <td>محايد</td>
+          <td>تتأثر بالنمو والعوائد</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+<!-- MARKET NEWS -->
+<section class="card">
+
+  <h2 class="section-title">
+    📰 أهم مؤثرات جلسة اليوم
+  </h2>
+
+  <div class="review-grid">
+
+    <div class="review">
+      <p>
+        ارتفاع النفط فوق 100 دولار يضغط على
+        شهية المخاطرة ويرفع مخاوف التضخم.
+      </p>
+      <small>📌 النفط والتضخم</small>
+    </div>
+
+    <div class="review">
+      <p>
+        أسهم الذكاء الاصطناعي تحت المراقبة
+        بعد تصريحات تدعو إلى تباطؤ تطوير نماذج AI.
+      </p>
+      <small>🤖 قطاع التكنولوجيا</small>
+    </div>
+
+    <div class="review">
+      <p>
+        اجتماع الفيدرالي هذا الأسبوع هو العامل
+        الأهم لتحركات الأسهم والعوائد.
+      </p>
+      <small>🏦 Federal Reserve</small>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- OPINIONS -->
+<section class="card">
+
+  <h2 class="section-title">
+    💬 آراء المتابعين حول جلسة اليوم
+  </h2>
+
+  <div class="review-grid">
+
+    <div class="review">
+      <p>
+        أهم مستوى حاليًا هو 29,300.
+        الحفاظ عليه يبقي فرص الارتداد قائمة.
+      </p>
+      <small>رأي تحليلي</small>
+    </div>
+
+    <div class="review">
+      <p>
+        اختراق 29,600 قد يعطي Nasdaq
+        دفعة جديدة باتجاه 29,800 ثم 30,000.
+      </p>
+      <small>رأي تحليلي</small>
+    </div>
+
+    <div class="review">
+      <p>
+        كسر 29,100 سيكون إشارة تستدعي
+        الحذر ومراقبة 28,800.
+      </p>
+      <small>رأي تحليلي</small>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SUMMARY -->
+<section class="card">
+
+  <h2 class="section-title">
+    📝 خلاصة السوق الأمريكي
+  </h2>
+
+  <p style="color:#adb6b0;font-size:17px">
+
+    السوق يدخل جلسة الإثنين بحالة من الحذر.
+    المؤشرات أنهت الجمعة على ارتفاع، لكن بداية الأسبوع
+    تحمل ضغوطًا على أسهم التكنولوجيا والذكاء الاصطناعي،
+    بالتزامن مع ارتفاع النفط وترقب قرار الفيدرالي.
+
+    <br><br>
+
+    فنيًا، يبقى مستوى <strong style="color:#20c997">
+    29,300
+    </strong>
+    مهمًا لـ Nasdaq 100، بينما اختراق
+    <strong style="color:#20c997">
+    29,600
+    </strong>
+    يعزز فرص استهداف 29,800 ثم 30,000.
+
+  </p>
 
 </section>
 
 </main>
 
 <footer>
-
-Al Fayed Stocks © 2026
-
-<br>
-
-المعلومات لأغراض المتابعة والتحليل وليست توصية استثمارية.
-
+  Al Fayed Stocks © 2026
+  <br>
+  البيانات والتحليلات لأغراض تعليمية وليست توصية استثمارية.
+  <br>
+  آراء المتابعين المعروضة هنا تحليلية/تصميمية وليست تقييمات موثقة من عملاء حقيقيين.
 </footer>
 
 </body>
