@@ -2,39 +2,1179 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>السوق السعودي | Al Fayed Stocks</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Fayed Stocks - السوق السعودي</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Tahoma,sans-serif;
+}
 
 body{
-margin:0;
-font-family:Cairo,Arial,sans-serif;
-background:#071311;
-color:#f4f8f7;
+  background:
+  radial-gradient(circle at top right,#073b2b 0,#061914 35%,#020807 75%);
+  color:#f4fff9;
+  min-height:100vh;
 }
 
 .container{
-width:min(1150px,94%);
-margin:auto;
+  width:min(1400px,94%);
+  margin:auto;
+  padding:22px 0 50px;
 }
 
-.header{
-padding:22px 0;
-border-bottom:1px solid #19312d;
-background:#081714;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:25px;
+  padding:18px 22px;
+  border:1px solid #174f3d;
+  border-radius:20px;
+  background:rgba(3,20,15,.9);
+  box-shadow:0 0 30px rgba(0,255,150,.08);
 }
 
 .brand{
-font-size:24px;
-font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.brand span{color:#20c997}
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#071f17;
+  border:1px solid #20ff9a;
+  color:#20ff9a;
+  font-size:22px;
+  font-weight:900;
+  box-shadow:0 0 20px rgba(32,255,154,.18);
+}
 
+.brand h2{
+  color:#20ff9a;
+  font-size:19px;
+}
+
+.brand p{
+  color:#8ba99d;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.date{
+  text-align:left;
+  color:#9eb6ac;
+  font-size:13px;
+}
+
+.date strong{
+  display:block;
+  color:#fff;
+  font-size:18px;
+  margin-top:5px;
+}
+
+.title{
+  margin-bottom:20px;
+}
+
+.title h1{
+  font-size:29px;
+  margin-bottom:7px;
+}
+
+.title p{
+  color:#8fa89f;
+  font-size:14px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:18px;
+}
+
+.card{
+  background:rgba(5,25,19,.9);
+  border:1px solid #174f3d;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
+.card h3{
+  font-size:17px;
+  margin-bottom:15px;
+}
+
+.market-main{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.tasi{
+  padding:20px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#08271c,#03120d);
+  border:1px solid #1a6b4e;
+}
+
+.label{
+  color:#89a99d;
+  font-size:13px;
+}
+
+.tasi-number{
+  font-size:42px;
+  font-weight:900;
+  color:#20ff9a;
+  margin:8px 0;
+  direction:ltr;
+  text-align:right;
+}
+
+.negative{
+  color:#ff6b6b!important;
+}
+
+.positive{
+  color:#20ff9a!important;
+}
+
+.change{
+  font-size:18px;
+  font-weight:bold;
+  direction:ltr;
+  text-align:right;
+}
+
+.status{
+  display:inline-block;
+  margin-top:12px;
+  padding:7px 12px;
+  border-radius:30px;
+  background:#351414;
+  color:#ff7777;
+  font-size:12px;
+  border:1px solid #663131;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.stat{
+  padding:13px;
+  border-radius:14px;
+  background:#071c15;
+  border:1px solid #123e30;
+}
+
+.stat span{
+  display:block;
+  color:#79978b;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.stat strong{
+  font-size:16px;
+  direction:ltr;
+  display:block;
+  text-align:right;
+}
+
+.chart{
+  height:230px;
+  margin-top:18px;
+  padding:10px;
+  border-radius:15px;
+  background:#03100c;
+  border:1px solid #123e30;
+}
+
+svg{
+  width:100%;
+  height:100%;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.levels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.level-box{
+  padding:15px;
+  border-radius:15px;
+  background:#071c15;
+  border:1px solid #123e30;
+}
+
+.level-box h4{
+  margin-bottom:10px;
+  color:#20ff9a;
+}
+
+.level{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #12352a;
+  font-size:13px;
+}
+
+.level:last-child{
+  border-bottom:0;
+}
+
+.resistance{
+  color:#ffca6b;
+  direction:ltr;
+}
+
+.support{
+  color:#61d9ff;
+  direction:ltr;
+}
+
+.scenario{
+  margin-top:15px;
+  padding:15px;
+  border-radius:15px;
+  background:#061811;
+  border-right:3px solid #20ff9a;
+  line-height:1.9;
+  font-size:13px;
+  color:#bdd0c8;
+}
+
+.tables{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:12px 8px;
+  border-bottom:1px solid #12372b;
+  text-align:right;
+  font-size:13px;
+}
+
+th{
+  color:#76958a;
+  font-size:11px;
+}
+
+td strong{
+  color:#fff;
+}
+
+.up{
+  color:#20ff9a;
+  font-weight:bold;
+  direction:ltr;
+}
+
+.down{
+  color:#ff6b6b;
+  font-weight:bold;
+  direction:ltr;
+}
+
+.sector-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.sector{
+  padding:15px 10px;
+  background:#071c15;
+  border:1px solid #123e30;
+  border-radius:14px;
+  text-align:center;
+}
+
+.sector b{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+}
+
+.sector span{
+  font-size:15px;
+  direction:ltr;
+  display:block;
+}
+
+.watch{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.stock{
+  padding:15px;
+  background:#071c15;
+  border:1px solid #123e30;
+  border-radius:15px;
+}
+
+.stock-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.symbol{
+  color:#20ff9a;
+  font-weight:900;
+  direction:ltr;
+}
+
+.stock-name{
+  color:#fff;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.stock-note{
+  color:#79978b;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.news{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.news-box{
+  padding:17px;
+  background:#071c15;
+  border:1px solid #123e30;
+  border-radius:15px;
+  line-height:1.8;
+  color:#bdcec7;
+  font-size:13px;
+}
+
+.news-box strong{
+  display:block;
+  color:#20ff9a;
+  margin-bottom:7px;
+}
+
+.footer{
+  text-align:center;
+  margin-top:25px;
+  color:#617a70;
+  font-size:11px;
+  line-height:1.8;
+}
+
+@media(max-width:1000px){
+  .grid,
+  .market-main,
+  .tables{
+    grid-template-columns:1fr;
+  }
+
+  .sector-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .watch{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .news{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    width:94%;
+  }
+
+  header{
+    align-items:flex-start;
+  }
+
+  .title h1{
+    font-size:23px;
+  }
+
+  .tasi-number{
+    font-size:34px;
+  }
+
+  .levels{
+    grid-template-columns:1fr;
+  }
+
+  .sector-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .watch{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <div class="logo">MF</div>
+    <div>
+      <h2>MOHAMMED FAYED</h2>
+      <p>TRADE SMART • AL FAYED STOCKS</p>
+    </div>
+  </div>
+
+  <div class="date">
+    تحديث السوق
+    <strong>الإثنين 14 سبتمبر 2026</strong>
+  </div>
+</header>
+
+
+<!-- TITLE -->
+<div class="title">
+  <h1>افتتاح المؤشر العام للسوق السعودي — تاسي 🇸🇦</h1>
+  <p>قراءة افتتاحية للسوق مع أهم مستويات الدعم والمقاومة والأسهم والقطاعات</p>
+</div>
+
+
+<div class="grid">
+
+
+<!-- MARKET -->
+<section class="card">
+
+  <h3>📊 ملخص السوق</h3>
+
+  <div class="market-main">
+
+    <div class="tasi">
+
+      <div class="label">
+        افتتاح تاسي — 14 سبتمبر 2026
+      </div>
+
+      <div class="tasi-number">
+        10,862.52
+      </div>
+
+      <div class="change negative">
+        -2.05 نقطة &nbsp; (-0.02%)
+      </div>
+
+      <div class="status">
+        الاتجاه: محايد مائل للسلبية
+      </div>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <span>الافتتاح</span>
+        <strong>10,862.52</strong>
+      </div>
+
+      <div class="stat">
+        <span>إغلاق سابق</span>
+        <strong>10,864.57</strong>
+      </div>
+
+      <div class="stat">
+        <span>أعلى مستوى</span>
+        <strong>10,862.52</strong>
+      </div>
+
+      <div class="stat">
+        <span>أدنى مستوى</span>
+        <strong>10,862.52</strong>
+      </div>
+
+      <div class="stat">
+        <span>الدعم الأول</span>
+        <strong>10,850</strong>
+      </div>
+
+      <div class="stat">
+        <span>الدعم الثاني</span>
+        <strong>10,800</strong>
+      </div>
+
+      <div class="stat">
+        <span>المقاومة الأولى</span>
+        <strong>10,900</strong>
+      </div>
+
+      <div class="stat">
+        <span>المقاومة الثانية</span>
+        <strong>10,950</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TASI CHART -->
+  <div class="chart">
+
+    <svg viewBox="0 0 800 230" preserveAspectRatio="none">
+
+      <defs>
+
+        <linearGradient id="area"
+                        x1="0" y1="0"
+                        x2="0" y2="1">
+
+          <stop offset="0%"
+                stop-color="#20ff9a"
+                stop-opacity=".25"/>
+
+          <stop offset="100%"
+                stop-color="#20ff9a"
+                stop-opacity="0"/>
+
+        </linearGradient>
+
+      </defs>
+
+
+      <!-- Grid -->
+
+      <line x1="0" y1="35"
+            x2="800" y2="35"
+            stroke="#12372b"/>
+
+      <line x1="0" y1="85"
+            x2="800" y2="85"
+            stroke="#12372b"/>
+
+      <line x1="0" y1="135"
+            x2="800" y2="135"
+            stroke="#12372b"/>
+
+      <line x1="0" y1="185"
+            x2="800" y2="185"
+            stroke="#12372b"/>
+
+
+      <!-- Resistance -->
+
+      <line x1="0" y1="48"
+            x2="800" y2="48"
+            stroke="#ffca6b"
+            stroke-width="1"
+            stroke-dasharray="7 7"/>
+
+
+      <!-- Previous close -->
+
+      <line x1="0" y1="108"
+            x2="800" y2="108"
+            stroke="#20ff9a"
+            stroke-width="1"
+            stroke-dasharray="5 5"/>
+
+
+      <!-- Support -->
+
+      <line x1="0" y1="150"
+            x2="800" y2="150"
+            stroke="#61d9ff"
+            stroke-width="1"
+            stroke-dasharray="7 7"/>
+
+
+      <!-- Area -->
+
+      <path
+        d="
+        M0 108
+        L70 104
+        L140 110
+        L210 106
+        L280 115
+        L350 118
+        L420 123
+        L490 120
+        L560 130
+        L630 136
+        L700 143
+        L800 148
+        L800 230
+        L0 230
+        Z"
+        fill="url(#area)"
+      />
+
+
+      <!-- Main line -->
+
+      <polyline
+        points="
+        0,108
+        70,104
+        140,110
+        210,106
+        280,115
+        350,118
+        420,123
+        490,120
+        560,130
+        630,136
+        700,143
+        800,148"
+        fill="none"
+        stroke="#20ff9a"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+
+      <!-- Opening point -->
+
+      <circle
+        cx="800"
+        cy="148"
+        r="7"
+        fill="#20ff9a"
+      />
+
+    </svg>
+
+  </div>
+
+</section>
+
+
+<!-- LEVELS -->
+<section class="card">
+
+  <h3>🎯 المستويات المهمة</h3>
+
+  <div class="levels">
+
+    <div class="level-box">
+
+      <h4>المقاومات</h4>
+
+      <div class="level">
+        <span>المقاومة الأولى</span>
+        <strong class="resistance">10,900</strong>
+      </div>
+
+      <div class="level">
+        <span>المقاومة الثانية</span>
+        <strong class="resistance">10,950</strong>
+      </div>
+
+      <div class="level">
+        <span>المقاومة النفسية</span>
+        <strong class="resistance">11,000</strong>
+      </div>
+
+    </div>
+
+
+    <div class="level-box">
+
+      <h4>الدعوم</h4>
+
+      <div class="level">
+        <span>الدعم الأول</span>
+        <strong class="support">10,850</strong>
+      </div>
+
+      <div class="level">
+        <span>الدعم الثاني</span>
+        <strong class="support">10,800</strong>
+      </div>
+
+      <div class="level">
+        <span>الدعم التالي</span>
+        <strong class="support">10,750</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="scenario">
+
+    <b style="color:#20ff9a">
+      📈 السيناريو الإيجابي:
+    </b>
+
+    <br>
+
+    الثبات فوق 10,850 ثم استعادة 10,900
+    يدعم محاولة الوصول إلى 10,950 ثم 11,000،
+    بشرط تحسن السيولة وعودة القياديات.
+
+  </div>
+
+
+  <div class="scenario"
+       style="border-right-color:#ff6b6b;">
+
+    <b style="color:#ff7777">
+      📉 السيناريو السلبي:
+    </b>
+
+    <br>
+
+    كسر 10,850 ثم 10,800 يزيد الضغط البيعي
+    ويفتح المجال لاختبار 10,750.
+
+  </div>
+
+</section>
+
+
+<!-- QUICK READING -->
+<section class="card full">
+
+  <h3>⚡ قراءة سريعة للسوق</h3>
+
+  <div class="stats">
+
+    <div class="stat">
+      <span>الاتجاه العام</span>
+      <strong class="negative">سلبي</strong>
+    </div>
+
+    <div class="stat">
+      <span>زخم الافتتاح</span>
+      <strong>محايد</strong>
+    </div>
+
+    <div class="stat">
+      <span>أقرب دعم</span>
+      <strong>10,850</strong>
+    </div>
+
+    <div class="stat">
+      <span>أقرب مقاومة</span>
+      <strong>10,900</strong>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GAINERS / LOSERS -->
+<section class="card full">
+
+  <h3>🔥 أكثر الأسهم ارتفاعًا وانخفاضًا</h3>
+
+  <div class="tables">
+
+
+    <!-- GAINERS -->
+
+    <div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>السهم</th>
+            <th>الإغلاق</th>
+            <th>التغير</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>
+              <strong>أسمنت الرياض</strong><br>
+              <small>3092</small>
+            </td>
+            <td>16.75</td>
+            <td class="up">+5.68%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>الإعادة السعودية</strong><br>
+              <small>8200</small>
+            </td>
+            <td>28.82</td>
+            <td class="up">+3.67%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>ساسكو</strong><br>
+              <small>4050</small>
+            </td>
+            <td>45.62</td>
+            <td class="up">+3.40%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>أرماح</strong><br>
+              <small>6022</small>
+            </td>
+            <td>—</td>
+            <td class="up">من الأعلى</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>التعمير</strong><br>
+              <small>4150</small>
+            </td>
+            <td>—</td>
+            <td class="up">من الأعلى</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- LOSERS -->
+
+    <div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>السهم</th>
+            <th>الإغلاق</th>
+            <th>التغير</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>
+              <strong>لوبريف</strong><br>
+              <small>2223</small>
+            </td>
+            <td>127.30</td>
+            <td class="down">-9.97%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>مدينة المعرفة</strong><br>
+              <small>4310</small>
+            </td>
+            <td>18.88</td>
+            <td class="down">-5.08%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>أسيج</strong><br>
+              <small>8150</small>
+            </td>
+            <td>7.85</td>
+            <td class="down">-4.96%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>ينساب</strong><br>
+              <small>2290</small>
+            </td>
+            <td>32.90</td>
+            <td class="down">≈ -4.5%</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>العربية</strong>
+            </td>
+            <td>—</td>
+            <td class="down">من الأكثر تراجعًا</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SECTORS -->
+<section class="card full">
+
+  <h3>🏭 أداء أبرز القطاعات</h3>
+
+  <div class="sector-grid">
+
+    <div class="sector">
+      <b>المرافق العامة</b>
+      <span class="down">-1.9%</span>
+    </div>
+
+    <div class="sector">
+      <b>المواد الأساسية</b>
+      <span class="down">-1.6%</span>
+    </div>
+
+    <div class="sector">
+      <b>الطاقة</b>
+      <span class="down">-1.2%</span>
+    </div>
+
+    <div class="sector">
+      <b>النقل</b>
+      <span class="down">-1.24%</span>
+    </div>
+
+    <div class="sector">
+      <b>البنوك</b>
+      <span class="down">-0.8%</span>
+    </div>
+
+  </div>
+
+  <div class="scenario">
+
+    القطاعات الأكثر تعرضًا للضغط كانت
+    <b>المرافق والمواد الأساسية والطاقة والنقل</b>،
+    مع استمرار تأثير ضعف القياديات على المؤشر.
+
+  </div>
+
+</section>
+
+
+<!-- WATCHLIST -->
+<section class="card full">
+
+  <h3>👀 أسهم تحت المراقبة</h3>
+
+  <div class="watch">
+
+    <div class="stock">
+
+      <div class="stock-top">
+        <span class="symbol">1120</span>
+        <span class="negative">بنوك</span>
+      </div>
+
+      <div class="stock-name">
+        مصرف الراجحي
+      </div>
+
+      <div class="stock-note">
+        مراقبة الثبات واستعادة الزخم فوق مستويات الدعم.
+      </div>
+
+    </div>
+
+
+    <div class="stock">
+
+      <div class="stock-top">
+        <span class="symbol">2222</span>
+        <span class="negative">طاقة</span>
+      </div>
+
+      <div class="stock-name">
+        أرامكو
+      </div>
+
+      <div class="stock-note">
+        النفط مرتفع لكن التذبذب الجيوسياسي ما زال مؤثرًا.
+      </div>
+
+    </div>
+
+
+    <div class="stock">
+
+      <div class="stock-top">
+        <span class="symbol">1211</span>
+        <span class="negative">مواد</span>
+      </div>
+
+      <div class="stock-name">
+        معادن
+      </div>
+
+      <div class="stock-note">
+        مراقبة أي ارتداد بعد ضغط الجلسة السابقة.
+      </div>
+
+    </div>
+
+
+    <div class="stock">
+
+      <div class="stock-top">
+        <span class="symbol">2223</span>
+        <span class="negative">HIGH RISK</span>
+      </div>
+
+      <div class="stock-name">
+        لوبريف
+      </div>
+
+      <div class="stock-note">
+        تذبذب مرتفع جدًا بعد هبوط يقارب 10%.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NEWS -->
+<section class="card full">
+
+  <h3>📰 أهم المؤثرات على السوق</h3>
+
+  <div class="news">
+
+    <div class="news-box">
+
+      <strong>🛢️ النفط</strong>
+
+      ارتفاع أسعار النفط عالميًا يزيد التذبذب
+      ويجعل قطاع الطاقة تحت المراقبة.
+
+    </div>
+
+
+    <div class="news-box">
+
+      <strong>⚠️ المخاطر الجيوسياسية</strong>
+
+      استمرار التوترات الإقليمية يرفع حساسية
+      السوق تجاه أسعار النفط والسيولة.
+
+    </div>
+
+
+    <div class="news-box">
+
+      <strong>📉 تاسي</strong>
+
+      المؤشر أنهى آخر جلسة عند 10,864.57
+      منخفضًا 1.30% قبل افتتاح جلسة 14/9.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL -->
+<section class="card full">
+
+  <h3>💡 الخلاصة</h3>
+
+  <div class="scenario">
+
+    <b style="color:#20ff9a">
+      نظرة افتتاحية:
+    </b>
+
+    <br>
+
+    افتتاح تاسي عند <b>10,862.52</b>
+    يضع المؤشر مباشرة بالقرب من منطقة الدعم
+    <b>10,850</b>.
+
+    <br><br>
+
+    <b>فوق 10,900:</b>
+    تحسن فني أولي وقد نشاهد اختبار 10,950
+    ثم 11,000.
+
+    <br><br>
+
+    <b>تحت 10,850:</b>
+    يزداد الضغط وقد يتجه المؤشر إلى 10,800
+    ثم 10,750.
+
+    <br><br>
+
+    <span style="color:#ffca6b">
+      ⚠️ المستويات للتحليل والمتابعة وليست توصية
+      مباشرة بالشراء أو البيع.
+    </span>
+
+  </div>
+
+</section>
+
+</div>
+
+
+<div class="footer">
+  © 2026 Al Fayed Stocks — Mohammed Fayed
+  <br>
+  البيانات لأغراض معلوماتية وتحليلية وليست توصية استثمارية.
+</div>
+
+</div>
+
+</body>
+</html>
 .hero{
 padding:30px 0 20px;
 }
