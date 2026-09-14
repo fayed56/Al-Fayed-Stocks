@@ -4,1734 +4,422 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Al Fayed Stocks | افتتاح السوق السعودي</title>
+<title>Al Fayed Stocks | السوق السعودي</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:Tahoma,Arial,sans-serif;
-    background:
-        radial-gradient(circle at 15% 0%,rgba(0,255,150,.08),transparent 28%),
-        radial-gradient(circle at 90% 15%,rgba(0,120,80,.12),transparent 30%),
-        #030b09;
-    color:#f4fff9;
-    min-height:100vh;
+  background:#050908;
+  color:#f3f7f5;
+  font-family:Arial,Tahoma,sans-serif;
+  line-height:1.6;
 }
 
 .container{
-    width:94%;
-    max-width:1450px;
-    margin:auto;
-    padding:20px 0 45px;
+  width:min(1400px,94%);
+  margin:auto;
 }
 
-/* ================= HEADER ================= */
+header{
+  padding:22px 0;
+  border-bottom:1px solid #183d31;
+  background:#07100d;
+}
 
 .header{
-    display:grid;
-    grid-template-columns:250px 1fr 210px;
-    align-items:center;
-    gap:20px;
-    padding:18px 22px;
-    border:1px solid #194f3d;
-    border-radius:18px;
-    background:
-        linear-gradient(135deg,#071a14,#03100c);
-    box-shadow:
-        0 0 25px rgba(0,255,150,.06),
-        inset 0 0 30px rgba(0,255,150,.025);
-    margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.brand-logo{
-    width:55px;
-    height:55px;
-    border-radius:14px;
-    border:1px solid #20c997;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#20c997;
-    font-size:24px;
-    font-weight:900;
-    background:#06150f;
-    box-shadow:0 0 18px rgba(32,201,151,.12);
-}
-
-.brand-name{
-    color:#20c997;
-    font-size:20px;
-    font-weight:900;
-    letter-spacing:.5px;
-}
-
-.brand-sub{
-    color:#829d93;
-    font-size:11px;
-    margin-top:4px;
-}
-
-.main-title{
-    text-align:center;
-}
-
-.main-title h1{
-    font-size:28px;
-    font-weight:900;
-    color:#fff;
-}
-
-.main-title h1 span{
-    color:#20c997;
-}
-
-.main-title p{
-    color:#7e9b90;
-    font-size:12px;
-    margin-top:7px;
-}
-
-.date-box{
-    text-align:center;
-    border:1px solid #174b3a;
-    background:#06150f;
-    border-radius:14px;
-    padding:12px;
-}
-
-.date-box .date{
-    color:#20c997;
-    font-size:18px;
-    font-weight:900;
-}
-
-.date-box .day{
-    color:#9db4aa;
-    font-size:12px;
-    margin-top:5px;
-}
-
-/* ================= GRID ================= */
-
-.main-grid{
-    display:grid;
-    grid-template-columns:360px 1fr 310px;
-    gap:18px;
-}
-
-.card{
-    background:
-        linear-gradient(145deg,rgba(9,30,23,.96),rgba(3,14,10,.96));
-    border:1px solid #194f3d;
-    border-radius:18px;
-    padding:18px;
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.25),
-        inset 0 0 25px rgba(0,255,150,.02);
-}
-
-.card-title{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    color:#fff;
-    font-size:16px;
-    font-weight:900;
-    margin-bottom:16px;
-}
-
-.icon{
-    width:30px;
-    height:30px;
-    border-radius:9px;
-    background:#0b2a1e;
-    border:1px solid #176347;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#20c997;
-}
-
-/* ================= MARKET SUMMARY ================= */
-
-.market-label{
-    color:#8ca79d;
-    font-size:13px;
-}
-
-.tasi{
-    font-size:43px;
-    font-weight:900;
-    color:#20c997;
-    direction:ltr;
-    text-align:right;
-    margin:7px 0;
-}
-
-.market-change{
-    color:#ff6464;
-    font-weight:900;
-    font-size:17px;
-    direction:ltr;
-    text-align:right;
-}
-
-.open-badge{
-    margin-top:14px;
-    padding:10px 12px;
-    border-radius:12px;
-    background:#082319;
-    border:1px solid #176347;
-    color:#20c997;
-    font-size:12px;
-    text-align:center;
-}
-
-.mini-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-    margin-top:15px;
-}
-
-.mini{
-    padding:12px;
-    border-radius:11px;
-    background:#061710;
-    border:1px solid #123d30;
-}
-
-.mini span{
-    display:block;
-    color:#718d82;
-    font-size:10px;
-    margin-bottom:5px;
-}
-
-.mini strong{
-    display:block;
-    color:#fff;
-    font-size:14px;
-    direction:ltr;
-}
-
-.section-line{
-    height:1px;
-    background:#12382c;
-    margin:17px 0;
-}
-
-.sentiment{
-    padding:13px;
-    border-radius:12px;
-    background:#0a1c16;
-    border:1px solid #174b3a;
-}
-
-.sentiment-label{
-    color:#78958a;
-    font-size:11px;
-}
-
-.sentiment-value{
-    margin-top:6px;
-    color:#ffca6b;
-    font-weight:900;
-    font-size:14px;
-}
-
-/* ================= LEVELS ================= */
-
-.levels h4{
-    color:#20c997;
-    font-size:14px;
-    margin-bottom:9px;
-}
-
-.level{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:9px 0;
-    border-bottom:1px solid #12362b;
-    font-size:12px;
-}
-
-.level:last-child{
-    border-bottom:0;
-}
-
-.level .support{
-    color:#61d9ff;
-    font-weight:900;
-    direction:ltr;
-}
-
-.level .resistance{
-    color:#ffca6b;
-    font-weight:900;
-    direction:ltr;
-}
-
-/* ================= CHART ================= */
-
-.chart-card{
-    min-width:0;
-}
-
-.chart-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:10px;
-}
-
-.chart-title{
-    color:#fff;
-    font-size:15px;
-    font-weight:900;
-}
-
-.chart-note{
-    color:#718d82;
-    font-size:10px;
-    direction:ltr;
-}
-
-.chart-wrap{
-    height:360px;
-    background:
-        linear-gradient(180deg,#06130f,#020a07);
-    border:1px solid #123d30;
-    border-radius:14px;
-    overflow:hidden;
-    position:relative;
-}
-
-.chart-wrap svg{
-    width:100%;
-    height:100%;
-}
-
-.price-tag{
-    position:absolute;
-    right:10px;
-    top:50%;
-    transform:translateY(-50%);
-    background:#43191d;
-    border:1px solid #ff6464;
-    color:#ff7777;
-    padding:5px 8px;
-    border-radius:6px;
-    font-size:10px;
-    direction:ltr;
-}
-
-/* ================= SECTORS ================= */
-
-.sectors{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-}
-
-.sector{
-    display:grid;
-    grid-template-columns:28px 1fr 75px;
-    align-items:center;
-    gap:6px;
-    padding:9px 7px;
-    border-radius:9px;
-    background:#06150f;
-    border:1px solid #10372b;
-}
-
-.sector-num{
-    color:#607c71;
-    font-size:10px;
-}
-
-.sector-name{
-    color:#dbe8e3;
-    font-size:11px;
-}
-
-.sector-value{
-    text-align:left;
-    direction:ltr;
-    font-size:11px;
-    font-weight:900;
-}
-
-.up{
-    color:#20c997;
-}
-
-.down{
-    color:#ff6464;
-}
-
-.sector-note{
-    margin-top:12px;
-    padding:11px;
-    border-radius:10px;
-    background:#211011;
-    border:1px solid #4a2022;
-    color:#ff8b8b;
-    font-size:11px;
-    line-height:1.7;
-}
-
-/* ================= FULL WIDTH ================= */
-
-.full{
-    grid-column:1/-1;
-}
-
-.two-columns{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-/* ================= TABLES ================= */
-
-.table-wrap{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    color:#6f8b80;
-    font-size:10px;
-    font-weight:500;
-    padding:10px 7px;
-    border-bottom:1px solid #174335;
-    text-align:right;
-}
-
-td{
-    padding:11px 7px;
-    border-bottom:1px solid #0e3025;
-    color:#dce8e3;
-    font-size:12px;
-}
-
-td strong{
-    color:#fff;
-}
-
-td.number{
-    direction:ltr;
-    text-align:right;
-}
-
-.change-up{
-    color:#20c997;
-    direction:ltr;
-    font-weight:900;
-}
-
-.change-down{
-    color:#ff6464;
-    direction:ltr;
-    font-weight:900;
-}
-
-/* ================= SCENARIOS ================= */
-
-.scenarios{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.scenario{
-    padding:15px;
-    border-radius:13px;
-    line-height:1.8;
-    font-size:12px;
-}
-
-.scenario-positive{
-    background:#061c13;
-    border:1px solid #176347;
-}
-
-.scenario-negative{
-    background:#211011;
-    border:1px solid #4a2022;
-}
-
-.scenario h4{
-    margin-bottom:7px;
-    font-size:13px;
-}
-
-.scenario-positive h4{
-    color:#20c997;
-}
-
-.scenario-negative h4{
-    color:#ff6464;
-}
-
-/* ================= NOTE ================= */
-
-.note{
-    margin-top:14px;
-    padding:14px;
-    border-radius:12px;
-    background:#071a13;
-    border-right:3px solid #20c997;
-    color:#b6c9c1;
-    font-size:12px;
-    line-height:1.9;
-}
-
-/* ================= FOOTER ================= */
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-
-.footer-item{
-    text-align:center;
-    padding:13px 8px;
-    border-radius:12px;
-    background:#06150f;
-    border:1px solid #123d30;
-    color:#829d93;
-    font-size:10px;
-    line-height:1.7;
-}
-
-.footer-item b{
-    display:block;
-    color:#20c997;
-    margin-bottom:3px;
-}
-
-.footer{
-    text-align:center;
-    color:#526b61;
-    font-size:10px;
-    margin-top:18px;
-    line-height:1.8;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1100px){
-
-    .main-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .chart-card{
-        grid-column:1/-1;
-        grid-row:1;
-    }
-
-    .main-grid > .card:first-child{
-        grid-column:1;
-    }
-
-    .main-grid > .card:nth-child(3){
-        grid-column:2;
-    }
-}
-
-@media(max-width:750px){
-
-    .container{
-        width:95%;
-        padding-top:12px;
-    }
-
-    .header{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .brand{
-        justify-content:center;
-    }
-
-    .date-box{
-        max-width:230px;
-        margin:auto;
-    }
-
-    .main-grid{
-        display:flex;
-        flex-direction:column;
-    }
-
-    .chart-card{
-        order:1;
-    }
-
-    .main-grid > .card:first-child{
-        order:2;
-    }
-
-    .main-grid > .card:nth-child(3){
-        order:3;
-    }
-
-    .tasi{
-        font-size:36px;
-    }
-
-    .chart-wrap{
-        height:290px;
-    }
-
-    .two-columns{
-        grid-template-columns:1fr;
-    }
-
-    .scenarios{
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .main-title h1{
-        font-size:22px;
-    }
-}
-</style>
-</head>
-
-
-<body>
-
-<div class="container">
-
-
-<!-- ================= HEADER ================= -->
-
-<header class="header">
-
-    <div class="brand">
-
-        <div class="brand-logo">
-            AF
-        </div>
-
-        <div>
-            <div class="brand-name">
-                al fayed
-            </div>
-
-            <div class="brand-sub">
-                التحليل المالي
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="main-title">
-
-        <h1>
-            افتتاح السوق السعودي <span>(تاسي)</span>
-        </h1>
-
-        <p>
-            متابعة افتتاح السوق وتحليل الاتجاه والمستويات المهمة
-        </p>
-
-    </div>
-
-
-    <div class="date-box">
-
-        <div class="date">
-            14/9/2026
-        </div>
-
-        <div class="day">
-            الإثنين
-        </div>
-
-    </div>
-
-</header>
-
-
-
-<!-- ================= MAIN ================= -->
-
-<div class="main-grid">
-
-
-<!-- ================= MARKET SUMMARY ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-        <div class="icon">↗</div>
-        ملخص السوق
-    </div>
-
-
-    <div class="market-label">
-        افتتاح المؤشر العام (تاسي)
-    </div>
-
-    <div class="tasi">
-        10,862.52
-    </div>
-
-    <div class="market-change">
-        -2.05 (-0.02%)
-    </div>
-
-
-    <div class="open-badge">
-        ● الافتتاح قريب جدًا من إغلاق الجلسة السابقة
-    </div>
-
-
-    <div class="mini-grid">
-
-        <div class="mini">
-            <span>الإغلاق السابق</span>
-            <strong>10,864.57</strong>
-        </div>
-
-        <div class="mini">
-            <span>الافتتاح</span>
-            <strong>10,862.52</strong>
-        </div>
-
-        <div class="mini">
-            <span>أدنى آخر جلسة</span>
-            <strong>10,860.16</strong>
-        </div>
-
-        <div class="mini">
-            <span>أعلى آخر جلسة</span>
-            <strong>10,954.12</strong>
-        </div>
-
-    </div>
-
-
-    <div class="section-line"></div>
-
-
-    <div class="sentiment">
-
-        <div class="sentiment-label">
-            الاتجاه العام
-        </div>
-
-        <div class="sentiment-value">
-            محايد مائل للسلبية
-        </div>
-
-    </div>
-
-
-    <div class="section-line"></div>
-
-
-    <div class="levels">
-
-        <h4>
-            🎯 المستويات المهمة
-        </h4>
-
-        <div class="level">
-            <span>الدعم الأول</span>
-            <b class="support">10,850</b>
-        </div>
-
-        <div class="level">
-            <span>الدعم الثاني</span>
-            <b class="support">10,800</b>
-        </div>
-
-        <div class="level">
-            <span>المقاومة الأولى</span>
-            <b class="resistance">10,900</b>
-        </div>
-
-        <div class="level">
-            <span>المقاومة الثانية</span>
-            <b class="resistance">10,950</b>
-        </div>
-
-        <div class="level">
-            <span>المقاومة الأهم</span>
-            <b class="resistance">11,000</b>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= CHART ================= -->
-
-<section class="card chart-card">
-
-    <div class="chart-head">
-
-        <div class="chart-title">
-            📈 أداء المؤشر ومستويات المتابعة
-        </div>
-
-        <div class="chart-note">
-            OPEN: 10,862.52
-        </div>
-
-    </div>
-
-
-    <div class="chart-wrap">
-
-        <svg viewBox="0 0 900 360"
-             preserveAspectRatio="none">
-
-
-            <!-- GRID -->
-
-            <g stroke="#12352a"
-               stroke-width="1">
-
-                <line x1="55" y1="45"
-                      x2="850" y2="45"/>
-
-                <line x1="55" y1="100"
-                      x2="850" y2="100"/>
-
-                <line x1="55" y1="155"
-                      x2="850" y2="155"/>
-
-                <line x1="55" y1="210"
-                      x2="850" y2="210"/>
-
-                <line x1="55" y1="265"
-                      x2="850" y2="265"/>
-
-                <line x1="55" y1="315"
-                      x2="850" y2="315"/>
-
-            </g>
-
-
-            <!-- PRICE LABELS -->
-
-            <g fill="#718c82"
-               font-size="12">
-
-                <text x="10" y="49">
-                    10,950
-                </text>
-
-                <text x="10" y="104">
-                    10,900
-                </text>
-
-                <text x="10" y="159">
-                    10,850
-                </text>
-
-                <text x="10" y="214">
-                    10,800
-                </text>
-
-            </g>
-
-
-            <!-- RESISTANCE -->
-
-            <line x1="55"
-                  y1="100"
-                  x2="850"
-                  y2="100"
-                  stroke="#ffca6b"
-                  stroke-dasharray="7 7"/>
-
-
-            <!-- SUPPORT -->
-
-            <line x1="55"
-                  y1="155"
-                  x2="850"
-                  y2="155"
-                  stroke="#61d9ff"
-                  stroke-dasharray="7 7"/>
-
-
-            <!-- PREVIOUS CLOSE -->
-
-            <line x1="55"
-                  y1="139"
-                  x2="850"
-                  y2="139"
-                  stroke="#20c997"
-                  stroke-dasharray="4 6"/>
-
-
-            <!-- PRICE AREA -->
-
-            <path
-                d="
-                M55 139
-                L130 141
-                L205 138
-                L280 143
-                L355 141
-                L430 145
-                L505 142
-                L580 147
-                L655 145
-                L730 148
-                L805 150
-                L850 152
-                L850 315
-                L55 315
-                Z"
-                fill="rgba(255,70,90,.08)"
-            />
-
-
-            <!-- PRICE LINE -->
-
-            <polyline
-                points="
-                55,139
-                130,141
-                205,138
-                280,143
-                355,141
-                430,145
-                505,142
-                580,147
-                655,145
-                730,148
-                805,150
-                850,152"
-                fill="none"
-                stroke="#ff6464"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
-
-
-            <!-- OPENING POINT -->
-
-            <circle
-                cx="850"
-                cy="152"
-                r="7"
-                fill="#ff6464"
-                stroke="#fff"
-                stroke-width="2"
-            />
-
-
-            <!-- OPEN LABEL -->
-
-            <text
-                x="710"
-                y="175"
-                fill="#ff7777"
-                font-size="13">
-
-                افتتاح 10,862.52
-
-            </text>
-
-
-            <!-- X AXIS -->
-
-            <g fill="#667f75"
-               font-size="10">
-
-                <text x="55" y="342">
-                    إغلاق سابق
-                </text>
-
-                <text x="300" y="342">
-                    منطقة الدعم
-                </text>
-
-                <text x="550" y="342">
-                    افتتاح اليوم
-                </text>
-
-                <text x="760" y="342">
-                    الآن
-                </text>
-
-            </g>
-
-        </svg>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= SECTORS ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-        <div class="icon">▦</div>
-        أبرز القطاعات
-    </div>
-
-
-    <div class="sectors">
-
-        <div class="sector">
-            <span class="sector-num">1</span>
-            <span class="sector-name">الاتصالات</span>
-            <span class="sector-value up">+0.15%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">2</span>
-            <span class="sector-name">إنتاج الأغذية</span>
-            <span class="sector-value down">-0.28%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">3</span>
-            <span class="sector-name">السلع طويلة الأجل</span>
-            <span class="sector-value down">-0.37%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">4</span>
-            <span class="sector-name">التأمين</span>
-            <span class="sector-value down">-0.50%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">5</span>
-            <span class="sector-name">الرعاية الصحية</span>
-            <span class="sector-value down">-0.60%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">6</span>
-            <span class="sector-name">الخدمات التجارية والمهنية</span>
-            <span class="sector-value down">-0.67%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">7</span>
-            <span class="sector-name">البنوك</span>
-            <span class="sector-value down">-0.83%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">8</span>
-            <span class="sector-name">الخدمات الاستهلاكية</span>
-            <span class="sector-value down">-1.01%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">9</span>
-            <span class="sector-name">الأدوية</span>
-            <span class="sector-value down">-1.26%</span>
-        </div>
-
-        <div class="sector">
-            <span class="sector-num">10</span>
-            <span class="sector-name">المرافق العامة</span>
-            <span class="sector-value down">-1.87%</span>
-        </div>
-
-    </div>
-
-
-    <div class="sector-note">
-        ⚠️ السوق يميل للسلبية، والأفضل مراقبة القطاعات
-        الأكثر تماسكًا بدل مطاردة الارتفاعات.
-    </div>
-
-</section>
-
-
-
-<!-- ================= GAINERS / LOSERS ================= -->
-
-<section class="card full">
-
-    <div class="two-columns">
-
-
-        <!-- GAINERS -->
-
-        <div>
-
-            <div class="card-title">
-                <div class="icon">▲</div>
-                الأكثر ارتفاعًا
-            </div>
-
-            <div class="table-wrap">
-
-                <table>
-
-                    <thead>
-                    <tr>
-                        <th>السهم</th>
-                        <th>الرمز</th>
-                        <th>التغير</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-
-                    <tr>
-                        <td><strong>أسمنت الرياض</strong></td>
-                        <td class="number">3092</td>
-                        <td class="change-up">+5.68%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>الإعادة السعودية</strong></td>
-                        <td class="number">8200</td>
-                        <td class="change-up">+3.67%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>ساسكو</strong></td>
-                        <td class="number">4050</td>
-                        <td class="change-up">+3.40%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>أرماح</strong></td>
-                        <td class="number">6022</td>
-                        <td class="change-up">ضمن الأعلى</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>التعمير</strong></td>
-                        <td class="number">4150</td>
-                        <td class="change-up">ضمن الأعلى</td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- LOSERS -->
-
-        <div>
-
-            <div class="card-title">
-                <div class="icon">▼</div>
-                الأكثر انخفاضًا
-            </div>
-
-            <div class="table-wrap">
-
-                <table>
-
-                    <thead>
-                    <tr>
-                        <th>السهم</th>
-                        <th>الرمز</th>
-                        <th>التغير</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-
-                    <tr>
-                        <td><strong>لوبريف</strong></td>
-                        <td class="number">2223</td>
-                        <td class="change-down">-9.97%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>مدينة المعرفة</strong></td>
-                        <td class="number">4310</td>
-                        <td class="change-down">-5.08%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>أسيج</strong></td>
-                        <td class="number">8150</td>
-                        <td class="change-down">-4.96%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>ينساب</strong></td>
-                        <td class="number">2290</td>
-                        <td class="change-down">ضمن الأكثر تراجعًا</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>العربية</strong></td>
-                        <td class="number">—</td>
-                        <td class="change-down">ضمن الأكثر تراجعًا</td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= SCENARIOS ================= -->
-
-<section class="card full">
-
-    <div class="card-title">
-        <div class="icon">◎</div>
-        السيناريوهات المتوقعة
-    </div>
-
-
-    <div class="scenarios">
-
-        <div class="scenario scenario-positive">
-
-            <h4>
-                📈 السيناريو الإيجابي
-            </h4>
-
-            الثبات فوق <b>10,850</b> ثم استعادة
-            <b>10,900</b> قد يدفع المؤشر لاختبار
-            <b>10,950</b> ثم <b>11,000</b> مع تحسن السيولة.
-
-        </div>
-
-
-        <div class="scenario scenario-negative">
-
-            <h4>
-                📉 السيناريو السلبي
-            </h4>
-
-            كسر <b>10,850</b> ثم <b>10,800</b>
-            يزيد احتمالات استمرار الضغط باتجاه
-            <b>10,750</b>.
-
-        </div>
-
-    </div>
-
-
-    <div class="note">
-
-        💡 <b style="color:#20c997;">الخلاصة:</b>
-
-        افتتاح تاسي عند <b>10,862.52</b> جاء قريبًا جدًا
-        من إغلاق الجلسة السابقة، لذلك يبقى مستوى
-        <b>10,850</b> هو أهم مستوى للمراقبة في بداية الجلسة.
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= WATCHLIST ================= -->
-
-<section class="card full">
-
-    <div class="card-title">
-        <div class="icon">◉</div>
-        أسهم تحت المراقبة
-    </div>
-
-
-    <div class="two-columns">
-
-        <div class="note">
-            <b style="color:#20c997;">1120 — الراجحي</b><br>
-            مراقبة الثبات وعودة الزخم في القطاع البنكي.
-        </div>
-
-        <div class="note">
-            <b style="color:#20c997;">2222 — أرامكو</b><br>
-            النفط والتطورات الجيوسياسية عاملان رئيسيان.
-        </div>
-
-        <div class="note">
-            <b style="color:#20c997;">1211 — معادن</b><br>
-            مراقبة أي ارتداد بعد ضغط الجلسة السابقة.
-        </div>
-
-        <div class="note">
-            <b style="color:#ff6464;">2223 — لوبريف</b><br>
-            تذبذب مرتفع جدًا بعد هبوط يقارب 10%.
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= FOOTER FEATURES ================= -->
-
-<section class="card full">
-
-    <div class="footer-grid">
-
-        <div class="footer-item">
-            <b>📊 تحليل فني</b>
-            دعم ومقاومة
-        </div>
-
-        <div class="footer-item">
-            <b>👁 متابعة السوق</b>
-            الحركة والسيولة
-        </div>
-
-        <div class="footer-item">
-            <b>🛡 إدارة المخاطر</b>
-            لا تطارد الحركة
-        </div>
-
-        <div class="footer-item">
-            <b>📈 القطاعات</b>
-            متابعة القياديات
-        </div>
-
-    </div>
-
-</section>
-
-
-</div>
-
-
-<div class="footer">
-    © 2026 Al Fayed Stocks — Mohammed Fayed
-    <br>
-    البيانات التحليلية لأغراض معلوماتية وليست توصية شراء أو بيع.
-</div>
-
-
-</div>
-
-</body>
-</html>
-.date strong{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  direction:ltr;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border:2px solid #18e58b;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:bold;
+  color:#18e58b;
+  box-shadow:0 0 20px rgba(24,229,139,.18);
+}
+
+.brand-text{
+  text-align:left;
+}
+
+.brand-text strong{
   display:block;
   color:#fff;
   font-size:18px;
-  margin-top:5px;
+  letter-spacing:1px;
+}
+
+.brand-text span{
+  color:#18e58b;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
 .title{
-  margin-bottom:20px;
+  text-align:center;
 }
 
 .title h1{
-  font-size:29px;
-  margin-bottom:7px;
+  font-size:clamp(20px,3vw,34px);
+  color:#fff;
+}
+
+.title h1 span{
+  color:#18e58b;
 }
 
 .title p{
-  color:#8fa89f;
-  font-size:14px;
+  color:#8ba59b;
+  margin-top:4px;
+}
+
+.date{
+  text-align:center;
+  border:1px solid #1b5b45;
+  border-radius:12px;
+  padding:10px 18px;
+  min-width:125px;
+}
+
+.date strong{
+  color:#18e58b;
+  font-size:20px;
+  display:block;
+}
+
+.date small{
+  color:#9db1aa;
+}
+
+main{
+  padding:28px 0 50px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:18px;
+  grid-template-columns:360px 1fr;
+  gap:20px;
 }
 
 .card{
-  background:rgba(5,25,19,.9);
-  border:1px solid #174f3d;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 12px 35px rgba(0,0,0,.25);
-}
-
-.card h3{
-  font-size:17px;
-  margin-bottom:15px;
-}
-
-.market-main{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.tasi{
-  padding:20px;
+  background:linear-gradient(145deg,#0a1511,#07100d);
+  border:1px solid #174b39;
   border-radius:18px;
-  background:linear-gradient(145deg,#08271c,#03120d);
-  border:1px solid #1a6b4e;
+  padding:20px;
+  box-shadow:0 0 25px rgba(0,0,0,.25);
+}
+
+.card-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#18e58b;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.market-number{
+  font-size:42px;
+  font-weight:bold;
+  color:#18e58b;
+  direction:ltr;
+  text-align:center;
+  margin:5px 0 16px;
 }
 
 .label{
-  color:#89a99d;
+  color:#8fa79e;
   font-size:13px;
-}
-
-.tasi-number{
-  font-size:42px;
-  font-weight:900;
-  color:#20ff9a;
-  margin:8px 0;
-  direction:ltr;
-  text-align:right;
-}
-
-.negative{
-  color:#ff6b6b!important;
-}
-
-.positive{
-  color:#20ff9a!important;
-}
-
-.change{
-  font-size:18px;
-  font-weight:bold;
-  direction:ltr;
-  text-align:right;
-}
-
-.status{
-  display:inline-block;
-  margin-top:12px;
-  padding:7px 12px;
-  border-radius:30px;
-  background:#351414;
-  color:#ff7777;
-  font-size:12px;
-  border:1px solid #663131;
 }
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr 1fr;
   gap:10px;
 }
 
 .stat{
-  padding:13px;
-  border-radius:14px;
-  background:#071c15;
-  border:1px solid #123e30;
-}
-
-.stat span{
-  display:block;
-  color:#79978b;
-  font-size:11px;
-  margin-bottom:5px;
+  background:#09130f;
+  border:1px solid #163c2f;
+  border-radius:12px;
+  padding:12px;
 }
 
 .stat strong{
-  font-size:16px;
-  direction:ltr;
   display:block;
-  text-align:right;
+  font-size:18px;
+  margin-top:4px;
+  direction:ltr;
+}
+
+.red{
+  color:#ff5f68!important;
+}
+
+.green{
+  color:#18e58b!important;
+}
+
+.levels{
+  display:grid;
+  gap:9px;
+}
+
+.level{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 12px;
+  background:#09130f;
+  border-radius:10px;
+  border:1px solid #15392e;
+}
+
+.level strong{
+  direction:ltr;
+}
+
+.support strong{
+  color:#ff686f;
+}
+
+.resistance strong{
+  color:#18e58b;
+}
+
+.scenario{
+  margin-top:10px;
+  padding:13px;
+  border-radius:12px;
+  background:#09130f;
+  border-right:3px solid #18e58b;
+}
+
+.scenario.negative{
+  border-right-color:#ff5f68;
+}
+
+.scenario b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.chart-card{
+  min-height:100%;
 }
 
 .chart{
-  height:230px;
-  margin-top:18px;
-  padding:10px;
+  width:100%;
+  height:330px;
+  background:
+    linear-gradient(rgba(24,229,139,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(24,229,139,.07) 1px,transparent 1px);
+  background-size:50px 50px;
+  border:1px solid #143a2d;
   border-radius:15px;
-  background:#03100c;
-  border:1px solid #123e30;
+  overflow:hidden;
+  position:relative;
 }
 
-svg{
+.chart svg{
   width:100%;
   height:100%;
+}
+
+.chart-label{
+  position:absolute;
+  left:15px;
+  top:12px;
+  color:#809a90;
+  font-size:12px;
+}
+
+.section{
+  margin-top:20px;
 }
 
 .full{
   grid-column:1/-1;
 }
 
-.levels{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.level-box{
-  padding:15px;
-  border-radius:15px;
-  background:#071c15;
-  border:1px solid #123e30;
-}
-
-.level-box h4{
-  margin-bottom:10px;
-  color:#20ff9a;
-}
-
-.level{
-  display:flex;
-  justify-content:space-between;
-  padding:8px 0;
-  border-bottom:1px solid #12352a;
-  font-size:13px;
-}
-
-.level:last-child{
-  border-bottom:0;
-}
-
-.resistance{
-  color:#ffca6b;
-  direction:ltr;
-}
-
-.support{
-  color:#61d9ff;
-  direction:ltr;
-}
-
-.scenario{
-  margin-top:15px;
-  padding:15px;
-  border-radius:15px;
-  background:#061811;
-  border-right:3px solid #20ff9a;
-  line-height:1.9;
-  font-size:13px;
-  color:#bdd0c8;
-}
-
 .tables{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:20px;
+}
+
+.table-wrap{
+  overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-}
-
-th,td{
-  padding:12px 8px;
-  border-bottom:1px solid #12372b;
-  text-align:right;
-  font-size:13px;
+  min-width:500px;
 }
 
 th{
-  color:#76958a;
-  font-size:11px;
+  color:#18e58b;
+  background:#0a1813;
+  padding:12px 8px;
+  text-align:center;
 }
 
-td strong{
-  color:#fff;
+td{
+  padding:11px 8px;
+  border-bottom:1px solid #14362b;
+  text-align:center;
 }
 
-.up{
-  color:#20ff9a;
+td:first-child{
+  color:#18e58b;
   font-weight:bold;
-  direction:ltr;
 }
 
-.down{
-  color:#ff6b6b;
-  font-weight:bold;
-  direction:ltr;
-}
-
-.sector-grid{
+.sectors{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:10px;
+  gap:12px;
 }
 
 .sector{
   padding:15px 10px;
-  background:#071c15;
-  border:1px solid #123e30;
-  border-radius:14px;
+  border:1px solid #174b39;
+  border-radius:13px;
   text-align:center;
+  background:#09130f;
 }
 
-.sector b{
+.sector strong{
   display:block;
-  margin-bottom:7px;
-  font-size:13px;
-}
-
-.sector span{
-  font-size:15px;
+  color:#18e58b;
+  font-size:18px;
   direction:ltr;
-  display:block;
 }
 
 .watch{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:12px;
 }
 
 .stock{
-  padding:15px;
-  background:#071c15;
-  border:1px solid #123e30;
-  border-radius:15px;
+  padding:16px 10px;
+  text-align:center;
+  border:1px solid #174b39;
+  background:#09130f;
+  border-radius:13px;
 }
 
-.stock-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:8px;
+.stock b{
+  display:block;
+  color:#fff;
+  font-size:17px;
 }
 
-.symbol{
-  color:#20ff9a;
-  font-weight:900;
+.stock span{
+  display:block;
+  color:#18e58b;
+  margin-top:4px;
   direction:ltr;
 }
 
-.stock-name{
-  color:#fff;
-  font-size:13px;
-  margin-bottom:5px;
+.highlight{
+  border:1px solid #18e58b;
+  background:rgba(24,229,139,.06);
 }
 
-.stock-note{
-  color:#79978b;
-  font-size:11px;
-  line-height:1.7;
+.note{
+  padding:16px;
+  border-radius:13px;
+  background:#0a1712;
+  border:1px solid #1b503d;
+  margin-top:15px;
 }
 
-.news{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+.note strong{
+  color:#18e58b;
 }
 
-.news-box{
-  padding:17px;
-  background:#071c15;
-  border:1px solid #123e30;
-  border-radius:15px;
-  line-height:1.8;
-  color:#bdcec7;
-  font-size:13px;
-}
-
-.news-box strong{
-  display:block;
-  color:#20ff9a;
-  margin-bottom:7px;
-}
-
-.footer{
+footer{
+  border-top:1px solid #183d31;
+  padding:25px 0;
+  color:#728981;
   text-align:center;
-  margin-top:25px;
-  color:#617a70;
-  font-size:11px;
-  line-height:1.8;
+  font-size:13px;
 }
 
 @media(max-width:1000px){
-  .grid,
-  .market-main,
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .watch{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .sectors{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .header{
+    flex-direction:column;
+  }
+
+  .brand{
+    width:100%;
+    justify-content:center;
+  }
+
+  .title{
+    order:-1;
+  }
+
   .tables{
     grid-template-columns:1fr;
   }
 
-  .sector-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
   .watch{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .news{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:600px){
-  .container{
-    width:94%;
-  }
-
-  header{
-    align-items:flex-start;
-  }
-
-  .title h1{
-    font-size:23px;
-  }
-
-  .tasi-number{
-    font-size:34px;
-  }
-
-  .levels{
-    grid-template-columns:1fr;
-  }
-
-  .sector-grid{
+  .sectors{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .watch{
-    grid-template-columns:1fr;
+  .market-number{
+    font-size:36px;
+  }
+
+  .chart{
+    height:260px;
   }
 }
 </style>
@@ -1739,1385 +427,489 @@ td strong{
 
 <body>
 
-<div class="container">
-
-<!-- HEADER -->
 <header>
-  <div class="brand">
-    <div class="logo">MF</div>
-    <div>
-      <h2>MOHAMMED FAYED</h2>
-      <p>TRADE SMART • AL FAYED STOCKS</p>
-    </div>
-  </div>
+  <div class="container header">
 
-  <div class="date">
-    تحديث السوق
-    <strong>الإثنين 14 سبتمبر 2026</strong>
+    <div class="brand">
+      <div class="logo">MF</div>
+      <div class="brand-text">
+        <strong>MOHAMMED FAYED</strong>
+        <span>TRADE SMART</span>
+      </div>
+    </div>
+
+    <div class="title">
+      <h1>افتتاح المؤشر العام للسوق السعودي <span>(تاسي)</span></h1>
+      <p>تحديث السوق السعودي — بداية جلسة اليوم</p>
+    </div>
+
+    <div class="date">
+      <strong>14/9/2026</strong>
+      <small>الإثنين</small>
+    </div>
+
   </div>
 </header>
 
-
-<!-- TITLE -->
-<div class="title">
-  <h1>افتتاح المؤشر العام للسوق السعودي — تاسي 🇸🇦</h1>
-  <p>قراءة افتتاحية للسوق مع أهم مستويات الدعم والمقاومة والأسهم والقطاعات</p>
-</div>
-
+<main>
+<div class="container">
 
 <div class="grid">
 
+<!-- ملخص السوق -->
+<div>
 
-<!-- MARKET -->
-<section class="card">
+  <div class="card">
+    <div class="card-title">📊 ملخص السوق</div>
 
-  <h3>📊 ملخص السوق</h3>
+    <div class="label">الافتتاح (تاسي)</div>
 
-  <div class="market-main">
-
-    <div class="tasi">
-
-      <div class="label">
-        افتتاح تاسي — 14 سبتمبر 2026
-      </div>
-
-      <div class="tasi-number">
-        10,862.52
-      </div>
-
-      <div class="change negative">
-        -2.05 نقطة &nbsp; (-0.02%)
-      </div>
-
-      <div class="status">
-        الاتجاه: محايد مائل للسلبية
-      </div>
-
-    </div>
-
+    <div class="market-number">10,862.52</div>
 
     <div class="stats">
 
       <div class="stat">
-        <span>الافتتاح</span>
-        <strong>10,862.52</strong>
-      </div>
-
-      <div class="stat">
-        <span>إغلاق سابق</span>
+        <div class="label">الإغلاق السابق</div>
         <strong>10,864.57</strong>
       </div>
 
       <div class="stat">
-        <span>أعلى مستوى</span>
-        <strong>10,862.52</strong>
+        <div class="label">فرق الافتتاح</div>
+        <strong class="red">-2.05</strong>
       </div>
 
       <div class="stat">
-        <span>أدنى مستوى</span>
-        <strong>10,862.52</strong>
+        <div class="label">نسبة التغير</div>
+        <strong class="red">-0.02%</strong>
       </div>
 
       <div class="stat">
+        <div class="label">الاتجاه</div>
+        <strong class="red">سلبي</strong>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <strong>ملاحظة الافتتاح</strong><br>
+      افتتح المؤشر قريبًا جدًا من إغلاق الجلسة السابقة،
+      لذلك تبقى منطقة 10,850 هي أهم مستوى للمراقبة.
+    </div>
+
+  </div>
+
+  <div class="card section">
+
+    <div class="card-title">🎯 المستويات المهمة</div>
+
+    <div class="levels">
+
+      <div class="level support">
         <span>الدعم الأول</span>
         <strong>10,850</strong>
       </div>
 
-      <div class="stat">
+      <div class="level support">
         <span>الدعم الثاني</span>
         <strong>10,800</strong>
       </div>
 
-      <div class="stat">
+      <div class="level support">
+        <span>الدعم الثالث</span>
+        <strong>10,750</strong>
+      </div>
+
+      <div class="level resistance">
         <span>المقاومة الأولى</span>
         <strong>10,900</strong>
       </div>
 
-      <div class="stat">
+      <div class="level resistance">
         <span>المقاومة الثانية</span>
         <strong>10,950</strong>
+      </div>
+
+      <div class="level resistance">
+        <span>المقاومة الأهم</span>
+        <strong>11,000</strong>
       </div>
 
     </div>
 
   </div>
 
+  <div class="card section">
 
-  <!-- TASI CHART -->
+    <div class="card-title">📈 السيناريوهات المتوقعة</div>
+
+    <div class="scenario">
+      <b class="green">🟢 السيناريو الإيجابي</b>
+      الثبات فوق 10,850 ثم اختراق 10,900
+      بسيولة جيدة → 10,950 ثم 11,000.
+    </div>
+
+    <div class="scenario negative">
+      <b class="red">🔴 السيناريو السلبي</b>
+      كسر 10,850 ثم 10,800
+      قد يدفع المؤشر نحو 10,750.
+    </div>
+
+  </div>
+
+</div>
+
+<!-- الشارت -->
+<div class="card chart-card">
+
+  <div class="card-title">📈 حركة المؤشر — TASI</div>
+
   <div class="chart">
 
-    <svg viewBox="0 0 800 230" preserveAspectRatio="none">
+    <span class="chart-label">TASI — 14/09/2026</span>
 
-      <defs>
+    <svg viewBox="0 0 900 330" preserveAspectRatio="none">
 
-        <linearGradient id="area"
-                        x1="0" y1="0"
-                        x2="0" y2="1">
+      <!-- خطوط -->
+      <line x1="0" y1="70" x2="900" y2="70"
+            stroke="#173e30" stroke-width="1"/>
 
-          <stop offset="0%"
-                stop-color="#20ff9a"
-                stop-opacity=".25"/>
+      <line x1="0" y1="145" x2="900" y2="145"
+            stroke="#173e30" stroke-width="1"/>
 
-          <stop offset="100%"
-                stop-color="#20ff9a"
-                stop-opacity="0"/>
+      <line x1="0" y1="220" x2="900" y2="220"
+            stroke="#173e30" stroke-width="1"/>
 
-        </linearGradient>
+      <line x1="0" y1="295" x2="900" y2="295"
+            stroke="#173e30" stroke-width="1"/>
 
-      </defs>
-
-
-      <!-- Grid -->
-
-      <line x1="0" y1="35"
-            x2="800" y2="35"
-            stroke="#12372b"/>
-
-      <line x1="0" y1="85"
-            x2="800" y2="85"
-            stroke="#12372b"/>
-
-      <line x1="0" y1="135"
-            x2="800" y2="135"
-            stroke="#12372b"/>
-
-      <line x1="0" y1="185"
-            x2="800" y2="185"
-            stroke="#12372b"/>
-
-
-      <!-- Resistance -->
-
-      <line x1="0" y1="48"
-            x2="800" y2="48"
-            stroke="#ffca6b"
-            stroke-width="1"
-            stroke-dasharray="7 7"/>
-
-
-      <!-- Previous close -->
-
-      <line x1="0" y1="108"
-            x2="800" y2="108"
-            stroke="#20ff9a"
-            stroke-width="1"
-            stroke-dasharray="5 5"/>
-
-
-      <!-- Support -->
-
-      <line x1="0" y1="150"
-            x2="800" y2="150"
-            stroke="#61d9ff"
-            stroke-width="1"
-            stroke-dasharray="7 7"/>
-
-
-      <!-- Area -->
-
+      <!-- منطقة الشارت -->
       <path
-        d="
-        M0 108
-        L70 104
-        L140 110
-        L210 106
-        L280 115
-        L350 118
-        L420 123
-        L490 120
-        L560 130
-        L630 136
-        L700 143
-        L800 148
-        L800 230
-        L0 230
-        Z"
-        fill="url(#area)"
-      />
+        d="M0 175
+           L60 155
+           L120 165
+           L180 135
+           L240 150
+           L300 120
+           L360 138
+           L420 110
+           L480 128
+           L540 105
+           L600 125
+           L660 145
+           L720 160
+           L780 180
+           L840 190
+           L900 198
+           L900 330
+           L0 330 Z"
+        fill="rgba(24,229,139,.08)"
+        stroke="none"/>
 
-
-      <!-- Main line -->
-
+      <!-- الخط الرئيسي -->
       <polyline
         points="
-        0,108
-        70,104
-        140,110
-        210,106
-        280,115
-        350,118
-        420,123
-        490,120
-        560,130
-        630,136
-        700,143
-        800,148"
+        0,175
+        60,155
+        120,165
+        180,135
+        240,150
+        300,120
+        360,138
+        420,110
+        480,128
+        540,105
+        600,125
+        660,145
+        720,160
+        780,180
+        840,190
+        900,198"
         fill="none"
-        stroke="#20ff9a"
+        stroke="#18e58b"
         stroke-width="4"
         stroke-linecap="round"
-        stroke-linejoin="round"
-      />
+        stroke-linejoin="round"/>
 
+      <!-- نقطة الافتتاح -->
+      <circle cx="900" cy="198" r="7"
+              fill="#18e58b"/>
 
-      <!-- Opening point -->
-
-      <circle
-        cx="800"
-        cy="148"
-        r="7"
-        fill="#20ff9a"
-      />
+      <!-- خط الدعم -->
+      <line x1="0" y1="230" x2="900" y2="230"
+            stroke="#ff5f68"
+            stroke-width="2"
+            stroke-dasharray="8 8"/>
 
     </svg>
 
   </div>
 
-</section>
-
-
-<!-- LEVELS -->
-<section class="card">
-
-  <h3>🎯 المستويات المهمة</h3>
-
-  <div class="levels">
-
-    <div class="level-box">
-
-      <h4>المقاومات</h4>
-
-      <div class="level">
-        <span>المقاومة الأولى</span>
-        <strong class="resistance">10,900</strong>
-      </div>
-
-      <div class="level">
-        <span>المقاومة الثانية</span>
-        <strong class="resistance">10,950</strong>
-      </div>
-
-      <div class="level">
-        <span>المقاومة النفسية</span>
-        <strong class="resistance">11,000</strong>
-      </div>
-
-    </div>
-
-
-    <div class="level-box">
-
-      <h4>الدعوم</h4>
-
-      <div class="level">
-        <span>الدعم الأول</span>
-        <strong class="support">10,850</strong>
-      </div>
-
-      <div class="level">
-        <span>الدعم الثاني</span>
-        <strong class="support">10,800</strong>
-      </div>
-
-      <div class="level">
-        <span>الدعم التالي</span>
-        <strong class="support">10,750</strong>
-      </div>
-
-    </div>
-
+  <div class="note">
+    <strong>قراءة الشارت:</strong>
+    الافتتاح عند 10,862.52 قريب من الدعم الأول 10,850،
+    واختراق 10,900 سيكون إشارة تحسن أولية.
   </div>
 
+</div>
 
-  <div class="scenario">
+<!-- الأسهم الأكثر ارتفاعًا -->
+<div class="card full">
 
-    <b style="color:#20ff9a">
-      📈 السيناريو الإيجابي:
-    </b>
+  <div class="card-title">🟢 الأكثر ارتفاعًا — آخر جلسة</div>
 
-    <br>
+  <div class="table-wrap">
+  <table>
 
-    الثبات فوق 10,850 ثم استعادة 10,900
-    يدعم محاولة الوصول إلى 10,950 ثم 11,000،
-    بشرط تحسن السيولة وعودة القياديات.
+    <thead>
+      <tr>
+        <th>الرمز</th>
+        <th>السهم</th>
+        <th>الإغلاق</th>
+        <th>التغير</th>
+        <th>%</th>
+      </tr>
+    </thead>
 
+    <tbody>
+
+      <tr>
+        <td>4150</td>
+        <td>الرياض للتنمية</td>
+        <td>16.75</td>
+        <td class="green">+0.90</td>
+        <td class="green">+5.68%</td>
+      </tr>
+
+      <tr>
+        <td>8200</td>
+        <td>الإعادة السعودية</td>
+        <td>28.82</td>
+        <td class="green">+1.02</td>
+        <td class="green">+3.67%</td>
+      </tr>
+
+      <tr>
+        <td>4050</td>
+        <td>ساسكو</td>
+        <td>45.62</td>
+        <td class="green">+1.50</td>
+        <td class="green">+3.40%</td>
+      </tr>
+
+    </tbody>
+
+  </table>
   </div>
 
+</div>
 
-  <div class="scenario"
-       style="border-right-color:#ff6b6b;">
+<!-- الأسهم الأكثر انخفاضًا -->
+<div class="card full">
 
-    <b style="color:#ff7777">
-      📉 السيناريو السلبي:
-    </b>
+  <div class="card-title red">🔻 الأكثر انخفاضًا — آخر جلسة</div>
 
-    <br>
+  <div class="table-wrap">
+  <table>
 
-    كسر 10,850 ثم 10,800 يزيد الضغط البيعي
-    ويفتح المجال لاختبار 10,750.
+    <thead>
+      <tr>
+        <th>الرمز</th>
+        <th>السهم</th>
+        <th>الإغلاق</th>
+        <th>التغير</th>
+        <th>%</th>
+      </tr>
+    </thead>
 
+    <tbody>
+
+      <tr>
+        <td>2223</td>
+        <td>لوبريف</td>
+        <td>127.30</td>
+        <td class="red">-14.10</td>
+        <td class="red">-9.97%</td>
+      </tr>
+
+      <tr>
+        <td>4310</td>
+        <td>مدينة المعرفة</td>
+        <td>18.88</td>
+        <td class="red">-1.01</td>
+        <td class="red">-5.08%</td>
+      </tr>
+
+      <tr>
+        <td>8150</td>
+        <td>أسيج</td>
+        <td>7.85</td>
+        <td class="red">-0.41</td>
+        <td class="red">-4.96%</td>
+      </tr>
+
+    </tbody>
+
+  </table>
   </div>
 
-</section>
+</div>
 
+<!-- القطاعات -->
+<div class="card full">
 
-<!-- QUICK READING -->
-<section class="card full">
+  <div class="card-title">📊 أبرز القطاعات المتراجعة — آخر جلسة</div>
 
-  <h3>⚡ قراءة سريعة للسوق</h3>
-
-  <div class="stats">
-
-    <div class="stat">
-      <span>الاتجاه العام</span>
-      <strong class="negative">سلبي</strong>
-    </div>
-
-    <div class="stat">
-      <span>زخم الافتتاح</span>
-      <strong>محايد</strong>
-    </div>
-
-    <div class="stat">
-      <span>أقرب دعم</span>
-      <strong>10,850</strong>
-    </div>
-
-    <div class="stat">
-      <span>أقرب مقاومة</span>
-      <strong>10,900</strong>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- GAINERS / LOSERS -->
-<section class="card full">
-
-  <h3>🔥 أكثر الأسهم ارتفاعًا وانخفاضًا</h3>
-
-  <div class="tables">
-
-
-    <!-- GAINERS -->
-
-    <div>
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>السهم</th>
-            <th>الإغلاق</th>
-            <th>التغير</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>
-              <strong>أسمنت الرياض</strong><br>
-              <small>3092</small>
-            </td>
-            <td>16.75</td>
-            <td class="up">+5.68%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>الإعادة السعودية</strong><br>
-              <small>8200</small>
-            </td>
-            <td>28.82</td>
-            <td class="up">+3.67%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>ساسكو</strong><br>
-              <small>4050</small>
-            </td>
-            <td>45.62</td>
-            <td class="up">+3.40%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>أرماح</strong><br>
-              <small>6022</small>
-            </td>
-            <td>—</td>
-            <td class="up">من الأعلى</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>التعمير</strong><br>
-              <small>4150</small>
-            </td>
-            <td>—</td>
-            <td class="up">من الأعلى</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <!-- LOSERS -->
-
-    <div>
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>السهم</th>
-            <th>الإغلاق</th>
-            <th>التغير</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>
-              <strong>لوبريف</strong><br>
-              <small>2223</small>
-            </td>
-            <td>127.30</td>
-            <td class="down">-9.97%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>مدينة المعرفة</strong><br>
-              <small>4310</small>
-            </td>
-            <td>18.88</td>
-            <td class="down">-5.08%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>أسيج</strong><br>
-              <small>8150</small>
-            </td>
-            <td>7.85</td>
-            <td class="down">-4.96%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>ينساب</strong><br>
-              <small>2290</small>
-            </td>
-            <td>32.90</td>
-            <td class="down">≈ -4.5%</td>
-          </tr>
-
-          <tr>
-            <td>
-              <strong>العربية</strong>
-            </td>
-            <td>—</td>
-            <td class="down">من الأكثر تراجعًا</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SECTORS -->
-<section class="card full">
-
-  <h3>🏭 أداء أبرز القطاعات</h3>
-
-  <div class="sector-grid">
+  <div class="sectors">
 
     <div class="sector">
-      <b>المرافق العامة</b>
-      <span class="down">-1.9%</span>
+      <span>المرافق</span>
+      <strong class="red">-1.90%</strong>
     </div>
 
     <div class="sector">
-      <b>المواد الأساسية</b>
-      <span class="down">-1.6%</span>
+      <span>المواد الأساسية</span>
+      <strong class="red">-1.60%</strong>
     </div>
 
     <div class="sector">
-      <b>الطاقة</b>
-      <span class="down">-1.2%</span>
+      <span>النقل</span>
+      <strong class="red">-1.24%</strong>
     </div>
 
     <div class="sector">
-      <b>النقل</b>
-      <span class="down">-1.24%</span>
+      <span>الطاقة</span>
+      <strong class="red">-1.20%</strong>
     </div>
 
     <div class="sector">
-      <b>البنوك</b>
-      <span class="down">-0.8%</span>
+      <span>البنوك</span>
+      <strong class="red">-0.80%</strong>
     </div>
 
   </div>
 
-  <div class="scenario">
+</div>
 
-    القطاعات الأكثر تعرضًا للضغط كانت
-    <b>المرافق والمواد الأساسية والطاقة والنقل</b>،
-    مع استمرار تأثير ضعف القياديات على المؤشر.
+<!-- تحت المراقبة -->
+<div class="card full">
 
-  </div>
-
-</section>
-
-
-<!-- WATCHLIST -->
-<section class="card full">
-
-  <h3>👀 أسهم تحت المراقبة</h3>
+  <div class="card-title">👁️ أسهم تحت المراقبة</div>
 
   <div class="watch">
 
     <div class="stock">
-
-      <div class="stock-top">
-        <span class="symbol">1120</span>
-        <span class="negative">بنوك</span>
-      </div>
-
-      <div class="stock-name">
-        مصرف الراجحي
-      </div>
-
-      <div class="stock-note">
-        مراقبة الثبات واستعادة الزخم فوق مستويات الدعم.
-      </div>
-
+      <b>الراجحي</b>
+      <span>1120</span>
     </div>
 
-
     <div class="stock">
-
-      <div class="stock-top">
-        <span class="symbol">2222</span>
-        <span class="negative">طاقة</span>
-      </div>
-
-      <div class="stock-name">
-        أرامكو
-      </div>
-
-      <div class="stock-note">
-        النفط مرتفع لكن التذبذب الجيوسياسي ما زال مؤثرًا.
-      </div>
-
+      <b>أرامكو</b>
+      <span>2222</span>
     </div>
 
-
     <div class="stock">
-
-      <div class="stock-top">
-        <span class="symbol">1211</span>
-        <span class="negative">مواد</span>
-      </div>
-
-      <div class="stock-name">
-        معادن
-      </div>
-
-      <div class="stock-note">
-        مراقبة أي ارتداد بعد ضغط الجلسة السابقة.
-      </div>
-
+      <b>سابك</b>
+      <span>2010</span>
     </div>
 
+    <div class="stock">
+      <b>الأسماك</b>
+      <span>6050</span>
+    </div>
 
     <div class="stock">
+      <b>stc</b>
+      <span>7010</span>
+    </div>
 
-      <div class="stock-top">
-        <span class="symbol">2223</span>
-        <span class="negative">HIGH RISK</span>
-      </div>
-
-      <div class="stock-name">
-        لوبريف
-      </div>
-
-      <div class="stock-note">
-        تذبذب مرتفع جدًا بعد هبوط يقارب 10%.
-      </div>
-
+    <div class="stock">
+      <b>معادن</b>
+      <span>1211</span>
     </div>
 
   </div>
 
-</section>
+</div>
 
+<!-- أهم ملاحظات -->
+<div class="card full highlight">
 
-<!-- NEWS -->
-<section class="card full">
+  <div class="card-title">💡 أبرز ملاحظات السوق</div>
 
-  <h3>📰 أهم المؤثرات على السوق</h3>
+  <div class="stats">
 
-  <div class="news">
-
-    <div class="news-box">
-
-      <strong>🛢️ النفط</strong>
-
-      ارتفاع أسعار النفط عالميًا يزيد التذبذب
-      ويجعل قطاع الطاقة تحت المراقبة.
-
+    <div class="stat">
+      <div class="label">إغلاق الجلسة السابقة</div>
+      <strong>10,864.57</strong>
     </div>
 
-
-    <div class="news-box">
-
-      <strong>⚠️ المخاطر الجيوسياسية</strong>
-
-      استمرار التوترات الإقليمية يرفع حساسية
-      السوق تجاه أسعار النفط والسيولة.
-
+    <div class="stat">
+      <div class="label">افتتاح اليوم</div>
+      <strong class="green">10,862.52</strong>
     </div>
 
+    <div class="stat">
+      <div class="label">الدعم الأهم</div>
+      <strong class="red">10,850</strong>
+    </div>
 
-    <div class="news-box">
-
-      <strong>📉 تاسي</strong>
-
-      المؤشر أنهى آخر جلسة عند 10,864.57
-      منخفضًا 1.30% قبل افتتاح جلسة 14/9.
-
+    <div class="stat">
+      <div class="label">المقاومة الأولى</div>
+      <strong class="green">10,900</strong>
     </div>
 
   </div>
 
-</section>
-
-
-<!-- FINAL -->
-<section class="card full">
-
-  <h3>💡 الخلاصة</h3>
-
-  <div class="scenario">
-
-    <b style="color:#20ff9a">
-      نظرة افتتاحية:
-    </b>
-
-    <br>
-
-    افتتاح تاسي عند <b>10,862.52</b>
-    يضع المؤشر مباشرة بالقرب من منطقة الدعم
-    <b>10,850</b>.
-
-    <br><br>
-
-    <b>فوق 10,900:</b>
-    تحسن فني أولي وقد نشاهد اختبار 10,950
-    ثم 11,000.
-
-    <br><br>
-
-    <b>تحت 10,850:</b>
-    يزداد الضغط وقد يتجه المؤشر إلى 10,800
-    ثم 10,750.
-
-    <br><br>
-
-    <span style="color:#ffca6b">
-      ⚠️ المستويات للتحليل والمتابعة وليست توصية
-      مباشرة بالشراء أو البيع.
-    </span>
-
+  <div class="note">
+    <strong>الخلاصة:</strong><br>
+    افتتاح المؤشر قريب جدًا من إغلاق الجلسة السابقة،
+    لذلك التركيز في بداية الجلسة يكون على 10,850.
+    الثبات فوقها يحافظ على فرصة الارتداد،
+    بينما كسرها يفتح الطريق إلى 10,800 ثم 10,750.
   </div>
 
-</section>
-
-</div>
-
-
-<div class="footer">
-  © 2026 Al Fayed Stocks — Mohammed Fayed
-  <br>
-  البيانات لأغراض معلوماتية وتحليلية وليست توصية استثمارية.
 </div>
 
 </div>
-
-</body>
-</html>
-.hero{
-padding:30px 0 20px;
-}
-
-.hero small{
-color:#20c997;
-font-weight:700;
-}
-
-.hero h1{
-font-size:34px;
-margin:8px 0;
-}
-
-.hero p{
-color:#9eb1ad;
-margin:0;
-}
-
-.grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:18px;
-}
-
-.card{
-background:#0d1d1a;
-border:1px solid #1a3630;
-border-radius:18px;
-padding:22px;
-box-shadow:0 10px 30px rgba(0,0,0,.18);
-}
-
-.market-card{
-position:relative;
-overflow:hidden;
-}
-
-.market-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.market-name{
-color:#a7bbb6;
-font-size:15px;
-}
-
-.status{
-background:#321919;
-color:#ff7d7d;
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
-}
-
-.tasi{
-font-size:44px;
-font-weight:800;
-margin:8px 0;
-}
-
-.change{
-color:#ff6b6b;
-font-weight:700;
-font-size:18px;
-}
-
-.meta{
-display:flex;
-gap:25px;
-margin-top:18px;
-color:#9eb1ad;
-font-size:13px;
-}
-
-.chart{
-height:170px;
-margin-top:20px;
-background:linear-gradient(180deg,#102923,#0b1917);
-border-radius:14px;
-position:relative;
-overflow:hidden;
-}
-
-.chart svg{
-width:100%;
-height:100%;
-}
-
-.levels h3{
-margin-top:0;
-}
-
-.level{
-display:flex;
-justify-content:space-between;
-padding:14px 0;
-border-bottom:1px solid #1b302d;
-}
-
-.level:last-child{border:0}
-
-.level b{color:#9eb1ad}
-.level strong{color:#fff}
-
-.section{
-margin-top:20px;
-}
-
-.section-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:14px;
-}
-
-.section-title h2{
-margin:0;
-font-size:21px;
-}
-
-.badge{
-font-size:11px;
-padding:5px 10px;
-border-radius:15px;
-background:#16352d;
-color:#45e0a8;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th{
-color:#829792;
-font-size:12px;
-font-weight:600;
-text-align:right;
-padding:14px 10px;
-}
-
-td{
-padding:15px 10px;
-border-top:1px solid #1b302d;
-font-size:14px;
-}
-
-.symbol{
-color:#829792;
-font-size:12px;
-}
-
-.up{color:#38d99b;font-weight:700}
-.down{color:#ff7070;font-weight:700}
-
-.stock-name{
-font-weight:700;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-}
-
-.stat{
-background:#0d1d1a;
-border:1px solid #1a3630;
-padding:18px;
-border-radius:15px;
-}
-
-.stat small{
-display:block;
-color:#829792;
-margin-bottom:7px;
-}
-
-.stat strong{
-font-size:20px;
-}
-
-.movers{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.comment{
-background:#0d1d1a;
-border:1px solid #1a3630;
-padding:18px;
-border-radius:16px;
-}
-
-.stars{
-color:#ffd166;
-letter-spacing:2px;
-}
-
-.comment p{
-color:#b4c3c0;
-line-height:1.8;
-}
-
-.comment strong{
-display:block;
-margin-top:8px;
-}
-
-.visitors{
-display:flex;
-align-items:center;
-justify-content:space-between;
-background:linear-gradient(135deg,#102b24,#0d1d1a);
-}
-
-.visitor-number{
-font-size:30px;
-font-weight:800;
-color:#38d99b;
-}
-
-footer{
-margin-top:35px;
-padding:25px 0;
-text-align:center;
-color:#6f8580;
-border-top:1px solid #19312d;
-}
-
-@media(max-width:800px){
-.grid,.movers{grid-template-columns:1fr}
-.stats{grid-template-columns:1fr 1fr}
-.hero h1{font-size:28px}
-.tasi{font-size:36px}
-}
-
-@media(max-width:480px){
-.stats{grid-template-columns:1fr}
-}
-</style>
-</head>
-
-<body>
-
-<header class="header">
-<div class="container">
-<div class="brand">Al Fayed <span>Stocks</span></div>
 </div>
-</header>
-
-<main class="container">
-
-<section class="hero">
-<small>SAUDI MARKET • 14 سبتمبر 2026</small>
-<h1>السوق السعودي 🇸🇦</h1>
-<p>لوحة متابعة مبسطة للمؤشر والأسهم والسيولة وأبرز تحركات السوق.</p>
-</section>
-
-<!-- المؤشر -->
-<section class="grid">
-
-<div class="card market-card">
-
-<div class="market-top">
-<div>
-<div class="market-name">مؤشر تاسي TASI</div>
-<div class="tasi">10,864.57</div>
-<div class="change">▼ 142.70 &nbsp; (-1.30%)</div>
-</div>
-
-<div class="status">السوق تحت الضغط</div>
-</div>
-
-<div class="meta">
-<span>الافتتاح: 10,957.60</span>
-<span>السابق: 11,007.27</span>
-</div>
-
-<div class="chart">
-
-<svg viewBox="0 0 800 220" preserveAspectRatio="none">
-
-<defs>
-<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#1fc98b" stop-opacity=".35"/>
-<stop offset="1" stop-color="#1fc98b" stop-opacity="0"/>
-</linearGradient>
-</defs>
-
-<path
-d="M0 75
-L60 82
-L120 68
-L180 92
-L240 80
-L300 108
-L360 95
-L420 120
-L480 105
-L540 135
-L600 125
-L660 150
-L720 145
-L800 175
-L800 220
-L0 220 Z"
-fill="url(#area)"/>
-
-<path
-d="M0 75
-L60 82
-L120 68
-L180 92
-L240 80
-L300 108
-L360 95
-L420 120
-L480 105
-L540 135
-L600 125
-L660 150
-L720 145
-L800 175"
-fill="none"
-stroke="#35d49b"
-stroke-width="4"/>
-
-</svg>
-
-</div>
-</div>
-
-<!-- المستويات -->
-<div class="card levels">
-
-<h3>المستويات المهمة</h3>
-
-<div class="level">
-<b>المقاومة الأولى</b>
-<strong>11,000</strong>
-</div>
-
-<div class="level">
-<b>المقاومة التالية</b>
-<strong>11,020 – 11,050</strong>
-</div>
-
-<div class="level">
-<b>الدعم الرئيسي</b>
-<strong>10,950</strong>
-</div>
-
-<div class="level">
-<b>الدعم التالي</b>
-<strong>10,900</strong>
-</div>
-
-<div class="level">
-<b>حالة الاتجاه</b>
-<strong class="down">سلبي بحذر</strong>
-</div>
-
-</div>
-
-</section>
-
-<!-- إحصائيات -->
-<section class="section">
-
-<div class="stats">
-
-<div class="stat">
-<small>الأسهم المرتفعة</small>
-<strong class="up">42</strong>
-</div>
-
-<div class="stat">
-<small>الأسهم المنخفضة</small>
-<strong class="down">221</strong>
-</div>
-
-<div class="stat">
-<small>قيمة التداول</small>
-<strong>3.83B</strong>
-</div>
-
-<div class="stat">
-<small>عدد الشركات</small>
-<strong>272</strong>
-</div>
-
-</div>
-
-</section>
-
-<!-- الأسهم تحت المراقبة -->
-<section class="section card">
-
-<div class="section-title">
-<h2>📌 الأسهم تحت المراقبة</h2>
-<span class="badge">متابعة اليوم</span>
-</div>
-
-<table>
-
-<tr>
-<th>السهم</th>
-<th>الرمز</th>
-<th>السعر</th>
-<th>التغير</th>
-<th>الحالة</th>
-</tr>
-
-<tr>
-<td class="stock-name">الأسماك</td>
-<td class="symbol">6050</td>
-<td>67.55</td>
-<td class="up">+2.05%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">أرامكو</td>
-<td class="symbol">2222</td>
-<td>25.72</td>
-<td class="down">-1.60%</td>
-<td><span class="badge">ضغط</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">الراجحي</td>
-<td class="symbol">1120</td>
-<td>65.20</td>
-<td class="down">-1.20%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">سابك</td>
-<td class="symbol">2010</td>
-<td>49.50</td>
-<td class="down">-2.10%</td>
-<td><span class="badge">حذر</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">الأهلي</td>
-<td class="symbol">1180</td>
-<td>41.22</td>
-<td class="down">-1.40%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-<tr>
-<td class="stock-name">stc</td>
-<td class="symbol">7010</td>
-<td>43.80</td>
-<td class="down">-0.50%</td>
-<td><span class="badge">مراقبة</span></td>
-</tr>
-
-</table>
-
-</section>
-
-<!-- الأكثر ارتفاعا وانخفاضا -->
-<section class="section movers">
-
-<div class="card">
-
-<div class="section-title">
-<h2>🔥 الأكثر ارتفاعًا</h2>
-</div>
-
-<table>
-
-<tr>
-<td class="stock-name">أرماح</td>
-<td>71.85</td>
-<td class="up">+9.95%</td>
-</tr>
-
-<tr>
-<td class="stock-name">أردكو</td>
-<td>16.75</td>
-<td class="up">+5.68%</td>
-</tr>
-
-<tr>
-<td class="stock-name">السعودي ريت</td>
-<td>28.82</td>
-<td class="up">+3.67%</td>
-</tr>
-
-<tr>
-<td class="stock-name">ساسكو</td>
-<td>45.62</td>
-<td class="up">+3.40%</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="card">
-
-<div class="section-title">
-<h2>🔻 الأكثر انخفاضًا</h2>
-</div>
-
-<table>
-
-<tr>
-<td class="stock-name">لوبريف</td>
-<td>127.30</td>
-<td class="down">-9.97%</td>
-</tr>
-
-<tr>
-<td class="stock-name">KEC</td>
-<td>18.88</td>
-<td class="down">-5.08%</td>
-</tr>
-
-<tr>
-<td class="stock-name">ACIG</td>
-<td>7.85</td>
-<td class="down">-4.96%</td>
-</tr>
-
-<tr>
-<td class="stock-name">العربية</td>
-<td>58.30</td>
-<td class="down">-4.89%</td>
-</tr>
-
-</table>
-
-</div>
-
-</section>
-
-<!-- القطاعات -->
-<section class="section card">
-
-<div class="section-title">
-<h2>🏦 أداء القطاعات</h2>
-<span class="badge">ملخص السوق</span>
-</div>
-
-<table>
-
-<tr>
-<th>القطاع</th>
-<th>الاتجاه</th>
-<th>الأداء</th>
-</tr>
-
-<tr>
-<td>النقل</td>
-<td class="up">صاعد</td>
-<td class="up">+1.45%</td>
-</tr>
-
-<tr>
-<td>الخدمات الاستهلاكية</td>
-<td class="up">صاعد</td>
-<td class="up">+1.40%</td>
-</tr>
-
-<tr>
-<td>السلع المعمرة والملابس</td>
-<td class="up">صاعد</td>
-<td class="up">+1.65%</td>
-</tr>
-
-<tr>
-<td>الخدمات التجارية والمهنية</td>
-<td class="up">إيجابي</td>
-<td class="up">+0.17%</td>
-</tr>
-
-</table>
-
-</section>
-
-<!-- آراء العملاء -->
-<section class="section">
-
-<div class="section-title">
-<h2>⭐ آراء مستخدمي Al Fayed Stocks</h2>
-</div>
-
-<div class="movers">
-
-<div class="comment">
-<div class="stars">★★★★★</div>
-<p>
-"واجهة الموقع بسيطة وسريعة، وأهم شيء بالنسبة لي أن مستويات الدعم والمقاومة واضحة."
-</p>
-<strong>— أحمد • مستثمر</strong>
-</div>
-
-<div class="comment">
-<div class="stars">★★★★★</div>
-<p>
-"قسم الأسهم تحت المراقبة مفيد جدًا في بداية الجلسة ويسهل متابعة الأسهم."
-</p>
-<strong>— محمد • متابع للسوق</strong>
-</div>
-
-<div class="comment">
-<div class="stars">★★★★☆</div>
-<p>
-"التصميم مرتب والمعلومات الأساسية موجودة في مكان واحد."
-</p>
-<strong>— خالد • متداول</strong>
-</div>
-
-</div>
-
-</section>
-
-<!-- الزوار -->
-<section class="section">
-
-<div class="card visitors">
-
-<div>
-<h2>👁️ زوار الموقع</h2>
-<p style="color:#829792">
-إحصائية تجريبية للعرض — يمكن ربطها لاحقًا بعداد حقيقي.
-</p>
-</div>
-
-<div>
-<div class="visitor-number">1,284</div>
-<div style="color:#829792;font-size:12px">زائر اليوم</div>
-</div>
-
-</div>
-
-</section>
-
 </main>
 
 <footer>
-Al Fayed Stocks © 2026
-<br>
-<span>المعلومات المعروضة لأغراض المتابعة والتحليل وليست توصية استثمارية.</span>
+  <div class="container">
+    Al Fayed Stocks © 2026 — تحليل ومتابعة الأسواق المالية
+    <br>
+    البيانات المعروضة لأغراض معلوماتية وليست توصية استثمارية.
+  </div>
 </footer>
+
+<script>
+/*
+  Al Fayed Stocks
+  Saudi Market Dashboard
+*/
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  console.log("Al Fayed Stocks - Saudi Dashboard loaded");
+
+  /*
+    الافتتاح المستخدم في لوحة اليوم:
+    10,862.52
+  */
+
+  const marketOpen = 10862.52;
+  const previousClose = 10864.57;
+
+  const difference = marketOpen - previousClose;
+  const percentage = (difference / previousClose) * 100;
+
+  console.log("TASI Open:", marketOpen);
+  console.log("Previous Close:", previousClose);
+  console.log("Difference:", difference.toFixed(2));
+  console.log("Percentage:", percentage.toFixed(2) + "%");
+
+});
+</script>
 
 </body>
 </html>
