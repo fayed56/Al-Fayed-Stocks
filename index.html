@@ -1,252 +1,374 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Al Fayed Stocks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-font-family:Cairo,Arial,sans-serif;
-background:#061513;
-color:#f4f7f6;
-line-height:1.8
-}
-a{text-decoration:none;color:inherit}
-.container{width:min(1100px,94%);margin:auto}
+  <title>Al Fayed Stocks | الأسواق المالية</title>
+  <meta
+    name="description"
+    content="متابعة السوق السعودي والأمريكي، الأخبار، التحليلات، والقطاعات."
+  />
 
-header{
-height:175px;
-border-bottom:1px solid #18332f;
-display:flex;
-align-items:center;
-justify-content:center
-}
-.logo{
-font-size:42px;
-font-weight:900;
-direction:ltr
-}
-.logo span{color:#18c98b}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-.hero{
-padding:70px 0 50px
-}
-.eyebrow{
-color:#27d49a;
-font-size:19px;
-font-weight:900;
-margin-bottom:22px
-}
-h1{
-font-size:58px;
-line-height:1.25;
-margin:0 0 28px;
-font-weight:900
-}
-.lead{
-color:#9eaaa8;
-font-size:25px;
-margin:0 0 55px
-}
-
-.market-card{
-background:#091d1a;
-border:1px solid #183c36;
-border-radius:30px;
-padding:42px;
-box-shadow:0 12px 35px rgba(0,0,0,.15)
-}
-
-.card-top{
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-.card-title{
-font-size:25px;
-color:#aeb9b7
-}
-.badge{
-background:#401d20;
-color:#ff7777;
-padding:8px 22px;
-border-radius:30px;
-font-size:17px
-}
-
-.value{
-font-size:62px;
-font-weight:900;
-text-align:center;
-margin:32px 0 18px
-}
-
-.change{
-text-align:center;
-font-size:28px;
-font-weight:900;
-color:#ff7075
-}
-
-.meta{
-display:flex;
-justify-content:space-between;
-color:#929e9c;
-font-size:19px;
-margin-top:40px
-}
-
-.chart{
-height:280px;
-margin-top:35px;
-background:#04130f;
-border-radius:25px;
-overflow:hidden;
-position:relative
-}
-
-.chart svg{
-width:100%;
-height:100%
-}
-
-.section{
-padding:50px 0
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px
-}
-
-.box{
-background:#091d1a;
-border:1px solid #183c36;
-border-radius:24px;
-padding:27px
-}
-
-.box h2{
-margin-top:0;
-font-size:23px
-}
-
-.box p{
-color:#9eaaa8
-}
-
-.green{color:#25d392}
-.red{color:#ff7277}
-.gold{color:#d8ad51}
-
-footer{
-border-top:1px solid #18332f;
-padding:30px;
-text-align:center;
-color:#71817e
-}
-
-@media(max-width:700px){
-header{height:175px}
-.logo{font-size:35px}
-.hero{padding-top:65px}
-h1{font-size:47px}
-.lead{font-size:21px}
-.market-card{padding:30px}
-.value{font-size:53px}
-.meta{font-size:16px}
-.grid{grid-template-columns:1fr}
-}
-</style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="logo">
+        Al Fayed <span>Stocks</span>
+      </a>
 
-<header>
-<div class="logo">Al Fayed <span>Stocks</span></div>
-</header>
+      <nav class="main-nav">
+        <a href="index.html" class="active">الرئيسية</a>
+        <a href="saudi.html">السوق السعودي</a>
+        <a href="usa.html">السوق الأمريكي</a>
+        <a href="news.html">الأخبار</a>
+        <a href="analysis.html">التحليلات</a>
+        <a href="recommendations.html">التوصيات</a>
+        <a href="watchlist.html">قائمتي</a>
+        <a href="services.html">خدماتنا</a>
+      </nav>
 
-<section class="hero">
-<div class="container">
+      <button class="menu-button" onclick="toggleMenu()" aria-label="فتح القائمة">
+        ☰
+      </button>
+    </div>
 
-<div class="eyebrow">
-MARKETS • 15 SEPTEMBER 2026
-</div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="index.html">الرئيسية</a>
+      <a href="saudi.html">السوق السعودي</a>
+      <a href="usa.html">السوق الأمريكي</a>
+      <a href="news.html">الأخبار</a>
+      <a href="analysis.html">التحليلات</a>
+      <a href="recommendations.html">التوصيات</a>
+      <a href="watchlist.html">قائمتي</a>
+      <a href="services.html">خدماتنا</a>
+    </div>
+  </header>
 
-<h1>🇸🇦 السوق السعودي 🇺🇸</h1>
+  <main>
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-label">MARKET DASHBOARD • 15 SEPTEMBER 2026</div>
 
-<p class="lead">
-متابعة السوق السعودي والأمريكي وأبرز المؤشرات والقطاعات والتحركات.
-</p>
+        <h1>
+          أهلاً بك في
+          <span>Al Fayed Stocks</span>
+        </h1>
 
-<div class="market-card">
+        <p>
+          متابعة السوق السعودي والأمريكي، أحدث الأخبار، التحليلات،
+          والقطاعات الأكثر نشاطًا في مكان واحد.
+        </p>
 
-<div class="card-top">
-<div class="card-title">TASI</div>
-<div class="badge">افتتاح اليوم</div>
-</div>
+        <div class="hero-actions">
+          <a href="saudi.html" class="primary-button">
+            السوق السعودي
+          </a>
 
-<div class="value">10,872.54</div>
+          <a href="usa.html" class="secondary-button">
+            السوق الأمريكي
+          </a>
+        </div>
+      </div>
+    </section>
 
-<div class="change">
--5.92 ▼
-</div>
+    <!-- Market Cards -->
+    <section class="container market-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">MARKET OVERVIEW</span>
+          <h2>نظرة سريعة على الأسواق</h2>
+        </div>
 
-<div class="meta">
-<span>الإغلاق السابق: 10,878.46</span>
-<span>الفجوة: -0.05%</span>
-</div>
+        <span class="update-badge">آخر تحديث: 15/9/2026</span>
+      </div>
 
-<div class="chart">
-<svg viewBox="0 0 800 280" preserveAspectRatio="none">
-<defs>
-<linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#1ed091" stop-opacity=".38"/>
-<stop offset="1" stop-color="#1ed091" stop-opacity="0"/>
-</linearGradient>
-</defs>
-<path d="M0 100 L70 115 L130 88 L185 135 L250 118 L310 160 L370 130 L430 190 L490 170 L545 220 L610 205 L675 250 L735 230 L800 270 L800 280 L0 280Z" fill="url(#g)"/>
-<polyline points="0,100 70,115 130,88 185,135 250,118 310,160 370,130 430,190 490,170 545,220 610,205 675,250 735,230 800,270" fill="none" stroke="#25d392" stroke-width="5"/>
-</svg>
-</div>
+      <div class="market-grid">
+        <!-- Saudi Card -->
+        <article class="market-card">
+          <div class="card-top">
+            <div>
+              <span class="card-label">SAUDI MARKET</span>
+              <h3>🇸🇦 السوق السعودي</h3>
+            </div>
 
-</div>
-</div>
-</section>
+            <span class="status-badge neutral">افتتاح</span>
+          </div>
 
-<section class="section">
-<div class="container grid">
+          <div class="market-value">10,872.54</div>
 
-<div class="box">
-<h2>📊 آخر إغلاق</h2>
-<p class="green">10,878.46</p>
-<p>+13.89 نقطة • +0.13%</p>
-</div>
+          <div class="market-change negative">
+            -5.92 ▼ (-0.05%)
+          </div>
 
-<div class="box">
-<h2>📈 الدعم</h2>
-<p>10,850</p>
-<p>ثم 10,800</p>
-</div>
+          <div class="market-details">
+            <div>
+              <span>الإغلاق السابق</span>
+              <strong>10,878.46</strong>
+            </div>
 
-<div class="box">
-<h2>📉 المقاومة</h2>
-<p>10,900</p>
-<p>ثم 10,950</p>
-</div>
+            <div>
+              <span>الجلسة</span>
+              <strong>سعودية</strong>
+            </div>
+          </div>
 
-</div>
-</section>
+          <div class="mini-chart">
+            <svg viewBox="0 0 500 120" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="saudiGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#d7a84b" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#d7a84b" stop-opacity="0" />
+                </linearGradient>
+              </defs>
 
-<footer>
-© 2026 Al Fayed Stocks
-</footer>
+              <path
+                d="M0 78 L35 72 L70 80 L105 61 L140 66 L175 48 L210 57 L245 43 L280 51 L315 34 L350 42 L385 28 L420 36 L455 22 L500 30 L500 120 L0 120 Z"
+                fill="url(#saudiGradient)"
+              />
 
+              <path
+                d="M0 78 L35 72 L70 80 L105 61 L140 66 L175 48 L210 57 L245 43 L280 51 L315 34 L350 42 L385 28 L420 36 L455 22 L500 30"
+                fill="none"
+                stroke="#d7a84b"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <a href="saudi.html" class="card-link">
+            عرض تحليل السوق السعودي
+            <span>←</span>
+          </a>
+        </article>
+
+        <!-- USA Card -->
+        <article class="market-card">
+          <div class="card-top">
+            <div>
+              <span class="card-label">US MARKET</span>
+              <h3>🇺🇸 السوق الأمريكي</h3>
+            </div>
+
+            <span class="status-badge negative">ضغط قصير الأجل</span>
+          </div>
+
+          <div class="market-value">29,390.25</div>
+
+          <div class="market-change negative">
+            -0.23% ▼
+          </div>
+
+          <div class="market-details">
+            <div>
+              <span>المؤشر</span>
+              <strong>Nasdaq 100 Futures</strong>
+            </div>
+
+            <div>
+              <span>الجلسة</span>
+              <strong>أمريكية</strong>
+            </div>
+          </div>
+
+          <div class="mini-chart">
+            <svg viewBox="0 0 500 120" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="usaGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#42d392" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#42d392" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M0 30 L35 42 L70 36 L105 54 L140 47 L175 64 L210 55 L245 76 L280 68 L315 84 L350 75 L385 92 L420 82 L455 101 L500 94 L500 120 L0 120 Z"
+                fill="url(#usaGradient)"
+              />
+
+              <path
+                d="M0 30 L35 42 L70 36 L105 54 L140 47 L175 64 L210 55 L245 76 L280 68 L315 84 L350 75 L385 92 L420 82 L455 101 L500 94"
+                fill="none"
+                stroke="#42d392"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <a href="usa.html" class="card-link">
+            عرض تحليل السوق الأمريكي
+            <span>←</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Main Indicators -->
+    <section class="container indicators-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">GLOBAL INDICATORS</span>
+          <h2>المؤشرات الرئيسية</h2>
+        </div>
+      </div>
+
+      <div class="indicators-grid">
+        <div class="indicator-card">
+          <span>Nasdaq Composite</span>
+          <strong>26,186.41</strong>
+          <small class="negative">-0.56%</small>
+        </div>
+
+        <div class="indicator-card">
+          <span>S&amp;P 500</span>
+          <strong>7,619.94</strong>
+          <small class="negative">-0.48%</small>
+        </div>
+
+        <div class="indicator-card">
+          <span>Dow Jones</span>
+          <strong>52,421.17</strong>
+          <small class="negative">-0.29%</small>
+        </div>
+
+        <div class="indicator-card">
+          <span>Brent Oil</span>
+          <strong>$107.37</strong>
+          <small class="positive">ارتفاع</small>
+        </div>
+
+        <div class="indicator-card">
+          <span>WTI Oil</span>
+          <strong>$103.24</strong>
+          <small class="positive">ارتفاع</small>
+        </div>
+
+        <div class="indicator-card">
+          <span>US 10Y Yield</span>
+          <strong>5.02%+</strong>
+          <small class="negative">ضغط على الأسهم</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- News and Analysis -->
+    <section class="container content-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">LATEST UPDATES</span>
+          <h2>أحدث المتابعات</h2>
+        </div>
+
+        <a href="news.html" class="view-all">عرض كل الأخبار ←</a>
+      </div>
+
+      <div class="content-grid">
+        <article class="content-card">
+          <div class="content-icon">📰</div>
+          <div>
+            <span class="content-label">أخبار السوق الأمريكي</span>
+            <h3>اجتماع الفيدرالي يبدأ اليوم وسط ترقب لقرار الفائدة</h3>
+            <p>
+              الأسواق تترقب قرار الفيدرالي وتصريحات السياسة النقدية،
+              بالتزامن مع ارتفاع عوائد السندات واستمرار الضغط على أسهم التقنية.
+            </p>
+            <a href="news.html">اقرأ التفاصيل ←</a>
+          </div>
+        </article>
+
+        <article class="content-card">
+          <div class="content-icon">📊</div>
+          <div>
+            <span class="content-label">تحليل السوق السعودي</span>
+            <h3>تاسي يفتتح على تراجع طفيف بعد إغلاق إيجابي</h3>
+            <p>
+              افتتح المؤشر عند 10,872.54 نقطة مقابل إغلاق سابق عند
+              10,878.46 نقطة، مع متابعة مستويات الدعم والمقاومة.
+            </p>
+            <a href="saudi.html">عرض التحليل ←</a>
+          </div>
+        </article>
+
+        <article class="content-card">
+          <div class="content-icon">📈</div>
+          <div>
+            <span class="content-label">القطاعات والأسهم</span>
+            <h3>متابعة القطاعات الأكثر نشاطًا وتحركًا</h3>
+            <p>
+              تابع أداء القطاعات والأسهم القيادية وأبرز التحركات
+              خلال الجلسات القادمة.
+            </p>
+            <a href="analysis.html">عرض التحليلات ←</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="container quick-section">
+      <div class="quick-card">
+        <div>
+          <span class="section-label">AL FAYED STOCKS</span>
+          <h2>كل أدوات المتابعة في مكان واحد</h2>
+          <p>
+            احفظ أسهمك المفضلة، تابع التوصيات، واستعرض التحليلات والخدمات.
+          </p>
+        </div>
+
+        <div class="quick-actions">
+          <a href="watchlist.html" class="primary-button">قائمتي</a>
+          <a href="recommendations.html" class="secondary-button">التوصيات</a>
+          <a href="services.html" class="secondary-button">خدماتنا</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a href="index.html" class="logo">
+          Al Fayed <span>Stocks</span>
+        </a>
+        <p>منصة لمتابعة الأسواق والتحليلات المالية.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="news.html">الأخبار</a>
+        <a href="analysis.html">التحليلات</a>
+        <a href="services.html">الخدمات</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © 2026 Al Fayed Stocks — جميع الحقوق محفوظة
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+  </script>
+
+  <script src="app.js"></script>
 </body>
 </html>
