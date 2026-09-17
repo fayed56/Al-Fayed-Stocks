@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Al Fayed Stocks | السوق الأمريكي</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -14,367 +17,375 @@
 }
 
 body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:#050807;
-  color:#f2f5f3;
-  line-height:1.7;
+font-family:Arial,Tahoma,sans-serif;
+background:#050807;
+color:#f2f5f3;
+line-height:1.7;
 }
 
 header{
-  height:175px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-bottom:1px solid #18251f;
-  background:
-    radial-gradient(circle at center,#10251b 0%,#050807 60%);
+height:175px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-bottom:1px solid #18251f;
+background:
+radial-gradient(circle at center,#10251b 0%,#050807 60%);
 }
 
 .logo{
-  font-size:38px;
-  font-weight:900;
-  letter-spacing:-1px;
+font-size:38px;
+font-weight:900;
+letter-spacing:-1px;
 }
 
 .logo span{
-  color:#20c997;
+color:#20c997;
 }
 
 .container{
-  width:min(1180px,92%);
-  margin:auto;
+width:min(1180px,92%);
+margin:auto;
 }
 
 .hero{
-  padding:35px 0 25px;
+padding:35px 0 25px;
 }
 
 .hero small{
-  color:#20c997;
-  font-weight:800;
-  letter-spacing:1.5px;
+color:#20c997;
+font-weight:800;
+letter-spacing:1.5px;
 }
 
 .hero h1{
-  font-size:42px;
-  margin-top:8px;
+font-size:42px;
+margin-top:8px;
 }
 
 .hero p{
-  color:#9aa7a0;
-  margin-top:8px;
+color:#9aa7a0;
+margin-top:8px;
 }
 
 .card{
-  background:
-    linear-gradient(145deg,#0d1511,#080c0a);
-  border:1px solid #1b3026;
-  border-radius:25px;
-  padding:28px;
-  margin-bottom:24px;
-  box-shadow:0 15px 45px rgba(0,0,0,.25);
+background:
+linear-gradient(145deg,#0d1511,#080c0a);
+border:1px solid #1b3026;
+border-radius:25px;
+padding:28px;
+margin-bottom:24px;
+box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
 .card-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
 }
 
 .card-title h2{
-  font-size:22px;
+font-size:22px;
 }
 
 .badge{
-  padding:6px 13px;
-  border-radius:30px;
-  font-size:13px;
-  font-weight:bold;
+padding:6px 13px;
+border-radius:30px;
+font-size:13px;
+font-weight:bold;
 }
 
 .red{
-  background:#301412;
-  color:#ff756d;
-  border:1px solid #63302c;
+background:#301412;
+color:#ff756d;
+border:1px solid #63302c;
 }
 
 .green{
-  background:#102b20;
-  color:#20c997;
-  border:1px solid #205b44;
+background:#102b20;
+color:#20c997;
+border:1px solid #205b44;
 }
 
 .index-price{
-  font-size:52px;
-  font-weight:900;
-  direction:ltr;
-  text-align:right;
+font-size:52px;
+font-weight:900;
+direction:ltr;
+text-align:right;
 }
 
 .change{
-  color:#20c997;
-  font-size:20px;
-  font-weight:bold;
-  margin-top:2px;
+color:#20c997;
+font-size:20px;
+font-weight:bold;
+margin-top:2px;
 }
 
 .market-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:25px;
-  margin-top:20px;
-  color:#a8b1ac;
+display:flex;
+flex-wrap:wrap;
+gap:25px;
+margin-top:20px;
+color:#a8b1ac;
 }
 
 .market-meta strong{
-  color:#fff;
-  display:block;
-  font-size:17px;
+color:#fff;
+display:block;
+font-size:17px;
 }
 
 .chart{
-  margin-top:30px;
-  padding:15px;
-  border-radius:18px;
-  background:#07100c;
-  border:1px solid #14261d;
+margin-top:30px;
+padding:15px;
+border-radius:18px;
+background:#07100c;
+border:1px solid #14261d;
 }
 
 .chart svg{
-  width:100%;
-  height:280px;
+width:100%;
+height:280px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
 }
 
 .info{
-  background:#0a120e;
-  border:1px solid #17271f;
-  border-radius:18px;
-  padding:20px;
+background:#0a120e;
+border:1px solid #17271f;
+border-radius:18px;
+padding:20px;
 }
 
 .info span{
-  color:#8f9d95;
-  font-size:14px;
+color:#8f9d95;
+font-size:14px;
 }
 
 .info strong{
-  display:block;
-  margin-top:6px;
-  font-size:21px;
+display:block;
+margin-top:6px;
+font-size:21px;
 }
 
 .section-title{
-  font-size:25px;
-  margin-bottom:18px;
+font-size:25px;
+margin-bottom:18px;
 }
 
 .levels{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
 
 .level-box{
-  background:#09110d;
-  border:1px solid #1a2d23;
-  border-radius:18px;
-  padding:22px;
+background:#09110d;
+border:1px solid #1a2d23;
+border-radius:18px;
+padding:22px;
 }
 
 .level-box h3{
-  margin-bottom:12px;
+margin-bottom:12px;
 }
 
 .level-box ul{
-  list-style:none;
+list-style:none;
 }
 
 .level-box li{
-  padding:8px 0;
-  border-bottom:1px solid #15221b;
+padding:8px 0;
+border-bottom:1px solid #15221b;
 }
 
 .resistance h3{
-  color:#ff766c;
+color:#ff766c;
 }
 
 .support h3{
-  color:#20c997;
+color:#20c997;
 }
 
 .scenarios{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
 }
 
 .scenario{
-  padding:22px;
-  border-radius:18px;
-  border:1px solid #1a2c23;
+padding:22px;
+border-radius:18px;
+border:1px solid #1a2c23;
 }
 
 .scenario h3{
-  margin-bottom:10px;
+margin-bottom:10px;
 }
 
 .scenario p{
-  color:#aab3ad;
+color:#aab3ad;
 }
 
 .table-wrap{
-  overflow-x:auto;
+overflow-x:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
+width:100%;
+border-collapse:collapse;
 }
 
 th,td{
-  padding:14px 12px;
-  text-align:right;
-  border-bottom:1px solid #18251f;
+padding:14px 12px;
+text-align:right;
+border-bottom:1px solid #18251f;
 }
 
 th{
-  color:#8e9b94;
-  font-size:14px;
+color:#8e9b94;
+font-size:14px;
 }
 
 .up{
-  color:#20c997;
-  font-weight:bold;
+color:#20c997;
+font-weight:bold;
 }
 
 .down{
-  color:#ff7168;
-  font-weight:bold;
+color:#ff7168;
+font-weight:bold;
 }
 
 .watch{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
 }
 
 .stock{
-  padding:18px;
-  background:#09110d;
-  border:1px solid #182b21;
-  border-radius:17px;
+padding:18px;
+background:#09110d;
+border:1px solid #182b21;
+border-radius:17px;
 }
 
 .stock b{
-  color:#20c997;
-  font-size:19px;
+color:#20c997;
+font-size:19px;
 }
 
 .stock span{
-  display:block;
-  color:#a2aaa5;
-  margin-top:4px;
+display:block;
+color:#a2aaa5;
+margin-top:4px;
 }
 
 .review-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
 }
 
 .review{
-  background:#09110d;
-  border:1px solid #182b21;
-  border-radius:18px;
-  padding:20px;
+background:#09110d;
+border:1px solid #182b21;
+border-radius:18px;
+padding:20px;
 }
 
 .review p{
-  color:#b4bdb7;
+color:#b4bdb7;
 }
 
 .review small{
-  display:block;
-  color:#20c997;
-  margin-top:12px;
+display:block;
+color:#20c997;
+margin-top:12px;
 }
 
 footer{
-  margin-top:45px;
-  padding:30px 0;
-  text-align:center;
-  color:#6f7b74;
-  border-top:1px solid #16231c;
+margin-top:45px;
+padding:30px 0;
+text-align:center;
+color:#6f7b74;
+border-top:1px solid #16231c;
 }
 
 @media(max-width:850px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
 
-  .watch,
-  .review-grid{
-    grid-template-columns:1fr 1fr;
-  }
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .hero h1{
-    font-size:34px;
-  }
+.watch,
+.review-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:34px;
+}
+
 }
 
 @media(max-width:600px){
-  header{
-    height:130px;
-  }
 
-  .logo{
-    font-size:30px;
-  }
-
-  .index-price{
-    font-size:39px;
-  }
-
-  .grid,
-  .levels,
-  .scenarios,
-  .watch,
-  .review-grid{
-    grid-template-columns:1fr;
-  }
-
-  .card{
-    padding:20px;
-  }
-
-  .hero h1{
-    font-size:30px;
-  }
+header{
+height:130px;
 }
+
+.logo{
+font-size:30px;
+}
+
+.index-price{
+font-size:39px;
+}
+
+.grid,
+.levels,
+.scenarios,
+.watch,
+.review-grid{
+grid-template-columns:1fr;
+}
+
+.card{
+padding:20px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
   <div class="logo">
     Al Fayed <span>Stocks</span>
   </div>
+
 </header>
 
 <main class="container">
 
 <section class="hero">
 
-  <small>US MARKET • 16 SEPTEMBER 2026</small>
+  <small>US MARKET • 17 SEPTEMBER 2026</small>
 
   <h1>🇺🇸 السوق الأمريكي</h1>
 
@@ -385,158 +396,177 @@ footer{
 
 </section>
 
+
 <!-- NASDAQ 100 -->
 
 <section class="card">
 
   <div class="card-title">
 
-    <h2>Nasdaq 100</h2>
+    <h2>Nasdaq 100 Futures</h2>
 
-    <span class="badge red">
-      ترقب الفيدرالي
+    <span class="badge green">
+      تعافٍ في العقود
     </span>
 
   </div>
 
   <div class="index-price">
-    29,274.00
+    29,446.50
   </div>
 
   <div class="change">
-    +10.50 ▲ (+0.04%)
+    +194.99 ▲ (+0.67%)
   </div>
 
   <div class="market-meta">
 
     <div>
-      آخر إغلاق للجلسة
-      <strong>29,103.51</strong>
+      آخر إغلاق مرجعي
+      <strong>29,251.51</strong>
     </div>
 
     <div>
-      عقود Nasdaq 100
-      <strong>29,274.00</strong>
+      العقود الحالية
+      <strong>29,446.50</strong>
     </div>
 
     <div>
-      اتجاه العقود
-      <strong>+0.04%</strong>
+      التغير
+      <strong>+0.67%</strong>
     </div>
 
     <div>
       الحالة
-      <strong>قبل الافتتاح</strong>
+      <strong>Futures</strong>
     </div>
 
   </div>
 
   <div class="chart">
 
-    <svg viewBox="0 0 1000 280"
-         preserveAspectRatio="none">
+  <svg viewBox="0 0 1000 280"
+       preserveAspectRatio="none">
 
-      <defs>
+  <defs>
 
-        <linearGradient id="fill"
-                        x1="0"
-                        x2="0"
-                        y1="0"
-                        y2="1">
+    <linearGradient id="fill"
+                    x1="0"
+                    x2="0"
+                    y1="0"
+                    y2="1">
 
-          <stop offset="0%"
-                stop-color="#20c997"
-                stop-opacity=".30"/>
+      <stop offset="0%"
+            stop-color="#20c997"
+            stop-opacity=".30"/>
 
-          <stop offset="100%"
-                stop-color="#20c997"
-                stop-opacity="0"/>
+      <stop offset="100%"
+            stop-color="#20c997"
+            stop-opacity="0"/>
 
-        </linearGradient>
+    </linearGradient>
 
-      </defs>
+  </defs>
 
-      <polyline
-        points="
-        0,220
-        70,210
-        140,225
-        210,205
-        280,215
-        350,195
-        420,205
-        490,175
-        560,185
-        630,155
-        700,165
-        770,135
-        840,145
-        910,120
-        1000,105"
+  <polyline
+  points="
+  0,215
+  70,220
+  140,205
+  210,212
+  280,195
+  350,205
+  420,180
+  490,190
+  560,165
+  630,175
+  700,150
+  770,160
+  840,125
+  910,105
+  1000,75"
+  fill="none"
+  stroke="#20c997"
+  stroke-width="5"
+  />
 
-        fill="none"
-        stroke="#20c997"
-        stroke-width="5"
-      />
+  <polygon
+  points="
+  0,215
+  70,220
+  140,205
+  210,212
+  280,195
+  350,205
+  420,180
+  490,190
+  560,165
+  630,175
+  700,150
+  770,160
+  840,125
+  910,105
+  1000,75
+  1000,280
+  0,280"
+  fill="url(#fill)"
+  />
 
-      <polygon
-        points="
-        0,220
-        70,210
-        140,225
-        210,205
-        280,215
-        350,195
-        420,205
-        490,175
-        560,185
-        630,155
-        700,165
-        770,135
-        840,145
-        910,120
-        1000,105
-        1000,280
-        0,280"
-
-        fill="url(#fill)"
-      />
-
-    </svg>
+  </svg>
 
   </div>
 
 </section>
+
 
 <!-- MARKET STATS -->
 
 <section class="grid">
 
   <div class="info">
+
     <span>الاتجاه</span>
+
     <strong class="down">
-      محايد مائل للسلبية
+      محايد مائل للحذر
     </strong>
+
   </div>
 
   <div class="info">
+
     <span>الدعم الأول</span>
-    <strong>29,300</strong>
+
+    <strong>
+      29,300
+    </strong>
+
   </div>
 
   <div class="info">
+
     <span>المقاومة الأولى</span>
-    <strong>29,600</strong>
+
+    <strong>
+      29,600
+    </strong>
+
   </div>
 
   <div class="info">
+
     <span>المقاومة الرئيسية</span>
-    <strong>30,000</strong>
+
+    <strong>
+      30,000
+    </strong>
+
   </div>
 
 </section>
 
 <br>
+
 
 <!-- LEVELS -->
 
@@ -548,45 +578,47 @@ footer{
 
   <div class="levels">
 
-    <div class="level-box resistance">
+  <div class="level-box resistance">
 
-      <h3>🔴 المقاومات</h3>
+  <h3>🔴 المقاومات</h3>
 
-      <ul>
+  <ul>
 
-        <li>29,600 — مقاومة أولى</li>
+    <li>29,600 — مقاومة أولى</li>
 
-        <li>29,800 — مقاومة مهمة</li>
+    <li>29,800 — مقاومة مهمة</li>
 
-        <li>30,000 — مقاومة رئيسية</li>
+    <li>30,000 — مقاومة رئيسية</li>
 
-        <li>30,175 — اختراقها يعزز الإيجابية</li>
+    <li>30,175 — اختراقها يعزز الإيجابية</li>
 
-      </ul>
+  </ul>
 
-    </div>
+  </div>
 
-    <div class="level-box support">
 
-      <h3>🟢 الدعوم</h3>
+  <div class="level-box support">
 
-      <ul>
+  <h3>🟢 الدعوم</h3>
 
-        <li>29,300 — دعم أول</li>
+  <ul>
 
-        <li>29,100 — دعم رئيسي</li>
+    <li>29,300 — دعم أول</li>
 
-        <li>28,800 — دعم تالٍ</li>
+    <li>29,100 — دعم رئيسي</li>
 
-        <li>28,400 — كسرها يضعف الاتجاه</li>
+    <li>28,800 — دعم تالٍ</li>
 
-      </ul>
+    <li>28,400 — كسرها يضعف الاتجاه</li>
 
-    </div>
+  </ul>
+
+  </div>
 
   </div>
 
 </section>
+
 
 <!-- SCENARIOS -->
 
@@ -598,37 +630,39 @@ footer{
 
   <div class="scenarios">
 
-    <div class="scenario">
+  <div class="scenario">
 
-      <h3 class="up">
-        🟢 السيناريو الإيجابي
-      </h3>
+  <h3 class="up">
+    🟢 السيناريو الإيجابي
+  </h3>
 
-      <p>
-        الحفاظ على 29,300–29,100 ثم اختراق
-        29,600 بإغلاق قوي قد يدفع المؤشر نحو
-        29,800 ثم 30,000.
-      </p>
+  <p>
+    الحفاظ على 29,300–29,100 ثم اختراق
+    29,600 قد يدفع العقود نحو
+    29,800 ثم 30,000.
+  </p>
 
-    </div>
+  </div>
 
-    <div class="scenario">
 
-      <h3 class="down">
-        🔴 السيناريو السلبي
-      </h3>
+  <div class="scenario">
 
-      <p>
-        كسر 29,300 ثم 29,100 قد يفتح المجال
-        للهبوط نحو 28,800، وكسر 28,400
-        يضعف الاتجاه الصاعد بشكل واضح.
-      </p>
+  <h3 class="down">
+    🔴 السيناريو السلبي
+  </h3>
 
-    </div>
+  <p>
+    كسر 29,300 ثم 29,100 قد يفتح المجال
+    للهبوط نحو 28,800، وكسر 28,400
+    يضعف الاتجاه الصاعد بشكل واضح.
+  </p>
+
+  </div>
 
   </div>
 
 </section>
+
 
 <!-- MAIN INDICES -->
 
@@ -640,51 +674,80 @@ footer{
 
   <div class="table-wrap">
 
-    <table>
+  <table>
 
-      <thead>
+  <thead>
 
-        <tr>
-          <th>المؤشر</th>
-          <th>الإغلاق</th>
-          <th>التغير</th>
-        </tr>
+    <tr>
 
-      </thead>
+      <th>المؤشر</th>
 
-      <tbody>
+      <th>الإغلاق</th>
 
-        <tr>
-          <td>Nasdaq Composite</td>
-          <td>25,981.57</td>
-          <td class="down">-0.78%</td>
-        </tr>
+      <th>التغير</th>
 
-        <tr>
-          <td>S&P 500</td>
-          <td>7,585.73</td>
-          <td class="down">-0.40%</td>
-        </tr>
+    </tr>
 
-        <tr>
-          <td>Dow Jones</td>
-          <td>52,093.11</td>
-          <td class="down">-0.60%</td>
-        </tr>
+  </thead>
 
-        <tr>
-          <td>Russell 2000</td>
-          <td>2,870.29</td>
-          <td class="down">-0.80%</td>
-        </tr>
+  <tbody>
 
-      </tbody>
+<tr>
 
-    </table>
+  <td>Nasdaq Composite</td>
+
+  <td>25,978.42</td>
+
+  <td class="down">
+    -0.01%
+  </td>
+
+</tr>
+
+<tr>
+
+  <td>S&P 500</td>
+
+  <td>7,551.81</td>
+
+  <td class="down">
+    -0.45%
+  </td>
+
+</tr>
+
+<tr>
+
+  <td>Dow Jones</td>
+
+  <td>51,461.90</td>
+
+  <td class="down">
+    -1.21%
+  </td>
+
+</tr>
+
+<tr>
+
+  <td>Russell 2000</td>
+
+  <td>2,858.81</td>
+
+  <td class="down">
+    -0.40%
+  </td>
+
+</tr>
+
+  </tbody>
+
+  </table>
 
   </div>
 
 </section>
+
 
 <!-- WATCHLIST -->
 
@@ -696,39 +759,63 @@ footer{
 
   <div class="watch">
 
-    <div class="stock">
-      <b>NVDA</b>
-      <span>NVIDIA — الذكاء الاصطناعي</span>
-    </div>
+  <div class="stock">
 
-    <div class="stock">
-      <b>AAPL</b>
-      <span>Apple — التكنولوجيا</span>
-    </div>
+    <b>NVDA</b>
 
-    <div class="stock">
-      <b>MSFT</b>
-      <span>Microsoft — السحابة والذكاء الاصطناعي</span>
-    </div>
+    <span>NVIDIA — الذكاء الاصطناعي</span>
 
-    <div class="stock">
-      <b>AMZN</b>
-      <span>Amazon — التجارة والسحابة</span>
-    </div>
+  </div>
 
-    <div class="stock">
-      <b>TSLA</b>
-      <span>Tesla — السيارات والذكاء الاصطناعي</span>
-    </div>
 
-    <div class="stock">
-      <b>META</b>
-      <span>Meta — الإعلانات والذكاء الاصطناعي</span>
-    </div>
+  <div class="stock">
+
+    <b>AAPL</b>
+
+    <span>Apple — التكنولوجيا</span>
+
+  </div>
+
+
+  <div class="stock">
+
+    <b>MSFT</b>
+
+    <span>Microsoft — السحابة والذكاء الاصطناعي</span>
+
+  </div>
+
+
+  <div class="stock">
+
+    <b>AMZN</b>
+
+    <span>Amazon — التجارة والسحابة</span>
+
+  </div>
+
+
+  <div class="stock">
+
+    <b>TSLA</b>
+
+    <span>Tesla — السيارات والذكاء الاصطناعي</span>
+
+  </div>
+
+
+  <div class="stock">
+
+    <b>META</b>
+
+    <span>Meta — الإعلانات والذكاء الاصطناعي</span>
+
+  </div>
 
   </div>
 
 </section>
+
 
 <!-- SECTORS -->
 
@@ -740,57 +827,106 @@ footer{
 
   <div class="table-wrap">
 
-    <table>
+  <table>
 
-      <thead>
+  <thead>
 
-        <tr>
-          <th>القطاع</th>
-          <th>النظرة</th>
-          <th>الملاحظة</th>
-        </tr>
+    <tr>
 
-      </thead>
+      <th>القطاع</th>
 
-      <tbody>
+      <th>النظرة</th>
 
-        <tr>
-          <td>الطاقة</td>
-          <td class="up">🟢 داعم</td>
-          <td>النفط ما زال فوق 100 دولار</td>
-        </tr>
+      <th>الملاحظة</th>
 
-        <tr>
-          <td>التكنولوجيا</td>
-          <td class="down">⚠️ حذر</td>
-          <td>ضغط من العوائد ومخاوف AI</td>
-        </tr>
+    </tr>
 
-        <tr>
-          <td>أشباه الموصلات</td>
-          <td class="down">⚠️ حذر</td>
-          <td>حساسة لحركة Nasdaq</td>
-        </tr>
+  </thead>
 
-        <tr>
-          <td>الماليات</td>
-          <td>محايد</td>
-          <td>ترقب قرار الفيدرالي والعوائد</td>
-        </tr>
+  <tbody>
 
-        <tr>
-          <td>الصناعة</td>
-          <td>محايد</td>
-          <td>تتأثر بالنمو والعوائد</td>
-        </tr>
+<tr>
 
-      </tbody>
+  <td>التكنولوجيا</td>
 
-    </table>
+  <td class="down">
+    ⚠️ حذر
+  </td>
+
+  <td>
+    حساسة لتحركات العوائد وNasdaq
+  </td>
+
+</tr>
+
+
+<tr>
+
+  <td>أشباه الموصلات</td>
+
+  <td class="down">
+    ⚠️ حذر
+  </td>
+
+  <td>
+    حساسة لعوائد السندات والذكاء الاصطناعي
+  </td>
+
+</tr>
+
+
+<tr>
+
+  <td>الطاقة</td>
+
+  <td class="up">
+    🟢 متابعة
+  </td>
+
+  <td>
+    حركة النفط والتوترات الجيوسياسية
+  </td>
+
+</tr>
+
+
+<tr>
+
+  <td>الماليات</td>
+
+  <td class="down">
+    ⚠️ حذر
+  </td>
+
+  <td>
+    تأثر بالعوائد وقرار الفيدرالي
+  </td>
+
+</tr>
+
+
+<tr>
+
+  <td>الصناعة</td>
+
+  <td>
+    محايد
+  </td>
+
+  <td>
+    تتأثر بالنمو والعوائد
+  </td>
+
+</tr>
+
+  </tbody>
+
+  </table>
 
   </div>
 
 </section>
+
 
 <!-- MARKET NEWS -->
 
@@ -802,104 +938,114 @@ footer{
 
   <div class="review-grid">
 
-    <div class="review">
 
-      <p>
-        أسعار النفط ما زالت مرتفعة، مع تداول
-        Brent قرب 107.92 دولار وWTI قرب
-        104.42 دولار، رغم تراجع الأسعار اليوم.
-      </p>
+  <div class="review">
 
-      <small>
-        📌 النفط والتضخم
-      </small>
+  <p>
+    الفيدرالي رفع الفائدة 25 نقطة أساس
+    إلى نطاق 3.75%–4.00%، مع استمرار
+    التركيز على التضخم والعوائد.
+  </p>
 
-    </div>
+  <small>
+    🏦 Federal Reserve
+  </small>
 
-    <div class="review">
+  </div>
 
-      <p>
-        أسهم التكنولوجيا والذكاء الاصطناعي
-        تحت المراقبة بعد ضغوط جلسة الثلاثاء
-        وارتفاع عوائد السندات.
-      </p>
 
-      <small>
-        🤖 قطاع التكنولوجيا
-      </small>
+  <div class="review">
 
-    </div>
+  <p>
+    الأسهم الأمريكية أغلقت جلسة الأربعاء
+    على تراجع، مع هبوط Dow وS&P 500
+    واستقرار Nasdaq تقريبًا.
+  </p>
 
-    <div class="review">
+  <small>
+    📊 إغلاق 16 سبتمبر
+  </small>
 
-      <p>
-        قرار الفيدرالي اليوم هو أبرز حدث
-        للأسواق، مع ترقب قرار الفائدة
-        وتوقعات السياسة النقدية القادمة.
-      </p>
+  </div>
 
-      <small>
-        🏦 Federal Reserve
-      </small>
 
-    </div>
+  <div class="review">
+
+  <p>
+    العقود الأمريكية ترتفع في آخر تحديث،
+    مع صعود عقود Nasdaq 100 بنحو 0.67%
+    قبل الجلسة.
+  </p>
+
+  <small>
+    📈 Premarket / Futures
+  </small>
+
+  </div>
+
 
   </div>
 
 </section>
+
 
 <!-- OPINIONS -->
 
 <section class="card">
 
   <h2 class="section-title">
-    💬 قراءة السوق لجلسة اليوم
+    💬 قراءة الجلسة
   </h2>
 
   <div class="review-grid">
 
-    <div class="review">
 
-      <p>
-        مستوى 29,300 يظل نقطة مهمة للمراقبة
-        في عقود Nasdaq 100 قبل الافتتاح.
-      </p>
+  <div class="review">
 
-      <small>
-        قراءة فنية
-      </small>
+  <p>
+    منطقة 29,300 تظل مستوى فنيًا مهمًا
+    للمراقبة في حركة Nasdaq 100 Futures.
+  </p>
 
-    </div>
+  <small>
+    قراءة فنية
+  </small>
 
-    <div class="review">
+  </div>
 
-      <p>
-        اختراق 29,600 قد يحسن الزخم
-        ويفتح الطريق نحو 29,800 ثم 30,000.
-      </p>
 
-      <small>
-        قراءة فنية
-      </small>
+  <div class="review">
 
-    </div>
+  <p>
+    الاقتراب من 29,600 يمثل منطقة مقاومة
+    مهمة لمراقبة استمرار التعافي.
+  </p>
 
-    <div class="review">
+  <small>
+    قراءة فنية
+  </small>
 
-      <p>
-        كسر 29,100 يعيد التركيز إلى
-        28,800، خصوصًا مع ارتفاع العوائد.
-      </p>
+  </div>
 
-      <small>
-        قراءة فنية
-      </small>
 
-    </div>
+  <div class="review">
+
+  <p>
+    استمرار ارتفاع العوائد بعد قرار الفيدرالي
+    قد يبقي أسهم النمو والتكنولوجيا تحت ضغط.
+  </p>
+
+  <small>
+    قراءة فنية
+  </small>
+
+  </div>
+
 
   </div>
 
 </section>
+
 
 <!-- SUMMARY -->
 
@@ -911,46 +1057,51 @@ footer{
 
   <p style="color:#adb6b0;font-size:17px">
 
-    السوق الأمريكي يدخل جلسة الأربعاء
-    بعد تراجع المؤشرات الرئيسية في جلسة الثلاثاء.
-    سجل Nasdaq Composite
-    <strong style="color:#ff7168">
-      25,981.57
-    </strong>
-    بانخفاض 0.78%، بينما تراجع S&P 500
-    إلى <strong style="color:#ff7168">
-    7,585.73
-    </strong>.
+    السوق الأمريكي يدخل جلسة الخميس 17 سبتمبر
+    بعد جلسة متقلبة أعقبت قرار الفيدرالي برفع
+    الفائدة 25 نقطة أساس.
 
     <br><br>
 
-    عقود Nasdaq 100 تتحرك قرب
+    أغلقت المؤشرات الرئيسية جلسة الأربعاء على
+    تراجع، بينما تحرك Nasdaq Composite قرب
+    الاستقرار.
+
+    <br><br>
+
+    في المقابل، ارتفعت عقود Nasdaq 100 Futures
+    إلى
     <strong style="color:#20c997">
-    29,274
+    29,446.50
     </strong>
-    قبل الافتتاح، مع بقاء
+    بارتفاع
+    <strong style="color:#20c997">
+    0.67%
+    </strong>
+    في آخر تحديث.
+
+    <br><br>
+
+    فنيًا، تبقى منطقة
     <strong style="color:#20c997">
     29,300
     </strong>
-    دعمًا مهمًا،
-    بينما تمثل
+    دعمًا مهمًا، بينما تمثل
     <strong style="color:#20c997">
     29,600
     </strong>
-    المقاومة الأولى.
+    مقاومة أولى، ثم
+    <strong style="color:#20c997">
+    30,000
+    </strong>
+    كمستوى رئيسي.
 
-    <br><br>
-
-    الأسواق تترقب قرار الفيدرالي اليوم،
-    بالتزامن مع بقاء عوائد السندات قرب 5%
-    وأسعار النفط فوق 100 دولار، وهو ما يجعل
-    حركة التكنولوجيا وNasdaq حساسة للأخبار
-    الاقتصادية والعوائد.
   </p>
 
 </section>
 
 </main>
+
 
 <footer>
 
@@ -967,4 +1118,5 @@ footer{
 </footer>
 
 </body>
+
 </html>
