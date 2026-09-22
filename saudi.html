@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -120,16 +119,6 @@ body{
   font-size:17px;
 }
 
-.badge.positive{
-  background:#0d3528;
-  color:#18d99b;
-}
-
-.badge.neutral{
-  background:#302a18;
-  color:#d8a94c;
-}
-
 .big-number{
   text-align:center;
   font-size:clamp(48px,10vw,78px);
@@ -144,14 +133,6 @@ body{
   font-size:25px;
   font-weight:700;
   direction:ltr;
-}
-
-.change.negative{
-  color:#ff686e;
-}
-
-.change.neutral{
-  color:#d8a94c;
 }
 
 .previous{
@@ -413,26 +394,6 @@ td{
   font-size:18px;
 }
 
-/* STATUS */
-
-.loading{
-  text-align:center;
-  color:#9aaba6;
-  padding:15px;
-  font-size:13px;
-}
-
-.error-box{
-  background:#351a1c;
-  border:1px solid #71383d;
-  color:#ff8b90;
-  border-radius:12px;
-  padding:15px;
-  text-align:center;
-  margin:15px auto;
-  max-width:800px;
-}
-
 /* FOOTER */
 
 footer{
@@ -462,7 +423,6 @@ footer{
 
 .previous{
   font-size:14px;
-  gap:15px;
 }
 
 .info-grid{
@@ -541,10 +501,11 @@ footer{
 }
 
 </style>
-
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <header class="top-header">
 
@@ -555,10 +516,12 @@ footer{
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
   <div class="hero-date" id="marketDate">
-    SAUDI MARKET • جاري تحميل البيانات...
+    SAUDI MARKET • 17 SEPTEMBER 2026
   </div>
 
   <h1>
@@ -574,10 +537,6 @@ footer{
 
 <main class="container">
 
-<!-- رسالة الاتصال -->
-
-<div id="connectionMessage"></div>
-
 
 <!-- TASI CARD -->
 
@@ -589,20 +548,20 @@ footer{
       المؤشر العام TASI
     </div>
 
-    <div class="badge neutral" id="marketBadge">
-      جاري التحميل
+    <div class="badge" id="marketBadge">
+      إغلاق شبه محايد
     </div>
 
   </div>
 
 
-  <div class="big-number" id="marketPrice">
-    —
+  <div class="big-number" id="tasiPrice">
+    10,779.96
   </div>
 
 
-  <div class="change neutral" id="marketChange">
-    —
+  <div class="change" id="tasiChange">
+    0.00% ━
   </div>
 
 
@@ -610,12 +569,12 @@ footer{
 
     <span>
       الإغلاق السابق:
-      <b id="previousClose">—</b>
+      <strong id="previousClose">10,779.96</strong>
     </span>
 
     <span>
       افتتاح الجلسة:
-      <b id="openPrice">—</b>
+      <strong id="openingPrice">10,765.62</strong>
     </span>
 
   </div>
@@ -640,18 +599,10 @@ footer{
       </defs>
 
 
-      <line x1="0" y1="55" x2="900" y2="55"
-        stroke="#183b32" stroke-width="1"/>
-
-      <line x1="0" y1="120" x2="900" y2="120"
-        stroke="#183b32" stroke-width="1"/>
-
-      <line x1="0" y1="185" x2="900" y2="185"
-        stroke="#183b32" stroke-width="1"/>
-
-      <line x1="0" y1="250" x2="900" y2="250"
-        stroke="#183b32" stroke-width="1"/>
-
+      <line x1="0" y1="55" x2="900" y2="55" stroke="#183b32" stroke-width="1"/>
+      <line x1="0" y1="120" x2="900" y2="120" stroke="#183b32" stroke-width="1"/>
+      <line x1="0" y1="185" x2="900" y2="185" stroke="#183b32" stroke-width="1"/>
+      <line x1="0" y1="250" x2="900" y2="250" stroke="#183b32" stroke-width="1"/>
 
       <path
         d="
@@ -676,7 +627,6 @@ footer{
         Z"
         fill="url(#area)"
       />
-
 
       <polyline
         points="
@@ -703,13 +653,7 @@ footer{
         stroke-linejoin="round"
       />
 
-
-      <circle
-        cx="900"
-        cy="125"
-        r="7"
-        fill="#25dda1"
-      />
+      <circle cx="900" cy="125" r="7" fill="#25dda1"/>
 
     </svg>
 
@@ -719,46 +663,23 @@ footer{
   <div class="info-grid">
 
     <div class="info-box">
-
       <small>الاتجاه</small>
-
-      <strong id="trend">
-        —
-      </strong>
-
+      <strong id="trend">محايد</strong>
     </div>
 
-
     <div class="info-box">
-
       <small>الدعم الأهم</small>
-
-      <strong class="down" id="supportMain">
-        —
-      </strong>
-
+      <strong class="down" id="supportMain">10,750</strong>
     </div>
 
-
     <div class="info-box">
-
       <small>المقاومة الأولى</small>
-
-      <strong class="up" id="resistanceMain">
-        —
-      </strong>
-
+      <strong class="up" id="resistanceMain">10,800</strong>
     </div>
 
-
     <div class="info-box">
-
       <small>الإغلاق السابق</small>
-
-      <strong id="previousClose2">
-        —
-      </strong>
-
+      <strong id="previousCloseBox">10,779.96</strong>
     </div>
 
   </div>
@@ -774,32 +695,31 @@ footer{
     🎯 <span>المستويات المهمة</span>
   </div>
 
-
   <div class="levels">
 
     <div class="level support">
       <small>الدعم الأول</small>
-      <strong id="support1">—</strong>
+      <strong id="support1">10,750</strong>
     </div>
 
     <div class="level support">
       <small>الدعم الثاني</small>
-      <strong id="support2">—</strong>
+      <strong id="support2">10,700</strong>
     </div>
 
     <div class="level support">
       <small>الدعم الثالث</small>
-      <strong id="support3">—</strong>
+      <strong id="support3">10,650</strong>
     </div>
 
     <div class="level resistance">
       <small>المقاومة الأولى</small>
-      <strong id="resistance1">—</strong>
+      <strong id="resistance1">10,800</strong>
     </div>
 
     <div class="level resistance">
       <small>المقاومة الثانية</small>
-      <strong id="resistance2">—</strong>
+      <strong id="resistance2">10,850</strong>
     </div>
 
   </div>
@@ -815,7 +735,6 @@ footer{
     📊 <span>السيناريو المتوقع</span>
   </div>
 
-
   <div class="scenarios">
 
     <div class="scenario">
@@ -825,7 +744,7 @@ footer{
       </h3>
 
       <p id="positiveScenario">
-        يتم تحديث السيناريو بناءً على بيانات السوق.
+        الثبات فوق 10,750 ثم تجاوز 10,800 قد يدعم اختبار 10,850 ثم 10,900، مع متابعة السيولة والأسهم القيادية.
       </p>
 
     </div>
@@ -838,7 +757,7 @@ footer{
       </h3>
 
       <p id="negativeScenario">
-        يتم تحديث السيناريو بناءً على بيانات السوق.
+        كسر 10,750 ثم 10,700 يفتح المجال لاختبار 10,650، خصوصًا مع استمرار اتساع عدد الأسهم المتراجعة.
       </p>
 
     </div>
@@ -856,13 +775,11 @@ footer{
     🟢 <span>الأكثر ارتفاعًا — جلسة 17 سبتمبر</span>
   </div>
 
-
   <div class="table-wrap">
 
     <table>
 
       <thead>
-
         <tr>
           <th>الرمز</th>
           <th>السهم</th>
@@ -870,9 +787,7 @@ footer{
           <th>التغير</th>
           <th>%</th>
         </tr>
-
       </thead>
-
 
       <tbody>
 
@@ -917,13 +832,11 @@ footer{
     🔴 <span>الأكثر انخفاضًا — جلسة 17 سبتمبر</span>
   </div>
 
-
   <div class="table-wrap">
 
     <table>
 
       <thead>
-
         <tr>
           <th>الرمز</th>
           <th>السهم</th>
@@ -931,9 +844,7 @@ footer{
           <th>التغير</th>
           <th>%</th>
         </tr>
-
       </thead>
-
 
       <tbody>
 
@@ -978,7 +889,6 @@ footer{
     📈 <span>أبرز القطاعات أداءً</span>
   </div>
 
-
   <div class="sectors">
 
     <div class="sector">
@@ -1018,7 +928,6 @@ footer{
   <div class="section-title">
     👁️ <span>أسهم تحت المراقبة اليوم</span>
   </div>
-
 
   <div class="watchlist">
 
@@ -1065,61 +974,47 @@ footer{
     💬 <span>قراءة جلسة اليوم</span>
   </div>
 
-
   <div class="reviews">
 
     <div class="review">
 
-      <div class="stars">
-        ★★★★★
-      </div>
+      <div class="stars">★★★★★</div>
 
       <p id="reading1">
-        يتم تحديث قراءة السوق تلقائيًا.
+        افتتح تاسي عند 10,765.62، أي أقل من الإغلاق السابق بـ14.34 نقطة، ثم أنهى الجلسة عند 10,779.96.
       </p>
 
-      <strong>
-        — قراءة السوق
-      </strong>
+      <strong>— قراءة السوق</strong>
 
     </div>
 
 
     <div class="review">
 
-      <div class="stars">
-        ★★★★☆
-      </div>
+      <div class="stars">★★★★☆</div>
 
       <p id="reading2">
-        يتم تحديث قراءة السوق تلقائيًا.
+        الإغلاق عند 10,779.96 جاء مطابقًا للإغلاق السابق، ما يجعل التغير اليومي عند 0.00%.
       </p>
 
-      <strong>
-        — متابعة حركة السوق
-      </strong>
+      <strong>— متابعة حركة السوق</strong>
 
     </div>
 
 
     <div class="review">
 
-      <div class="stars">
-        ★★★★☆
-      </div>
+      <div class="stars">★★★★☆</div>
 
       <p id="reading3">
-        يتم تحديث قراءة السوق تلقائيًا.
+        مستوى 10,800 يمثل مقاومة قريبة للمراقبة، بينما يظل 10,750 مستوى دعم فني قريب.
       </p>
 
-      <strong>
-        — قراءة فنية
-      </strong>
+      <strong>— قراءة فنية</strong>
 
     </div>
 
   </div>
-
 
   <p style="color:#71847e;margin-top:18px;font-size:12px;">
     * هذه القراءات تحليلية/تعليمية وليست توصية استثمارية.
@@ -1136,9 +1031,14 @@ footer{
     💡 <span>خلاصة جلسة اليوم</span>
   </div>
 
+  <p id="summary1">
+    افتتح تاسي عند <b>10,765.62</b>، مقابل إغلاق الجلسة السابقة عند <b>10,779.96</b>، أي فجوة افتتاحية قدرها <b>-14.34 نقطة (-0.13%)</b>، ثم أنهى الجلسة عند <b>10,779.96</b>، دون تغير عن الإغلاق السابق.
+  </p>
 
-  <p id="summaryText">
-    جاري تحميل خلاصة جلسة السوق...
+  <br>
+
+  <p id="summary2">
+    الإغلاق جاء عند نفس مستوى الإغلاق السابق، بينما كان الافتتاح أدنى منه بـ14.34 نقطة. وتظل مستويات <b>10,750 – 10,800</b> من المستويات المهمة للمراقبة في القراءة الفنية التالية.
   </p>
 
 </section>
@@ -1160,12 +1060,11 @@ footer{
 
 <script>
 
-let sb = null;
+/* ==========================================
+   SUPABASE — SAUDI MARKET DATA
+========================================== */
 
-
-/* =========================
-   HELPERS
-========================= */
+let supabaseClient = null;
 
 function formatNumber(value, decimals = 2){
 
@@ -1187,250 +1086,29 @@ function formatNumber(value, decimals = 2){
 }
 
 
-function formatPercent(value){
+function formatLevel(value){
 
   if(value === null || value === undefined || value === ''){
     return '—';
   }
 
-  const number = Number(value);
-
-  if(!Number.isFinite(number)){
-    return String(value);
-  }
-
-  const sign = number > 0 ? '+' : '';
-
-  return sign + number.toFixed(2) + '%';
+  return Number(value).toLocaleString('en-US',{
+    maximumFractionDigits:2
+  });
 
 }
 
 
-function formatChange(value){
+function setText(id,value){
 
-  if(value === null || value === undefined || value === ''){
-    return '—';
+  const element=document.getElementById(id);
+
+  if(element){
+    element.textContent=value;
   }
-
-  const number = Number(value);
-
-  if(!Number.isFinite(number)){
-    return String(value);
-  }
-
-  const sign = number > 0 ? '+' : '';
-
-  return sign + number.toFixed(2);
 
 }
 
-
-/* =========================
-   UPDATE UI
-========================= */
-
-function updateMarket(data){
-
-  if(!data) return;
-
-
-  /* التاريخ */
-
-  document.getElementById('marketDate').textContent =
-    'SAUDI MARKET • ' + (data.date_label || 'آخر تحديث');
-
-
-  /* السعر */
-
-  document.getElementById('marketPrice').textContent =
-    formatNumber(data.price);
-
-
-  /* الإغلاق السابق */
-
-  document.getElementById('previousClose').textContent =
-    formatNumber(data.previous_close);
-
-  document.getElementById('previousClose2').textContent =
-    formatNumber(data.previous_close);
-
-
-  /* الافتتاح */
-
-  document.getElementById('openPrice').textContent =
-    formatNumber(data.open_price);
-
-
-  /* التغير */
-
-  const changePercent = Number(data.change_percent || 0);
-
-  const changeElement = document.getElementById('marketChange');
-
-  changeElement.textContent =
-    formatChange(data.change_value) +
-    ' (' +
-    formatPercent(data.change_percent) +
-    ')';
-
-
-  changeElement.classList.remove('positive','negative','neutral');
-
-
-  if(changePercent > 0){
-
-    changeElement.classList.add('positive');
-
-  }else if(changePercent < 0){
-
-    changeElement.classList.add('negative');
-
-  }else{
-
-    changeElement.classList.add('neutral');
-
-  }
-
-
-  /* الاتجاه */
-
-  document.getElementById('trend').textContent =
-    data.trend || '—';
-
-
-  /* Badge */
-
-  const badge = document.getElementById('marketBadge');
-
-  badge.textContent =
-    data.trend || 'محايد';
-
-  badge.classList.remove('positive','neutral');
-
-  if(changePercent > 0){
-
-    badge.classList.add('positive');
-
-  }else{
-
-    badge.classList.add('neutral');
-
-  }
-
-
-  /* المستويات */
-
-  document.getElementById('supportMain').textContent =
-    formatNumber(data.support_1,0);
-
-  document.getElementById('resistanceMain').textContent =
-    formatNumber(data.resistance_1,0);
-
-
-  document.getElementById('support1').textContent =
-    formatNumber(data.support_1,0);
-
-  document.getElementById('support2').textContent =
-    formatNumber(data.support_2,0);
-
-  document.getElementById('support3').textContent =
-    formatNumber(data.support_3,0);
-
-  document.getElementById('resistance1').textContent =
-    formatNumber(data.resistance_1,0);
-
-  document.getElementById('resistance2').textContent =
-    formatNumber(data.resistance_2,0);
-
-
-  /* السيناريو الإيجابي */
-
-  document.getElementById('positiveScenario').textContent =
-    data.support_1 && data.resistance_1
-    ? 'الثبات فوق ' +
-      formatNumber(data.support_1,0) +
-      ' ثم تجاوز ' +
-      formatNumber(data.resistance_1,0) +
-      ' قد يدعم اختبار ' +
-      formatNumber(data.resistance_2,0) +
-      '، مع متابعة السيولة والأسهم القيادية.'
-    : 'الثبات فوق مستويات الدعم الحالية قد يدعم تحسن الحركة السعرية.';
-
-
-  /* السيناريو السلبي */
-
-  document.getElementById('negativeScenario').textContent =
-    data.support_1 && data.support_2
-    ? 'كسر ' +
-      formatNumber(data.support_1,0) +
-      ' ثم ' +
-      formatNumber(data.support_2,0) +
-      ' قد يفتح المجال لاختبار ' +
-      formatNumber(data.support_3,0) +
-      '.'
-    : 'كسر مستويات الدعم الرئيسية قد يزيد من الضغوط البيعية.';
-
-
-  /* القراءة الأولى */
-
-  document.getElementById('reading1').textContent =
-    data.open_price
-    ? 'افتتح تاسي عند ' +
-      formatNumber(data.open_price) +
-      ' مقابل الإغلاق السابق عند ' +
-      formatNumber(data.previous_close) +
-      '، بينما سجل المؤشر آخر قيمة عند ' +
-      formatNumber(data.price) +
-      '.'
-    : 'سجل المؤشر آخر قيمة عند ' +
-      formatNumber(data.price) +
-      ' مقارنة بالإغلاق السابق عند ' +
-      formatNumber(data.previous_close) +
-      '.';
-
-
-  /* القراءة الثانية */
-
-  document.getElementById('reading2').textContent =
-    'التغير المسجل للمؤشر بلغ ' +
-    formatPercent(data.change_percent) +
-    '، مع اتجاه ' +
-    (data.trend || 'محايد') +
-    '.';
-
-
-  /* القراءة الثالثة */
-
-  document.getElementById('reading3').textContent =
-    'مستوى ' +
-    formatNumber(data.resistance_1,0) +
-    ' يمثل المقاومة الأولى للمراقبة، بينما يظل ' +
-    formatNumber(data.support_1,0) +
-    ' مستوى الدعم الأقرب.';
-
-
-  /* الملخص */
-
-  document.getElementById('summaryText').innerHTML =
-    data.summary
-    ? data.summary
-    : 'افتتح المؤشر عند ' +
-      formatNumber(data.open_price) +
-      ' مقابل إغلاق سابق عند ' +
-      formatNumber(data.previous_close) +
-      '، وسجل آخر قيمة عند ' +
-      formatNumber(data.price) +
-      '، مع تغير قدره ' +
-      formatPercent(data.change_percent) +
-      '.';
-
-
-}
-
-
-/* =========================
-   LOAD FROM SUPABASE
-========================= */
 
 async function loadSaudiMarket(){
 
@@ -1441,57 +1119,307 @@ async function loadSaudiMarket(){
       !window.SUPABASE_ANON_KEY
     ){
 
-      showError(
-        'لم يتم العثور على بيانات الاتصال بـ Supabase. تأكد من ملف supabase-config.js'
-      );
+      console.error('Supabase config غير موجود.');
 
       return;
     }
 
 
-    sb = window.supabase.createClient(
-      window.SUPABASE_URL,
-      window.SUPABASE_ANON_KEY
-    );
+    supabaseClient =
+      window.supabase.createClient(
+        window.SUPABASE_URL,
+        window.SUPABASE_ANON_KEY
+      );
 
 
-    const result = await sb
+    const {data,error}=await supabaseClient
       .from('market_data')
       .select('*')
       .eq('market','saudi')
       .maybeSingle();
 
 
-    if(result.error){
+    if(error){
 
-      console.error(result.error);
-
-      showError(
-        'تعذر تحميل بيانات السوق من Supabase.'
+      console.error(
+        'Supabase error:',
+        error
       );
 
       return;
     }
 
 
-    if(!result.data){
+    if(!data){
 
-      showError(
-        'لا توجد بيانات للسوق السعودي في جدول market_data.'
+      console.warn(
+        'لا توجد بيانات للسوق السعودي.'
       );
 
       return;
     }
 
 
-    updateMarket(result.data);
+    /* التاريخ */
 
-  }catch(error){
+    if(data.date_label){
 
-    console.error(error);
+      setText(
+        'marketDate',
+        'SAUDI MARKET • ' +
+        data.date_label
+      );
 
-    showError(
-      'حدث خطأ أثناء الاتصال بقاعدة البيانات.'
+    }
+
+
+    /* السعر */
+
+    const price=formatNumber(
+      data.price,
+      2
+    );
+
+    setText(
+      'tasiPrice',
+      price
+    );
+
+
+    /* الإغلاق السابق */
+
+    const previousClose=
+      formatNumber(
+        data.previous_close,
+        2
+      );
+
+
+    setText(
+      'previousClose',
+      previousClose
+    );
+
+    setText(
+      'previousCloseBox',
+      previousClose
+    );
+
+
+    /* التغير */
+
+    const changePercent=
+      Number(data.change_percent || 0);
+
+
+    const changeValue=
+      Number(data.change_value || 0);
+
+
+    let changeText='';
+
+
+    if(changePercent > 0){
+
+      changeText=
+        '+' +
+        formatNumber(changePercent,2) +
+        '% ▲';
+
+    }
+    else if(changePercent < 0){
+
+      changeText=
+        formatNumber(changePercent,2) +
+        '% ▼';
+
+    }
+    else{
+
+      changeText='0.00% ━';
+
+    }
+
+
+    setText(
+      'tasiChange',
+      changeText
+    );
+
+
+    /* الاتجاه */
+
+    setText(
+      'trend',
+      data.trend || '—'
+    );
+
+
+    /* الدعم */
+
+    setText(
+      'supportMain',
+      formatLevel(data.support_1)
+    );
+
+    setText(
+      'support1',
+      formatLevel(data.support_1)
+    );
+
+    setText(
+      'support2',
+      formatLevel(data.support_2)
+    );
+
+    setText(
+      'support3',
+      formatLevel(data.support_3)
+    );
+
+
+    /* المقاومات */
+
+    setText(
+      'resistanceMain',
+      formatLevel(data.resistance_1)
+    );
+
+    setText(
+      'resistance1',
+      formatLevel(data.resistance_1)
+    );
+
+    setText(
+      'resistance2',
+      formatLevel(data.resistance_2)
+    );
+
+
+    /* تغيير لون التغير */
+
+    const changeElement=
+      document.getElementById('tasiChange');
+
+
+    if(changeElement){
+
+      if(changePercent < 0){
+
+        changeElement.style.color='#ff686e';
+
+      }
+      else{
+
+        changeElement.style.color='#18d99b';
+
+      }
+
+    }
+
+
+    /* افتتاح الجلسة */
+
+    /*
+      جدول market_data الحالي لا يحتوي على
+      opening_price لذلك نحافظ على القيمة
+      الموجودة في الصفحة.
+    */
+
+
+    /* السيناريو */
+
+    if(data.summary){
+
+      setText(
+        'positiveScenario',
+        data.summary
+      );
+
+    }
+
+
+    /* قراءة تلقائية */
+
+    const opening=
+      document.getElementById(
+        'openingPrice'
+      )?.textContent || '—';
+
+
+    setText(
+      'reading1',
+      'بيانات السوق المحدثة تشير إلى أن مستوى تاسي الحالي عند ' +
+      price +
+      ' نقطة، مقارنةً بالإغلاق السابق عند ' +
+      previousClose +
+      '.'
+    );
+
+
+    setText(
+      'reading2',
+      'التغير المسجل في المؤشر هو ' +
+      (changePercent > 0 ? '+' : '') +
+      formatNumber(changePercent,2) +
+      '%، مع اتجاه ' +
+      (data.trend || 'غير محدد') +
+      '.'
+    );
+
+
+    setText(
+      'reading3',
+      'مستوى ' +
+      formatLevel(data.resistance_1) +
+      ' يمثل المقاومة الأولى، بينما ' +
+      formatLevel(data.support_1) +
+      ' يمثل مستوى الدعم الأول للمراقبة.'
+    );
+
+
+    /* الخلاصة */
+
+    const summary=
+      data.summary ||
+      'تم تحديث بيانات السوق السعودي.';
+
+
+    document.getElementById(
+      'summary1'
+    ).innerHTML=
+      'مؤشر تاسي عند <b>' +
+      price +
+      '</b> نقطة، مقابل إغلاق سابق عند <b>' +
+      previousClose +
+      '</b>، والتغير الحالي <b>' +
+      (changePercent > 0 ? '+' : '') +
+      formatNumber(changePercent,2) +
+      '%</b>.';
+
+
+    document.getElementById(
+      'summary2'
+    ).innerHTML=
+      summary +
+      ' وتظل مستويات <b>' +
+      formatLevel(data.support_1) +
+      ' – ' +
+      formatLevel(data.resistance_1) +
+      '</b> من المستويات المهمة للمراقبة.';
+
+
+    console.log(
+      'Saudi market data loaded successfully:',
+      data
+    );
+
+  }
+  catch(error){
+
+    console.error(
+      'Unexpected error:',
+      error
     );
 
   }
@@ -1499,30 +1427,12 @@ async function loadSaudiMarket(){
 }
 
 
-/* =========================
-   ERROR
-========================= */
+/* تشغيل جلب البيانات */
 
-function showError(message){
-
-  const box =
-    document.getElementById('connectionMessage');
-
-  if(!box) return;
-
-  box.innerHTML =
-    '<div class="error-box">' +
-    '⚠️ ' + message +
-    '</div>';
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadSaudiMarket();
+document.addEventListener(
+  'DOMContentLoaded',
+  loadSaudiMarket
+);
 
 </script>
 
