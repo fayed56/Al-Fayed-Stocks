@@ -1,750 +1,514 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Al Fayed Stocks | الفايد للأسهم</title>
 
-<meta name="description"
-content="Al Fayed Stocks - متابعة وتحليل الأسواق السعودية والأمريكية والأخبار والتوصيات.">
+<meta name="description" content="Al Fayed Stocks - متابعة وتحليل الأسواق السعودية والأمريكية والأخبار والتوصيات.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---bg:#06131a;
---bg2:#091b24;
---card:#0b2028;
---card2:#0e2630;
---green:#20c878;
---green2:#16a963;
---gold:#d8a94c;
---white:#f5f7f8;
---text:#d7dee2;
---muted:#8e9ca3;
---line:rgba(255,255,255,.10);
---red:#ff6868;
-}
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-background:var(--bg);
-color:var(--white);
-font-family:"Cairo",Arial,sans-serif;
-line-height:1.7;
+    font-family:'Cairo',sans-serif;
+    background:#06131a;
+    color:#fff;
+    line-height:1.8;
 }
 
 a{
-color:inherit;
-text-decoration:none;
+    text-decoration:none;
+    color:inherit;
 }
 
-button,
-input,
-textarea,
-select{
-font-family:inherit;
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
-background:#07151c;
-border-bottom:1px solid var(--line);
-position:sticky;
-top:0;
-z-index:100;
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(6,19,26,.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .nav{
-width:min(1180px,92%);
-min-height:82px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
+    min-height:75px;
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-font-size:25px;
-font-weight:800;
-white-space:nowrap;
+    font-size:24px;
+    font-weight:900;
+    white-space:nowrap;
 }
 
 .logo span{
-color:var(--green);
+    color:#20c878;
 }
 
 nav{
-display:flex;
-align-items:center;
-gap:23px;
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
 nav a{
-color:#b8c3c8;
-font-size:14px;
-font-weight:600;
-transition:.2s;
+    color:#d5dde1;
+    font-size:14px;
+    font-weight:600;
+    transition:.25s;
 }
 
 nav a:hover,
 nav a.active{
-color:var(--green);
+    color:#20c878;
 }
-
-.menu{
-display:none;
-background:transparent;
-color:white;
-border:1px solid var(--line);
-border-radius:10px;
-padding:7px 11px;
-font-size:22px;
-}
-
-/* BUTTONS */
 
 .btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-height:50px;
-padding:10px 24px;
-border-radius:13px;
-font-weight:800;
-transition:.2s;
-}
-
-.btn-gold{
-background:var(--gold);
-color:#101820;
-}
-
-.btn-outline{
-border:1px solid #9baeb5;
-color:#dce4e7;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:45px;
+    padding:10px 20px;
+    border-radius:10px;
+    font-weight:800;
+    font-size:14px;
+    transition:.25s;
+    cursor:pointer;
+    border:1px solid transparent;
 }
 
 .btn:hover{
-transform:translateY(-2px);
+    transform:translateY(-2px);
 }
 
-/* GENERAL */
-
-.container{
-width:min(1120px,90%);
-margin:auto;
-}
-
-.eyebrow{
-color:var(--green);
-font-size:14px;
-font-weight:800;
-margin-bottom:15px;
-}
-
-.section{
-padding:80px 0;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:45px;
-}
-
-.section-title h2{
-font-size:34px;
-margin-bottom:8px;
-}
-
-.section-title p{
-color:var(--muted);
-}
-
-/* HERO */
-
-.hero{
-min-height:690px;
-display:flex;
-align-items:center;
-background:
-radial-gradient(circle at 15% 25%,rgba(32,200,120,.09),transparent 30%),
-radial-gradient(circle at 85% 70%,rgba(216,169,76,.06),transparent 28%),
-var(--bg);
-}
-
-.hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:55px;
-align-items:center;
-}
-
-.hero-content{
-text-align:right;
-}
-
-.hero h1{
-font-size:clamp(42px,5vw,68px);
-line-height:1.25;
-margin-bottom:25px;
-}
-
-.hero h1 span{
-color:var(--green);
-}
-
-.hero-text{
-color:#aebbc1;
-font-size:18px;
-max-width:650px;
-margin-bottom:30px;
-}
-
-.actions{
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-}
-
-/* MARKET CARD */
-
-.market-card{
-background:
-linear-gradient(145deg,#0d252e,#071b23);
-border:1px solid rgba(32,200,120,.16);
-border-radius:28px;
-padding:28px;
-box-shadow:0 25px 70px rgba(0,0,0,.25);
-}
-
-.market-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:22px;
-}
-
-.market-head h3{
-font-size:20px;
-}
-
-.live{
-background:rgba(32,200,120,.13);
-color:var(--green);
-padding:5px 12px;
-border-radius:20px;
-font-size:11px;
-font-weight:800;
-}
-
-.market-item{
-padding:22px 0;
-border-bottom:1px solid var(--line);
-}
-
-.market-item:last-child{
-border-bottom:0;
-}
-
-.market-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:8px;
-}
-
-.market-name{
-color:#aebbc0;
-font-size:16px;
-}
-
-.market-price{
-font-size:29px;
-font-weight:800;
-}
-
-.market-change{
-font-size:14px;
-font-weight:700;
-}
-
-.negative{
-color:var(--red);
-}
-
-.positive{
-color:var(--green);
-}
-
-.market-note{
-color:#77888f;
-font-size:11px;
-margin-top:15px;
-}
-
-/* QUICK LINKS */
-
-.quick{
-background:#071920;
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line);
-padding:22px 0;
-}
-
-.quick-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-}
-
-.quick-item{
-background:#0b222a;
-border:1px solid var(--line);
-border-radius:13px;
-padding:15px;
-text-align:center;
-color:#b9c4c9;
-font-size:14px;
-font-weight:700;
-}
-
-.quick-item:hover{
-border-color:var(--green);
-color:var(--green);
-}
-
-/* SERVICES */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.service{
-position:relative;
-background:linear-gradient(145deg,#0b2029,#091a22);
-border:1px solid var(--line);
-border-radius:22px;
-padding:28px;
-min-height:280px;
-transition:.25s;
-}
-
-.service:hover{
-transform:translateY(-5px);
-border-color:rgba(32,200,120,.35);
-}
-
-.number{
-position:absolute;
-left:20px;
-top:18px;
-color:#4c5b61;
-font-weight:800;
-}
-
-.icon{
-width:58px;
-height:58px;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(32,200,120,.10);
-font-size:27px;
-margin-bottom:20px;
-}
-
-.service h3{
-font-size:21px;
-margin-bottom:10px;
+.btn-gold{
+    background:#d8a94c;
+    color:#06131a;
 }
 
-.service p{
-color:#89989f;
-font-size:14px;
-margin-bottom:20px;
+.btn-gold:hover{
+    background:#e4b75c;
 }
-
-.service-link{
-color:var(--green);
-font-size:14px;
-font-weight:800;
-}
-
-/* MARKETS */
-
-.markets{
-background:#071920;
-}
-
-.markets-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:22px;
-}
-
-.market-box{
-background:linear-gradient(145deg,#0d2731,#091c24);
-border:1px solid var(--line);
-border-radius:24px;
-padding:35px;
-min-height:240px;
-}
-
-.market-box .flag{
-font-size:42px;
-margin-bottom:12px;
-}
-
-.market-box h3{
-font-size:26px;
-margin-bottom:8px;
-}
-
-.market-box p{
-color:#89999f;
-margin-bottom:22px;
-}
-
-.market-box span{
-color:var(--gold);
-font-weight:800;
-}
-
-/* NEWS */
-
-.news-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.news-card{
-background:#0b2028;
-border:1px solid var(--line);
-border-radius:20px;
-padding:24px;
-}
-
-.news-icon{
-width:100%;
-height:100px;
-border-radius:14px;
-background:linear-gradient(135deg,#102f3b,#092029);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:38px;
-margin-bottom:20px;
-}
-
-.news-card h3{
-font-size:19px;
-margin-bottom:10px;
-}
-
-.news-card p{
-color:#89999f;
-font-size:14px;
-}
-
-/* ABOUT */
-
-.about{
-background:#071920;
-}
-
-.about-box{
-border:1px solid var(--line);
-border-radius:25px;
-padding:45px;
-background:linear-gradient(145deg,#0d252e,#091b23);
-text-align:center;
-}
-
-.about-box h2{
-font-size:33px;
-margin-bottom:15px;
-}
-
-.about-box p{
-color:#9aa8ae;
-max-width:760px;
-margin:auto;
-}
-
-/* CONTACT */
-
-.contact-grid{
-display:grid;
-grid-template-columns:.8fr 1.2fr;
-gap:35px;
-align-items:start;
-}
-
-.contact-info{
-background:#0b2028;
-border:1px solid var(--line);
-border-radius:22px;
-padding:30px;
-}
-
-.contact-info h3{
-font-size:24px;
-margin-bottom:12px;
-}
-
-.contact-info p{
-color:#8f9da3;
-margin-bottom:18px;
-}
-
-.contact-links{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.contact-link{
-padding:13px;
-border:1px solid var(--line);
-border-radius:11px;
-color:#b9c5ca;
-}
-
-.contact-form{
-display:grid;
-gap:13px;
-}
-
-.contact-form input,
-.contact-form textarea,
-.contact-form select{
-width:100%;
-background:#0b2028;
-color:white;
-border:1px solid var(--line);
-border-radius:12px;
-padding:15px;
-outline:none;
-}
-
-.contact-form textarea{
-min-height:150px;
-resize:vertical;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus{
-border-color:var(--green);
-}
-
-/* FOOTER */
-
-footer{
-background:#040e13;
-border-top:1px solid var(--line);
-padding:45px 0 20px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:1.4fr 1fr 1fr;
-gap:30px;
-}
-
-.footer-logo{
-font-size:24px;
-font-weight:800;
-}
-
-.footer-logo span{
-color:var(--green);
-}
-
-footer p,
-footer a{
-color:#77878e;
-font-size:13px;
-}
-
-.footer-title{
-color:#dce3e6;
-margin-bottom:10px;
-font-weight:800;
-}
-
-.copyright{
-border-top:1px solid var(--line);
-margin-top:30px;
-padding-top:18px;
-text-align:center;
-color:#5f7077;
-font-size:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
 
-.nav{
-min-height:72px;
+.btn-outline{
+    border-color:#20c878;
+    color:#20c878;
+    background:transparent;
 }
 
-nav{
-display:none;
+.btn-outline:hover{
+    background:#20c878;
+    color:#06131a;
 }
 
 .menu{
-display:block;
-order:-1;
+    display:none;
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
 }
 
+/* ================= HERO ================= */
+
 .hero{
-padding:65px 0;
+    padding:90px 0 70px;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(32,200,120,.12),transparent 30%),
+    radial-gradient(circle at 80% 10%,rgba(216,169,76,.10),transparent 28%);
 }
 
 .hero-grid{
-grid-template-columns:1fr;
-gap:35px;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:45px;
+    align-items:center;
 }
 
-.hero-content{
-text-align:center;
+.hero h1{
+    font-size:48px;
+    line-height:1.25;
+    margin-bottom:20px;
+    font-weight:900;
 }
 
-.hero-text{
-margin-left:auto;
-margin-right:auto;
+.hero h1 span{
+    color:#20c878;
+}
+
+.hero p{
+    color:#aab8be;
+    font-size:18px;
+    max-width:700px;
+    margin-bottom:30px;
 }
 
 .actions{
-justify-content:center;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
-.services-grid{
-grid-template-columns:repeat(2,1fr);
+.hero-card{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
+
+.hero-card h3{
+    margin-bottom:20px;
+    color:#20c878;
+}
+
+.market-mini{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.market-mini:last-child{
+    border-bottom:0;
+}
+
+.market-name{
+    color:#aab8be;
+}
+
+.market-value{
+    font-weight:800;
+}
+
+.negative{
+    color:#ff6868;
+}
+
+.positive{
+    color:#20c878;
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:75px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#8fa0a7;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:16px;
+    padding:25px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(32,200,120,.3);
+}
+
+.card-icon{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#9caeb5;
+    font-size:14px;
+}
+
+/* ================= MARKETS ================= */
+
+.market-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.market-box{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:18px;
+    padding:25px;
+}
+
+.market-box-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.market-box-header h3{
+    font-size:20px;
+}
+
+.market-number{
+    font-size:30px;
+    font-weight:900;
+}
+
+.market-change{
+    font-weight:800;
+    margin-top:5px;
+}
+
+/* ================= NEWS ================= */
 
 .news-grid{
-grid-template-columns:1fr;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.contact-grid{
-grid-template-columns:1fr;
+.news-card{
+    background:#0b2028;
+    border-radius:16px;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.06);
 }
 
-.footer-grid{
-grid-template-columns:1fr 1fr;
+.news-date{
+    color:#20c878;
+    font-size:13px;
+    margin-bottom:10px;
 }
+
+.news-card h3{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.news-card p{
+    color:#9caeb5;
+    font-size:14px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:#091b24;
+}
+
+.about-box{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.about-box p{
+    color:#a9b7bc;
+    margin-bottom:15px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:40px 25px;
+}
+
+.contact-box h2{
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#9caeb5;
+    margin-bottom:25px;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.contact-link{
+    padding:11px 18px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:10px;
+    color:#dbe4e7;
+    transition:.25s;
+}
+
+.contact-link:hover{
+    border-color:#20c878;
+    color:#20c878;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#041017;
+    border-top:1px solid rgba(255,255,255,.06);
+    padding:25px 0;
+    text-align:center;
+}
+
+footer p{
+    color:#77878d;
+    font-size:13px;
+}
+
+footer span{
+    color:#20c878;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .menu{
+        display:block;
+    }
+
+    nav{
+        position:absolute;
+        top:75px;
+        right:0;
+        left:0;
+        background:#06131a;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:20px;
+        border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    nav.show{
+        display:flex;
+    }
+
+    nav a{
+        padding:10px 5%;
+    }
+
+    .nav > .btn{
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .market-grid{
+        grid-template-columns:1fr;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr;
+    }
 }
 
 @media(max-width:600px){
 
-.container{
-width:90%;
-}
+    .hero{
+        padding:60px 0 50px;
+    }
 
-.logo{
-font-size:21px;
-}
+    .hero h1{
+        font-size:31px;
+    }
 
-.hero{
-min-height:auto;
-padding:55px 0 60px;
-}
+    .hero p{
+        font-size:16px;
+    }
 
-.hero h1{
-font-size:40px;
-}
+    .actions{
+        flex-direction:column;
+    }
 
-.hero-text{
-font-size:15px;
-}
+    .actions .btn{
+        width:100%;
+    }
 
-.market-card{
-padding:21px;
-border-radius:22px;
-}
+    section{
+        padding:55px 0;
+    }
 
-.market-price{
-font-size:25px;
-}
-
-.quick-grid{
-grid-template-columns:1fr 1fr;
-}
-
-.services-grid{
-grid-template-columns:1fr;
-}
-
-.service{
-min-height:240px;
-}
-
-.markets-grid{
-grid-template-columns:1fr;
-}
-
-.market-box{
-min-height:210px;
-padding:27px;
-}
-
-.section{
-padding:60px 0;
-}
-
-.section-title h2{
-font-size:28px;
-}
-
-.about-box{
-padding:30px 22px;
-}
-
-.about-box h2{
-font-size:27px;
-}
-
-.footer-grid{
-grid-template-columns:1fr;
-}
-
+    .section-title h2{
+        font-size:27px;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -770,6 +534,12 @@ Al Fayed <span>Stocks</span>
 
 <a href="news.html">الأخبار</a>
 
+<!-- لعبة المفاجآت -->
+
+<a href="gift.html" style="color:#20c878;font-weight:800;">
+🎁 لعبة المفاجآت
+</a>
+
 <a href="#contact">تواصل معنا</a>
 
 </nav>
@@ -782,30 +552,25 @@ Al Fayed <span>Stocks</span>
 
 </header>
 
-<main>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-<div class="container hero-grid">
+<div class="container">
 
-<div class="hero-content">
+<div class="hero-grid">
 
-<div class="eyebrow">
-AL FAYED STOCKS • MARKET INTELLIGENCE
-</div>
+<div>
 
 <h1>
-رؤية أوضح للسوق.
-<br>
-<span>قرار أذكى.</span>
+تابع الأسواق مع
+<span>Al Fayed Stocks</span>
 </h1>
 
-<p class="hero-text">
-منصة عربية تجمع متابعة السوق، التحليل الفني،
-الأخبار الاقتصادية، والأسهم تحت المراقبة
-في مكان واحد.
+<p>
+متابعة وتحليل الأسواق السعودية والأمريكية،
+مع أخبار السوق والتحليلات الفنية والتوصيات وقائمة المراقبة.
 </p>
 
 <div class="actions">
@@ -822,88 +587,65 @@ AL FAYED STOCKS • MARKET INTELLIGENCE
 قائمة المراقبة ⭐
 </a>
 
-</div>
+<!-- زر لعبة المفاجآت -->
 
-</div>
+<a href="gift.html"
+class="btn btn-outline"
+style="border-color:#20c878;color:#20c878;">
+🎁 جرب المفاجأة
+</a>
 
-<!-- MARKET PANEL -->
-
-<div class="market-card">
-
-<div class="market-head">
-
-<h3>
-لوحة الأسواق
-</h3>
-
-<span class="live">
-متابعة يومية
-</span>
-
-</div>
-
-<div class="market-item">
-
-<div class="market-top">
-
-<span class="market-name">
-🇸🇦 تاسي
-</span>
-
-<span class="market-change negative">
-▼ -0.02%
-</span>
-
-</div>
-
-<div class="market-price">
-10,779.96
 </div>
 
 </div>
 
-<div class="market-item">
 
-<div class="market-top">
+<div class="hero-card">
 
-<span class="market-name">
-🇺🇸 Nasdaq 100 Futures
-</span>
+<h3>📊 لوحة الأسواق</h3>
 
-<span class="market-change positive">
-▲ +0.67%
-</span>
+<div class="market-mini">
 
+<div class="market-name">
+تاسي
 </div>
 
-<div class="market-price">
-29,446.50
+<div>
+<div class="market-value">
+10,872.54
 </div>
 
+<div class="negative">
+▼ -0.05%
 </div>
-
-<div class="market-item">
-
-<div class="market-top">
-
-<span class="market-name">
-🎯 الأسهم تحت المراقبة
-</span>
-
-<span class="market-change positive">
-Watchlist
-</span>
-
-</div>
-
-<div class="market-price">
-متابعة يومية
 </div>
 
 </div>
 
-<div class="market-note">
-آخر تحديث: 17 سبتمبر 2026 • بيانات السوق محدثة للجلسة الحالية.
+
+<div class="market-mini">
+
+<div class="market-name">
+Nasdaq 100
+</div>
+
+<div>
+<div class="market-value">
+30,482.35
+</div>
+
+<div class="positive">
+▲ +2.83%
+</div>
+</div>
+
+</div>
+
+
+<p style="color:#72848b;font-size:12px;margin-top:18px;">
+متابعة يومية للأسواق والفرص
+</p>
+
 </div>
 
 </div>
@@ -912,169 +654,103 @@ Watchlist
 
 </section>
 
-<!-- QUICK LINKS -->
 
-<section class="quick">
+<!-- ================= QUICK LINKS ================= -->
 
-<div class="container quick-grid">
-
-<a class="quick-item" href="saudi.html">
-🇸🇦 السوق السعودي
-</a>
-
-<a class="quick-item" href="usa.html">
-🇺🇸 السوق الأمريكي
-</a>
-
-<a class="quick-item" href="news.html">
-📰 أخبار السوق
-</a>
-
-<a class="quick-item" href="analysis.html">
-📊 التحليل الفني
-</a>
-
-</div>
-
-</section>
-
-<!-- SERVICES -->
-
-<section class="section">
+<section>
 
 <div class="container">
 
 <div class="section-title">
 
-<div class="eyebrow">
-01 — الخدمات
-</div>
-
-<h2>
-خدمات Al Fayed Stocks
-</h2>
+<h2>كل ما تحتاجه في مكان واحد</h2>
 
 <p>
-كل أدوات المتابعة والتحليل في مكان واحد.
+أدوات ومعلومات تساعدك على متابعة الأسواق بشكل مستمر
 </p>
 
 </div>
 
-<div class="services-grid">
 
-<article class="service">
+<div class="cards">
 
-<span class="number">01</span>
 
-<div class="icon">📊</div>
+<div class="card">
 
-<h3>تحليل الأسهم</h3>
+<div class="card-icon">📊</div>
 
-<p>
-دعوم، مقاومات، اتجاهات، وسيناريوهات
-إيجابية وسلبية لمتابعة الحركة.
-</p>
-
-<a class="service-link" href="analysis.html">
-استعرض التحليلات ←
-</a>
-
-</article>
-
-<article class="service">
-
-<span class="number">02</span>
-
-<div class="icon">🇸🇦</div>
-
-<h3>السوق السعودي</h3>
+<h3>التحليلات</h3>
 
 <p>
-متابعة تاسي، القطاعات، الأسهم النشطة
-وأهم مستويات السوق.
+تحليلات فنية لمؤشرات وأسهم السوق السعودي والأمريكي.
 </p>
 
-<a class="service-link" href="saudi.html">
-السوق السعودي ←
-</a>
+</div>
 
-</article>
 
-<article class="service">
+<div class="card">
 
-<span class="number">03</span>
-
-<div class="icon">🇺🇸</div>
-
-<h3>السوق الأمريكي</h3>
-
-<p>
-ناسداك، المؤشرات الأمريكية، البري ماركت
-والأسهم النشطة.
-</p>
-
-<a class="service-link" href="usa.html">
-السوق الأمريكي ←
-</a>
-
-</article>
-
-<article class="service">
-
-<span class="number">04</span>
-
-<div class="icon">📰</div>
-
-<h3>أخبار السوق</h3>
-
-<p>
-ملخص لأهم الأخبار والأحداث المؤثرة
-على حركة الأسواق.
-</p>
-
-<a class="service-link" href="news.html">
-أحدث الأخبار ←
-</a>
-
-</article>
-
-<article class="service">
-
-<span class="number">05</span>
-
-<div class="icon">🎯</div>
-
-<h3>قائمة المراقبة</h3>
-
-<p>
-أسهم تتم متابعتها فنيًا مع مستويات
-مهمة وسيناريوهات الحركة.
-</p>
-
-<a class="service-link" href="watchlist.html">
-قائمة المراقبة ←
-</a>
-
-</article>
-
-<article class="service">
-
-<span class="number">06</span>
-
-<div class="icon">🔥</div>
+<div class="card-icon">🔥</div>
 
 <h3>التوصيات</h3>
 
 <p>
-الوصول إلى الأسهم والفرص التي تستحق
-المتابعة والتحليل.
+متابعة فرص السوق والتوصيات والتحركات المهمة.
 </p>
 
-<a class="service-link" href="recommendations.html">
-شاهد التوصيات ←
-</a>
+</div>
 
-</article>
+
+<div class="card">
+
+<div class="card-icon">⭐</div>
+
+<h3>قائمة المراقبة</h3>
+
+<p>
+تابع الأسهم التي تهمك وراقب مستوياتها المهمة.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">📰</div>
+
+<h3>الأخبار</h3>
+
+<p>
+أبرز الأخبار والتطورات المؤثرة على الأسواق.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🇸🇦</div>
+
+<h3>السوق السعودي</h3>
+
+<p>
+متابعة مؤشر تاسي والأسهم والقطاعات السعودية.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🇺🇸</div>
+
+<h3>السوق الأمريكي</h3>
+
+<p>
+متابعة ناسداك والأسهم والقطاعات الأمريكية.
+</p>
+
+</div>
 
 </div>
 
@@ -1082,65 +758,76 @@ Watchlist
 
 </section>
 
-<!-- MARKETS -->
 
-<section class="section markets">
+<!-- ================= MARKETS ================= -->
+
+<section id="markets">
 
 <div class="container">
 
 <div class="section-title">
 
-<div class="eyebrow">
-02 — الأسواق
-</div>
-
-<h2>
-الأسواق التي نتابعها
-</h2>
+<h2>الأسواق</h2>
 
 <p>
-السوق السعودي والسوق الأمريكي في مكان واحد.
+نظرة سريعة على أهم المؤشرات
 </p>
 
 </div>
 
-<div class="markets-grid">
 
-<a href="saudi.html" class="market-box">
+<div class="market-grid">
 
-<div class="flag">🇸🇦</div>
 
-<h3>
-السوق السعودي
-</h3>
+<div class="market-box">
 
-<p>
-تاسي • القطاعات • الأسهم • افتتاح السوق
+<div class="market-box-header">
+
+<h3>🇸🇦 السوق السعودي</h3>
+
+<span class="positive">متابعة يومية</span>
+
+</div>
+
+<div class="market-number">
+10,872.54
+</div>
+
+<div class="market-change negative">
+▼ -0.05%
+</div>
+
+<p style="color:#819197;margin-top:15px;">
+مؤشر تاسي
 </p>
 
-<span>
-استكشف السوق ←
-</span>
+</div>
 
-</a>
 
-<a href="usa.html" class="market-box">
+<div class="market-box">
 
-<div class="flag">🇺🇸</div>
+<div class="market-box-header">
 
-<h3>
-السوق الأمريكي
-</h3>
+<h3>🇺🇸 Nasdaq 100</h3>
 
-<p>
-Nasdaq • S&P 500 • Premarket • Growth Stocks
+<span class="positive">إيجابي</span>
+
+</div>
+
+<div class="market-number">
+30,482.35
+</div>
+
+<div class="market-change positive">
+▲ +2.83%
+</div>
+
+<p style="color:#819197;margin-top:15px;">
+مؤشر ناسداك 100
 </p>
 
-<span>
-استكشف السوق ←
-</span>
+</div>
 
-</a>
 
 </div>
 
@@ -1148,80 +835,143 @@ Nasdaq • S&P 500 • Premarket • Growth Stocks
 
 </section>
 
-<!-- NEWS -->
 
-<section class="section">
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
 
 <div class="container">
 
 <div class="section-title">
 
-<div class="eyebrow">
-03 — الأخبار
-</div>
-
-<h2>
-أهم أخبار السوق
-</h2>
+<h2>خدماتنا</h2>
 
 <p>
-متابعة الأحداث التي قد تؤثر في حركة الأسواق.
+خدمات ومحتوى لمتابعة الأسواق
 </p>
 
 </div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">📈</div>
+
+<h3>التحليل الفني</h3>
+
+<p>
+تحليل حركة المؤشرات والأسهم وتحديد مستويات الدعم والمقاومة.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🎯</div>
+
+<h3>التوصيات</h3>
+
+<p>
+متابعة الفرص والأسهم التي تستحق المراقبة.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🔔</div>
+
+<h3>متابعة السوق</h3>
+
+<p>
+أهم التحركات والأخبار التي قد تؤثر على السوق.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= NEWS ================= -->
+
+<section id="news">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>أحدث الأخبار</h2>
+
+<p>
+أهم التطورات في الأسواق السعودية والأمريكية
+</p>
+
+</div>
+
 
 <div class="news-grid">
 
-<a href="news.html" class="news-card">
 
-<div class="news-icon">
-🇸🇦
+<div class="news-card">
+
+<div class="news-date">
+السوق السعودي
 </div>
 
 <h3>
-أخبار السوق السعودي
+متابعة حركة مؤشر تاسي
 </h3>
 
 <p>
-متابعة تحركات تاسي والقطاعات والأسهم
-النشطة خلال الجلسة.
+نظرة يومية على حركة المؤشر وأهم مستويات الدعم والمقاومة.
 </p>
 
-</a>
+</div>
 
-<a href="news.html" class="news-card">
 
-<div class="news-icon">
-🇺🇸
+<div class="news-card">
+
+<div class="news-date">
+السوق الأمريكي
 </div>
 
 <h3>
-أخبار السوق الأمريكي
+تحركات Nasdaq 100
 </h3>
 
 <p>
-أهم أخبار Nasdaq والشركات الأمريكية
-والأسهم المؤثرة.
+متابعة حركة المؤشر الأمريكي وأبرز المستويات الفنية.
 </p>
 
-</a>
+</div>
 
-<a href="news.html" class="news-card">
 
-<div class="news-icon">
-📈
+<div class="news-card">
+
+<div class="news-date">
+Al Fayed Stocks
 </div>
 
 <h3>
-التحليل اليومي
+تحديثات السوق اليومية
 </h3>
 
 <p>
-مستويات الدعم والمقاومة والسيناريوهات
-المحتملة للحركة.
+تابع معنا أهم الأخبار والتحليلات بشكل مستمر.
 </p>
 
-</a>
+</div>
+
 
 </div>
 
@@ -1229,28 +979,30 @@ Nasdaq • S&P 500 • Premarket • Growth Stocks
 
 </section>
 
-<!-- ABOUT -->
 
-<section class="section about" id="about">
+<!-- ================= SURPRISE GAME ================= -->
+
+<section>
 
 <div class="container">
 
-<div class="about-box">
-
-<div class="eyebrow">
-AL FAYED STOCKS
-</div>
+<div class="contact-box"
+style="border-color:rgba(32,200,120,.25);">
 
 <h2>
-رؤية أوضح للسوق
+🎁 عندنا مفاجأة ليك
 </h2>
 
 <p>
-هدفنا تقديم تجربة عربية بسيطة تساعد المستثمر
-على فهم حركة الأسواق، متابعة الأسهم المهمة،
-والوصول إلى الأخبار والتحليلات والتوصيات
-في مكان واحد.
+اختار صندوق وشوف المفاجأة اللي مستنياك من
+<strong style="color:#20c878;">
+Al Fayed Stocks
+</strong>
 </p>
+
+<a href="gift.html" class="btn btn-gold">
+🎁 جرب حظك الآن
+</a>
 
 </div>
 
@@ -1258,58 +1010,77 @@ AL FAYED STOCKS
 
 </section>
 
-<!-- CONTACT -->
 
-<section class="section" id="contact">
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
 
 <div class="container">
 
 <div class="section-title">
 
-<div class="eyebrow">
-04 — تواصل
+<h2>عن Al Fayed Stocks</h2>
+
 </div>
+
+
+<div class="about-box">
+
+<p>
+Al Fayed Stocks منصة لمتابعة وتحليل الأسواق السعودية والأمريكية.
+</p>
+
+<p>
+نقدم محتوى يومي يشمل تحليلات السوق، الأخبار،
+مستويات الدعم والمقاومة، ومتابعة الأسهم والقطاعات.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact-box">
 
 <h2>
 تواصل معنا
 </h2>
 
 <p>
-للاستفسارات والخدمات والمقترحات.
+للاستفسارات والاشتراكات ومتابعة الخدمات
 </p>
 
-</div>
-
-<div class="contact-grid">
-
-<div class="contact-info">
-
-<h3>
-Al Fayed Stocks
-</h3>
-
-<p>
-يمكنك التواصل معنا للاستفسارات
-والخدمات والمقترحات.
-</p>
 
 <div class="contact-links">
 
-<a class="contact-link"
+<a
 href="https://wa.me/966575944806"
-target="_blank">
-💬 واتساب
+target="_blank"
+class="contact-link">
+📱 WhatsApp
 </a>
 
-<a class="contact-link"
+
+<a
 href="https://t.me/alfayedstock"
-target="_blank">
+target="_blank"
+class="contact-link">
 ✈️ Telegram
 </a>
 
-<a class="contact-link"
+
+<a
 href="https://x.com/alfayed210"
-target="_blank">
+target="_blank"
+class="contact-link">
 𝕏 X
 </a>
 
@@ -1317,148 +1088,47 @@ target="_blank">
 
 </div>
 
-<form class="contact-form"
-onsubmit="return false;">
-
-<input
-type="text"
-placeholder="الاسم"
-required>
-
-<input
-type="email"
-placeholder="البريد الإلكتروني"
-required>
-
-<select>
-
-<option>
-اختر نوع التواصل
-</option>
-
-<option>
-استفسار
-</option>
-
-<option>
-خدمة
-</option>
-
-<option>
-اقتراح
-</option>
-
-</select>
-
-<textarea
-placeholder="اكتب رسالتك...">
-</textarea>
-
-<button
-type="submit"
-class="btn btn-gold">
-إرسال الرسالة
-</button>
-
-</form>
-
-</div>
-
 </div>
 
 </section>
 
-</main>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
 <div class="container">
 
-<div class="footer-grid">
-
-<div>
-
-<div class="footer-logo">
-Al Fayed <span>Stocks</span>
-</div>
-
 <p>
-منصة عربية لمتابعة وتحليل الأسواق
-السعودية والأمريكية.
+© 2026 <span>Al Fayed Stocks</span> — جميع الحقوق محفوظة
 </p>
-
-</div>
-
-<div>
-
-<div class="footer-title">
-روابط سريعة
-</div>
-
-<p><a href="saudi.html">السوق السعودي</a></p>
-
-<p><a href="usa.html">السوق الأمريكي</a></p>
-
-<p><a href="analysis.html">التحليلات</a></p>
-
-</div>
-
-<div>
-
-<div class="footer-title">
-المزيد
-</div>
-
-<p><a href="news.html">الأخبار</a></p>
-
-<p><a href="watchlist.html">قائمة المراقبة</a></p>
-
-<p><a href="recommendations.html">التوصيات</a></p>
-
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 Al Fayed Stocks — جميع الحقوق محفوظة.
-</div>
 
 </div>
 
 </footer>
 
+
 <script>
 
 function toggleMenu(){
 
-const nav=document.getElementById("mainNav");
+    const nav = document.getElementById("mainNav");
 
-if(nav.style.display==="flex"){
-
-nav.style.display="none";
-
-}else{
-
-nav.style.display="flex";
-nav.style.position="absolute";
-nav.style.top="72px";
-nav.style.right="5%";
-nav.style.left="5%";
-nav.style.flexDirection="column";
-nav.style.background="#0b2028";
-nav.style.padding="20px";
-nav.style.borderRadius="15px";
-nav.style.border="1px solid rgba(255,255,255,.1)";
-nav.style.zIndex="999";
+    nav.classList.toggle("show");
 
 }
 
-}
+document.querySelectorAll("#mainNav a").forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document.getElementById("mainNav").classList.remove("show");
+
+    });
+
+});
 
 </script>
 
 </body>
-
 </html>
