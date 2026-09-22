@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مفاجأتك مستنياك 🎁 | Al Fayed Stocks</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Tahoma",sans-serif;background:#06131a;color:#f5f7f8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.wrap{width:min(760px,100%);background:#0b2028;border:1px solid #173842;border-radius:28px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center}
+.logo{font-size:18px;font-weight:800;margin-bottom:10px}.logo span{color:#20c878}
+h1{margin:8px 0;font-size:30px}.sub{color:#a9bbc1;margin-bottom:22px}
+input{width:min(430px,100%);padding:15px;border-radius:14px;border:1px solid #31505a;background:#091b24;color:#fff;font-size:16px;text-align:right;outline:none}
+button{font:inherit}
+.primary,.share,.again{border:0;border-radius:14px;padding:13px 22px;font-weight:800;cursor:pointer;margin-top:12px}
+.primary,.share{background:#20c878;color:#06131a}.again{background:transparent;color:#fff;border:1px solid #31505a}
+.boxes{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:25px auto;max-width:650px}
+.box{min-height:125px;border:1px solid #244650;border-radius:20px;background:#091b24;color:#fff;cursor:pointer;font-size:48px;transition:.2s}
+.box:hover{transform:translateY(-5px);border-color:#20c878}.box:disabled{cursor:default}
+.num{display:block;font-size:13px;color:#9fb1b7;margin-top:8px}
+.result{display:none;background:#0d2a32;border:1px solid #20c878;border-radius:18px;padding:20px;font-size:20px;font-weight:800;line-height:1.8}
+.note{font-size:12px;color:#82979e;margin-top:12px}
+.hidden{display:none!important}
+@media(max-width:620px){.boxes{grid-template-columns:repeat(2,1fr)}.box:last-child{grid-column:1/-1;max-width:190px;width:100%;justify-self:center}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="logo">Al Fayed <span>Stocks</span></div>
+  <h1>🎁 اختار صندوقك وخلي المفاجأة علينا!</h1>
+  <div class="sub">قدامك 5 صناديق... اختار صندوق واحد فقط وشوف إيه اللي مستنيك 😍</div>
+
+  <section id="intro">
+    <input id="name" maxlength="40" placeholder="اكتب اسمك هنا 👤" autocomplete="name">
+    <br>
+    <button class="primary" id="start">ابدأ اللعبة 🎁</button>
+  </section>
+
+  <section id="game" class="hidden">
+    <div class="boxes" id="boxes"></div>
+    <div class="result" id="result"></div>
+    <button class="share hidden" id="share">📲 إرسال النتيجة على واتساب</button>
+    <button class="again hidden" id="again">🔄 لعب مرة أخرى</button>
+    <div class="note">يمكن اختيار صندوق واحد فقط في كل مرة على هذا الجهاز.</div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const prizes = [
+    "🎉 مبروك! حصلت على خصم 20% على سعر الاشتراك.",
+    "🎁 مبروك! حصلت على أسبوع مجاني على باقة الشهر.",
+    "📈 مبروك! حصلت على سهم مجاني من باقة الـ Standard.",
+    "🔥 مبروك! حصلت على سهم مجاني من باقة الـ VIP.",
+    "📊 مبروك! حصلت على سهم للمتابعة."
+  ];
+
+  const intro=document.getElementById("intro");
+  const game=document.getElementById("game");
+  const nameInput=document.getElementById("name");
+  const start=document.getElementById("start");
+  const boxes=document.getElementById("boxes");
+  const result=document.getElementById("result");
+  const share=document.getElementById("share");
+  const again=document.getElementById("again");
+
+  let player="";
+  let chosen=-1;
+
+  function buildBoxes(){
+    chosen=-1;
+    boxes.innerHTML="";
+    result.style.display="none";
+    share.classList.add("hidden");
+    again.classList.add("hidden");
+
+    for(let i=0;i<5;i++){
+      const b=document.createElement("button");
+      b.className="box";
+      b.type="button";
+      b.innerHTML=`🎁<span class="num">الصندوق ${i+1}</span>`;
+      b.addEventListener("click",()=>openBox(b,i));
+      boxes.appendChild(b);
+    }
+  }
+
+  function openBox(btn,index){
+    if(chosen!==-1) return;
+    chosen=index;
+    [...boxes.children].forEach(b=>b.disabled=true);
+    btn.innerHTML=`✨<span class="num">تم الاختيار</span>`;
+    result.textContent="جاري فتح الصندوق...";
+    result.style.display="block";
+
+    setTimeout(()=>{
+      result.innerHTML=`🎉 ${player || "صديقنا"}، مبروك!<br>${prizes[index]}`;
+      share.classList.remove("hidden");
+      again.classList.remove("hidden");
+    },900);
+  }
+
+  start.addEventListener("click",()=>{
+    player=nameInput.value.trim() || "صديقنا";
+    intro.classList.add("hidden");
+    game.classList.remove("hidden");
+    buildBoxes();
+  });
+
+  again.addEventListener("click",buildBoxes);
+
+  share.addEventListener("click",()=>{
+    const text =
+      `🎁 نتيجة لعبة الصناديق\n\n`+
+      `${player} اختار الصندوق رقم ${chosen+1} 🎉\n`+
+      `${prizes[chosen]}\n\n`+
+      `🔥 جرب اللعبة أنت كمان!`;
+    window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
+  });
+
+  nameInput.addEventListener("keydown",e=>{
+    if(e.key==="Enter") start.click();
+  });
+})();
+</script>
+</body>
+</html>
