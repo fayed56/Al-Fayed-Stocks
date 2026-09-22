@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Al Fayed Stocks | الفايد للأسهم</title>
 
-<meta name="description" content="Al Fayed Stocks - متابعة وتحليل الأسواق السعودية والأمريكية والأخبار والتوصيات.">
+<meta name="description"
+content="Al Fayed Stocks - متابعة وتحليل الأسواق السعودية والأمريكية والأخبار والتوصيات.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
 
 <style>
+
+/* ================= GENERAL ================= */
 
 *{
     box-sizing:border-box;
@@ -42,25 +50,34 @@ a{
     margin:auto;
 }
 
+
 /* ================= HEADER ================= */
 
 header{
     position:sticky;
     top:0;
     z-index:999;
+
     background:rgba(6,19,26,.95);
+
     backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.06);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.06);
 }
 
 .nav{
     min-height:75px;
+
     width:92%;
     max-width:1200px;
+
     margin:auto;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:20px;
 }
 
@@ -94,15 +111,23 @@ nav a.active{
 
 .btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
+
     min-height:45px;
+
     padding:10px 20px;
+
     border-radius:10px;
+
     font-weight:800;
     font-size:14px;
+
     transition:.25s;
+
     cursor:pointer;
+
     border:1px solid transparent;
 }
 
@@ -132,33 +157,54 @@ nav a.active{
 
 .menu{
     display:none;
+
     border:0;
     background:none;
+
     color:#fff;
+
     font-size:28px;
+
     cursor:pointer;
 }
+
 
 /* ================= HERO ================= */
 
 .hero{
     padding:90px 0 70px;
+
     background:
-    radial-gradient(circle at 20% 20%,rgba(32,200,120,.12),transparent 30%),
-    radial-gradient(circle at 80% 10%,rgba(216,169,76,.10),transparent 28%);
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(32,200,120,.12),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 80% 10%,
+        rgba(216,169,76,.10),
+        transparent 28%
+    );
 }
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.2fr .8fr;
+
+    grid-template-columns:
+    1.2fr .8fr;
+
     gap:45px;
+
     align-items:center;
 }
 
 .hero h1{
     font-size:48px;
     line-height:1.25;
+
     margin-bottom:20px;
+
     font-weight:900;
 }
 
@@ -168,23 +214,34 @@ nav a.active{
 
 .hero p{
     color:#aab8be;
+
     font-size:18px;
+
     max-width:700px;
+
     margin-bottom:30px;
 }
 
 .actions{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:12px;
 }
 
 .hero-card{
     background:#0b2028;
-    border:1px solid rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.07);
+
     border-radius:20px;
+
     padding:28px;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
 }
 
 .hero-card h3{
@@ -194,10 +251,14 @@ nav a.active{
 
 .market-mini{
     display:flex;
+
     justify-content:space-between;
     align-items:center;
+
     padding:16px 0;
-    border-bottom:1px solid rgba(255,255,255,.07);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.07);
 }
 
 .market-mini:last-child{
@@ -220,6 +281,7 @@ nav a.active{
     color:#20c878;
 }
 
+
 /* ================= SECTION ================= */
 
 section{
@@ -240,25 +302,36 @@ section{
     color:#8fa0a7;
 }
 
+
 /* ================= CARDS ================= */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:20px;
 }
 
 .card{
     background:#0b2028;
-    border:1px solid rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+
     border-radius:16px;
+
     padding:25px;
+
     transition:.25s;
 }
 
 .card:hover{
     transform:translateY(-5px);
-    border-color:rgba(32,200,120,.3);
+
+    border-color:
+    rgba(32,200,120,.3);
 }
 
 .card-icon{
@@ -275,25 +348,102 @@ section{
     font-size:14px;
 }
 
+
+/* ================= HOME QUICK LINKS ================= */
+
+/*
+   الكروت الموجودة في الصفحة الرئيسية
+   أصبحت روابط كاملة.
+*/
+
+.quick-card{
+    display:block;
+
+    cursor:pointer;
+
+    color:inherit;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.quick-card::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:2px;
+
+    background:#20c878;
+
+    transition:.3s;
+}
+
+.quick-card:hover::after{
+    width:100%;
+}
+
+.quick-card .card-icon{
+    transition:.25s;
+}
+
+.quick-card:hover .card-icon{
+    transform:scale(1.12);
+}
+
+.quick-card:hover h3{
+    color:#20c878;
+}
+
+.quick-card .card-arrow{
+    display:block;
+
+    margin-top:15px;
+
+    color:#20c878;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    opacity:.9;
+}
+
+
 /* ================= MARKETS ================= */
 
 .market-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+    repeat(2,1fr);
+
     gap:20px;
 }
 
 .market-box{
     background:#0b2028;
-    border:1px solid rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+
     border-radius:18px;
+
     padding:25px;
 }
 
 .market-box-header{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:20px;
 }
 
@@ -311,24 +461,34 @@ section{
     margin-top:5px;
 }
 
+
 /* ================= NEWS ================= */
 
 .news-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:20px;
 }
 
 .news-card{
     background:#0b2028;
+
     border-radius:16px;
+
     padding:24px;
-    border:1px solid rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.06);
 }
 
 .news-date{
     color:#20c878;
+
     font-size:13px;
+
     margin-bottom:10px;
 }
 
@@ -342,6 +502,7 @@ section{
     font-size:14px;
 }
 
+
 /* ================= ABOUT ================= */
 
 .about{
@@ -350,24 +511,35 @@ section{
 
 .about-box{
     max-width:900px;
+
     margin:auto;
+
     text-align:center;
 }
 
 .about-box p{
     color:#a9b7bc;
+
     margin-bottom:15px;
 }
+
 
 /* ================= CONTACT ================= */
 
 .contact-box{
     max-width:850px;
+
     margin:auto;
+
     text-align:center;
+
     background:#0b2028;
-    border:1px solid rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+
     border-radius:20px;
+
     padding:40px 25px;
 }
 
@@ -377,21 +549,30 @@ section{
 
 .contact-box p{
     color:#9caeb5;
+
     margin-bottom:25px;
 }
 
 .contact-links{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:12px;
 }
 
 .contact-link{
     padding:11px 18px;
-    border:1px solid rgba(255,255,255,.1);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
     border-radius:10px;
+
     color:#dbe4e7;
+
     transition:.25s;
 }
 
@@ -400,12 +581,17 @@ section{
     color:#20c878;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
     background:#041017;
-    border-top:1px solid rgba(255,255,255,.06);
+
+    border-top:
+    1px solid rgba(255,255,255,.06);
+
     padding:25px 0;
+
     text-align:center;
 }
 
@@ -418,6 +604,7 @@ footer span{
     color:#20c878;
 }
 
+
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
@@ -428,15 +615,24 @@ footer span{
 
     nav{
         position:absolute;
+
         top:75px;
+
         right:0;
         left:0;
+
         background:#06131a;
+
         display:none;
+
         flex-direction:column;
+
         align-items:stretch;
+
         padding:20px;
-        border-bottom:1px solid rgba(255,255,255,.07);
+
+        border-bottom:
+        1px solid rgba(255,255,255,.07);
     }
 
     nav.show{
@@ -470,7 +666,9 @@ footer span{
     .news-grid{
         grid-template-columns:1fr;
     }
+
 }
+
 
 @media(max-width:600px){
 
@@ -501,12 +699,38 @@ footer span{
     .section-title h2{
         font-size:27px;
     }
+
+    .quick-card{
+        padding:28px;
+    }
+
+}
+
+
+/* ================= TOUCH / MOBILE ================= */
+
+/*
+   تحسين الضغط على الكروت في الموبايل
+*/
+
+.quick-card{
+    -webkit-tap-highlight-color:
+    rgba(32,200,120,.12);
+
+    touch-action:manipulation;
+}
+
+.quick-card:active{
+    transform:scale(.985);
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -518,39 +742,65 @@ footer span{
 Al Fayed <span>Stocks</span>
 </a>
 
-<button class="menu" onclick="toggleMenu()">☰</button>
+
+<button
+class="menu"
+onclick="toggleMenu()">
+☰
+</button>
+
 
 <nav id="mainNav">
 
-<a class="active" href="index.html">الرئيسية</a>
+<a
+class="active"
+href="index.html">
+الرئيسية
+</a>
 
-<a href="services.html">الخدمات</a>
+<a href="services.html">
+الخدمات
+</a>
 
-<a href="analysis.html">التحليلات</a>
+<a href="analysis.html">
+التحليلات
+</a>
 
-<a href="recommendations.html">التوصيات</a>
+<a href="recommendations.html">
+التوصيات
+</a>
 
-<a href="watchlist.html">المراقبة</a>
+<a href="watchlist.html">
+المراقبة
+</a>
 
-<a href="news.html">الأخبار</a>
+<a href="news.html">
+الأخبار
+</a>
 
-<!-- لعبة المفاجآت -->
-
-<a href="gift.html" style="color:#20c878;font-weight:800;">
+<a
+href="gift.html"
+style="color:#20c878;font-weight:800;">
 🎁 لعبة المفاجآت
 </a>
 
-<a href="#contact">تواصل معنا</a>
+<a href="#contact">
+تواصل معنا
+</a>
 
 </nav>
 
-<a href="recommendations.html" class="btn btn-gold">
+
+<a
+href="recommendations.html"
+class="btn btn-gold">
 التوصيات 🔥
 </a>
 
 </div>
 
 </header>
+
 
 
 <!-- ================= HERO ================= -->
@@ -561,48 +811,78 @@ Al Fayed <span>Stocks</span>
 
 <div class="hero-grid">
 
+
 <div>
 
 <h1>
+
 تابع الأسواق مع
-<span>Al Fayed Stocks</span>
+
+<span>
+Al Fayed Stocks
+</span>
+
 </h1>
 
+
 <p>
+
 متابعة وتحليل الأسواق السعودية والأمريكية،
 مع أخبار السوق والتحليلات الفنية والتوصيات وقائمة المراقبة.
+
 </p>
+
 
 <div class="actions">
 
-<a href="analysis.html" class="btn btn-gold">
+<a
+href="analysis.html"
+class="btn btn-gold">
+
 استعرض التحليلات
+
 </a>
 
-<a href="recommendations.html" class="btn btn-outline">
+
+<a
+href="recommendations.html"
+class="btn btn-outline">
+
 التوصيات 🔥
+
 </a>
 
-<a href="watchlist.html" class="btn btn-outline">
+
+<a
+href="watchlist.html"
+class="btn btn-outline">
+
 قائمة المراقبة ⭐
+
 </a>
 
-<!-- زر لعبة المفاجآت -->
 
-<a href="gift.html"
+<a
+href="gift.html"
 class="btn btn-outline"
 style="border-color:#20c878;color:#20c878;">
+
 🎁 جرب المفاجأة
+
 </a>
 
 </div>
 
 </div>
+
 
 
 <div class="hero-card">
 
-<h3>📊 لوحة الأسواق</h3>
+<h3>
+📊 لوحة الأسواق
+</h3>
+
 
 <div class="market-mini">
 
@@ -610,7 +890,9 @@ style="border-color:#20c878;color:#20c878;">
 تاسي
 </div>
 
+
 <div>
+
 <div class="market-value">
 10,872.54
 </div>
@@ -618,6 +900,7 @@ style="border-color:#20c878;color:#20c878;">
 <div class="negative">
 ▼ -0.05%
 </div>
+
 </div>
 
 </div>
@@ -629,7 +912,9 @@ style="border-color:#20c878;color:#20c878;">
 Nasdaq 100
 </div>
 
+
 <div>
+
 <div class="market-value">
 30,482.35
 </div>
@@ -637,13 +922,17 @@ Nasdaq 100
 <div class="positive">
 ▲ +2.83%
 </div>
-</div>
 
 </div>
 
+</div>
 
-<p style="color:#72848b;font-size:12px;margin-top:18px;">
+
+<p
+style="color:#72848b;font-size:12px;margin-top:18px;">
+
 متابعة يومية للأسواق والفرص
+
 </p>
 
 </div>
@@ -653,6 +942,7 @@ Nasdaq 100
 </div>
 
 </section>
+
 
 
 <!-- ================= QUICK LINKS ================= -->
@@ -661,9 +951,12 @@ Nasdaq 100
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>كل ما تحتاجه في مكان واحد</h2>
+<h2>
+كل ما تحتاجه في مكان واحد
+</h2>
 
 <p>
 أدوات ومعلومات تساعدك على متابعة الأسواق بشكل مستمر
@@ -672,85 +965,164 @@ Nasdaq 100
 </div>
 
 
+
 <div class="cards">
 
 
-<div class="card">
+<!-- التحليلات -->
 
-<div class="card-icon">📊</div>
+<a
+href="analysis.html"
+class="card quick-card">
 
-<h3>التحليلات</h3>
+<div class="card-icon">
+📊
+</div>
+
+<h3>
+التحليلات
+</h3>
 
 <p>
 تحليلات فنية لمؤشرات وأسهم السوق السعودي والأمريكي.
 </p>
 
+<span class="card-arrow">
+عرض التحليلات ←
+</span>
+
+</a>
+
+
+
+<!-- التوصيات -->
+
+<a
+href="recommendations.html"
+class="card quick-card">
+
+<div class="card-icon">
+🔥
 </div>
 
-
-<div class="card">
-
-<div class="card-icon">🔥</div>
-
-<h3>التوصيات</h3>
+<h3>
+التوصيات
+</h3>
 
 <p>
 متابعة فرص السوق والتوصيات والتحركات المهمة.
 </p>
 
+<span class="card-arrow">
+عرض التوصيات ←
+</span>
+
+</a>
+
+
+
+<!-- قائمة المراقبة -->
+
+<a
+href="watchlist.html"
+class="card quick-card">
+
+<div class="card-icon">
+⭐
 </div>
 
-
-<div class="card">
-
-<div class="card-icon">⭐</div>
-
-<h3>قائمة المراقبة</h3>
+<h3>
+قائمة المراقبة
+</h3>
 
 <p>
 تابع الأسهم التي تهمك وراقب مستوياتها المهمة.
 </p>
 
+<span class="card-arrow">
+قائمة المراقبة ←
+</span>
+
+</a>
+
+
+
+<!-- الأخبار -->
+
+<a
+href="news.html"
+class="card quick-card">
+
+<div class="card-icon">
+📰
 </div>
 
-
-<div class="card">
-
-<div class="card-icon">📰</div>
-
-<h3>الأخبار</h3>
+<h3>
+الأخبار
+</h3>
 
 <p>
 أبرز الأخبار والتطورات المؤثرة على الأسواق.
 </p>
 
+<span class="card-arrow">
+عرض الأخبار ←
+</span>
+
+</a>
+
+
+
+<!-- السوق السعودي -->
+
+<a
+href="saudi.html"
+class="card quick-card">
+
+<div class="card-icon">
+🇸🇦
 </div>
 
-
-<div class="card">
-
-<div class="card-icon">🇸🇦</div>
-
-<h3>السوق السعودي</h3>
+<h3>
+السوق السعودي
+</h3>
 
 <p>
 متابعة مؤشر تاسي والأسهم والقطاعات السعودية.
 </p>
 
+<span class="card-arrow">
+السوق السعودي ←
+</span>
+
+</a>
+
+
+
+<!-- السوق الأمريكي -->
+
+<a
+href="usa.html"
+class="card quick-card">
+
+<div class="card-icon">
+🇺🇸
 </div>
 
-
-<div class="card">
-
-<div class="card-icon">🇺🇸</div>
-
-<h3>السوق الأمريكي</h3>
+<h3>
+السوق الأمريكي
+</h3>
 
 <p>
 متابعة ناسداك والأسهم والقطاعات الأمريكية.
 </p>
 
-</div>
+<span class="card-arrow">
+السوق الأمريكي ←
+</span>
+
+</a>
+
 
 </div>
 
@@ -759,15 +1131,19 @@ Nasdaq 100
 </section>
 
 
+
 <!-- ================= MARKETS ================= -->
 
 <section id="markets">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>الأسواق</h2>
+<h2>
+الأسواق
+</h2>
 
 <p>
 نظرة سريعة على أهم المؤشرات
@@ -783,47 +1159,68 @@ Nasdaq 100
 
 <div class="market-box-header">
 
-<h3>🇸🇦 السوق السعودي</h3>
+<h3>
+🇸🇦 السوق السعودي
+</h3>
 
-<span class="positive">متابعة يومية</span>
+<span class="positive">
+متابعة يومية
+</span>
 
 </div>
+
 
 <div class="market-number">
 10,872.54
 </div>
 
+
 <div class="market-change negative">
 ▼ -0.05%
 </div>
 
-<p style="color:#819197;margin-top:15px;">
+
+<p
+style="color:#819197;margin-top:15px;">
+
 مؤشر تاسي
+
 </p>
 
 </div>
+
 
 
 <div class="market-box">
 
 <div class="market-box-header">
 
-<h3>🇺🇸 Nasdaq 100</h3>
+<h3>
+🇺🇸 Nasdaq 100
+</h3>
 
-<span class="positive">إيجابي</span>
+<span class="positive">
+إيجابي
+</span>
 
 </div>
+
 
 <div class="market-number">
 30,482.35
 </div>
 
+
 <div class="market-change positive">
 ▲ +2.83%
 </div>
 
-<p style="color:#819197;margin-top:15px;">
+
+<p
+style="color:#819197;margin-top:15px;">
+
 مؤشر ناسداك 100
+
 </p>
 
 </div>
@@ -836,15 +1233,19 @@ Nasdaq 100
 </section>
 
 
+
 <!-- ================= SERVICES ================= -->
 
 <section id="services">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>خدماتنا</h2>
+<h2>
+خدماتنا
+</h2>
 
 <p>
 خدمات ومحتوى لمتابعة الأسواق
@@ -858,9 +1259,13 @@ Nasdaq 100
 
 <div class="card">
 
-<div class="card-icon">📈</div>
+<div class="card-icon">
+📈
+</div>
 
-<h3>التحليل الفني</h3>
+<h3>
+التحليل الفني
+</h3>
 
 <p>
 تحليل حركة المؤشرات والأسهم وتحديد مستويات الدعم والمقاومة.
@@ -869,11 +1274,16 @@ Nasdaq 100
 </div>
 
 
+
 <div class="card">
 
-<div class="card-icon">🎯</div>
+<div class="card-icon">
+🎯
+</div>
 
-<h3>التوصيات</h3>
+<h3>
+التوصيات
+</h3>
 
 <p>
 متابعة الفرص والأسهم التي تستحق المراقبة.
@@ -882,11 +1292,16 @@ Nasdaq 100
 </div>
 
 
+
 <div class="card">
 
-<div class="card-icon">🔔</div>
+<div class="card-icon">
+🔔
+</div>
 
-<h3>متابعة السوق</h3>
+<h3>
+متابعة السوق
+</h3>
 
 <p>
 أهم التحركات والأخبار التي قد تؤثر على السوق.
@@ -902,15 +1317,19 @@ Nasdaq 100
 </section>
 
 
+
 <!-- ================= NEWS ================= -->
 
 <section id="news">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>أحدث الأخبار</h2>
+<h2>
+أحدث الأخبار
+</h2>
 
 <p>
 أهم التطورات في الأسواق السعودية والأمريكية
@@ -939,6 +1358,7 @@ Nasdaq 100
 </div>
 
 
+
 <div class="news-card">
 
 <div class="news-date">
@@ -954,6 +1374,7 @@ Nasdaq 100
 </p>
 
 </div>
+
 
 
 <div class="news-card">
@@ -980,13 +1401,15 @@ Al Fayed Stocks
 </section>
 
 
+
 <!-- ================= SURPRISE GAME ================= -->
 
 <section>
 
 <div class="container">
 
-<div class="contact-box"
+<div
+class="contact-box"
 style="border-color:rgba(32,200,120,.25);">
 
 <h2>
@@ -994,14 +1417,22 @@ style="border-color:rgba(32,200,120,.25);">
 </h2>
 
 <p>
+
 اختار صندوق وشوف المفاجأة اللي مستنياك من
+
 <strong style="color:#20c878;">
 Al Fayed Stocks
 </strong>
+
 </p>
 
-<a href="gift.html" class="btn btn-gold">
+
+<a
+href="gift.html"
+class="btn btn-gold">
+
 🎁 جرب حظك الآن
+
 </a>
 
 </div>
@@ -1011,15 +1442,21 @@ Al Fayed Stocks
 </section>
 
 
+
 <!-- ================= ABOUT ================= -->
 
-<section class="about" id="about">
+<section
+class="about"
+id="about">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>عن Al Fayed Stocks</h2>
+<h2>
+عن Al Fayed Stocks
+</h2>
 
 </div>
 
@@ -1042,11 +1479,13 @@ Al Fayed Stocks منصة لمتابعة وتحليل الأسواق السعود
 </section>
 
 
+
 <!-- ================= CONTACT ================= -->
 
 <section id="contact">
 
 <div class="container">
+
 
 <div class="contact-box">
 
@@ -1061,28 +1500,39 @@ Al Fayed Stocks منصة لمتابعة وتحليل الأسواق السعود
 
 <div class="contact-links">
 
+
 <a
 href="https://wa.me/966575944806"
 target="_blank"
+rel="noopener"
 class="contact-link">
+
 📱 WhatsApp
+
 </a>
 
 
 <a
 href="https://t.me/alfayedstock"
 target="_blank"
+rel="noopener"
 class="contact-link">
+
 ✈️ Telegram
+
 </a>
 
 
 <a
 href="https://x.com/alfayed210"
 target="_blank"
+rel="noopener"
 class="contact-link">
+
 𝕏 X
+
 </a>
+
 
 </div>
 
@@ -1093,6 +1543,7 @@ class="contact-link">
 </section>
 
 
+
 <!-- ================= FOOTER ================= -->
 
 <footer>
@@ -1100,7 +1551,16 @@ class="contact-link">
 <div class="container">
 
 <p>
-© 2026 <span>Al Fayed Stocks</span> — جميع الحقوق محفوظة
+
+© 2026
+
+<span>
+Al Fayed Stocks
+</span>
+
+—
+جميع الحقوق محفوظة
+
 </p>
 
 </div>
@@ -1108,27 +1568,40 @@ class="contact-link">
 </footer>
 
 
+
+<!-- ================= SCRIPT ================= -->
+
 <script>
 
 function toggleMenu(){
 
-    const nav = document.getElementById("mainNav");
+    const nav =
+    document.getElementById("mainNav");
 
     nav.classList.toggle("show");
 
 }
 
-document.querySelectorAll("#mainNav a").forEach(function(link){
+
+/* إغلاق القائمة بعد اختيار أي صفحة */
+
+document
+.querySelectorAll("#mainNav a")
+.forEach(function(link){
 
     link.addEventListener("click",function(){
 
-        document.getElementById("mainNav").classList.remove("show");
+        document
+        .getElementById("mainNav")
+        .classList
+        .remove("show");
 
     });
 
 });
 
 </script>
+
 
 </body>
 </html>
