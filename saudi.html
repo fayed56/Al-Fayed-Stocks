@@ -1092,7 +1092,13 @@ function formatLevel(value){
     return '—';
   }
 
-  return Number(value).toLocaleString('en-US',{
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return String(value);
+  }
+
+  return number.toLocaleString('en-US',{
     maximumFractionDigits:2
   });
 
@@ -1132,10 +1138,17 @@ async function loadSaudiMarket(){
       );
 
 
+    /*
+      مهم:
+      Admin Panel يحفظ السوق السعودي
+      تحت market = "tasi"
+      لذلك يجب أن تقرأ الصفحة نفس القيمة.
+    */
+
     const {data,error}=await supabaseClient
       .from('market_data')
       .select('*')
-      .eq('market','saudi')
+      .eq('market','tasi')
       .maybeSingle();
 
 
@@ -1341,12 +1354,6 @@ async function loadSaudiMarket(){
 
     /* قراءة تلقائية */
 
-    const opening=
-      document.getElementById(
-        'openingPrice'
-      )?.textContent || '—';
-
-
     setText(
       'reading1',
       'بيانات السوق المحدثة تشير إلى أن مستوى تاسي الحالي عند ' +
@@ -1385,28 +1392,39 @@ async function loadSaudiMarket(){
       'تم تحديث بيانات السوق السعودي.';
 
 
-    document.getElementById(
-      'summary1'
-    ).innerHTML=
-      'مؤشر تاسي عند <b>' +
-      price +
-      '</b> نقطة، مقابل إغلاق سابق عند <b>' +
-      previousClose +
-      '</b>، والتغير الحالي <b>' +
-      (changePercent > 0 ? '+' : '') +
-      formatNumber(changePercent,2) +
-      '%</b>.';
+    const summary1 =
+      document.getElementById('summary1');
+
+    const summary2 =
+      document.getElementById('summary2');
 
 
-    document.getElementById(
-      'summary2'
-    ).innerHTML=
-      summary +
-      ' وتظل مستويات <b>' +
-      formatLevel(data.support_1) +
-      ' – ' +
-      formatLevel(data.resistance_1) +
-      '</b> من المستويات المهمة للمراقبة.';
+    if(summary1){
+
+      summary1.innerHTML=
+        'مؤشر تاسي عند <b>' +
+        price +
+        '</b> نقطة، مقابل إغلاق سابق عند <b>' +
+        previousClose +
+        '</b>، والتغير الحالي <b>' +
+        (changePercent > 0 ? '+' : '') +
+        formatNumber(changePercent,2) +
+        '%</b>.';
+
+    }
+
+
+    if(summary2){
+
+      summary2.innerHTML=
+        summary +
+        ' وتظل مستويات <b>' +
+        formatLevel(data.support_1) +
+        ' – ' +
+        formatLevel(data.resistance_1) +
+        '</b> من المستويات المهمة للمراقبة.';
+
+    }
 
 
     console.log(
