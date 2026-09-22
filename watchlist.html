@@ -1,1 +1,793 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>قائمة المراقبة | Al Fayed Stocks</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div id="site-header"></div><main class="inner"><div class="wrap"><div class="pagehero"><div class="eyebrow">WATCHLIST</div><h1>قائمة المراقبة ⭐</h1><p>أضف الأسهم أو المؤشرات التي تريد الرجوع إليها بسرعة. القائمة محفوظة على جهازك.</p></div><div class="watchadd"><input id="tickerInput" placeholder="مثال: 6050 أو AAPL أو NDX" onkeydown="if(event.key==='Enter')addTicker()"><button class="goldbtn" onclick="addTicker()">إضافة للسلة</button></div><div class="watch-tip">💡 بعد ربط البيانات المباشرة يمكن إضافة السعر الحالي، نسبة التغير، الهدف، وقف الخسارة والتنبيهات.</div><div id="watchList" class="watchlist"></div></div></main><div id="site-footer"></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>قائمة المراقبة | Al Fayed Stocks</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================
+   WATCHLIST PAGE
+========================= */
+
+.watch-page{
+    padding:55px 0 80px;
+    min-height:70vh;
+}
+
+.watch-hero{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.watch-hero .eyebrow{
+    color:#d8a94c;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:10px;
+}
+
+.watch-hero h1{
+    margin:0;
+    color:#142136;
+    font-size:42px;
+    font-weight:900;
+    line-height:1.4;
+}
+
+.watch-hero h1 span{
+    font-size:42px;
+    vertical-align:middle;
+}
+
+.watch-hero p{
+    margin:12px auto 0;
+    max-width:720px;
+    color:#273445;
+    font-size:20px;
+    line-height:2;
+}
+
+/* =========================
+   ADD BOX
+========================= */
+
+.watch-add{
+    max-width:850px;
+    margin:0 auto 30px;
+    background:#0b2028;
+    border:1px solid rgba(32,200,120,.22);
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.watch-add-title{
+    color:#fff;
+    font-size:21px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.watch-add-form{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:12px;
+}
+
+.watch-add input{
+    width:100%;
+    height:54px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.16);
+    background:#06131a;
+    color:#fff;
+    padding:0 17px;
+    font-family:'Cairo',sans-serif;
+    font-size:16px;
+    outline:none;
+}
+
+.watch-add input::placeholder{
+    color:#82939a;
+}
+
+.watch-add input:focus{
+    border-color:#20c878;
+}
+
+.watch-add button{
+    height:54px;
+    border:0;
+    border-radius:12px;
+    padding:0 25px;
+    background:#d8a94c;
+    color:#06131a;
+    font-family:'Cairo',sans-serif;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.watch-add button:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.watch-info{
+    max-width:850px;
+    margin:0 auto 30px;
+    text-align:center;
+    color:#42515c;
+    font-size:16px;
+    line-height:2;
+}
+
+.watch-info span{
+    color:#20a96a;
+    font-weight:800;
+}
+
+/* =========================
+   WATCHLIST
+========================= */
+
+.watch-list{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.watch-empty{
+    grid-column:1/-1;
+    background:#0b2028;
+    border-radius:24px;
+    padding:45px 25px;
+    text-align:center;
+    color:#9eafb5;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.watch-empty-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.watch-card{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:22px;
+    padding:22px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.watch-card:hover{
+    border-color:rgba(32,200,120,.45);
+    transform:translateY(-2px);
+}
+
+.watch-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.watch-market{
+    color:#20c878;
+    font-size:14px;
+    font-weight:800;
+}
+
+.watch-symbol{
+    color:#fff;
+    font-size:25px;
+    font-weight:900;
+}
+
+.watch-name{
+    color:#9eafb5;
+    font-size:15px;
+    margin-top:2px;
+}
+
+.watch-price{
+    font-size:25px;
+    font-weight:900;
+    color:#fff;
+}
+
+.watch-change{
+    display:inline-block;
+    margin-top:5px;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:800;
+    background:rgba(32,200,120,.10);
+    color:#20c878;
+}
+
+.watch-change.down{
+    color:#ff6868;
+    background:rgba(255,104,104,.10);
+}
+
+.watch-details{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:18px;
+}
+
+.watch-detail{
+    background:#06131a;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:11px;
+    padding:10px 7px;
+    text-align:center;
+}
+
+.watch-detail span{
+    display:block;
+    color:#82939a;
+    font-size:11px;
+    margin-bottom:4px;
+}
+
+.watch-detail b{
+    color:#fff;
+    font-size:13px;
+}
+
+.watch-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    gap:10px;
+}
+
+.watch-link{
+    color:#20c878;
+    font-weight:700;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.watch-remove{
+    border:1px solid rgba(255,104,104,.4);
+    background:transparent;
+    color:#ff6868;
+    border-radius:9px;
+    padding:7px 12px;
+    font-family:'Cairo',sans-serif;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.watch-remove:hover{
+    background:#ff6868;
+    color:#06131a;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .watch-page{
+        padding:38px 15px 65px;
+    }
+
+    .watch-hero{
+        margin-bottom:25px;
+    }
+
+    .watch-hero .eyebrow{
+        font-size:13px;
+    }
+
+    .watch-hero h1{
+        font-size:31px;
+    }
+
+    .watch-hero h1 span{
+        font-size:32px;
+    }
+
+    .watch-hero p{
+        font-size:16px;
+        line-height:1.9;
+    }
+
+    .watch-add{
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .watch-add-title{
+        font-size:18px;
+    }
+
+    .watch-add-form{
+        grid-template-columns:1fr;
+    }
+
+    .watch-add input,
+    .watch-add button{
+        height:50px;
+    }
+
+    .watch-list{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .watch-card{
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .watch-symbol{
+        font-size:22px;
+    }
+
+    .watch-price{
+        font-size:22px;
+    }
+
+    .watch-details{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+<div id="site-header"></div>
+
+
+<main>
+
+<section class="watch-page">
+
+<div class="wrap">
+
+
+<!-- ================= HERO ================= -->
+
+<div class="watch-hero">
+
+<div class="eyebrow">
+WATCHLIST • AL FAYED STOCKS
+</div>
+
+<h1>
+⭐ قائمة المراقبة
+</h1>
+
+<p>
+أضف الأسهم أو المؤشرات التي تريد متابعتها بسرعة،
+واحتفظ بها للرجوع إليها في أي وقت.
+</p>
+
+</div>
+
+
+<!-- ================= ADD ================= -->
+
+<div class="watch-add">
+
+<div class="watch-add-title">
+➕ إضافة سهم أو مؤشر
+</div>
+
+<div class="watch-add-form">
+
+<input
+id="watchInput"
+type="text"
+placeholder="مثال: 6050 أو أرامكو أو AAPL أو NDX">
+
+<button onclick="addWatch()">
+إضافة للسلة
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= INFO ================= -->
+
+<div class="watch-info">
+
+💡 بعد ربط البيانات المباشرة يمكن عرض
+<span>السعر الحالي</span>،
+نسبة التغير، الهدف، وقف الخسارة والتنبيهات.
+
+</div>
+
+
+<!-- ================= LIST ================= -->
+
+<div id="watchList" class="watch-list"></div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+
+<script src="app.js"></script>
+
+
+<script>
+
+/* =====================================
+   WATCHLIST
+===================================== */
+
+const WATCH_KEY = 'alfayed_watchlist_v1';
+
+
+function getWatchlist(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(WATCH_KEY) || '[]'
+        );
+
+    }catch(e){
+
+        return [];
+
+    }
+
+}
+
+
+function saveWatchlist(list){
+
+    localStorage.setItem(
+        WATCH_KEY,
+        JSON.stringify(list)
+    );
+
+}
+
+
+function addWatch(){
+
+    const input =
+        document.getElementById('watchInput');
+
+    const value =
+        input.value.trim();
+
+    if(!value){
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    const list = getWatchlist();
+
+
+    const exists =
+        list.some(function(item){
+
+            return item.toLowerCase() ===
+                   value.toLowerCase();
+
+        });
+
+
+    if(exists){
+
+        alert('السهم موجود بالفعل في قائمة المراقبة.');
+
+        return;
+
+    }
+
+
+    list.push(value);
+
+    saveWatchlist(list);
+
+    input.value='';
+
+    renderWatchlist();
+
+}
+
+
+/* =====================================
+   REMOVE
+===================================== */
+
+function removeWatch(index){
+
+    const list = getWatchlist();
+
+    list.splice(index,1);
+
+    saveWatchlist(list);
+
+    renderWatchlist();
+
+}
+
+
+/* =====================================
+   MARKET DETECTION
+===================================== */
+
+function getMarket(symbol){
+
+    const s =
+        symbol.toUpperCase();
+
+    if(
+        s === 'AAPL' ||
+        s === 'NVDA' ||
+        s === 'MSFT' ||
+        s === 'TSLA' ||
+        s === 'AMZN' ||
+        s === 'NDX' ||
+        s === 'NASDAQ'
+    ){
+
+        return '🇺🇸 السوق الأمريكي';
+
+    }
+
+    return '🇸🇦 السوق السعودي';
+
+}
+
+
+/* =====================================
+   RENDER
+===================================== */
+
+function renderWatchlist(){
+
+    const box =
+        document.getElementById('watchList');
+
+    const list =
+        getWatchlist();
+
+
+    if(!list.length){
+
+        box.innerHTML = `
+
+        <div class="watch-empty">
+
+            <div class="watch-empty-icon">
+                ⭐
+            </div>
+
+            <div style="
+                color:#fff;
+                font-size:19px;
+                font-weight:800;
+                margin-bottom:7px;
+            ">
+                قائمة المراقبة فارغة
+            </div>
+
+            <div>
+                أضف أول سهم أو مؤشر تريد متابعته.
+            </div>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        list.map(function(symbol,index){
+
+            return `
+
+            <article class="watch-card">
+
+                <div class="watch-card-top">
+
+                    <div>
+
+                        <div class="watch-market">
+                            ${getMarket(symbol)}
+                        </div>
+
+                        <div class="watch-symbol">
+                            ${escapeHTML(symbol)}
+                        </div>
+
+                        <div class="watch-name">
+                            تحت المتابعة
+                        </div>
+
+                    </div>
+
+
+                    <div style="text-align:left">
+
+                        <div class="watch-price">
+                            —
+                        </div>
+
+                        <div class="watch-change">
+                            انتظار التحديث
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="watch-details">
+
+                    <div class="watch-detail">
+
+                        <span>
+                            الهدف
+                        </span>
+
+                        <b>
+                            —
+                        </b>
+
+                    </div>
+
+
+                    <div class="watch-detail">
+
+                        <span>
+                            وقف الخسارة
+                        </span>
+
+                        <b>
+                            —
+                        </b>
+
+                    </div>
+
+
+                    <div class="watch-detail">
+
+                        <span>
+                            الحالة
+                        </span>
+
+                        <b>
+                            متابعة
+                        </b>
+
+                    </div>
+
+                </div>
+
+
+                <div class="watch-actions">
+
+                    <a
+                    class="watch-link"
+                    href="analysis.html">
+
+                        📊 عرض التحليل ←
+
+                    </a>
+
+
+                    <button
+                    class="watch-remove"
+                    onclick="removeWatch(${index})">
+
+                        حذف
+
+                    </button>
+
+                </div>
+
+            </article>
+
+            `;
+
+        }).join('');
+
+}
+
+
+/* =====================================
+   ESCAPE
+===================================== */
+
+function escapeHTML(value){
+
+    return String(value ?? '')
+    .replace(/[&<>'"]/g,function(c){
+
+        return {
+
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            "'":'&#39;',
+            '"':'&quot;'
+
+        }[c];
+
+    });
+
+}
+
+
+/* ENTER TO ADD */
+
+document
+.getElementById('watchInput')
+.addEventListener('keydown',function(e){
+
+    if(e.key === 'Enter'){
+
+        addWatch();
+
+    }
+
+});
+
+
+renderWatchlist();
+
+</script>
+
+</body>
+</html>
