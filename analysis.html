@@ -4,309 +4,525 @@
 <head>
 
 <meta charset="utf-8">
-
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>التحليلات | Al Fayed Stocks</title>
 
-<meta name="description"
-      content="التحليلات الفنية للأسهم والأسواق السعودية والأمريكية - Al Fayed Stocks">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-
-<link rel="stylesheet"
-      href="style.css">
+<link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="supabase-config.js"></script>
+
+<style>
+
+/* ================= ANALYSIS PAGE ================= */
+
+.analysis-page{
+    padding:55px 0 80px;
+}
+
+/* HERO */
+
+.analysis-hero{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.analysis-hero .eyebrow{
+    color:#d8a94c;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.analysis-hero h1{
+    font-size:42px;
+    font-weight:900;
+    margin-bottom:12px;
+    color:#142033;
+}
+
+.analysis-hero p{
+    color:#596773;
+    font-size:18px;
+    max-width:750px;
+    margin:auto;
+}
+
+/* FILTER */
+
+.analysis-filter{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:30px 0 40px;
+}
+
+.analysis-filter button{
+    border:1px solid #cfd5d9;
+    background:#fff;
+    color:#172235;
+    padding:9px 18px;
+    border-radius:9px;
+    font-family:'Cairo',sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.analysis-filter button:hover{
+    border-color:#20c878;
+}
+
+.analysis-filter button.active{
+    background:#20c878;
+    border-color:#20c878;
+    color:#06131a;
+    font-weight:800;
+}
+
+/* COUNT */
+
+.analysis-count{
+    text-align:center;
+    color:#66737c;
+    margin-bottom:22px;
+    font-size:15px;
+}
+
+/* GRID */
+
+.analysis-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+/* CARD */
+
+.analysis-item{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:20px;
+    padding:25px;
+    color:#fff;
+    transition:.25s;
+    overflow:hidden;
+}
+
+.analysis-item:hover{
+    transform:translateY(-4px);
+    border-color:rgba(32,200,120,.35);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+/* TOP */
+
+.analysis-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.analysis-market{
+    color:#20c878;
+    font-size:13px;
+    font-weight:700;
+}
+
+.analysis-status{
+    background:rgba(32,200,120,.12);
+    color:#20c878;
+    border:1px solid rgba(32,200,120,.2);
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* TITLE */
+
+.analysis-item h2{
+    font-size:28px;
+    margin:0 0 8px;
+    color:#fff;
+}
+
+.analysis-symbol{
+    color:#9eafb5;
+    font-size:14px;
+}
+
+/* DESCRIPTION */
+
+.analysis-description{
+    color:#a9b8be;
+    font-size:14px;
+    margin:15px 0 22px;
+}
+
+/* LEVELS */
+
+.analysis-levels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.level-box{
+    background:#091b24;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:13px;
+}
+
+.level-title{
+    display:block;
+    font-size:12px;
+    color:#8ea0a7;
+    margin-bottom:4px;
+}
+
+.level-value{
+    font-size:18px;
+    font-weight:800;
+}
+
+/* SUPPORT */
+
+.support .level-value{
+    color:#20c878;
+}
+
+/* RESISTANCE */
+
+.resistance .level-value{
+    color:#d8a94c;
+}
+
+/* SCENARIO */
+
+.scenario{
+    margin-top:12px;
+    background:#091b24;
+    border-right:3px solid #20c878;
+    border-radius:12px;
+    padding:14px 15px;
+}
+
+.scenario-title{
+    color:#d8a94c;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:4px;
+}
+
+.scenario-text{
+    color:#dbe3e6;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* LINK */
+
+.analysis-link{
+    display:block;
+    margin-top:18px;
+    color:#20c878;
+    font-weight:700;
+    font-size:14px;
+}
+
+/* EMPTY */
+
+.analysis-empty{
+    grid-column:1/-1;
+    text-align:center;
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:18px;
+    padding:40px 20px;
+    color:#9eafb5;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .analysis-page{
+        padding:40px 0 60px;
+    }
+
+    .analysis-hero h1{
+        font-size:31px;
+    }
+
+    .analysis-hero p{
+        font-size:15px;
+    }
+
+    .analysis-list{
+        grid-template-columns:1fr;
+    }
+
+    .analysis-item{
+        padding:20px;
+    }
+
+    .analysis-item h2{
+        font-size:24px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .analysis-levels{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .analysis-filter button{
+        padding:8px 13px;
+        font-size:13px;
+    }
+
+}
+
+</style>
 
 </head>
 
-
 <body>
-
-
-<!-- ================= HEADER ================= -->
 
 <div id="site-header"></div>
 
+<main>
 
-<main class="inner">
+<section class="analysis-page">
 
 <div class="wrap">
 
+<!-- HERO -->
 
-<!-- ================= HERO ================= -->
-
-<section class="pagehero">
+<div class="analysis-hero">
 
 <div class="eyebrow">
 AL FAYED STOCKS
 </div>
 
 <h1>
-التحليلات الفنية 📊
+📊 التحليلات الفنية
 </h1>
 
 <p>
-تحليلات ومتابعة لأهم الأسهم والفرص في السوق السعودي والأمريكي.
+تحليلات ومتابعة لأهم الأسهم والفرص في السوق السعودي والأمريكي
 </p>
 
-</section>
+</div>
 
 
-<!-- ================= FILTER ================= -->
+<!-- FILTER -->
 
-<div class="filter">
+<div class="analysis-filter">
 
-<button
-class="filterbtn active"
-onclick="filterCards('all',this)">
+<button class="active" onclick="filterMarket('all',this)">
 الكل
 </button>
 
-<button
-class="filterbtn"
-onclick="filterCards('saudi',this)">
+<button onclick="filterMarket('saudi',this)">
 🇸🇦 السعودي
 </button>
 
-<button
-class="filterbtn"
-onclick="filterCards('usa',this)">
+<button onclick="filterMarket('usa',this)">
 🇺🇸 الأمريكي
 </button>
 
 </div>
 
 
-<!-- ================= STATUS ================= -->
-
-<div id="analysisStatus"
-     class="muted"
-     style="text-align:center;margin:20px 0;">
-
+<div id="analysisCount" class="analysis-count">
 جاري تحميل التحليلات...
-
 </div>
 
 
-<!-- ================= ANALYSIS CARDS ================= -->
+<!-- CARDS -->
 
-<div id="analysisCards"
-     class="analysisgrid">
+<div id="analysisList" class="analysis-list">
+
+<div class="analysis-empty">
+جاري تحميل أحدث التحليلات...
+</div>
 
 </div>
 
-
 </div>
+
+</section>
 
 </main>
-
-
-<!-- ================= FOOTER ================= -->
 
 <div id="site-footer"></div>
 
 
 <script src="app.js"></script>
 
-
 <script>
 
-/* =====================================================
-   إعدادات الصفحة
-===================================================== */
-
-let sb = null;
-
-let allRecommendations = [];
-
-
-/* =====================================================
-   أسماء الحالات
-===================================================== */
+let allData = [];
+let currentFilter = 'all';
 
 const statusLabel = {
-
-    open: "مفتوحة",
-
-    watch: "مراقبة",
-
-    closed: "مغلقة"
-
+    open:'مفتوحة',
+    watch:'مراقبة',
+    closed:'مغلقة'
 };
-
-
-/* =====================================================
-   حماية النصوص
-===================================================== */
 
 function esc(value){
 
-    return String(value ?? "")
-        .replace(/[&<>'"]/g, function(c){
+    return String(value ?? '')
+    .replace(/[&<>'"]/g,function(c){
 
-            return {
+        return {
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            "'":'&#39;',
+            '"':'&quot;'
 
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                "'":"&#39;",
-                '"':"&quot;"
+        }[c];
 
-            }[c];
-
-        });
-
-}
-
-
-/* =====================================================
-   تحديد السوق
-===================================================== */
-
-function marketClass(market){
-
-    return market === "saudi"
-        ? "saudi"
-        : "usa";
+    });
 
 }
 
 
-/* =====================================================
-   اسم السوق
-===================================================== */
-
-function marketName(market){
-
-    return market === "saudi"
-        ? "🇸🇦 سعودي"
-        : "🇺🇸 أمريكي";
-
-}
-
-
-/* =====================================================
-   رابط السوق
-===================================================== */
-
-function marketLink(market){
-
-    return market === "saudi"
-        ? "saudi.html"
-        : "usa.html";
-
-}
-
-
-/* =====================================================
-   إنشاء بطاقة التحليل
-===================================================== */
+/* ================= CARD ================= */
 
 function createCard(x){
 
-    const market = marketClass(x.market);
+    const market = x.market === 'saudi'
+        ? '🇸🇦 السوق السعودي'
+        : '🇺🇸 السوق الأمريكي';
 
-    const marketTitle = marketName(x.market);
-
-    const status =
-        statusLabel[x.status] ||
-        x.status ||
-        "مراقبة";
-
-
-    let note = x.note || "السهم تحت المتابعة.";
-
-    /*
-      لو الملاحظة تحتوي على نوع التوصية
-      نعرضها كما هي.
-    */
-
+    const link = x.market === 'saudi'
+        ? 'saudi.html'
+        : 'usa.html';
 
     return `
 
-    <article
-        class="analysiscard ${market}"
-        data-market="${market}">
+    <article class="analysis-item">
 
-        <span>
-            ${marketTitle}
-            ${x.symbol ? " • " + esc(x.symbol) : ""}
-        </span>
+        <div class="analysis-top">
+
+            <div class="analysis-market">
+                ${market}
+            </div>
+
+            <div class="analysis-status">
+                ${esc(statusLabel[x.status] || 'متابعة')}
+            </div>
+
+        </div>
 
 
         <h2>
             ${esc(x.name)}
         </h2>
 
-
-        <p>
-            ${esc(note)}
-        </p>
-
-
-        <div class="levels">
+        <div class="analysis-symbol">
+            ${esc(x.symbol || '')}
+        </div>
 
 
-            <b>
-                الدخول
-            </b>
+        <div class="analysis-description">
 
-            <strong>
-                ${x.entry ?? "—"}
-            </strong>
-
-
-            <b>
-                الهدف
-            </b>
-
-            <strong>
-                ${x.target ?? "—"}
-            </strong>
-
-
-            <b>
-                وقف الخسارة
-            </b>
-
-            <strong>
-                ${x.stop_loss ?? "—"}
-            </strong>
-
-
-            <b>
-                الحالة
-            </b>
-
-            <strong>
-                ${esc(status)}
-            </strong>
-
+            ${esc(
+                x.note ||
+                'متابعة فنية للسهم مع مراقبة مستويات الدعم والمقاومة.'
+            )}
 
         </div>
 
 
-        <a
-            class="textlink"
-            href="${marketLink(x.market)}">
+        <div class="analysis-levels">
 
-            ${x.market === "saudi"
-                ? "السوق السعودي ←"
-                : "السوق الأمريكي ←"}
+            <div class="level-box support">
 
+                <span class="level-title">
+                    دعم 1
+                </span>
+
+                <span class="level-value">
+                    ${esc(x.support1 || '—')}
+                </span>
+
+            </div>
+
+
+            <div class="level-box support">
+
+                <span class="level-title">
+                    دعم 2
+                </span>
+
+                <span class="level-value">
+                    ${esc(x.support2 || '—')}
+                </span>
+
+            </div>
+
+
+            <div class="level-box resistance">
+
+                <span class="level-title">
+                    مقاومة 1
+                </span>
+
+                <span class="level-value">
+                    ${esc(x.resistance1 || '—')}
+                </span>
+
+            </div>
+
+
+            <div class="level-box resistance">
+
+                <span class="level-title">
+                    مقاومة 2
+                </span>
+
+                <span class="level-value">
+                    ${esc(x.resistance2 || '—')}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="scenario">
+
+            <div class="scenario-title">
+                السيناريو
+            </div>
+
+            <div class="scenario-text">
+                ${esc(
+                    x.scenario ||
+                    'تحت المتابعة حتى ظهور إشارة جديدة.'
+                )}
+            </div>
+
+        </div>
+
+
+        <a class="analysis-link" href="${link}">
+            متابعة ${x.market === 'saudi' ? 'السوق السعودي 🇸🇦' : 'السوق الأمريكي 🇺🇸'}
+            ←
         </a>
 
     </article>
@@ -316,231 +532,140 @@ function createCard(x){
 }
 
 
-/* =====================================================
-   عرض البطاقات
-===================================================== */
+/* ================= RENDER ================= */
 
-function renderCards(data){
+function render(){
 
-    const container =
-        document.getElementById("analysisCards");
+    const box = document.getElementById('analysisList');
 
-    const status =
-        document.getElementById("analysisStatus");
+    let data = allData;
+
+    if(currentFilter !== 'all'){
+
+        data = allData.filter(function(x){
+
+            return x.market === currentFilter;
+
+        });
+
+    }
+
+    document.getElementById('analysisCount').textContent =
+        `آخر التحديثات • ${data.length} سهم تحت المتابعة`;
 
 
-    if(!data || !data.length){
+    if(!data.length){
 
-        container.innerHTML = `
+        box.innerHTML = `
 
-        <div class="card"
-             style="grid-column:1/-1;text-align:center">
+        <div class="analysis-empty">
 
-            <h3>
-                لا توجد تحليلات منشورة حاليًا
-            </h3>
-
-            <p class="muted">
-                سيتم عرض الأسهم هنا تلقائيًا
-                عند إضافتها من لوحة الإدارة.
-            </p>
+            لا توجد تحليلات منشورة حاليًا.
 
         </div>
 
         `;
 
-        status.textContent =
-            "لا توجد توصيات منشورة حاليًا.";
-
         return;
+
     }
 
 
-    container.innerHTML =
-        data.map(createCard).join("");
-
-
-    status.textContent =
-        `آخر التحديثات • ${data.length} سهم تحت المتابعة`;
+    box.innerHTML = data.map(createCard).join('');
 
 }
 
 
-/* =====================================================
-   تحميل التوصيات من Supabase
-===================================================== */
+/* ================= FILTER ================= */
+
+function filterMarket(type,button){
+
+    currentFilter = type;
+
+    document
+        .querySelectorAll('.analysis-filter button')
+        .forEach(function(btn){
+
+            btn.classList.remove('active');
+
+        });
+
+    button.classList.add('active');
+
+    render();
+
+}
+
+
+/* ================= LOAD ================= */
 
 async function loadAnalysis(){
 
-    const container =
-        document.getElementById("analysisCards");
-
-    const status =
-        document.getElementById("analysisStatus");
-
-
-    /* التأكد من إعداد Supabase */
+    const box = document.getElementById('analysisList');
 
     if(
         !window.SUPABASE_URL ||
         !window.SUPABASE_ANON_KEY ||
-        window.SUPABASE_ANON_KEY.includes("PASTE_")
+        window.SUPABASE_ANON_KEY.includes('PASTE_')
     ){
 
-        status.textContent =
-            "لم يتم إعداد اتصال قاعدة البيانات.";
+        box.innerHTML = `
 
-        container.innerHTML = `
+        <div class="analysis-empty">
 
-        <div class="card"
-             style="grid-column:1/-1;text-align:center">
-
-            <h3>
-                ⚙️ إعداد قاعدة البيانات
-            </h3>
-
-            <p class="muted">
-                تأكد من وضع Publishable / Anon Key
-                داخل ملف supabase-config.js
-            </p>
+            لم يتم إعداد اتصال قاعدة البيانات بعد.
 
         </div>
 
         `;
 
         return;
+
+    }
+
+
+    const sb =
+        window.supabase.createClient(
+            window.SUPABASE_URL,
+            window.SUPABASE_ANON_KEY
+        );
+
+
+    const result = await sb
+        .from('recommendations')
+        .select('*')
+        .order('created_at',{ascending:false});
+
+
+    if(result.error){
+
+        box.innerHTML = `
+
+        <div class="analysis-empty">
+
+            تعذر تحميل التحليلات حاليًا.
+
+        </div>
+
+        `;
+
+        console.error(result.error);
+
+        return;
+
     }
 
 
-    /* إنشاء الاتصال */
+    allData = result.data || [];
 
-    sb = window.supabase.createClient(
-
-        window.SUPABASE_URL,
-
-        window.SUPABASE_ANON_KEY
-
-    );
-
-
-    try{
-
-
-        const result =
-            await sb
-            .from("recommendations")
-            .select("*")
-            .order("created_at", {
-                ascending:false
-            });
-
-
-        if(result.error){
-
-            console.error(result.error);
-
-
-            status.textContent =
-                "تعذر تحميل التحليلات حاليًا.";
-
-            container.innerHTML = `
-
-            <div class="card"
-                 style="grid-column:1/-1;text-align:center">
-
-                <h3>
-                    تعذر تحميل البيانات
-                </h3>
-
-                <p class="muted">
-                    حاول تحديث الصفحة مرة أخرى.
-                </p>
-
-            </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        allRecommendations =
-            result.data || [];
-
-
-        renderCards(allRecommendations);
-
-
-    }catch(error){
-
-        console.error(error);
-
-        status.textContent =
-            "حدث خطأ أثناء تحميل البيانات.";
-
-    }
+    render();
 
 }
 
-
-/* =====================================================
-   الفلترة
-===================================================== */
-
-function filterCards(type, button){
-
-    /* تحديث الزر النشط */
-
-    document
-        .querySelectorAll(".filterbtn")
-        .forEach(function(btn){
-
-            btn.classList.remove("active");
-
-        });
-
-
-    if(button){
-
-        button.classList.add("active");
-
-    }
-
-
-    let filtered;
-
-
-    if(type === "all"){
-
-        filtered =
-            allRecommendations;
-
-    }else{
-
-        filtered =
-            allRecommendations.filter(function(item){
-
-                return item.market === type;
-
-            });
-
-    }
-
-
-    renderCards(filtered);
-
-}
-
-
-/* =====================================================
-   تشغيل الصفحة
-===================================================== */
 
 loadAnalysis();
 
 </script>
-
 
 </body>
 
