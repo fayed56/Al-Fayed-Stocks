@@ -17,6 +17,10 @@ content="Al Fayed Stocks - متابعة وتحليل الأسواق السعود
 href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
 rel="stylesheet">
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 
 <style>
 
@@ -350,11 +354,6 @@ section{
 
 
 /* ================= HOME QUICK LINKS ================= */
-
-/*
-   الكروت الموجودة في الصفحة الرئيسية
-   أصبحت روابط كاملة.
-*/
 
 .quick-card{
     display:block;
@@ -709,10 +708,6 @@ footer span{
 
 /* ================= TOUCH / MOBILE ================= */
 
-/*
-   تحسين الضغط على الكروت في الموبايل
-*/
-
 .quick-card{
     -webkit-tap-highlight-color:
     rgba(32,200,120,.12);
@@ -893,11 +888,15 @@ style="border-color:#20c878;color:#20c878;">
 
 <div>
 
-<div class="market-value">
+<div
+class="market-value"
+id="heroTasiPrice">
 10,872.54
 </div>
 
-<div class="negative">
+<div
+id="heroTasiChange"
+class="negative">
 ▼ -0.05%
 </div>
 
@@ -915,11 +914,15 @@ Nasdaq 100
 
 <div>
 
-<div class="market-value">
+<div
+class="market-value"
+id="heroNasdaqPrice">
 30,482.35
 </div>
 
-<div class="positive">
+<div
+id="heroNasdaqChange"
+class="positive">
 ▲ +2.83%
 </div>
 
@@ -969,8 +972,6 @@ style="color:#72848b;font-size:12px;margin-top:18px;">
 <div class="cards">
 
 
-<!-- التحليلات -->
-
 <a
 href="analysis.html"
 class="card quick-card">
@@ -994,8 +995,6 @@ class="card quick-card">
 </a>
 
 
-
-<!-- التوصيات -->
 
 <a
 href="recommendations.html"
@@ -1021,8 +1020,6 @@ class="card quick-card">
 
 
 
-<!-- قائمة المراقبة -->
-
 <a
 href="watchlist.html"
 class="card quick-card">
@@ -1046,8 +1043,6 @@ class="card quick-card">
 </a>
 
 
-
-<!-- الأخبار -->
 
 <a
 href="news.html"
@@ -1073,8 +1068,6 @@ class="card quick-card">
 
 
 
-<!-- السوق السعودي -->
-
 <a
 href="saudi.html"
 class="card quick-card">
@@ -1098,8 +1091,6 @@ class="card quick-card">
 </a>
 
 
-
-<!-- السوق الأمريكي -->
 
 <a
 href="usa.html"
@@ -1170,12 +1161,16 @@ class="card quick-card">
 </div>
 
 
-<div class="market-number">
+<div
+class="market-number"
+id="tasiHomePrice">
 10,872.54
 </div>
 
 
-<div class="market-change negative">
+<div
+id="tasiHomeChange"
+class="market-change negative">
 ▼ -0.05%
 </div>
 
@@ -1206,12 +1201,16 @@ style="color:#819197;margin-top:15px;">
 </div>
 
 
-<div class="market-number">
+<div
+class="market-number"
+id="nasdaqHomePrice">
 30,482.35
 </div>
 
 
-<div class="market-change positive">
+<div
+id="nasdaqHomeChange"
+class="market-change positive">
 ▲ +2.83%
 </div>
 
@@ -1573,6 +1572,8 @@ Al Fayed Stocks
 
 <script>
 
+/* ================= MENU ================= */
+
 function toggleMenu(){
 
     const nav =
@@ -1599,6 +1600,477 @@ document
     });
 
 });
+
+
+/* ================= SUPABASE ================= */
+
+let supabaseClient = null;
+
+
+/* ================= HELPERS ================= */
+
+function formatNumber(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ""
+    ){
+        return "—";
+    }
+
+    const number = Number(value);
+
+    if(!Number.isFinite(number)){
+        return String(value);
+    }
+
+    return number.toLocaleString("en-US",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    });
+
+}
+
+
+function getChangeValue(data){
+
+    const direct =
+    Number(data.change_value);
+
+    if(Number.isFinite(direct)){
+        return direct;
+    }
+
+    const price =
+    Number(data.price);
+
+    const previous =
+    Number(data.previous_close);
+
+    if(
+        Number.isFinite(price) &&
+        Number.isFinite(previous)
+    ){
+        return price - previous;
+    }
+
+    return 0;
+
+}
+
+
+function getChangePercent(data){
+
+    const direct =
+    Number(data.change_percent);
+
+    if(Number.isFinite(direct)){
+        return direct;
+    }
+
+    const price =
+    Number(data.price);
+
+    const previous =
+    Number(data.previous_close);
+
+    if(
+        Number.isFinite(price) &&
+        Number.isFinite(previous) &&
+        previous !== 0
+    ){
+        return ((price - previous) / previous) * 100;
+    }
+
+    return 0;
+
+}
+
+
+function buildChangeText(data){
+
+    const changeValue =
+    getChangeValue(data);
+
+    const changePercent =
+    getChangePercent(data);
+
+    if(changeValue > 0){
+
+        return "▲ +" +
+        formatNumber(changePercent) +
+        "%";
+
+    }
+
+    if(changeValue < 0){
+
+        return "▼ " +
+        formatNumber(changePercent) +
+        "%";
+
+    }
+
+    return "━ 0.00%";
+
+}
+
+
+/* ================= STYLE CHANGE ================= */
+
+function applyChangeStyle(element,data){
+
+    if(!element){
+        return;
+    }
+
+    const change =
+    getChangeValue(data);
+
+    element.classList.remove(
+        "positive",
+        "negative"
+    );
+
+    if(change > 0){
+
+        element.classList.add(
+            "positive"
+        );
+
+    }
+    else if(change < 0){
+
+        element.classList.add(
+            "negative"
+        );
+
+    }
+
+}
+
+
+/* ================= LOAD TASI ================= */
+
+async function loadTasiHome(){
+
+    try{
+
+        if(
+            !window.SUPABASE_URL ||
+            !window.SUPABASE_ANON_KEY
+        ){
+
+            console.error(
+                "Supabase config غير موجود."
+            );
+
+            return;
+
+        }
+
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("market_data")
+
+            .select("*")
+
+            .eq("market","tasi")
+
+            .maybeSingle();
+
+
+        if(error){
+
+            console.error(
+                "TASI Supabase Error:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if(!data){
+
+            console.warn(
+                "لا توجد بيانات لـ TASI."
+            );
+
+            return;
+
+        }
+
+
+        const price =
+        formatNumber(data.price);
+
+
+        const change =
+        buildChangeText(data);
+
+
+        /* لوحة الأسواق */
+
+        const heroPrice =
+        document.getElementById(
+            "heroTasiPrice"
+        );
+
+        const heroChange =
+        document.getElementById(
+            "heroTasiChange"
+        );
+
+
+        if(heroPrice){
+            heroPrice.textContent =
+            price;
+        }
+
+
+        if(heroChange){
+
+            heroChange.textContent =
+            change;
+
+            applyChangeStyle(
+                heroChange,
+                data
+            );
+
+        }
+
+
+        /* قسم الأسواق */
+
+        const homePrice =
+        document.getElementById(
+            "tasiHomePrice"
+        );
+
+        const homeChange =
+        document.getElementById(
+            "tasiHomeChange"
+        );
+
+
+        if(homePrice){
+
+            homePrice.textContent =
+            price;
+
+        }
+
+
+        if(homeChange){
+
+            homeChange.textContent =
+            change;
+
+            applyChangeStyle(
+                homeChange,
+                data
+            );
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "TASI Load Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ================= LOAD NASDAQ ================= */
+
+async function loadNasdaqHome(){
+
+    try{
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("market_data")
+
+            .select("*")
+
+            .eq("market","nasdaq100")
+
+            .maybeSingle();
+
+
+        if(error){
+
+            console.error(
+                "Nasdaq Supabase Error:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if(!data){
+
+            console.warn(
+                "لا توجد بيانات لـ Nasdaq 100."
+            );
+
+            return;
+
+        }
+
+
+        const price =
+        formatNumber(data.price);
+
+
+        const change =
+        buildChangeText(data);
+
+
+        /* لوحة الأسواق */
+
+        const heroPrice =
+        document.getElementById(
+            "heroNasdaqPrice"
+        );
+
+        const heroChange =
+        document.getElementById(
+            "heroNasdaqChange"
+        );
+
+
+        if(heroPrice){
+
+            heroPrice.textContent =
+            price;
+
+        }
+
+
+        if(heroChange){
+
+            heroChange.textContent =
+            change;
+
+            applyChangeStyle(
+                heroChange,
+                data
+            );
+
+        }
+
+
+        /* قسم الأسواق */
+
+        const homePrice =
+        document.getElementById(
+            "nasdaqHomePrice"
+        );
+
+        const homeChange =
+        document.getElementById(
+            "nasdaqHomeChange"
+        );
+
+
+        if(homePrice){
+
+            homePrice.textContent =
+            price;
+
+        }
+
+
+        if(homeChange){
+
+            homeChange.textContent =
+            change;
+
+            applyChangeStyle(
+                homeChange,
+                data
+            );
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "Nasdaq Load Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+        try{
+
+            if(
+                !window.SUPABASE_URL ||
+                !window.SUPABASE_ANON_KEY
+            ){
+
+                console.error(
+                    "SUPABASE_URL أو SUPABASE_ANON_KEY غير موجود."
+                );
+
+                return;
+
+            }
+
+
+            supabaseClient =
+            window.supabase.createClient(
+                window.SUPABASE_URL,
+                window.SUPABASE_ANON_KEY
+            );
+
+
+            await Promise.all([
+                loadTasiHome(),
+                loadNasdaqHome()
+            ]);
+
+        }
+        catch(error){
+
+            console.error(
+                "Supabase Initialization Error:",
+                error
+            );
+
+        }
+
+    }
+);
 
 </script>
 
