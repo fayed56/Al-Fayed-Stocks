@@ -6,10 +6,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>لوحة التحكم | Al Fayed Stocks</title>
+<title>لوحة الإدارة | Al Fayed Stocks</title>
 
-<link rel="stylesheet"
-href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -18,146 +22,441 @@ href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;90
 
 <style>
 
+/* ===============================
+   ADMIN PAGE
+================================ */
+
 .admin-page{
-    padding:50px 0 80px;
+    min-height:100vh;
+    padding:55px 0 90px;
+    background:#f4f6f8;
 }
+
+.admin-page,
+.admin-page *{
+    font-family:'Cairo',sans-serif;
+}
+
+/* ===============================
+   WRAP
+================================ */
+
+.admin-wrap{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* ===============================
+   HERO
+================================ */
 
 .admin-hero{
-    background:#0b2028;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:20px;
-    padding:35px;
-    margin-bottom:25px;
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.admin-hero .eyebrow{
-    color:#d8a94c;
-    font-weight:800;
+.admin-eyebrow{
+    color:#c99b43;
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:.5px;
     margin-bottom:8px;
 }
 
 .admin-hero h1{
+    margin:0;
+    color:#06131a !important;
     font-size:38px;
-    margin-bottom:10px;
+    font-weight:900;
 }
 
 .admin-hero p{
-    color:#9eafb5;
+    margin:10px auto 0;
+    max-width:750px;
+    color:#66747b !important;
+    font-size:17px;
+    line-height:2;
 }
 
-.admin-grid{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:22px;
-}
+/* ===============================
+   ADMIN TOP BAR
+================================ */
 
-.admin-card{
+.admin-topbar{
     background:#0b2028;
     border:1px solid rgba(255,255,255,.07);
     border-radius:18px;
-    padding:25px;
+    padding:18px 22px;
+    margin-bottom:22px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+
+    box-shadow:0 10px 30px rgba(6,19,26,.08);
+}
+
+.admin-user{
+    color:#fff !important;
+}
+
+.admin-user strong{
+    color:#20c878 !important;
+    display:block;
+    font-size:17px;
+}
+
+.admin-user span{
+    color:#9eafb5 !important;
+    font-size:13px;
+}
+
+/* ===============================
+   MAIN GRID
+================================ */
+
+.admin-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+    gap:22px;
+    align-items:start;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.admin-card{
+    background:#0b2028;
+    border:1px solid rgba(32,200,120,.12);
+    border-radius:22px;
+    padding:28px;
+    color:#fff;
+
+    box-shadow:
+        0 14px 35px rgba(6,19,26,.10);
 }
 
 .admin-card h2{
-    margin-bottom:20px;
+    margin:0 0 22px;
+    color:#fff !important;
+    font-size:23px;
+    font-weight:900;
 }
+
+.admin-card p{
+    color:#9eafb5 !important;
+}
+
+/* ===============================
+   SETUP
+================================ */
+
+.setup-card{
+    margin-bottom:22px;
+}
+
+.setup-card h2{
+    color:#d8a94c !important;
+}
+
+.setup-warning{
+    background:rgba(216,169,76,.08);
+    border:1px solid rgba(216,169,76,.2);
+    border-radius:12px;
+    padding:13px 15px;
+    color:#dbe4e7 !important;
+    line-height:2;
+    font-size:13px;
+}
+
+/* ===============================
+   LOGIN
+================================ */
+
+.login-box{
+    max-width:550px;
+    margin:0 auto;
+}
+
+/* ===============================
+   FORM
+================================ */
 
 .form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:15px;
 }
 
-.admin-card label{
+.form-label{
     display:block;
-    color:#dbe4e7;
+    color:#dbe4e7 !important;
     font-size:14px;
     font-weight:700;
-    margin-bottom:15px;
+    margin-bottom:3px;
 }
 
-.admin-card input,
-.admin-card select,
-.admin-card textarea{
+.form-label input,
+.form-label select,
+.form-label textarea{
+
     width:100%;
     margin-top:7px;
-    padding:12px 13px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.12);
+
+    padding:13px 14px;
+
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.10);
+
     background:#06131a;
     color:#fff;
+
     font-family:'Cairo',sans-serif;
+    font-size:14px;
+
     outline:none;
+    transition:.2s;
 }
 
-.admin-card input:focus,
-.admin-card select:focus,
-.admin-card textarea:focus{
+.form-label input::placeholder,
+.form-label textarea::placeholder{
+    color:#71838a;
+}
+
+.form-label input:focus,
+.form-label select:focus,
+.form-label textarea:focus{
     border-color:#20c878;
+    box-shadow:0 0 0 3px rgba(32,200,120,.08);
+}
+
+.form-label select option{
+    background:#06131a;
+    color:#fff;
 }
 
 .full{
     grid-column:1/-1;
 }
 
-.level-title{
-    color:#d8a94c;
-    font-size:14px;
+/* ===============================
+   SECTION TITLE
+================================ */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin:25px 0 15px;
+    padding-bottom:10px;
+
+    color:#d8a94c !important;
+
+    font-size:15px;
+    font-weight:900;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* ===============================
+   LEVEL BOXES
+================================ */
+
+.level-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.level-box{
+    background:#06131a;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:13px;
+    padding:13px;
+}
+
+.level-box label{
+    display:block;
+    margin:0;
+}
+
+.level-box.support{
+    border-right:3px solid #20c878;
+}
+
+.level-box.resistance{
+    border-right:3px solid #d8a94c;
+}
+
+.level-label{
+    display:block;
+    font-size:13px;
     font-weight:800;
-    margin:22px 0 12px;
-    padding-bottom:8px;
-    border-bottom:1px solid rgba(255,255,255,.07);
+    margin-bottom:5px;
+}
+
+.support .level-label{
+    color:#20c878 !important;
+}
+
+.resistance .level-label{
+    color:#d8a94c !important;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+.admin-submit{
+    width:100%;
+    margin-top:10px;
+
+    border:0;
+    border-radius:12px;
+
+    padding:14px;
+
+    background:#d8a94c;
+    color:#06131a;
+
+    font-family:'Cairo',sans-serif;
+    font-size:15px;
+    font-weight:900;
+
+    cursor:pointer;
+    transition:.2s;
+}
+
+.admin-submit:hover{
+    transform:translateY(-1px);
+    filter:brightness(1.05);
+}
+
+/* ===============================
+   MESSAGE
+================================ */
+
+.message{
+    min-height:25px;
+    margin-top:12px;
+
+    color:#20c878 !important;
+    font-size:13px;
+    font-weight:700;
+}
+
+/* ===============================
+   RECOMMENDATION LIST
+================================ */
+
+.rec-list{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
 }
 
 .rec-item{
     background:#06131a;
     border:1px solid rgba(255,255,255,.07);
-    border-radius:14px;
-    padding:15px;
-    margin-bottom:12px;
+    border-radius:15px;
+    padding:17px;
 }
 
-.rec-item h3{
-    font-size:17px;
-    margin-bottom:5px;
+.rec-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:10px;
 }
 
-.rec-item small{
-    color:#9eafb5;
+.rec-name{
+    color:#fff !important;
+    font-size:18px;
+    font-weight:900;
+}
+
+.rec-symbol{
+    color:#20c878 !important;
+    font-size:13px;
+    font-weight:800;
+}
+
+.market-badge{
+    color:#20c878 !important;
+    font-size:12px;
+    font-weight:800;
+}
+
+.rec-info{
+    color:#9eafb5 !important;
+    font-size:12px;
     line-height:2;
 }
 
 .rec-levels{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:7px;
-    margin-top:10px;
+    gap:8px;
+    margin-top:12px;
 }
 
 .rec-level{
     background:#0b2028;
-    border-radius:8px;
-    padding:7px;
+    border-radius:9px;
+    padding:9px;
     font-size:12px;
+    color:#dbe4e7 !important;
 }
 
 .rec-level b{
-    color:#20c878;
+    display:block;
+    margin-bottom:2px;
+    color:#20c878 !important;
 }
 
 .rec-level.resistance b{
-    color:#d8a94c;
+    color:#d8a94c !important;
+}
+
+.rec-scenario{
+    margin-top:12px;
+    padding:11px 13px;
+
+    background:#0b2028;
+
+    border-right:3px solid #20c878;
+    border-radius:9px;
+
+    color:#dbe4e7 !important;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.rec-scenario strong{
+    color:#d8a94c !important;
 }
 
 .delete-btn{
+    width:100%;
     margin-top:12px;
-    border:1px solid #ff6868;
+
+    padding:9px;
+
+    border:1px solid rgba(255,104,104,.5);
+    border-radius:9px;
+
     background:transparent;
     color:#ff6868;
-    padding:7px 12px;
-    border-radius:8px;
-    cursor:pointer;
+
     font-family:'Cairo',sans-serif;
+    font-weight:700;
+
+    cursor:pointer;
 }
 
 .delete-btn:hover{
@@ -165,160 +464,257 @@ href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;90
     color:#06131a;
 }
 
-.message{
-    margin-top:12px;
-    color:#20c878;
+/* ===============================
+   EMPTY / ERROR
+================================ */
+
+.empty{
+    text-align:center;
+    color:#9eafb5 !important;
+    padding:25px 10px;
 }
 
-@media(max-width:800px){
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:850px){
+
+    .admin-page{
+        padding:35px 0 70px;
+    }
+
+    .admin-wrap{
+        width:92%;
+    }
 
     .admin-grid{
         grid-template-columns:1fr;
     }
 
+    .admin-hero h1{
+        font-size:29px;
+    }
+
+    .admin-hero p{
+        font-size:14px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .admin-card{
+        padding:20px 16px;
+        border-radius:18px;
+    }
+
     .form-grid{
         grid-template-columns:1fr;
+        gap:12px;
     }
 
-    .admin-hero h1{
-        font-size:30px;
+    .level-grid{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
     }
 
+    .admin-topbar{
+        padding:15px;
+    }
+
+    .admin-card h2{
+        font-size:20px;
+    }
+
+    .rec-head{
+        flex-direction:column;
+    }
+
+}
+
+/* ===============================
+   FORCE TEXT VISIBILITY
+================================ */
+
+.admin-page h1,
+.admin-page h2,
+.admin-page h3,
+.admin-page label,
+.admin-page strong{
+    opacity:1 !important;
+    visibility:visible !important;
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 <div id="site-header"></div>
+
 
 <main>
 
 <section class="admin-page">
 
-<div class="wrap">
+<div class="admin-wrap">
 
 
-<!-- ================= HERO ================= -->
+<!-- ===============================
+     HERO
+================================ -->
 
 <div class="admin-hero">
 
-<div class="eyebrow">
+<div class="admin-eyebrow">
 ADMIN • AL FAYED STOCKS
 </div>
 
 <h1>
-لوحة إدارة التحليلات والتوصيات
+⚙️ لوحة إدارة التحليلات
 </h1>
 
 <p>
-من هنا تقدر تضيف السهم وتحدد الدخول والهدف ووقف الخسارة
-ودعم 1 ودعم 2 ومقاومة 1 ومقاومة 2 والسيناريو.
+أضف السهم وحدد مستويات الدعم والمقاومة والسيناريو،
+وسيتم عرض البيانات تلقائيًا في صفحة التحليلات.
 </p>
 
 </div>
 
 
-<!-- ================= SETUP ================= -->
+<!-- ===============================
+     SETUP
+================================ -->
 
-<div id="setup" class="admin-card" style="margin-bottom:22px;">
+<div
+id="setup"
+class="admin-card setup-card"
+style="display:none;"
+>
 
-<h2>⚙️ إعداد الاتصال</h2>
+<h2>
+⚙️ إعداد الاتصال
+</h2>
 
-<p style="color:#9eafb5">
+<div class="setup-warning">
 
-أول مرة فقط: تأكد من وضع Publishable / Anon Key
-داخل ملف <b>supabase-config.js</b>.
+تأكد من وضع
+<strong>Publishable / Anon Key</strong>
+داخل ملف
+<strong>supabase-config.js</strong>.
 
-</p>
+<br>
 
-<p style="color:#9eafb5;margin-top:8px">
+لا تستخدم
+<strong>Service Role Key</strong>
+داخل الموقع.
 
-لا تستخدم Service Role Key داخل الموقع.
-
-</p>
+</div>
 
 </div>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- ===============================
+     LOGIN
+================================ -->
 
-<div id="login"
-class="admin-card"
-style="max-width:550px;margin:0 auto 25px;display:none;">
+<div
+id="login"
+class="admin-card login-box"
+style="display:none;"
+>
 
-<h2>🔐 دخول لوحة التحكم</h2>
+<h2>
+🔐 دخول لوحة التحكم
+</h2>
 
-<p style="color:#9eafb5;margin-bottom:20px">
-
-استخدم البريد وكلمة المرور الخاصة بحساب الإدارة في Supabase.
-
+<p style="margin-bottom:20px;">
+استخدم البريد الإلكتروني وكلمة المرور الخاصة بحساب الإدارة في Supabase.
 </p>
 
-<label>
+
+<label class="form-label">
 
 البريد الإلكتروني
 
 <input
 id="email"
 type="email"
-placeholder="admin@example.com">
+placeholder="admin@example.com"
+autocomplete="email"
+>
 
 </label>
 
 
-<label>
+<label
+class="form-label"
+style="margin-top:15px;"
+>
 
 كلمة المرور
 
 <input
 id="password"
 type="password"
-placeholder="••••••••">
+placeholder="••••••••"
+autocomplete="current-password"
+>
 
 </label>
 
 
 <button
-class="btn btn-gold"
-onclick="loginAdmin()">
+class="admin-submit"
+onclick="loginAdmin()"
+>
 
 دخول لوحة التحكم
 
 </button>
 
 
-<div id="loginMsg" class="message"></div>
+<div
+id="loginMsg"
+class="message"
+></div>
 
 </div>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- ===============================
+     DASHBOARD
+================================ -->
 
-<div id="dashboard" style="display:none;">
+<div
+id="dashboard"
+style="display:none;"
+>
 
 
-<!-- USER -->
+<!-- USER BAR -->
 
-<div class="admin-card"
-style="margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;">
+<div class="admin-topbar">
 
-<div>
+<div class="admin-user">
 
-<b id="who"></b>
+<strong id="who">
+</strong>
 
-<div style="color:#9eafb5">
+<span>
 أنت مسجل كمدير للمنصة.
-</div>
+</span>
 
 </div>
 
 
 <button
 class="btn"
-onclick="logoutAdmin()">
+onclick="logoutAdmin()"
+>
 
 تسجيل الخروج
 
@@ -327,10 +723,14 @@ onclick="logoutAdmin()">
 </div>
 
 
+<!-- GRID -->
+
 <div class="admin-grid">
 
 
-<!-- ================= ADD ================= -->
+<!-- ===============================
+     ADD ANALYSIS
+================================ -->
 
 <div class="admin-card">
 
@@ -342,7 +742,7 @@ onclick="logoutAdmin()">
 <div class="form-grid">
 
 
-<label>
+<label class="form-label">
 
 السوق
 
@@ -361,73 +761,85 @@ onclick="logoutAdmin()">
 </label>
 
 
-<label>
+<label class="form-label">
 
 الرمز
 
 <input
 id="symbol"
-placeholder="مثال: 6050 أو NVDA">
+placeholder="مثال: 6050 أو NVDA"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 اسم السهم
 
 <input
 id="name"
-placeholder="مثال: الأسماك">
+placeholder="مثال: الأسماك"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 النوع
 
 <input
 id="type"
-placeholder="مضاربية / نمو">
+placeholder="مضاربية / نمو / استثمار"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 سعر الدخول
 
 <input
 id="entry"
-placeholder="مثال: 71">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 71"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 الهدف
 
 <input
 id="target"
-placeholder="مثال: 75">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 75"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 وقف الخسارة
 
 <input
 id="stop"
-placeholder="مثال: 68">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 68"
+>
 
 </label>
 
 
-<label>
+<label class="form-label">
 
 الحالة
 
@@ -449,115 +861,159 @@ placeholder="مثال: 68">
 
 </label>
 
-
 </div>
 
 
 <!-- LEVELS -->
 
-<div class="level-title">
+<div class="section-title">
 📊 مستويات الدعم والمقاومة
 </div>
 
 
-<div class="form-grid">
+<div class="level-grid">
 
 
-<label>
+<div class="level-box support">
 
+<label class="form-label">
+
+<span class="level-label">
 🟢 دعم 1
+</span>
 
 <input
 id="support1"
-placeholder="مثال: 68">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 68"
+>
 
 </label>
 
+</div>
 
-<label>
 
+<div class="level-box support">
+
+<label class="form-label">
+
+<span class="level-label">
 🟢 دعم 2
+</span>
 
 <input
 id="support2"
-placeholder="مثال: 65">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 65"
+>
 
 </label>
 
+</div>
 
-<label>
 
+<div class="level-box resistance">
+
+<label class="form-label">
+
+<span class="level-label">
 🟡 مقاومة 1
+</span>
 
 <input
 id="resistance1"
-placeholder="مثال: 73">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 73"
+>
 
 </label>
 
+</div>
 
-<label>
 
+<div class="level-box resistance">
+
+<label class="form-label">
+
+<span class="level-label">
 🟡 مقاومة 2
+</span>
 
 <input
 id="resistance2"
-placeholder="مثال: 76">
+type="text"
+inputmode="decimal"
+placeholder="مثال: 76"
+>
 
 </label>
 
+</div>
 
 </div>
 
 
 <!-- SCENARIO -->
 
-<div class="level-title">
+<div class="section-title">
 🎯 السيناريو
 </div>
 
 
-<label>
+<label class="form-label">
 
 السيناريو الفني
 
 <textarea
 id="scenario"
 rows="4"
-placeholder="مثال: الثبات فوق دعم 1 يدعم الصعود إلى مقاومة 1 ثم مقاومة 2، وكسر دعم 1 يفتح الطريق لدعم 2."></textarea>
+placeholder="مثال: الثبات فوق دعم 1 يدعم الصعود إلى مقاومة 1 ثم مقاومة 2، وكسر دعم 1 يفتح الطريق لدعم 2."
+></textarea>
 
 </label>
 
 
-<label>
+<label
+class="form-label"
+style="margin-top:15px;"
+>
 
 ملاحظة
 
 <textarea
 id="note"
 rows="3"
-placeholder="ملاحظة أو شرح مختصر للتحليل"></textarea>
+placeholder="ملاحظة أو شرح مختصر للتحليل"
+></textarea>
 
 </label>
 
 
 <button
-class="btn btn-gold"
+class="admin-submit"
 onclick="addRec()"
-style="width:100%;">
+>
 
 💾 حفظ التحليل
 
 </button>
 
 
-<div id="saveMsg" class="message"></div>
+<div
+id="saveMsg"
+class="message"
+></div>
 
 
 </div>
 
 
-<!-- ================= LIST ================= -->
+<!-- ===============================
+     LIST
+================================ -->
 
 <div class="admin-card">
 
@@ -568,8 +1024,8 @@ style="width:100%;">
 
 <div id="list">
 
-<div style="color:#9eafb5">
-جاري التحميل...
+<div class="empty">
+جاري تحميل البيانات...
 </div>
 
 </div>
@@ -577,6 +1033,8 @@ style="width:100%;">
 
 </div>
 
+
+</div>
 
 </div>
 
@@ -595,522 +1053,679 @@ style="width:100%;">
 
 <script>
 
+/* =========================================
+   SUPABASE
+========================================= */
+
 let sb = null;
 let session = null;
 
 
+/* =========================================
+   STATUS
+========================================= */
+
 const statusLabel = {
 
-open:'مفتوحة',
-watch:'مراقبة',
-closed:'مغلقة'
+    open:'مفتوحة',
+
+    watch:'مراقبة',
+
+    closed:'مغلقة'
 
 };
 
+
+/* =========================================
+   CONFIG
+========================================= */
 
 function configured(){
 
-return window.SUPABASE_URL &&
-window.SUPABASE_ANON_KEY &&
-!window.SUPABASE_ANON_KEY.includes('PASTE_');
+    return window.SUPABASE_URL &&
+           window.SUPABASE_ANON_KEY &&
+           !window.SUPABASE_ANON_KEY.includes('PASTE_');
 
 }
 
+
+/* =========================================
+   MESSAGE
+========================================= */
 
 function msg(id,text){
 
-document.getElementById(id).textContent = text;
+    const el = document.getElementById(id);
+
+    if(el){
+        el.textContent = text;
+    }
 
 }
 
+
+/* =========================================
+   VALUE
+========================================= */
 
 function val(id){
 
-return document.getElementById(id).value.trim();
+    const el = document.getElementById(id);
+
+    return el ? el.value.trim() : '';
 
 }
 
 
-/* ================= INIT ================= */
+/* =========================================
+   INIT
+========================================= */
 
 async function init(){
 
-if(!configured()){
+    if(!configured()){
 
-document.getElementById('setup').style.display='block';
+        document.getElementById('setup').style.display='block';
 
-return;
+        return;
+
+    }
+
+
+    document.getElementById('setup').style.display='none';
+
+
+    sb = window.supabase.createClient(
+
+        window.SUPABASE_URL,
+
+        window.SUPABASE_ANON_KEY
+
+    );
+
+
+    const r = await sb.auth.getSession();
+
+
+    session = r.data.session;
+
+
+    if(session){
+
+        await enter();
+
+    }else{
+
+        document.getElementById('login').style.display='block';
+
+    }
 
 }
 
 
-document.getElementById('setup').style.display='none';
-
-
-sb = window.supabase.createClient(
-window.SUPABASE_URL,
-window.SUPABASE_ANON_KEY
-);
-
-
-const r = await sb.auth.getSession();
-
-
-session = r.data.session;
-
-
-if(session){
-
-await enter();
-
-}else{
-
-document.getElementById('login').style.display='block';
-
-}
-
-}
-
-
-/* ================= LOGIN ================= */
+/* =========================================
+   LOGIN
+========================================= */
 
 async function loginAdmin(){
 
-const email =
-document.getElementById('email').value.trim();
+    const email =
+        document.getElementById('email').value.trim();
 
-const password =
-document.getElementById('password').value;
+    const password =
+        document.getElementById('password').value;
 
 
-if(!email || !password){
+    if(!email || !password){
 
-msg(
-'loginMsg',
-'اكتب البريد الإلكتروني وكلمة المرور.'
-);
+        msg(
+            'loginMsg',
+            '⚠️ اكتب البريد الإلكتروني وكلمة المرور.'
+        );
 
-return;
+        return;
+
+    }
+
+
+    msg(
+        'loginMsg',
+        'جاري تسجيل الدخول...'
+    );
+
+
+    const r =
+        await sb.auth.signInWithPassword({
+
+            email:email,
+
+            password:password
+
+        });
+
+
+    if(r.error){
+
+        msg(
+            'loginMsg',
+            '❌ فشل الدخول: ' + r.error.message
+        );
+
+        return;
+
+    }
+
+
+    session = r.data.session;
+
+
+    await enter();
 
 }
 
 
-msg(
-'loginMsg',
-'جاري تسجيل الدخول...'
-);
-
-
-const r =
-await sb.auth.signInWithPassword({
-
-email:email,
-
-password:password
-
-});
-
-
-if(r.error){
-
-msg(
-'loginMsg',
-'فشل الدخول: ' + r.error.message
-);
-
-return;
-
-}
-
-
-session = r.data.session;
-
-await enter();
-
-}
-
-
-/* ================= ENTER ================= */
+/* =========================================
+   ENTER
+========================================= */
 
 async function enter(){
 
-const uid = session.user.id;
+    if(!session){
+
+        return;
+
+    }
 
 
-const r =
-await sb
-.from('admins')
-.select('user_id')
-.eq('user_id',uid)
-.maybeSingle();
+    const uid = session.user.id;
 
 
-if(r.error || !r.data){
+    const r =
+        await sb
+        .from('admins')
+        .select('user_id')
+        .eq('user_id',uid)
+        .maybeSingle();
 
-await sb.auth.signOut();
 
-msg(
-'loginMsg',
-'هذا الحساب غير مضاف كمدير في جدول admins.'
-);
+    if(r.error || !r.data){
 
-document.getElementById('login').style.display='block';
+        await sb.auth.signOut();
 
-return;
+
+        msg(
+            'loginMsg',
+            '❌ هذا الحساب غير مضاف كمدير في جدول admins.'
+        );
+
+
+        document.getElementById('login').style.display='block';
+
+        return;
+
+    }
+
+
+    document.getElementById('login').style.display='none';
+
+    document.getElementById('dashboard').style.display='block';
+
+
+    document.getElementById('who').textContent =
+        session.user.email;
+
+
+    await loadRecs();
 
 }
 
 
-document.getElementById('login').style.display='none';
-
-document.getElementById('dashboard').style.display='block';
-
-document.getElementById('who').textContent =
-session.user.email;
-
-
-await loadRecs();
-
-}
-
-
-/* ================= LOGOUT ================= */
+/* =========================================
+   LOGOUT
+========================================= */
 
 async function logoutAdmin(){
 
-await sb.auth.signOut();
+    if(sb){
 
-location.reload();
+        await sb.auth.signOut();
+
+    }
+
+
+    location.reload();
 
 }
 
 
-/* ================= ADD ================= */
+/* =========================================
+   ADD
+========================================= */
 
 async function addRec(){
 
-const r = {
+    if(!sb || !session){
 
-market:val('market'),
+        msg(
+            'saveMsg',
+            '❌ يجب تسجيل الدخول أولًا.'
+        );
 
-symbol:val('symbol'),
+        return;
 
-name:val('name'),
-
-entry:val('entry') || null,
-
-target:val('target') || null,
-
-stop_loss:val('stop') || null,
-
-support1:val('support1') || null,
-
-support2:val('support2') || null,
-
-resistance1:val('resistance1') || null,
-
-resistance2:val('resistance2') || null,
-
-scenario:val('scenario') || null,
-
-status:val('status'),
-
-note:val('note') || null
-
-};
+    }
 
 
-if(!r.symbol || !r.name){
+    const r = {
 
-msg(
-'saveMsg',
-'⚠️ اكتب اسم السهم والرمز أولًا.'
-);
+        market:val('market'),
 
-return;
+        symbol:val('symbol'),
 
-}
+        name:val('name'),
 
+        entry:val('entry') || null,
 
-msg(
-'saveMsg',
-'جاري حفظ التحليل...'
-);
+        target:val('target') || null,
 
+        stop_loss:val('stop') || null,
 
-const type = val('type');
+        support1:val('support1') || null,
 
+        support2:val('support2') || null,
 
-if(type){
+        resistance1:val('resistance1') || null,
 
-r.note =
-'النوع: ' +
-type +
-' — ' +
-(r.note || '');
+        resistance2:val('resistance2') || null,
 
-}
+        scenario:val('scenario') || null,
 
+        status:val('status'),
 
-const x =
-await sb
-.from('recommendations')
-.insert(r);
+        note:val('note') || null
+
+    };
 
 
-if(x.error){
+    if(!r.symbol || !r.name){
 
-msg(
-'saveMsg',
-'❌ لم يتم الحفظ: ' +
-x.error.message
-);
+        msg(
+            'saveMsg',
+            '⚠️ اكتب اسم السهم والرمز أولًا.'
+        );
 
-console.error(x.error);
+        return;
 
-return;
-
-}
+    }
 
 
-/* CLEAR */
-
-[
-'symbol',
-'name',
-'type',
-'entry',
-'target',
-'stop',
-'support1',
-'support2',
-'resistance1',
-'resistance2',
-'scenario',
-'note'
-
-].forEach(function(id){
-
-document.getElementById(id).value='';
-
-});
+    msg(
+        'saveMsg',
+        'جاري حفظ التحليل...'
+    );
 
 
-msg(
-'saveMsg',
-'✅ تم حفظ التحليل بنجاح.'
-);
+    const type = val('type');
 
 
-await loadRecs();
+    if(type){
+
+        r.note =
+            'النوع: ' +
+            type +
+            (r.note ? ' — ' + r.note : '');
+
+    }
+
+
+    const x =
+        await sb
+        .from('recommendations')
+        .insert(r);
+
+
+    if(x.error){
+
+        msg(
+            'saveMsg',
+            '❌ لم يتم الحفظ: ' +
+            x.error.message
+        );
+
+        console.error(x.error);
+
+        return;
+
+    }
+
+
+    clearForm();
+
+
+    msg(
+        'saveMsg',
+        '✅ تم حفظ التحليل بنجاح.'
+    );
+
+
+    await loadRecs();
 
 }
 
 
-/* ================= LOAD ================= */
+/* =========================================
+   CLEAR FORM
+========================================= */
+
+function clearForm(){
+
+    [
+
+        'symbol',
+
+        'name',
+
+        'type',
+
+        'entry',
+
+        'target',
+
+        'stop',
+
+        'support1',
+
+        'support2',
+
+        'resistance1',
+
+        'resistance2',
+
+        'scenario',
+
+        'note'
+
+    ].forEach(function(id){
+
+        const el = document.getElementById(id);
+
+        if(el){
+
+            el.value='';
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   LOAD
+========================================= */
 
 async function loadRecs(){
 
-const r =
-await sb
-.from('recommendations')
-.select('*')
-.order('created_at',{
-ascending:false
-});
+    const list =
+        document.getElementById('list');
 
 
-if(r.error){
+    list.innerHTML =
+        '<div class="empty">جاري تحميل البيانات...</div>';
 
-document.getElementById('list').innerHTML =
 
-'<div style="color:#ff6868">' +
-'تعذر تحميل البيانات: ' +
-esc(r.error.message) +
-'</div>';
+    const r =
+        await sb
+        .from('recommendations')
+        .select('*')
+        .order('created_at',{
+            ascending:false
+        });
 
-return;
+
+    if(r.error){
+
+        list.innerHTML =
+
+            '<div style="color:#ff6868">' +
+
+            '❌ تعذر تحميل البيانات: ' +
+
+            esc(r.error.message) +
+
+            '</div>';
+
+        return;
+
+    }
+
+
+    if(!r.data.length){
+
+        list.innerHTML =
+            '<div class="empty">لا توجد تحليلات حاليًا.</div>';
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+
+        '<div class="rec-list">' +
+
+        r.data.map(function(x){
+
+            return `
+
+            <div class="rec-item">
+
+                <div class="rec-head">
+
+                    <div>
+
+                        <div class="rec-name">
+
+                            ${esc(x.name)}
+
+                            <span class="rec-symbol">
+
+                                • ${esc(x.symbol)}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="market-badge">
+
+                        ${
+                            x.market === 'saudi'
+                            ? '🇸🇦 السوق السعودي'
+                            : '🇺🇸 السوق الأمريكي'
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="rec-info">
+
+                    الحالة:
+                    ${esc(statusLabel[x.status] || x.status || '—')}
+
+                    <br>
+
+                    الدخول:
+                    ${esc(x.entry || '—')}
+
+                    &nbsp; • &nbsp;
+
+                    الهدف:
+                    ${esc(x.target || '—')}
+
+                    &nbsp; • &nbsp;
+
+                    وقف الخسارة:
+                    ${esc(x.stop_loss || '—')}
+
+                </div>
+
+
+                <div class="rec-levels">
+
+
+                    <div class="rec-level">
+
+                        <b>🟢 دعم 1</b>
+
+                        ${esc(x.support1 || '—')}
+
+                    </div>
+
+
+                    <div class="rec-level">
+
+                        <b>🟢 دعم 2</b>
+
+                        ${esc(x.support2 || '—')}
+
+                    </div>
+
+
+                    <div class="rec-level resistance">
+
+                        <b>🟡 مقاومة 1</b>
+
+                        ${esc(x.resistance1 || '—')}
+
+                    </div>
+
+
+                    <div class="rec-level resistance">
+
+                        <b>🟡 مقاومة 2</b>
+
+                        ${esc(x.resistance2 || '—')}
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="rec-scenario">
+
+                    <strong>🎯 السيناريو:</strong>
+
+                    ${esc(x.scenario || '—')}
+
+                </div>
+
+
+                <button
+
+                    class="delete-btn"
+
+                    onclick="delRec('${x.id}')"
+
+                >
+
+                    🗑 حذف التحليل
+
+                </button>
+
+
+            </div>
+
+            `;
+
+        }).join('') +
+
+        '</div>';
 
 }
 
 
-if(!r.data.length){
-
-document.getElementById('list').innerHTML =
-
-'<div style="color:#9eafb5">' +
-'لا توجد تحليلات حاليًا.' +
-'</div>';
-
-return;
-
-}
-
-
-document.getElementById('list').innerHTML =
-
-r.data.map(function(x){
-
-return `
-
-<div class="rec-item">
-
-<h3>
-
-${esc(x.name)}
-
-<span style="color:#20c878">
-(${esc(x.symbol)})
-</span>
-
-</h3>
-
-
-<small>
-
-${x.market === 'saudi'
-? '🇸🇦 السوق السعودي'
-: '🇺🇸 السوق الأمريكي'}
-
-<br>
-
-الحالة:
-${statusLabel[x.status] || x.status}
-
-<br>
-
-الدخول:
-${x.entry || '—'}
-
-•
-
-الهدف:
-${x.target || '—'}
-
-•
-
-الوقف:
-${x.stop_loss || '—'}
-
-</small>
-
-
-<div class="rec-levels">
-
-<div class="rec-level">
-<b>دعم 1</b><br>
-${x.support1 || '—'}
-</div>
-
-<div class="rec-level">
-<b>دعم 2</b><br>
-${x.support2 || '—'}
-</div>
-
-<div class="rec-level resistance">
-<b>مقاومة 1</b><br>
-${x.resistance1 || '—'}
-</div>
-
-<div class="rec-level resistance">
-<b>مقاومة 2</b><br>
-${x.resistance2 || '—'}
-</div>
-
-</div>
-
-
-<div style="margin-top:10px;color:#9eafb5;font-size:13px">
-
-<b style="color:#d8a94c">
-السيناريو:
-</b>
-
-${esc(x.scenario || '—')}
-
-</div>
-
-
-<button
-class="delete-btn"
-onclick="delRec('${x.id}')">
-
-🗑 حذف
-
-</button>
-
-</div>
-
-`;
-
-}).join('');
-
-}
-
-
-/* ================= DELETE ================= */
+/* =========================================
+   DELETE
+========================================= */
 
 async function delRec(id){
 
-if(!confirm('هل تريد حذف هذا التحليل؟')){
+    if(!confirm('هل تريد حذف هذا التحليل؟')){
 
-return;
+        return;
+
+    }
+
+
+    const r =
+        await sb
+        .from('recommendations')
+        .delete()
+        .eq('id',id);
+
+
+    if(r.error){
+
+        msg(
+            'saveMsg',
+            '❌ تعذر الحذف: ' +
+            r.error.message
+        );
+
+        return;
+
+    }
+
+
+    msg(
+        'saveMsg',
+        '✅ تم حذف التحليل.'
+    );
+
+
+    await loadRecs();
 
 }
 
 
-const r =
-await sb
-.from('recommendations')
-.delete()
-.eq('id',id);
-
-
-if(r.error){
-
-msg(
-'saveMsg',
-'❌ تعذر الحذف: ' +
-r.error.message
-);
-
-return;
-
-}
-
-
-msg(
-'saveMsg',
-'✅ تم حذف التحليل.'
-);
-
-
-await loadRecs();
-
-}
-
-
-/* ================= ESCAPE ================= */
+/* =========================================
+   ESCAPE
+========================================= */
 
 function esc(s){
 
-return String(s ?? '')
-.replace(/[&<>'"]/g,function(c){
+    return String(s ?? '')
 
-return {
+        .replace(/[&<>'"]/g,function(c){
 
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-"'":'&#39;',
-'"':'&quot;'
+            return {
 
-}[c];
+                '&':'&amp;',
 
-});
+                '<':'&lt;',
+
+                '>':'&gt;',
+
+                "'":'&#39;',
+
+                '"':'&quot;'
+
+            }[c];
+
+        });
 
 }
 
+
+/* =========================================
+   START
+========================================= */
 
 init();
 
