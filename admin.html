@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ar" dir="rtl">
 
@@ -1671,7 +1672,7 @@ async function loadMarketData(){
 
       msg(
         'marketMsg',
-        '⚠️ صف تاسي غير موجود في market_data. أنشئ صف tasi مرة واحدة من SQL.',
+        '⚠️ صف تاسي غير موجود في market_data. سيتم إنشاؤه عند الضغط على حفظ.',
         true
       );
 
@@ -1679,7 +1680,7 @@ async function loadMarketData(){
 
       msg(
         'marketMsg',
-        '⚠️ لا توجد بيانات ناسداك في market_data.',
+        '⚠️ لا توجد بيانات ناسداك في market_data. سيتم إنشاؤها عند الضغط على حفظ.',
         true
       );
 
@@ -1770,42 +1771,11 @@ async function saveMarketData(){
   };
 
 
-  msg(
-    'marketMsg',
-    'جاري حفظ البيانات...'
-  );
-
-
-  /*
-    نستخدم UPDATE لأن جدول market_data
-    عندك فيه صفوف موجودة بالفعل.
-  */
-
-  const r=await sb
-    .from('market_data')
-    .update(payload)
-    .eq('market',selectedMarket)
-    .select();
-
-
-  if(r.error){
+  if(payload.price === null){
 
     msg(
       'marketMsg',
-      '❌ لم يتم الحفظ: '+r.error.message,
-      true
-    );
-
-    return;
-
-  }
-
-
-  if(!r.data || !r.data.length){
-
-    msg(
-      'marketMsg',
-      '⚠️ لم يتم العثور على صف باسم '+selectedMarket+' داخل market_data.',
+      '⚠️ اكتب السعر / الإغلاق الحالي بشكل صحيح.',
       true
     );
 
@@ -1816,12 +1786,141 @@ async function saveMarketData(){
 
   msg(
     'marketMsg',
-    '✅ تم حفظ بيانات '+(
-      selectedMarket==='tasi'
-        ? 'السوق السعودي'
-        : 'السوق الأمريكي'
-    )+' بنجاح.'
+    '⏳ جاري حفظ البيانات في Supabase...'
   );
+
+
+  try{
+
+    /*
+      أولًا نتأكد أن الصف موجود
+    */
+
+    const check = await sb
+      .from('market_data')
+      .select('market')
+      .eq('market',selectedMarket)
+      .maybeSingle();
+
+
+    if(check.error){
+
+      msg(
+        'marketMsg',
+        '❌ خطأ في قراءة market_data: '+
+        check.error.message,
+        true
+      );
+
+      return;
+
+    }
+
+
+    /*
+      لو الصف غير موجود ننشئه
+    */
+
+    if(!check.data){
+
+      const insertResult = await sb
+        .from('market_data')
+        .insert(payload)
+        .select()
+        .single();
+
+
+      if(insertResult.error){
+
+        msg(
+          'marketMsg',
+          '❌ تعذر إنشاء بيانات السوق: '+
+          insertResult.error.message,
+          true
+        );
+
+        return;
+
+      }
+
+
+      fillMarket(insertResult.data);
+
+
+      msg(
+        'marketMsg',
+        '✅ تم إنشاء وحفظ بيانات '+
+        (
+          selectedMarket==='tasi'
+            ? 'السوق السعودي'
+            : 'السوق الأمريكي'
+        )+
+        ' بنجاح.'
+      );
+
+      return;
+
+    }
+
+
+    /*
+      الصف موجود بالفعل
+    */
+
+    const updateResult = await sb
+      .from('market_data')
+      .update(payload)
+      .eq('market',selectedMarket)
+      .select()
+      .single();
+
+
+    if(updateResult.error){
+
+      msg(
+        'marketMsg',
+        '❌ فشل تحديث Supabase: '+
+        updateResult.error.message,
+        true
+      );
+
+      return;
+
+    }
+
+
+    /*
+      نعيد تعبئة الحقول بالبيانات التي رجعت من Supabase
+    */
+
+    fillMarket(updateResult.data);
+
+
+    msg(
+      'marketMsg',
+      '✅ تم حفظ بيانات '+
+      (
+        selectedMarket==='tasi'
+          ? 'السوق السعودي'
+          : 'السوق الأمريكي'
+      )+
+      ' في Supabase بنجاح.'
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    msg(
+      'marketMsg',
+      '❌ حدث خطأ غير متوقع: '+
+      (error?.message || error),
+      true
+    );
+
+  }
 
 }
 
