@@ -1,1012 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>لوحة التحكم | Al Fayed Stocks</title>
 
-<meta name="description"
-content="لوحة إدارة توصيات Al Fayed Stocks">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 
-
 <style>
 
-/* =========================
-   GENERAL
-========================= */
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+.admin-page{
+    padding:50px 0 80px;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Cairo',sans-serif;
-
-    background:#06131a;
-
-    color:#fff;
-
-    line-height:1.8;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:92%;
-    max-width:1200px;
-    margin:auto;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:sticky;
-
-    top:0;
-
-    z-index:999;
-
-    background:rgba(6,19,26,.96);
-
-    backdrop-filter:blur(12px);
-
-    border-bottom:
-    1px solid rgba(255,255,255,.06);
-}
-
-.nav{
-
-    min-height:75px;
-
-    width:92%;
-
-    max-width:1200px;
-
-    margin:auto;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
-}
-
-.logo{
-
-    font-size:24px;
-
-    font-weight:900;
-
-    white-space:nowrap;
-}
-
-.logo span{
-    color:#20c878;
-}
-
-nav{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-}
-
-nav a{
-
-    color:#d5dde1;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.25s;
-}
-
-nav a:hover,
-nav a.active{
-
-    color:#20c878;
-}
-
-.btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-height:45px;
-
-    padding:10px 20px;
-
-    border-radius:10px;
-
-    font-weight:800;
-
-    font-size:14px;
-
-    transition:.25s;
-
-    cursor:pointer;
-
-    border:1px solid transparent;
-
-    font-family:inherit;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-}
-
-.btn-gold{
-
-    background:#d8a94c;
-
-    color:#06131a;
-}
-
-.btn-gold:hover{
-    background:#e4b75c;
-}
-
-.btn-outline{
-
-    border-color:#20c878;
-
-    color:#20c878;
-
-    background:transparent;
-}
-
-.btn-outline:hover{
-
-    background:#20c878;
-
-    color:#06131a;
-}
-
-.menu{
-
-    display:none;
-
-    border:0;
-
-    background:none;
-
-    color:#fff;
-
-    font-size:28px;
-
-    cursor:pointer;
-}
-
-
-/* =========================
-   PAGE HERO
-========================= */
-
-.page-hero{
-
-    padding:70px 0 50px;
-
-    background:
-
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(32,200,120,.12),
-        transparent 30%
-    ),
-
-    radial-gradient(
-        circle at 80% 10%,
-        rgba(216,169,76,.10),
-        transparent 28%
-    );
-}
-
-.page-hero-inner{
-
-    text-align:center;
-
-    max-width:850px;
-
-    margin:auto;
-}
-
-.eyebrow{
-
-    color:#d8a94c;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    letter-spacing:.5px;
-
-    margin-bottom:10px;
-}
-
-.page-hero h1{
-
-    font-size:44px;
-
-    font-weight:900;
-
-    margin-bottom:12px;
-}
-
-.page-hero h1 span{
-    color:#20c878;
-}
-
-.page-hero p{
-
-    color:#aab8be;
-
-    font-size:16px;
-
-    max-width:720px;
-
-    margin:auto;
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-
-.dashboard{
-
-    padding:25px 0 80px;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.card{
-
+.admin-hero{
     background:#0b2028;
-
-    border:
-    1px solid rgba(255,255,255,.07);
-
-    border-radius:18px;
-
-    padding:25px;
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.12);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:25px;
 }
 
-.card h3{
-
-    font-size:20px;
-
+.admin-hero .eyebrow{
+    color:#d8a94c;
+    font-weight:800;
     margin-bottom:8px;
 }
 
-.muted{
-
-    color:#8fa0a7;
-
-    font-size:14px;
+.admin-hero h1{
+    font-size:38px;
+    margin-bottom:10px;
 }
 
-
-/* =========================
-   SETUP
-========================= */
-
-.setup-card{
-
-    margin-bottom:20px;
-
-    border-color:
-    rgba(216,169,76,.20);
+.admin-hero p{
+    color:#9eafb5;
 }
 
-.setup-card h3{
-
-    color:#d8a94c;
-
-    margin-bottom:12px;
-}
-
-.setup-card p{
-
-    margin-bottom:7px;
-}
-
-.setup-card b{
-    color:#fff;
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-.login-card{
-
-    max-width:560px;
-
-    margin:25px auto;
-}
-
-.login-icon{
-
-    width:55px;
-
-    height:55px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:14px;
-
-    background:
-    rgba(32,200,120,.10);
-
-    border:
-    1px solid rgba(32,200,120,.20);
-
-    font-size:25px;
-
-    margin-bottom:15px;
-}
-
-
-/* =========================
-   LABELS / INPUTS
-========================= */
-
-label{
-
-    display:block;
-
-    color:#dce5e8;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    margin-top:15px;
-}
-
-input,
-select,
-textarea{
-
-    width:100%;
-
-    margin-top:7px;
-
-    padding:12px 14px;
-
-    border-radius:10px;
-
-    border:
-    1px solid rgba(255,255,255,.09);
-
-    background:#091b24;
-
-    color:#fff;
-
-    font-family:'Cairo',sans-serif;
-
-    font-size:14px;
-
-    outline:none;
-
-    transition:.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-
-    border-color:#20c878;
-
-    box-shadow:
-    0 0 0 2px rgba(32,200,120,.08);
-}
-
-select option{
-
-    background:#091b24;
-
-    color:#fff;
-}
-
-textarea{
-
-    resize:vertical;
-
-    min-height:95px;
-}
-
-
-/* =========================
-   DASHBOARD TOP
-========================= */
-
-.user-card{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:20px;
-}
-
-.user-info b{
-
-    display:block;
-
-    color:#fff;
-
-    font-size:16px;
-
-    margin-bottom:2px;
-}
-
-
-/* =========================
-   MAIN GRID
-========================= */
-
-.main-grid{
-
+.admin-grid{
     display:grid;
-
-    grid-template-columns:
-    minmax(0,1fr)
-    minmax(0,1fr);
-
-    gap:20px;
+    grid-template-columns:1.2fr .8fr;
+    gap:22px;
 }
 
-
-/* =========================
-   FORM
-========================= */
-
-.form-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-bottom:18px;
+.admin-card{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    padding:25px;
 }
 
-.form-title span{
-
-    color:#20c878;
+.admin-card h2{
+    margin-bottom:20px;
 }
 
 .form-grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-    gap:5px 12px;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
 }
 
-
-/* =========================
-   SAVE BUTTON
-========================= */
-
-.save-btn{
-
-    width:100%;
-
-    margin-top:20px;
-
-    min-height:48px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:#d8a94c;
-
-    color:#06131a;
-
-    font-family:'Cairo',sans-serif;
-
+.admin-card label{
+    display:block;
+    color:#dbe4e7;
     font-size:14px;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    transition:.25s;
+    font-weight:700;
+    margin-bottom:15px;
 }
 
-.save-btn:hover{
-
-    background:#e4b75c;
-
-    transform:translateY(-2px);
+.admin-card input,
+.admin-card select,
+.admin-card textarea{
+    width:100%;
+    margin-top:7px;
+    padding:12px 13px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.12);
+    background:#06131a;
+    color:#fff;
+    font-family:'Cairo',sans-serif;
+    outline:none;
 }
 
-
-/* =========================
-   RECOMMENDATION LIST
-========================= */
-
-.list-title{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-bottom:18px;
+.admin-card input:focus,
+.admin-card select:focus,
+.admin-card textarea:focus{
+    border-color:#20c878;
 }
 
-.list-title h3{
-    margin:0;
+.full{
+    grid-column:1/-1;
 }
 
-.list-count{
-
-    color:#20c878;
-
-    background:
-    rgba(32,200,120,.10);
-
-    border:
-    1px solid rgba(32,200,120,.20);
-
-    padding:4px 9px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
+.level-title{
+    color:#d8a94c;
+    font-size:14px;
     font-weight:800;
+    margin:22px 0 12px;
+    padding-bottom:8px;
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
-
-
-/* =========================
-   ITEM
-========================= */
 
 .rec-item{
-
-    position:relative;
-
-    background:#091b24;
-
-    border:
-    1px solid rgba(255,255,255,.06);
-
-    border-radius:13px;
-
+    background:#06131a;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
     padding:15px;
-
-    margin-bottom:10px;
-
-    transition:.2s;
+    margin-bottom:12px;
 }
 
-.rec-item:hover{
-
-    border-color:
-    rgba(32,200,120,.25);
-
-    transform:translateY(-2px);
+.rec-item h3{
+    font-size:17px;
+    margin-bottom:5px;
 }
 
-.rec-top{
-
-    display:flex;
-
-    align-items:flex-start;
-
-    justify-content:space-between;
-
-    gap:10px;
+.rec-item small{
+    color:#9eafb5;
+    line-height:2;
 }
 
-.rec-name{
-
-    font-size:16px;
-
-    font-weight:900;
-
-    color:#fff;
-}
-
-.rec-symbol{
-
-    color:#71838a;
-
-    font-size:12px;
-
-    font-weight:600;
-}
-
-.rec-market{
-
-    color:#20c878;
-
-    font-size:11px;
-
-    font-weight:800;
-
-    margin-top:3px;
-}
-
-.rec-data{
-
+.rec-levels{
     display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
+    grid-template-columns:1fr 1fr;
     gap:7px;
-
-    margin-top:12px;
+    margin-top:10px;
 }
 
-.data-box{
-
+.rec-level{
     background:#0b2028;
-
-    border:
-    1px solid rgba(255,255,255,.05);
-
     border-radius:8px;
-
     padding:7px;
-
-    text-align:center;
-}
-
-.data-box small{
-
-    display:block;
-
-    color:#71838a;
-
-    font-size:10px;
-}
-
-.data-box b{
-
-    display:block;
-
-    color:#fff;
-
     font-size:12px;
 }
 
-.rec-bottom{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-top:12px;
-}
-
-
-/* =========================
-   STATUS
-========================= */
-
-.status{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:5px;
-
-    padding:5px 10px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
-    font-weight:800;
-}
-
-.status-open{
-
+.rec-level b{
     color:#20c878;
-
-    background:
-    rgba(32,200,120,.10);
-
-    border:
-    1px solid rgba(32,200,120,.20);
 }
 
-.status-watch{
-
+.rec-level.resistance b{
     color:#d8a94c;
-
-    background:
-    rgba(216,169,76,.10);
-
-    border:
-    1px solid rgba(216,169,76,.20);
 }
-
-.status-closed{
-
-    color:#ff6868;
-
-    background:
-    rgba(255,104,104,.10);
-
-    border:
-    1px solid rgba(255,104,104,.20);
-}
-
-
-/* =========================
-   DELETE
-========================= */
 
 .delete-btn{
-
-    border:
-    1px solid rgba(255,104,104,.25);
-
-    background:
-    rgba(255,104,104,.07);
-
+    margin-top:12px;
+    border:1px solid #ff6868;
+    background:transparent;
     color:#ff6868;
-
+    padding:7px 12px;
     border-radius:8px;
-
-    padding:6px 12px;
-
-    font-family:'Cairo',sans-serif;
-
-    font-size:11px;
-
-    font-weight:800;
-
     cursor:pointer;
-
-    transition:.2s;
+    font-family:'Cairo',sans-serif;
 }
 
 .delete-btn:hover{
-
     background:#ff6868;
-
     color:#06131a;
 }
 
-
-/* =========================
-   MESSAGES
-========================= */
-
 .message{
-
     margin-top:12px;
-
-    font-size:13px;
-
-    min-height:20px;
-}
-
-.success{
     color:#20c878;
 }
 
-.error{
-    color:#ff6868;
-}
+@media(max-width:800px){
 
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-
-    padding:35px 15px;
-
-    text-align:center;
-
-    color:#71838a;
-}
-
-.empty-icon{
-
-    font-size:32px;
-
-    margin-bottom:8px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-
-    background:#041017;
-
-    border-top:
-    1px solid rgba(255,255,255,.06);
-
-    padding:25px 0;
-
-    text-align:center;
-}
-
-footer p{
-
-    color:#77878d;
-
-    font-size:13px;
-}
-
-footer span{
-    color:#20c878;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:900px){
-
-    .menu{
-        display:block;
-    }
-
-    nav{
-
-        position:absolute;
-
-        top:75px;
-
-        right:0;
-        left:0;
-
-        background:#06131a;
-
-        display:none;
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-        padding:20px;
-
-        border-bottom:
-        1px solid rgba(255,255,255,.07);
-    }
-
-    nav.show{
-        display:flex;
-    }
-
-    nav a{
-        padding:10px 5%;
-    }
-
-    .nav > .btn{
-        display:none;
-    }
-
-    .main-grid{
-
+    .admin-grid{
         grid-template-columns:1fr;
-    }
-
-}
-
-
-@media(max-width:600px){
-
-    .page-hero{
-
-        padding:
-        55px 0 40px;
-    }
-
-    .page-hero h1{
-
-        font-size:34px;
-    }
-
-    .page-hero p{
-
-        font-size:14px;
-    }
-
-    .card{
-
-        padding:20px;
     }
 
     .form-grid{
-
         grid-template-columns:1fr;
     }
 
-    .rec-data{
-
-        grid-template-columns:
-        repeat(3,1fr);
-    }
-
-    .user-card{
-
-        align-items:flex-start;
-
-        flex-direction:column;
-    }
-
-    .user-card .btn{
-
-        width:100%;
+    .admin-hero h1{
+        font-size:30px;
     }
 
 }
@@ -1015,169 +190,75 @@ footer span{
 
 </head>
 
-
 <body>
 
+<div id="site-header"></div>
 
-<!-- =========================
-     HEADER
-========================= -->
+<main>
 
-<header>
+<section class="admin-page">
 
-<div class="nav">
-
-<a href="index.html" class="logo">
-Al Fayed <span>Stocks</span>
-</a>
+<div class="wrap">
 
 
-<button
-class="menu"
-onclick="toggleMenu()">
-☰
-</button>
+<!-- ================= HERO ================= -->
 
-
-<nav id="mainNav">
-
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="services.html">
-الخدمات
-</a>
-
-<a href="analysis.html">
-التحليلات
-</a>
-
-<a href="recommendations.html">
-التوصيات
-</a>
-
-<a href="watchlist.html">
-المراقبة
-</a>
-
-<a href="news.html">
-الأخبار
-</a>
-
-<a
-href="gift.html"
-style="color:#20c878;font-weight:800;">
-🎁 لعبة المفاجآت
-</a>
-
-<a href="index.html#contact">
-تواصل معنا
-</a>
-
-</nav>
-
-
-<a
-href="recommendations.html"
-class="btn btn-gold">
-التوصيات 🔥
-</a>
-
-</div>
-
-</header>
-
-
-
-<!-- =========================
-     PAGE HERO
-========================= -->
-
-<section class="page-hero">
-
-<div class="container">
-
-<div class="page-hero-inner">
+<div class="admin-hero">
 
 <div class="eyebrow">
 ADMIN • AL FAYED STOCKS
 </div>
 
 <h1>
-لوحة إدارة
-<span>التوصيات</span>
+لوحة إدارة التحليلات والتوصيات
 </h1>
 
 <p>
-أضف توصيات السوق السعودي والأمريكي،
-وتظهر للزوار مباشرة بعد الحفظ.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     CONTENT
-========================= -->
-
-<main class="dashboard">
-
-<div class="container">
-
-
-<!-- SETUP -->
-
-<div
-id="setup"
-class="card setup-card">
-
-<h3>
-⚙️ إعداد الاتصال
-</h3>
-
-<p class="muted">
-أول مرة فقط: افتح ملف
-<b>supabase-config.js</b>
-وضع فيه مفتاح Publishable/Anon Key.
-لا تستخدم Service Role Key.
-</p>
-
-<p class="muted">
-رابط مشروعك مضبوط بالفعل داخل الملف.
+من هنا تقدر تضيف السهم وتحدد الدخول والهدف ووقف الخسارة
+ودعم 1 ودعم 2 ومقاومة 1 ومقاومة 2 والسيناريو.
 </p>
 
 </div>
 
 
+<!-- ================= SETUP ================= -->
 
-<!-- LOGIN -->
+<div id="setup" class="admin-card" style="margin-bottom:22px;">
 
-<div
-id="login"
-class="card login-card"
-style="display:none;">
+<h2>⚙️ إعداد الاتصال</h2>
 
-<div class="login-icon">
-🔐
-</div>
+<p style="color:#9eafb5">
 
-<h3>
-دخول لوحة التحكم
-</h3>
+أول مرة فقط: تأكد من وضع Publishable / Anon Key
+داخل ملف <b>supabase-config.js</b>.
 
-<p class="muted">
-استخدم نفس البريد وكلمة المرور
-التي أنشأتهما في Supabase Authentication.
 </p>
 
+<p style="color:#9eafb5;margin-top:8px">
+
+لا تستخدم Service Role Key داخل الموقع.
+
+</p>
+
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div id="login"
+class="admin-card"
+style="max-width:550px;margin:0 auto 25px;display:none;">
+
+<h2>🔐 دخول لوحة التحكم</h2>
+
+<p style="color:#9eafb5;margin-bottom:20px">
+
+استخدم البريد وكلمة المرور الخاصة بحساب الإدارة في Supabase.
+
+</p>
 
 <label>
+
 البريد الإلكتروني
 
 <input
@@ -1189,6 +270,7 @@ placeholder="admin@example.com">
 
 
 <label>
+
 كلمة المرور
 
 <input
@@ -1200,37 +282,34 @@ placeholder="••••••••">
 
 
 <button
-class="save-btn"
+class="btn btn-gold"
 onclick="loginAdmin()">
+
 دخول لوحة التحكم
+
 </button>
 
 
-<div
-id="loginMsg"
-class="message">
-</div>
+<div id="loginMsg" class="message"></div>
 
 </div>
 
 
+<!-- ================= DASHBOARD ================= -->
 
-<!-- DASHBOARD -->
-
-<div
-id="dashboard"
-style="display:none;">
+<div id="dashboard" style="display:none;">
 
 
 <!-- USER -->
 
-<div class="card user-card">
+<div class="admin-card"
+style="margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;">
 
-<div class="user-info">
+<div>
 
 <b id="who"></b>
 
-<div class="muted">
+<div style="color:#9eafb5">
 أنت مسجل كمدير للمنصة.
 </div>
 
@@ -1238,35 +317,26 @@ style="display:none;">
 
 
 <button
-class="btn btn-outline"
+class="btn"
 onclick="logoutAdmin()">
+
 تسجيل الخروج
+
 </button>
 
 </div>
 
 
-
-<!-- MAIN GRID -->
-
-<section class="main-grid">
+<div class="admin-grid">
 
 
-<!-- ADD -->
+<!-- ================= ADD ================= -->
 
-<div class="card">
+<div class="admin-card">
 
-<div class="form-title">
-
-<span>
-➕
-</span>
-
-<h3>
-إضافة توصية
-</h3>
-
-</div>
+<h2>
+➕ إضافة تحليل / توصية
+</h2>
 
 
 <div class="form-grid">
@@ -1279,17 +349,16 @@ onclick="logoutAdmin()">
 <select id="market">
 
 <option value="saudi">
-السعودي 🇸🇦
+🇸🇦 السوق السعودي
 </option>
 
 <option value="usa">
-الأمريكي 🇺🇸
+🇺🇸 السوق الأمريكي
 </option>
 
 </select>
 
 </label>
-
 
 
 <label>
@@ -1298,10 +367,9 @@ onclick="logoutAdmin()">
 
 <input
 id="symbol"
-placeholder="مثال: 6050 / NVDA">
+placeholder="مثال: 6050 أو NVDA">
 
 </label>
-
 
 
 <label>
@@ -1310,10 +378,9 @@ placeholder="مثال: 6050 / NVDA">
 
 <input
 id="name"
-placeholder="اسم الشركة">
+placeholder="مثال: الأسماك">
 
 </label>
-
 
 
 <label>
@@ -1327,17 +394,15 @@ placeholder="مضاربية / نمو">
 </label>
 
 
-
 <label>
 
-الدخول
+سعر الدخول
 
 <input
 id="entry"
 placeholder="مثال: 71">
 
 </label>
-
 
 
 <label>
@@ -1351,7 +416,6 @@ placeholder="مثال: 75">
 </label>
 
 
-
 <label>
 
 وقف الخسارة
@@ -1361,7 +425,6 @@ id="stop"
 placeholder="مثال: 68">
 
 </label>
-
 
 
 <label>
@@ -1390,6 +453,82 @@ placeholder="مثال: 68">
 </div>
 
 
+<!-- LEVELS -->
+
+<div class="level-title">
+📊 مستويات الدعم والمقاومة
+</div>
+
+
+<div class="form-grid">
+
+
+<label>
+
+🟢 دعم 1
+
+<input
+id="support1"
+placeholder="مثال: 68">
+
+</label>
+
+
+<label>
+
+🟢 دعم 2
+
+<input
+id="support2"
+placeholder="مثال: 65">
+
+</label>
+
+
+<label>
+
+🟡 مقاومة 1
+
+<input
+id="resistance1"
+placeholder="مثال: 73">
+
+</label>
+
+
+<label>
+
+🟡 مقاومة 2
+
+<input
+id="resistance2"
+placeholder="مثال: 76">
+
+</label>
+
+
+</div>
+
+
+<!-- SCENARIO -->
+
+<div class="level-title">
+🎯 السيناريو
+</div>
+
+
+<label>
+
+السيناريو الفني
+
+<textarea
+id="scenario"
+rows="4"
+placeholder="مثال: الثبات فوق دعم 1 يدعم الصعود إلى مقاومة 1 ثم مقاومة 2، وكسر دعم 1 يفتح الطريق لدعم 2."></textarea>
+
+</label>
+
+
 <label>
 
 ملاحظة
@@ -1397,59 +536,40 @@ placeholder="مثال: 68">
 <textarea
 id="note"
 rows="3"
-placeholder="سبب المتابعة أو الملاحظة الفنية">
-</textarea>
+placeholder="ملاحظة أو شرح مختصر للتحليل"></textarea>
 
 </label>
 
 
 <button
-class="save-btn"
-onclick="addRec()">
-💾 حفظ التوصية
+class="btn btn-gold"
+onclick="addRec()"
+style="width:100%;">
+
+💾 حفظ التحليل
+
 </button>
 
 
-<div
-id="saveMsg"
-class="message">
-</div>
+<div id="saveMsg" class="message"></div>
 
 
 </div>
 
 
+<!-- ================= LIST ================= -->
 
-<!-- LIST -->
+<div class="admin-card">
 
-<div class="card">
-
-
-<div class="list-title">
-
-<h3>
-📋 التوصيات الحالية
-</h3>
-
-<span
-id="listCount"
-class="list-count">
-0 توصية
-</span>
-
-</div>
+<h2>
+📋 التحليلات الحالية
+</h2>
 
 
 <div id="list">
 
-<div class="empty">
-
-<div class="empty-icon">
-⏳
-</div>
-
-جاري تحميل التوصيات...
-
+<div style="color:#9eafb5">
+جاري التحميل...
 </div>
 
 </div>
@@ -1457,768 +577,545 @@ class="list-count">
 
 </div>
 
+
+</div>
+
+</div>
 
 </section>
-
-
-</div>
-
-</div>
 
 </main>
 
 
+<div id="site-footer"></div>
 
-<!-- =========================
-     FOOTER
-========================= -->
 
-<footer>
-
-<div class="container">
-
-<p>
-
-© 2026
-<span>Al Fayed Stocks</span>
-—
-جميع الحقوق محفوظة
-
-</p>
-
-</div>
-
-</footer>
-
+<script src="app.js"></script>
 
 
 <script>
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu(){
-
-    const nav =
-    document.getElementById("mainNav");
-
-    nav.classList.toggle("show");
-
-}
-
-
-document
-.querySelectorAll("#mainNav a")
-.forEach(function(link){
-
-    link.addEventListener("click",function(){
-
-        document
-        .getElementById("mainNav")
-        .classList
-        .remove("show");
-
-    });
-
-});
-
-
-/* =========================
-   SUPABASE
-========================= */
-
 let sb = null;
-
 let session = null;
 
 
 const statusLabel = {
 
-    open:"مفتوحة",
-
-    watch:"مراقبة",
-
-    closed:"مغلقة"
+open:'مفتوحة',
+watch:'مراقبة',
+closed:'مغلقة'
 
 };
 
 
 function configured(){
 
-    return window.SUPABASE_URL
-    &&
-    window.SUPABASE_ANON_KEY
-    &&
-    !window.SUPABASE_ANON_KEY.includes("PASTE_");
+return window.SUPABASE_URL &&
+window.SUPABASE_ANON_KEY &&
+!window.SUPABASE_ANON_KEY.includes('PASTE_');
 
 }
 
 
-function msg(id,text,type=""){
+function msg(id,text){
 
-    const el =
-    document.getElementById(id);
-
-    el.textContent = text;
-
-    el.className =
-    "message " + type;
+document.getElementById(id).textContent = text;
 
 }
 
-
-/* =========================
-   INIT
-========================= */
-
-async function init(){
-
-    if(!configured()){
-
-        document
-        .getElementById("setup")
-        .style.display="block";
-
-        return;
-
-    }
-
-
-    document
-    .getElementById("setup")
-    .style.display="none";
-
-
-    sb =
-    window.supabase.createClient(
-        window.SUPABASE_URL,
-        window.SUPABASE_ANON_KEY
-    );
-
-
-    const r =
-    await sb.auth.getSession();
-
-
-    session =
-    r.data.session;
-
-
-    if(session){
-
-        await enter();
-
-    }else{
-
-        document
-        .getElementById("login")
-        .style.display="block";
-
-    }
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-async function loginAdmin(){
-
-    const email =
-    document
-    .getElementById("email")
-    .value
-    .trim();
-
-
-    const password =
-    document
-    .getElementById("password")
-    .value;
-
-
-    if(!email || !password){
-
-        msg(
-            "loginMsg",
-            "اكتب البريد وكلمة المرور.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    msg(
-        "loginMsg",
-        "جاري الدخول..."
-    );
-
-
-    const r =
-    await sb.auth.signInWithPassword({
-
-        email:email,
-
-        password:password
-
-    });
-
-
-    if(r.error){
-
-        msg(
-            "loginMsg",
-            "فشل الدخول: "
-            + r.error.message,
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    session =
-    r.data.session;
-
-
-    await enter();
-
-}
-
-
-/* =========================
-   ENTER DASHBOARD
-========================= */
-
-async function enter(){
-
-    const uid =
-    session.user.id;
-
-
-    const r =
-    await sb
-    .from("admins")
-    .select("user_id")
-    .eq("user_id",uid)
-    .maybeSingle();
-
-
-    if(r.error || !r.data){
-
-        await sb.auth.signOut();
-
-
-        document
-        .getElementById("login")
-        .style.display="block";
-
-
-        msg(
-            "loginMsg",
-            "هذا الحساب غير مضاف كمدير في جدول admins.",
-            "error"
-        );
-
-
-        return;
-
-    }
-
-
-    document
-    .getElementById("login")
-    .style.display="none";
-
-
-    document
-    .getElementById("dashboard")
-    .style.display="block";
-
-
-    document
-    .getElementById("who")
-    .textContent =
-    session.user.email;
-
-
-    await loadRecs();
-
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-async function logoutAdmin(){
-
-    await sb.auth.signOut();
-
-    location.reload();
-
-}
-
-
-/* =========================
-   VALUE
-========================= */
 
 function val(id){
 
-    return document
-    .getElementById(id)
-    .value
-    .trim();
+return document.getElementById(id).value.trim();
 
 }
 
 
-/* =========================
-   ADD RECOMMENDATION
-========================= */
+/* ================= INIT ================= */
+
+async function init(){
+
+if(!configured()){
+
+document.getElementById('setup').style.display='block';
+
+return;
+
+}
+
+
+document.getElementById('setup').style.display='none';
+
+
+sb = window.supabase.createClient(
+window.SUPABASE_URL,
+window.SUPABASE_ANON_KEY
+);
+
+
+const r = await sb.auth.getSession();
+
+
+session = r.data.session;
+
+
+if(session){
+
+await enter();
+
+}else{
+
+document.getElementById('login').style.display='block';
+
+}
+
+}
+
+
+/* ================= LOGIN ================= */
+
+async function loginAdmin(){
+
+const email =
+document.getElementById('email').value.trim();
+
+const password =
+document.getElementById('password').value;
+
+
+if(!email || !password){
+
+msg(
+'loginMsg',
+'اكتب البريد الإلكتروني وكلمة المرور.'
+);
+
+return;
+
+}
+
+
+msg(
+'loginMsg',
+'جاري تسجيل الدخول...'
+);
+
+
+const r =
+await sb.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(r.error){
+
+msg(
+'loginMsg',
+'فشل الدخول: ' + r.error.message
+);
+
+return;
+
+}
+
+
+session = r.data.session;
+
+await enter();
+
+}
+
+
+/* ================= ENTER ================= */
+
+async function enter(){
+
+const uid = session.user.id;
+
+
+const r =
+await sb
+.from('admins')
+.select('user_id')
+.eq('user_id',uid)
+.maybeSingle();
+
+
+if(r.error || !r.data){
+
+await sb.auth.signOut();
+
+msg(
+'loginMsg',
+'هذا الحساب غير مضاف كمدير في جدول admins.'
+);
+
+document.getElementById('login').style.display='block';
+
+return;
+
+}
+
+
+document.getElementById('login').style.display='none';
+
+document.getElementById('dashboard').style.display='block';
+
+document.getElementById('who').textContent =
+session.user.email;
+
+
+await loadRecs();
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+async function logoutAdmin(){
+
+await sb.auth.signOut();
+
+location.reload();
+
+}
+
+
+/* ================= ADD ================= */
 
 async function addRec(){
 
-    const r = {
+const r = {
 
-        market:
-        val("market"),
+market:val('market'),
 
-        symbol:
-        val("symbol"),
+symbol:val('symbol'),
 
-        name:
-        val("name"),
+name:val('name'),
 
-        entry:
-        val("entry") || null,
+entry:val('entry') || null,
 
-        target:
-        val("target") || null,
+target:val('target') || null,
 
-        stop_loss:
-        val("stop") || null,
+stop_loss:val('stop') || null,
 
-        status:
-        val("status"),
+support1:val('support1') || null,
 
-        note:
-        val("note") || null
+support2:val('support2') || null,
 
-    };
+resistance1:val('resistance1') || null,
 
+resistance2:val('resistance2') || null,
 
-    if(!r.symbol || !r.name){
+scenario:val('scenario') || null,
 
-        msg(
-            "saveMsg",
-            "اكتب الرمز واسم السهم أولًا.",
-            "error"
-        );
+status:val('status'),
 
-        return;
+note:val('note') || null
 
-    }
+};
 
 
-    const type =
-    val("type");
+if(!r.symbol || !r.name){
 
+msg(
+'saveMsg',
+'⚠️ اكتب اسم السهم والرمز أولًا.'
+);
 
-    r.note =
-    (
-        type
-        ?
-        "النوع: " + type + " — "
-        :
-        ""
-    )
-    +
-    (r.note || "");
-
-
-    msg(
-        "saveMsg",
-        "جاري الحفظ..."
-    );
-
-
-    const x =
-    await sb
-    .from("recommendations")
-    .insert(r);
-
-
-    if(x.error){
-
-        msg(
-            "saveMsg",
-            "لم يتم الحفظ: "
-            + x.error.message,
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    [
-
-        "symbol",
-        "name",
-        "type",
-        "entry",
-        "target",
-        "stop",
-        "note"
-
-    ]
-    .forEach(function(id){
-
-        document
-        .getElementById(id)
-        .value="";
-
-    });
-
-
-    msg(
-        "saveMsg",
-        "✅ تم حفظ التوصية وظهورها للزوار.",
-        "success"
-    );
-
-
-    await loadRecs();
+return;
 
 }
 
 
-/* =========================
-   LOAD RECOMMENDATIONS
-========================= */
+msg(
+'saveMsg',
+'جاري حفظ التحليل...'
+);
+
+
+const type = val('type');
+
+
+if(type){
+
+r.note =
+'النوع: ' +
+type +
+' — ' +
+(r.note || '');
+
+}
+
+
+const x =
+await sb
+.from('recommendations')
+.insert(r);
+
+
+if(x.error){
+
+msg(
+'saveMsg',
+'❌ لم يتم الحفظ: ' +
+x.error.message
+);
+
+console.error(x.error);
+
+return;
+
+}
+
+
+/* CLEAR */
+
+[
+'symbol',
+'name',
+'type',
+'entry',
+'target',
+'stop',
+'support1',
+'support2',
+'resistance1',
+'resistance2',
+'scenario',
+'note'
+
+].forEach(function(id){
+
+document.getElementById(id).value='';
+
+});
+
+
+msg(
+'saveMsg',
+'✅ تم حفظ التحليل بنجاح.'
+);
+
+
+await loadRecs();
+
+}
+
+
+/* ================= LOAD ================= */
 
 async function loadRecs(){
 
-    const r =
-    await sb
-    .from("recommendations")
-    .select("*")
-    .order(
-        "created_at",
-        {
-            ascending:false
-        }
-    );
+const r =
+await sb
+.from('recommendations')
+.select('*')
+.order('created_at',{
+ascending:false
+});
 
 
-    if(r.error){
+if(r.error){
 
-        document
-        .getElementById("list")
-        .innerHTML = `
+document.getElementById('list').innerHTML =
 
-        <div class="empty">
+'<div style="color:#ff6868">' +
+'تعذر تحميل البيانات: ' +
+esc(r.error.message) +
+'</div>';
 
-            <div class="empty-icon">
-                ⚠️
-            </div>
-
-            تعذر تحميل التوصيات:
-            ${esc(r.error.message)}
-
-        </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    const count =
-    r.data
-    ?
-    r.data.length
-    :
-    0;
-
-
-    document
-    .getElementById("listCount")
-    .textContent =
-    count + " توصية";
-
-
-    if(!count){
-
-        document
-        .getElementById("list")
-        .innerHTML = `
-
-        <div class="empty">
-
-            <div class="empty-icon">
-                📋
-            </div>
-
-            لا توجد توصيات بعد.
-
-        </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    document
-    .getElementById("list")
-    .innerHTML =
-
-    r.data
-    .map(function(x){
-
-        const status =
-        statusLabel[x.status]
-        ||
-        x.status
-        ||
-        "مراقبة";
-
-
-        let statusClass =
-        "status-watch";
-
-
-        if(x.status === "open"){
-            statusClass="status-open";
-        }
-
-        if(x.status === "closed"){
-            statusClass="status-closed";
-        }
-
-
-        const market =
-        x.market === "saudi"
-        ?
-        "🇸🇦 السوق السعودي"
-        :
-        "🇺🇸 السوق الأمريكي";
-
-
-        return `
-
-        <div class="rec-item">
-
-
-            <div class="rec-top">
-
-                <div>
-
-                    <div class="rec-name">
-
-                        ${esc(x.name)}
-
-                        <span class="rec-symbol">
-
-                            (${esc(x.symbol)})
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="rec-market">
-
-                        ${market}
-
-                    </div>
-
-                </div>
-
-
-                <div class="status ${statusClass}">
-
-                    ● ${status}
-
-                </div>
-
-            </div>
-
-
-            <div class="rec-data">
-
-
-                <div class="data-box">
-
-                    <small>
-                        الدخول
-                    </small>
-
-                    <b>
-                        ${x.entry ?? "—"}
-                    </b>
-
-                </div>
-
-
-                <div class="data-box">
-
-                    <small>
-                        الهدف
-                    </small>
-
-                    <b>
-                        ${x.target ?? "—"}
-                    </b>
-
-                </div>
-
-
-                <div class="data-box">
-
-                    <small>
-                        الوقف
-                    </small>
-
-                    <b>
-                        ${x.stop_loss ?? "—"}
-                    </b>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="rec-bottom">
-
-                <span class="muted">
-
-                    ${x.note
-                    ?
-                    esc(x.note)
-                    :
-                    "لا توجد ملاحظة"}
-
-                </span>
-
-
-                <button
-                class="delete-btn"
-                onclick="delRec('${x.id}')">
-
-                    🗑 حذف
-
-                </button>
-
-            </div>
-
-
-        </div>
-
-        `;
-
-    })
-    .join("");
+return;
 
 }
 
 
-/* =========================
-   DELETE
-========================= */
+if(!r.data.length){
+
+document.getElementById('list').innerHTML =
+
+'<div style="color:#9eafb5">' +
+'لا توجد تحليلات حاليًا.' +
+'</div>';
+
+return;
+
+}
+
+
+document.getElementById('list').innerHTML =
+
+r.data.map(function(x){
+
+return `
+
+<div class="rec-item">
+
+<h3>
+
+${esc(x.name)}
+
+<span style="color:#20c878">
+(${esc(x.symbol)})
+</span>
+
+</h3>
+
+
+<small>
+
+${x.market === 'saudi'
+? '🇸🇦 السوق السعودي'
+: '🇺🇸 السوق الأمريكي'}
+
+<br>
+
+الحالة:
+${statusLabel[x.status] || x.status}
+
+<br>
+
+الدخول:
+${x.entry || '—'}
+
+•
+
+الهدف:
+${x.target || '—'}
+
+•
+
+الوقف:
+${x.stop_loss || '—'}
+
+</small>
+
+
+<div class="rec-levels">
+
+<div class="rec-level">
+<b>دعم 1</b><br>
+${x.support1 || '—'}
+</div>
+
+<div class="rec-level">
+<b>دعم 2</b><br>
+${x.support2 || '—'}
+</div>
+
+<div class="rec-level resistance">
+<b>مقاومة 1</b><br>
+${x.resistance1 || '—'}
+</div>
+
+<div class="rec-level resistance">
+<b>مقاومة 2</b><br>
+${x.resistance2 || '—'}
+</div>
+
+</div>
+
+
+<div style="margin-top:10px;color:#9eafb5;font-size:13px">
+
+<b style="color:#d8a94c">
+السيناريو:
+</b>
+
+${esc(x.scenario || '—')}
+
+</div>
+
+
+<button
+class="delete-btn"
+onclick="delRec('${x.id}')">
+
+🗑 حذف
+
+</button>
+
+</div>
+
+`;
+
+}).join('');
+
+}
+
+
+/* ================= DELETE ================= */
 
 async function delRec(id){
 
-    if(
-        !confirm(
-            "حذف هذه التوصية؟"
-        )
-    ){
+if(!confirm('هل تريد حذف هذا التحليل؟')){
 
-        return;
-
-    }
-
-
-    const r =
-    await sb
-    .from("recommendations")
-    .delete()
-    .eq("id",id);
-
-
-    if(r.error){
-
-        msg(
-            "saveMsg",
-            "تعذر الحذف: "
-            + r.error.message,
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    await loadRecs();
-
-
-    msg(
-        "saveMsg",
-        "تم حذف التوصية.",
-        "success"
-    );
+return;
 
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+const r =
+await sb
+.from('recommendations')
+.delete()
+.eq('id',id);
+
+
+if(r.error){
+
+msg(
+'saveMsg',
+'❌ تعذر الحذف: ' +
+r.error.message
+);
+
+return;
+
+}
+
+
+msg(
+'saveMsg',
+'✅ تم حذف التحليل.'
+);
+
+
+await loadRecs();
+
+}
+
+
+/* ================= ESCAPE ================= */
 
 function esc(s){
 
-    return String(s ?? '')
-    .replace(
-        /[&<>'"]/g,
-        function(c){
+return String(s ?? '')
+.replace(/[&<>'"]/g,function(c){
 
-            return {
+return {
 
-                '&':'&amp;',
-                '<':'&lt;',
-                '>':'&gt;',
-                "'":'&#39;',
-                '"':'&quot;'
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+"'":'&#39;',
+'"':'&quot;'
 
-            }[c];
+}[c];
 
-        }
-    );
+});
 
 }
 
-
-/* =========================
-   START
-========================= */
 
 init();
 
 </script>
 
 </body>
+
 </html>
