@@ -8,6 +8,9 @@
 
 <title>Al Fayed Stocks | السوق الأمريكي</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 <style>
 
 *{
@@ -385,7 +388,9 @@ font-size:30px;
 
 <section class="hero">
 
-  <small>US MARKET • 17 SEPTEMBER 2026</small>
+  <small id="marketDate">
+    US MARKET • 17 SEPTEMBER 2026
+  </small>
 
   <h1>🇺🇸 السوق الأمريكي</h1>
 
@@ -405,17 +410,17 @@ font-size:30px;
 
     <h2>Nasdaq 100 Futures</h2>
 
-    <span class="badge green">
+    <span class="badge green" id="marketBadge">
       تعافٍ في العقود
     </span>
 
   </div>
 
-  <div class="index-price">
+  <div class="index-price" id="nasdaqPrice">
     29,446.50
   </div>
 
-  <div class="change">
+  <div class="change" id="nasdaqChange">
     +194.99 ▲ (+0.67%)
   </div>
 
@@ -423,17 +428,17 @@ font-size:30px;
 
     <div>
       آخر إغلاق مرجعي
-      <strong>29,251.51</strong>
+      <strong id="previousClose">29,251.51</strong>
     </div>
 
     <div>
       العقود الحالية
-      <strong>29,446.50</strong>
+      <strong id="currentFutures">29,446.50</strong>
     </div>
 
     <div>
       التغير
-      <strong>+0.67%</strong>
+      <strong id="metaChange">+0.67%</strong>
     </div>
 
     <div>
@@ -527,7 +532,7 @@ font-size:30px;
 
     <span>الاتجاه</span>
 
-    <strong class="down">
+    <strong class="down" id="trend">
       محايد مائل للحذر
     </strong>
 
@@ -537,7 +542,7 @@ font-size:30px;
 
     <span>الدعم الأول</span>
 
-    <strong>
+    <strong id="supportMain">
       29,300
     </strong>
 
@@ -547,7 +552,7 @@ font-size:30px;
 
     <span>المقاومة الأولى</span>
 
-    <strong>
+    <strong id="resistanceMain">
       29,600
     </strong>
 
@@ -557,7 +562,7 @@ font-size:30px;
 
     <span>المقاومة الرئيسية</span>
 
-    <strong>
+    <strong id="resistanceMain2">
       30,000
     </strong>
 
@@ -584,13 +589,13 @@ font-size:30px;
 
   <ul>
 
-    <li>29,600 — مقاومة أولى</li>
+    <li id="resistanceLine1">29,600 — مقاومة أولى</li>
 
-    <li>29,800 — مقاومة مهمة</li>
+    <li id="resistanceLine2">29,800 — مقاومة مهمة</li>
 
-    <li>30,000 — مقاومة رئيسية</li>
+    <li id="resistanceLine3">30,000 — مقاومة رئيسية</li>
 
-    <li>30,175 — اختراقها يعزز الإيجابية</li>
+    <li id="resistanceLine4">30,175 — اختراقها يعزز الإيجابية</li>
 
   </ul>
 
@@ -603,13 +608,13 @@ font-size:30px;
 
   <ul>
 
-    <li>29,300 — دعم أول</li>
+    <li id="supportLine1">29,300 — دعم أول</li>
 
-    <li>29,100 — دعم رئيسي</li>
+    <li id="supportLine2">29,100 — دعم رئيسي</li>
 
-    <li>28,800 — دعم تالٍ</li>
+    <li id="supportLine3">28,800 — دعم تالٍ</li>
 
-    <li>28,400 — كسرها يضعف الاتجاه</li>
+    <li id="supportLine4">28,400 — كسرها يضعف الاتجاه</li>
 
   </ul>
 
@@ -636,7 +641,7 @@ font-size:30px;
     🟢 السيناريو الإيجابي
   </h3>
 
-  <p>
+  <p id="positiveScenario">
     الحفاظ على 29,300–29,100 ثم اختراق
     29,600 قد يدفع العقود نحو
     29,800 ثم 30,000.
@@ -651,7 +656,7 @@ font-size:30px;
     🔴 السيناريو السلبي
   </h3>
 
-  <p>
+  <p id="negativeScenario">
     كسر 29,300 ثم 29,100 قد يفتح المجال
     للهبوط نحو 28,800، وكسر 28,400
     يضعف الاتجاه الصاعد بشكل واضح.
@@ -1055,7 +1060,7 @@ font-size:30px;
     📝 خلاصة السوق الأمريكي
   </h2>
 
-  <p style="color:#adb6b0;font-size:17px">
+  <p id="summaryText" style="color:#adb6b0;font-size:17px">
 
     السوق الأمريكي يدخل جلسة الخميس 17 سبتمبر
     بعد جلسة متقلبة أعقبت قرار الفيدرالي برفع
@@ -1116,6 +1121,506 @@ font-size:30px;
   آراء المتابعين المعروضة هنا تحليلية/تصميمية وليست تقييمات موثقة من عملاء حقيقيين.
 
 </footer>
+
+
+<script>
+
+/* ==========================================
+   SUPABASE — US MARKET DATA
+========================================== */
+
+let supabaseClient = null;
+
+
+/* تنسيق الأرقام */
+
+function formatNumber(value, decimals = 2){
+
+  if(value === null || value === undefined || value === ''){
+    return '—';
+  }
+
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return String(value);
+  }
+
+  return number.toLocaleString('en-US',{
+    minimumFractionDigits:decimals,
+    maximumFractionDigits:decimals
+  });
+
+}
+
+
+/* تنسيق المستويات */
+
+function formatLevel(value){
+
+  if(value === null || value === undefined || value === ''){
+    return '—';
+  }
+
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return String(value);
+  }
+
+  return number.toLocaleString('en-US',{
+    maximumFractionDigits:2
+  });
+
+}
+
+
+/* تغيير نص عنصر */
+
+function setText(id,value){
+
+  const element=document.getElementById(id);
+
+  if(element){
+    element.textContent=value;
+  }
+
+}
+
+
+/* ==========================================
+   تحميل بيانات Nasdaq 100
+========================================== */
+
+async function loadUSMarket(){
+
+  try{
+
+    if(
+      !window.SUPABASE_URL ||
+      !window.SUPABASE_ANON_KEY
+    ){
+
+      console.error(
+        'Supabase config غير موجود.'
+      );
+
+      return;
+    }
+
+
+    supabaseClient =
+      window.supabase.createClient(
+        window.SUPABASE_URL,
+        window.SUPABASE_ANON_KEY
+      );
+
+
+    /*
+      مهم:
+      Admin Panel يحفظ السوق الأمريكي
+      تحت market = "nasdaq100"
+    */
+
+    const {data,error}=await supabaseClient
+      .from('market_data')
+      .select('*')
+      .eq('market','nasdaq100')
+      .maybeSingle();
+
+
+    if(error){
+
+      console.error(
+        'Supabase error:',
+        error
+      );
+
+      return;
+    }
+
+
+    if(!data){
+
+      console.warn(
+        'لا توجد بيانات للسوق الأمريكي.'
+      );
+
+      return;
+    }
+
+
+    /* =========================
+       التاريخ
+    ========================= */
+
+    if(data.date_label){
+
+      setText(
+        'marketDate',
+        'US MARKET • ' +
+        data.date_label
+      );
+
+    }
+
+
+    /* =========================
+       السعر
+    ========================= */
+
+    const price =
+      formatNumber(
+        data.price,
+        2
+      );
+
+
+    setText(
+      'nasdaqPrice',
+      price
+    );
+
+
+    setText(
+      'currentFutures',
+      price
+    );
+
+
+    /* =========================
+       الإغلاق السابق
+    ========================= */
+
+    const previousClose =
+      formatNumber(
+        data.previous_close,
+        2
+      );
+
+
+    setText(
+      'previousClose',
+      previousClose
+    );
+
+
+    /* =========================
+       التغير
+    ========================= */
+
+    const changePercent =
+      Number(
+        data.change_percent || 0
+      );
+
+
+    const changeValue =
+      Number(
+        data.change_value || 0
+      );
+
+
+    let changeText='';
+
+
+    if(changePercent > 0){
+
+      changeText =
+        '+' +
+        formatNumber(changeValue,2) +
+        ' ▲ (+' +
+        formatNumber(changePercent,2) +
+        '%)';
+
+    }
+    else if(changePercent < 0){
+
+      changeText =
+        formatNumber(changeValue,2) +
+        ' ▼ (' +
+        formatNumber(changePercent,2) +
+        '%)';
+
+    }
+    else{
+
+      changeText =
+        '0.00 ━ (0.00%)';
+
+    }
+
+
+    setText(
+      'nasdaqChange',
+      changeText
+    );
+
+
+    setText(
+      'metaChange',
+      (changePercent > 0 ? '+' : '') +
+      formatNumber(changePercent,2) +
+      '%'
+    );
+
+
+    /* لون التغير */
+
+    const changeElement =
+      document.getElementById(
+        'nasdaqChange'
+      );
+
+
+    if(changeElement){
+
+      changeElement.style.color =
+        changePercent < 0
+          ? '#ff7168'
+          : '#20c997';
+
+    }
+
+
+    /* =========================
+       الاتجاه
+    ========================= */
+
+    setText(
+      'trend',
+      data.trend || '—'
+    );
+
+
+    /* =========================
+       الدعم
+    ========================= */
+
+    const support1 =
+      formatLevel(data.support_1);
+
+    const support2 =
+      formatLevel(data.support_2);
+
+    const support3 =
+      formatLevel(data.support_3);
+
+
+    setText(
+      'supportMain',
+      support1
+    );
+
+
+    setText(
+      'supportLine1',
+      support1 + ' — دعم أول'
+    );
+
+
+    setText(
+      'supportLine2',
+      support2 + ' — دعم رئيسي'
+    );
+
+
+    setText(
+      'supportLine3',
+      support3 + ' — دعم تالٍ'
+    );
+
+
+    /*
+      الدعم الرابع غير موجود في market_data
+      لذلك نحافظ على النص الموجود في الصفحة.
+    */
+
+
+    /* =========================
+       المقاومات
+    ========================= */
+
+    const resistance1 =
+      formatLevel(data.resistance_1);
+
+    const resistance2 =
+      formatLevel(data.resistance_2);
+
+    const resistance3 =
+      formatLevel(data.resistance_3);
+
+
+    setText(
+      'resistanceMain',
+      resistance1
+    );
+
+
+    setText(
+      'resistanceMain2',
+      resistance3 !== '—'
+        ? resistance3
+        : resistance2
+    );
+
+
+    setText(
+      'resistanceLine1',
+      resistance1 + ' — مقاومة أولى'
+    );
+
+
+    setText(
+      'resistanceLine2',
+      resistance2 + ' — مقاومة مهمة'
+    );
+
+
+    setText(
+      'resistanceLine3',
+      resistance3 + ' — مقاومة رئيسية'
+    );
+
+
+    /* =========================
+       السيناريو
+    ========================= */
+
+    if(data.summary){
+
+      setText(
+        'positiveScenario',
+        data.summary
+      );
+
+    }
+
+
+    /* =========================
+       تحديث Badge
+    ========================= */
+
+    const badge =
+      document.getElementById(
+        'marketBadge'
+      );
+
+
+    if(badge){
+
+      if(changePercent > 0){
+
+        badge.textContent =
+          'إيجابي';
+
+        badge.className =
+          'badge green';
+
+      }
+      else if(changePercent < 0){
+
+        badge.textContent =
+          'ضغط هابط';
+
+        badge.className =
+          'badge red';
+
+      }
+      else{
+
+        badge.textContent =
+          'محايد';
+
+        badge.className =
+          'badge green';
+
+      }
+
+    }
+
+
+    /* =========================
+       الخلاصة
+    ========================= */
+
+    const summary =
+      data.summary ||
+      'تم تحديث بيانات السوق الأمريكي.';
+
+
+    const summaryText =
+      document.getElementById(
+        'summaryText'
+      );
+
+
+    if(summaryText){
+
+      summaryText.innerHTML =
+        'مؤشر Nasdaq 100 عند ' +
+        '<strong style="color:#20c997">' +
+        price +
+        '</strong>' +
+        ' نقطة، مقابل الإغلاق السابق عند ' +
+        '<strong style="color:#20c997">' +
+        previousClose +
+        '</strong>' +
+        '. التغير الحالي ' +
+        '<strong style="color:' +
+        (changePercent < 0
+          ? '#ff7168'
+          : '#20c997') +
+        '">' +
+        (changePercent > 0 ? '+' : '') +
+        formatNumber(changePercent,2) +
+        '%' +
+        '</strong>.' +
+
+        '<br><br>' +
+
+        summary +
+
+        '<br><br>' +
+
+        'المستويات المسجلة حاليًا: الدعم الأول ' +
+        '<strong style="color:#20c997">' +
+        support1 +
+        '</strong>' +
+        '، والمقاومة الأولى ' +
+        '<strong style="color:#20c997">' +
+        resistance1 +
+        '</strong>.';
+
+    }
+
+
+    console.log(
+      'US market data loaded successfully:',
+      data
+    );
+
+  }
+  catch(error){
+
+    console.error(
+      'Unexpected error:',
+      error
+    );
+
+  }
+
+}
+
+
+/* تشغيل تحميل البيانات */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  loadUSMarket
+);
+
+</script>
 
 </body>
 
