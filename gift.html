@@ -202,6 +202,12 @@ color:#82979e;
 margin-top:12px;
 }
 
+.whatsapp-note{
+margin-top:15px;
+font-size:13px;
+color:#20c878;
+}
+
 .visits{
 margin-top:20px;
 color:#7f969e;
@@ -210,12 +216,6 @@ font-size:12px;
 
 .hidden{
 display:none!important;
-}
-
-.whatsapp-note{
-margin-top:15px;
-font-size:13px;
-color:#20c878;
 }
 
 @media(max-width:620px){
@@ -250,7 +250,7 @@ Al Fayed <span>Stocks</span>
 </div>
 
 
-<!-- ================= البداية ================= -->
+<!-- البداية -->
 
 <section id="intro">
 
@@ -291,7 +291,7 @@ id="nameError">
 </section>
 
 
-<!-- ================= اللعبة ================= -->
+<!-- اللعبة -->
 
 <section
 id="game"
@@ -302,7 +302,7 @@ class="hidden">
 </h1>
 
 <div class="sub">
-اختار صندوق واحد فقط وشوف المفاجأة 🎁
+اختار صندوق واحد فقط وشوف هديتك 🎁
 </div>
 
 
@@ -377,7 +377,7 @@ data-box="5">
 </div>
 
 
-<!-- ================= النتيجة ================= -->
+<!-- النتيجة -->
 
 <div
 class="result"
@@ -388,13 +388,12 @@ id="resultText">
 </div>
 
 <small>
-سيتم تحويلك إلى واتساب للتواصل معنا 🎁
+سيتم تحويلك تلقائيًا إلى واتساب للاستفادة من هديتك 🎁
 </small>
 
 <div class="whatsapp-note">
 📱 جاري فتح واتساب...
 </div>
-
 
 <div class="actions">
 
@@ -405,7 +404,6 @@ id="shareWhatsapp">
 📱 فتح واتساب
 
 </button>
-
 
 <button
 class="again"
@@ -432,6 +430,9 @@ id="visits">
 
 <script>
 
+
+/* ================= المتغيرات ================= */
+
 let supabaseClient = null;
 
 let visitorId = null;
@@ -440,7 +441,7 @@ let playerName = "";
 
 let selectedBox = null;
 
-let selectedResult = "";
+let selectedPrize = "";
 
 
 /* ================= إنشاء معرف الزائر ================= */
@@ -544,7 +545,7 @@ error
 }
 
 
-/* ================= تحديث بيانات الزائر ================= */
+/* ================= تحديث الزائر ================= */
 
 async function updateVisitor(values){
 
@@ -605,10 +606,10 @@ const value =
 input.value.trim();
 
 
-error.textContent="";
+error.textContent = "";
 
 
-/* الاسم إجباري */
+/* الاسم مطلوب */
 
 if(!value){
 
@@ -622,7 +623,7 @@ return;
 }
 
 
-/* الحد الأدنى للاسم */
+/* التأكد من الاسم */
 
 if(value.length < 2){
 
@@ -671,33 +672,50 @@ name:playerName
 
 /* ================= الجوائز ================= */
 
-const prizes = [
+const prizes = {
 
-"🎉 مبروك! ربحت مفاجأة خاصة من Al Fayed Stocks ❤️",
+1:"خصم 20% على سعر الاشتراك",
 
-"🔥 مبروك! عندك مفاجأة مميزة مستنياك!",
+2:"أسبوع مجاني على باقة الشهر",
 
-"⭐ اختيار موفق! تابع Al Fayed Stocks للمزيد من المفاجآت.",
+3:"سهم مجاني من باقة الـ Standard",
 
-"🎁 مبروك! أنت من أصحاب الحظ اليوم 😍",
+4:"سهم مجاني من باقة الـ VIP",
 
-"🚀 مفاجأتك وصلت! خليك متابع لـ Al Fayed Stocks."
+5:"سهم للمتابعة"
 
-];
+};
+
+
+/* ================= إنشاء رسالة واتساب ================= */
+
+function createWhatsappMessage(){
+
+return `🎁 السلام عليكم Al Fayed Stocks
+
+أنا ${playerName} اخترت الصندوق رقم ${selectedBox} 🎉
+
+🎁 هديتي:
+${selectedPrize}
+
+وحابب أستفيد بيها 😊
+
+ممكن توضحولي الخطوات؟
+
+شكراً ❤️`;
+
+}
 
 
 /* ================= فتح واتساب ================= */
 
 async function openWhatsapp(){
 
-if(!playerName){
-
-return;
-
-}
-
-
-if(!selectedResult){
+if(
+!playerName ||
+!selectedPrize ||
+selectedBox === null
+){
 
 return;
 
@@ -709,17 +727,7 @@ const phone =
 
 
 const message =
-
-`🎁 مرحبًا Al Fayed Stocks
-
-أنا ${playerName} جربت لعبة المفاجآت واخترت الصندوق رقم ${selectedBox}.
-
-🎁 المفاجأة التي ظهرت لي:
-${selectedResult}
-
-أريد معرفة تفاصيل المفاجأة والاستفادة منها.
-
-شكراً ❤️`;
+createWhatsappMessage();
 
 
 const url =
@@ -729,11 +737,15 @@ phone +
 encodeURIComponent(message);
 
 
-/* تسجيل المشاركة */
+/* تحديث البيانات */
 
 await updateVisitor({
 
-whatsapp_shared:true
+whatsapp_shared:true,
+
+box_number:selectedBox,
+
+result:selectedPrize
 
 });
 
@@ -753,7 +765,7 @@ url,
 
 async function chooseBox(button){
 
-/* منع اختيار صندوق ثاني */
+/* منع اختيار أكثر من صندوق */
 
 if(selectedBox !== null){
 
@@ -766,11 +778,13 @@ selectedBox =
 Number(button.dataset.box);
 
 
-selectedResult =
-prizes[selectedBox - 1];
+/* تحديد الهدية */
+
+selectedPrize =
+prizes[selectedBox];
 
 
-/* تعطيل جميع الصناديق */
+/* تعطيل الصناديق */
 
 const buttons =
 document.querySelectorAll(".box");
@@ -783,18 +797,27 @@ item.disabled = true;
 });
 
 
-/* تغيير الصندوق المختار */
+/* تغيير شكل الصندوق */
 
 button.innerHTML =
 "🎉<span class='num'>تم الاختيار</span>";
 
 
-/* عرض النتيجة */
+/* عرض الهدية */
 
 document.getElementById(
 "resultText"
-).textContent =
-selectedResult;
+).innerHTML =
+
+"🎉 مبروك يا " +
+playerName +
+"!<br><br>" +
+
+"🎁 هديتك:<br>" +
+
+"<span style='color:#20c878'>" +
+selectedPrize +
+"</span>";
 
 
 document.getElementById(
@@ -803,13 +826,13 @@ document.getElementById(
 "block";
 
 
-/* حفظ النتيجة */
+/* حفظ النتيجة في Supabase */
 
-await updateVisitor({
+updateVisitor({
 
 box_number:selectedBox,
 
-result:selectedResult
+result:selectedPrize
 
 });
 
@@ -828,28 +851,15 @@ behavior:"smooth"
 });
 
 
-/*
-بعد ظهور النتيجة ننتظر
-لحظة قصيرة ثم نفتح واتساب
-*/
+/* التحويل التلقائي إلى واتساب */
 
 setTimeout(function(){
 
 openWhatsapp();
 
-},1200);
+},1500);
 
 }
-
-
-/* ================= مشاركة واتساب يدويًا ================= */
-
-document.getElementById(
-"shareWhatsapp"
-).addEventListener(
-"click",
-openWhatsapp
-);
 
 
 /* ================= تجربة جديدة ================= */
@@ -858,7 +868,7 @@ function playAgain(){
 
 selectedBox = null;
 
-selectedResult = "";
+selectedPrize = "";
 
 
 document.getElementById(
@@ -874,16 +884,12 @@ function(button){
 
 button.disabled = false;
 
-
 button.innerHTML =
 "🎁<span class='num'>الصندوق " +
 button.dataset.box +
 "</span>";
 
 });
-
-
-/* لا نطلب الاسم مرة ثانية */
 
 }
 
@@ -929,6 +935,22 @@ chooseBox(button);
 });
 
 
+document.getElementById(
+"shareWhatsapp"
+).addEventListener(
+"click",
+openWhatsapp
+);
+
+
+document.getElementById(
+"again"
+).addEventListener(
+"click",
+playAgain
+);
+
+
 /* ================= تشغيل Supabase ================= */
 
 document.addEventListener(
@@ -938,6 +960,7 @@ async function(){
 await registerVisitor();
 
 });
+
 
 </script>
 
