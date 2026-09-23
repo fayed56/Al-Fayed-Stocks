@@ -1,929 +1,1484 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="utf-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
-
-<title>مفاجأتك مستنياك 🎁 | Al Fayed Stocks</title>
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-rel="stylesheet">
-
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- نفس إعدادات الموقع -->
-<script src="supabase-config.js"></script>
-
-<style>
+<!DOCTYPE html>  <html lang="ar" dir="rtl">    <head>  <meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Al Fayed Stocks | الفايد للأسهم</title>  <meta name="description"    
+content="Al Fayed Stocks - متابعة وتحليل الأسواق السعودية والأمريكية والأخبار والتوصيات.">  <link rel="preconnect" href="https://fonts.googleapis.com">    
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link    
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"    
+rel="stylesheet">  <!-- Supabase -->  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  <script src="supabase-config.js"></script>  <style>    /* ================= GENERAL ================= */
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-    margin:0;
-    font-family:'Cairo',Arial,sans-serif;
-    background:#06131a;
-    color:#f5f7f8;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+font-family:'Cairo',sans-serif;
+background:#06131a;
+color:#fff;
+line-height:1.8;
 }
 
-.wrap{
-    width:min(760px,100%);
-    background:#0b2028;
-    border:1px solid #173842;
-    border-radius:28px;
-    padding:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-    text-align:center;
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+position:sticky;
+top:0;
+z-index:999;
+
+background:rgba(6,19,26,.95);    
+
+backdrop-filter:blur(12px);    
+
+border-bottom:    
+1px solid rgba(255,255,255,.06);
+
+}
+
+.nav{
+min-height:75px;
+
+width:92%;    
+max-width:1200px;    
+
+margin:auto;    
+
+display:flex;    
+align-items:center;    
+justify-content:space-between;    
+
+gap:20px;
+
 }
 
 .logo{
-    font-size:20px;
-    font-weight:900;
-    margin-bottom:10px;
+font-size:24px;
+font-weight:900;
+white-space:nowrap;
 }
 
 .logo span{
-    color:#20c878;
+color:#20c878;
 }
 
-h1{
-    margin:8px 0;
-    font-size:30px;
-    font-weight:900;
+nav{
+display:flex;
+align-items:center;
+gap:20px;
 }
 
-.sub{
-    color:#a9bbc1;
-    margin-bottom:22px;
+nav a{
+color:#d5dde1;
+font-size:14px;
+font-weight:600;
+transition:.25s;
 }
 
-input{
-    width:min(430px,100%);
-    padding:15px;
-    border-radius:14px;
-    border:1px solid #31505a;
-    background:#091b24;
-    color:#fff;
-    font-family:inherit;
-    font-size:16px;
-    text-align:right;
-    outline:none;
+nav a:hover,
+nav a.active{
+color:#20c878;
 }
 
-input:focus{
-    border-color:#20c878;
+.btn{
+display:inline-flex;
+
+align-items:center;    
+justify-content:center;    
+
+min-height:45px;    
+
+padding:10px 20px;    
+
+border-radius:10px;    
+
+font-weight:800;    
+font-size:14px;    
+
+transition:.25s;    
+
+cursor:pointer;    
+
+border:1px solid transparent;
+
 }
 
-button{
-    font:inherit;
+.btn:hover{
+transform:translateY(-2px);
 }
 
-.primary,
-.share,
-.again{
-    border:0;
-    border-radius:14px;
-    padding:13px 22px;
-    font-weight:800;
-    cursor:pointer;
-    margin-top:12px;
-    transition:.2s;
+.btn-gold{
+background:#d8a94c;
+color:#06131a;
 }
 
-.primary,
-.share{
-    background:#20c878;
-    color:#06131a;
+.btn-gold:hover{
+background:#e4b75c;
 }
 
-.again{
-    background:transparent;
-    color:#fff;
-    border:1px solid #31505a;
+.btn-outline{
+border-color:#20c878;
+color:#20c878;
+background:transparent;
 }
 
-.primary:hover,
-.share:hover,
-.again:hover{
-    transform:translateY(-2px);
+.btn-outline:hover{
+background:#20c878;
+color:#06131a;
 }
 
-.error{
-    color:#ff6868;
-    font-size:14px;
-    margin-top:10px;
-    min-height:24px;
+.menu{
+display:none;
+
+border:0;    
+background:none;    
+
+color:#fff;    
+
+font-size:28px;    
+
+cursor:pointer;
+
 }
 
-.boxes{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:12px;
-    margin:25px auto;
-    max-width:650px;
+/* ================= HERO ================= */
+
+.hero{
+padding:90px 0 70px;
+
+background:    
+radial-gradient(    
+    circle at 20% 20%,    
+    rgba(32,200,120,.12),    
+    transparent 30%    
+),    
+
+radial-gradient(    
+    circle at 80% 10%,    
+    rgba(216,169,76,.10),    
+    transparent 28%    
+);
+
 }
 
-.box{
-    min-height:125px;
-    border:1px solid #244650;
-    border-radius:20px;
-    background:#091b24;
-    color:#fff;
-    cursor:pointer;
-    font-size:48px;
-    transition:.2s;
-    font-family:inherit;
+.hero-grid{
+display:grid;
+
+grid-template-columns:    
+1.2fr .8fr;    
+
+gap:45px;    
+
+align-items:center;
+
 }
 
-.box:hover{
-    transform:translateY(-5px);
-    border-color:#20c878;
-    background:#0d252e;
+.hero h1{
+font-size:48px;
+line-height:1.25;
+
+margin-bottom:20px;    
+
+font-weight:900;
+
 }
 
-.box:disabled{
-    cursor:default;
+.hero h1 span{
+color:#20c878;
 }
 
-.num{
-    display:block;
-    font-size:13px;
-    color:#9fb1b7;
-    margin-top:8px;
-}
+.hero p{
+color:#aab8be;
 
-.result{
-    display:none;
-    background:#0d2a32;
-    border:1px solid #20c878;
-    border-radius:18px;
-    padding:20px;
-    font-size:20px;
-    font-weight:800;
-    line-height:1.8;
-}
+font-size:18px;    
 
-.result small{
-    display:block;
-    color:#9fb1b7;
-    font-size:13px;
-    margin-top:8px;
-    font-weight:500;
+max-width:700px;    
+
+margin-bottom:30px;
+
 }
 
 .actions{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:10px;
-}
+display:flex;
 
-.note{
-    font-size:12px;
-    color:#82979e;
-    margin-top:12px;
-}
+flex-wrap:wrap;    
 
-.visits{
-    margin-top:20px;
-    color:#7f969e;
-    font-size:12px;
-}
-
-.hidden{
-    display:none!important;
-}
-
-@media(max-width:620px){
-
-    .boxes{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .box:last-child{
-        grid-column:1/-1;
-        max-width:190px;
-        width:100%;
-        justify-self:center;
-    }
-
-    h1{
-        font-size:25px;
-    }
+gap:12px;
 
 }
 
-</style>
+.hero-card{
+background:#0b2028;
 
-</head>
+border:    
+1px solid rgba(255,255,255,.07);    
 
+border-radius:20px;    
 
-<body>
+padding:28px;    
 
+box-shadow:    
+0 20px 50px rgba(0,0,0,.25);
 
-<main class="wrap">
+}
 
+.hero-card h3{
+margin-bottom:20px;
+color:#20c878;
+}
 
-<div class="logo">
+.market-mini{
+display:flex;
+
+justify-content:space-between;    
+align-items:center;    
+
+padding:16px 0;    
+
+border-bottom:    
+1px solid rgba(255,255,255,.07);
+
+}
+
+.market-mini:last-child{
+border-bottom:0;
+}
+
+.market-name{
+color:#aab8be;
+}
+
+.market-value{
+font-weight:800;
+}
+
+.negative{
+color:#ff6868;
+}
+
+.positive{
+color:#20c878;
+}
+
+/* ================= SECTION ================= */
+
+section{
+padding:75px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:45px;
+}
+
+.section-title h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.section-title p{
+color:#8fa0a7;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+display:grid;
+
+grid-template-columns:    
+repeat(3,1fr);    
+
+gap:20px;
+
+}
+
+.card{
+background:#0b2028;
+
+border:    
+1px solid rgba(255,255,255,.06);    
+
+border-radius:16px;    
+
+padding:25px;    
+
+transition:.25s;
+
+}
+
+.card:hover{
+transform:translateY(-5px);
+
+border-color:    
+rgba(32,200,120,.3);
+
+}
+
+.card-icon{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#9caeb5;
+font-size:14px;
+}
+
+/* ================= HOME QUICK LINKS ================= */
+
+.quick-card{
+display:block;
+
+cursor:pointer;    
+
+color:inherit;    
+
+position:relative;    
+
+overflow:hidden;
+
+}
+
+.quick-card::after{
+content:"";
+
+position:absolute;    
+
+left:0;    
+bottom:0;    
+
+width:0;    
+height:2px;    
+
+background:#20c878;    
+
+transition:.3s;
+
+}
+
+.quick-card:hover::after{
+width:100%;
+}
+
+.quick-card .card-icon{
+transition:.25s;
+}
+
+.quick-card:hover .card-icon{
+transform:scale(1.12);
+}
+
+.quick-card:hover h3{
+color:#20c878;
+}
+
+.quick-card .card-arrow{
+display:block;
+
+margin-top:15px;    
+
+color:#20c878;    
+
+font-size:13px;    
+
+font-weight:800;    
+
+opacity:.9;
+
+}
+
+/* ================= MARKETS ================= */
+
+.market-grid{
+display:grid;
+
+grid-template-columns:    
+repeat(2,1fr);    
+
+gap:20px;
+
+}
+
+.market-box{
+background:#0b2028;
+
+border:    
+1px solid rgba(255,255,255,.06);    
+
+border-radius:18px;    
+
+padding:25px;
+
+}
+
+.market-box-header{
+display:flex;
+
+align-items:center;    
+
+justify-content:space-between;    
+
+margin-bottom:20px;
+
+}
+
+.market-box-header h3{
+font-size:20px;
+}
+
+.market-number{
+font-size:30px;
+font-weight:900;
+}
+
+.market-change{
+font-weight:800;
+margin-top:5px;
+}
+
+/* ================= NEWS ================= */
+
+.news-grid{
+display:grid;
+
+grid-template-columns:    
+repeat(3,1fr);    
+
+gap:20px;
+
+}
+
+.news-card{
+background:#0b2028;
+
+border-radius:16px;    
+
+padding:24px;    
+
+border:    
+1px solid rgba(255,255,255,.06);
+
+}
+
+.news-date{
+color:#20c878;
+
+font-size:13px;    
+
+margin-bottom:10px;
+
+}
+
+.news-card h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.news-card p{
+color:#9caeb5;
+font-size:14px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+background:#091b24;
+}
+
+.about-box{
+max-width:900px;
+
+margin:auto;    
+
+text-align:center;
+
+}
+
+.about-box p{
+color:#a9b7bc;
+
+margin-bottom:15px;
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+max-width:850px;
+
+margin:auto;    
+
+text-align:center;    
+
+background:#0b2028;    
+
+border:    
+1px solid rgba(255,255,255,.06);    
+
+border-radius:20px;    
+
+padding:40px 25px;
+
+}
+
+.contact-box h2{
+margin-bottom:15px;
+}
+
+.contact-box p{
+color:#9caeb5;
+
+margin-bottom:25px;
+
+}
+
+.contact-links{
+display:flex;
+
+justify-content:center;    
+
+flex-wrap:wrap;    
+
+gap:12px;
+
+}
+
+.contact-link{
+padding:11px 18px;
+
+border:    
+1px solid rgba(255,255,255,.1);    
+
+border-radius:10px;    
+
+color:#dbe4e7;    
+
+transition:.25s;
+
+}
+
+.contact-link:hover{
+border-color:#20c878;
+color:#20c878;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#041017;
+
+border-top:    
+1px solid rgba(255,255,255,.06);    
+
+padding:25px 0;    
+
+text-align:center;
+
+}
+
+footer p{
+color:#77878d;
+font-size:13px;
+}
+
+footer span{
+color:#20c878;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.menu{    
+    display:block;    
+}    
+
+nav{    
+    position:absolute;    
+
+    top:75px;    
+
+    right:0;    
+    left:0;    
+
+    background:#06131a;    
+
+    display:none;    
+
+    flex-direction:column;    
+
+    align-items:stretch;    
+
+    padding:20px;    
+
+    border-bottom:    
+    1px solid rgba(255,255,255,.07);    
+}    
+
+nav.show{    
+    display:flex;    
+}    
+
+nav a{    
+    padding:10px 5%;    
+}    
+
+.nav > .btn{    
+    display:none;    
+}    
+
+.hero-grid{    
+    grid-template-columns:1fr;    
+}    
+
+.hero h1{    
+    font-size:38px;    
+}    
+
+.cards{    
+    grid-template-columns:1fr;    
+}    
+
+.market-grid{    
+    grid-template-columns:1fr;    
+}    
+
+.news-grid{    
+    grid-template-columns:1fr;    
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{    
+    padding:60px 0 50px;    
+}    
+
+.hero h1{    
+    font-size:31px;    
+}    
+
+.hero p{    
+    font-size:16px;    
+}    
+
+.actions{    
+    flex-direction:column;    
+}    
+
+.actions .btn{    
+    width:100%;    
+}    
+
+section{    
+    padding:55px 0;    
+}    
+
+.section-title h2{    
+    font-size:27px;    
+}    
+
+.quick-card{    
+    padding:28px;    
+}
+
+}
+
+/* ================= TOUCH / MOBILE ================= */
+
+.quick-card{
+-webkit-tap-highlight-color:
+rgba(32,200,120,.12);
+
+touch-action:manipulation;
+
+}
+
+.quick-card:active{
+transform:scale(.985);
+}
+
+</style>  </head>  <body>  <!-- ================= HEADER ================= -->  <header>  <div class="nav">  <a href="index.html" class="logo">
 Al Fayed <span>Stocks</span>
-</div>
-
-
-<!-- ================= INTRO ================= -->
-
-<section id="intro">
-
-<h1>
-🎁 اختار صندوقك وخلي المفاجأة علينا!
-</h1>
-
-<div class="sub">
-اكتب اسمك أولًا وبعدها هتظهر لك الصناديق 😍
-</div>
-
-
-<input
-id="name"
-maxlength="40"
-placeholder="اكتب اسمك هنا 👤"
-autocomplete="name">
-
-
-<br>
-
-
-<button
-class="primary"
-id="start">
-
-ابدأ اللعبة 🎁
-
+</a>  <button    
+class="menu"    
+onclick="toggleMenu()">
+☰
 </button>
 
-
-<div
-class="error"
-id="nameError">
-</div>
-
-
-<div class="note">
-الاسم مطلوب للدخول إلى اللعبة
-</div>
-
-</section>
-
-
-
-<!-- ================= GAME ================= -->
-
-<section
-id="game"
-class="hidden">
-
-<h1>
-أهلًا <span id="playerName"></span> 👋
-</h1>
-
-<div class="sub">
-اختار صندوق واحد فقط وشوف المفاجأة 🎁
-</div>
-
-
-<div
-class="boxes"
-id="boxes">
-
-
-<button
-class="box"
-data-box="1">
-
-🎁
-
-<span class="num">
-الصندوق 1
-</span>
-
-</button>
-
-
-<button
-class="box"
-data-box="2">
-
-🎁
-
-<span class="num">
-الصندوق 2
-</span>
-
-</button>
-
-
-<button
-class="box"
-data-box="3">
-
-🎁
-
-<span class="num">
-الصندوق 3
-</span>
-
-</button>
-
-
-<button
-class="box"
-data-box="4">
-
-🎁
-
-<span class="num">
-الصندوق 4
-</span>
-
-</button>
-
-
-<button
-class="box"
-data-box="5">
-
-🎁
-
-<span class="num">
-الصندوق 5
-</span>
-
-</button>
-
-
-</div>
-
-
-<div
-class="result"
-id="result">
-
-<div id="resultText"></div>
-
-<small>
-شارك المفاجأة مع أصحابك على واتساب 🎁
-</small>
-
-
-<div class="actions">
-
-<button
-class="share"
-id="shareWhatsapp">
-
-📱 مشاركة على واتساب
-
-</button>
-
-
-<button
-class="again"
-id="again">
-
-🔄 تجربة جديدة
-
-</button>
-
-</div>
-
-</div>
-
-
-</section>
-
-
-
-<div
-class="visits"
-id="visits">
-</div>
-
-
-</main>
-
-
-<script>
-
-
-/* =====================================================
-   SUPABASE
-===================================================== */
-
-let supabaseClient = null;
-
-let visitorId = null;
-
-let playerName = "";
-
-let selectedBox = null;
-
-let selectedResult = "";
-
-
-/* =====================================================
-   RANDOM VISITOR TOKEN
-===================================================== */
-
-function createVisitorToken(){
-
-    return 'visitor_' +
-        Date.now() +
-        '_' +
-        Math.random()
-        .toString(36)
-        .substring(2,10);
+<nav id="mainNav">  <a    
+class="active"    
+href="index.html">  
+الرئيسية  
+</a>  <a href="services.html">    
+الخدمات    
+</a>  <a href="analysis.html">    
+التحليلات    
+</a>  <a href="recommendations.html">    
+التوصيات    
+</a>  <a href="watchlist.html">    
+المراقبة    
+</a>  <a href="news.html">    
+الأخبار    
+</a>  <a    
+href="gift.html"    
+style="color:#20c878;font-weight:800;">  
+🎁 لعبة المفاجآت  
+</a>  <a href="#contact">    
+تواصل معنا    
+</a>  </nav>  <a    
+href="recommendations.html"    
+class="btn btn-gold">  
+التوصيات 🔥  
+</a>  </div>  </header>  <!-- ================= HERO ================= -->  <section class="hero">  <div class="container">  <div class="hero-grid">  <div>  <h1>  تابع الأسواق مع  <span>    
+Al Fayed Stocks    
+</span>  </h1>  <p>  متابعة وتحليل الأسواق السعودية والأمريكية،  
+مع أخبار السوق والتحليلات الفنية والتوصيات وقائمة المراقبة.  </p>  <div class="actions">  <a    
+href="analysis.html"    
+class="btn btn-gold">  استعرض التحليلات
+
+</a>  <a    
+href="recommendations.html"    
+class="btn btn-outline">
+
+التوصيات 🔥
+
+</a>  <a    
+href="watchlist.html"    
+class="btn btn-outline">
+
+قائمة المراقبة ⭐
+
+</a>  <a    
+href="gift.html"    
+class="btn btn-outline"    
+style="border-color:#20c878;color:#20c878;">
+
+🎁 جرب المفاجأة
+
+</a>  </div>  </div>  <div class="hero-card">  <h3>
+📊 لوحة الأسواق
+
+</h3>  <div class="market-mini">  <div class="market-name">    
+تاسي    
+</div>  <div>  <div    
+class="market-value"    
+id="heroTasiPrice">    
+10,872.54    
+</div>  <div    
+id="heroTasiChange"    
+class="negative">    
+▼ -0.05%    
+</div>  </div>  </div>  <div class="market-mini">  <div class="market-name">    
+Nasdaq 100    
+</div>  <div>  <div    
+class="market-value"    
+id="heroNasdaqPrice">    
+30,482.35    
+</div>  <div    
+id="heroNasdaqChange"    
+class="positive">    
+▲ +2.83%    
+</div>  </div>  </div>  <p    
+style="color:#72848b;font-size:12px;margin-top:18px;">  متابعة يومية للأسواق والفرص  </p>  </div>  </div>  </div>  </section>  <!-- ================= QUICK LINKS ================= -->  <section>  <div class="container">  <div class="section-title">  <h2>    
+كل ما تحتاجه في مكان واحد    
+</h2>  <p>    
+أدوات ومعلومات تساعدك على متابعة الأسواق بشكل مستمر    
+</p>  </div>  <div class="cards">  <a    
+href="analysis.html"    
+class="card quick-card">  <div class="card-icon">    
+📊    
+</div>  <h3>    
+التحليلات    
+</h3>  <p>    
+تحليلات فنية لمؤشرات وأسهم السوق السعودي والأمريكي.    
+</p>  <span class="card-arrow">    
+عرض التحليلات ←    
+</span>  </a>  <a    
+href="recommendations.html"    
+class="card quick-card">  <div class="card-icon">    
+🔥    
+</div>  <h3>    
+التوصيات    
+</h3>  <p>    
+متابعة فرص السوق والتوصيات والتحركات المهمة.    
+</p>  <span class="card-arrow">    
+عرض التوصيات ←    
+</span>  </a>  <a    
+href="watchlist.html"    
+class="card quick-card">  <div class="card-icon">    
+⭐    
+</div>  <h3>    
+قائمة المراقبة    
+</h3>  <p>    
+تابع الأسهم التي تهمك وراقب مستوياتها المهمة.    
+</p>  <span class="card-arrow">    
+قائمة المراقبة ←    
+</span>  </a>  <a    
+href="news.html"    
+class="card quick-card">  <div class="card-icon">    
+📰    
+</div>  <h3>    
+الأخبار    
+</h3>  <p>    
+أبرز الأخبار والتطورات المؤثرة على الأسواق.    
+</p>  <span class="card-arrow">    
+عرض الأخبار ←    
+</span>  </a>  <a    
+href="saudi.html"    
+class="card quick-card">  <div class="card-icon">    
+🇸🇦    
+</div>  <h3>    
+السوق السعودي    
+</h3>  <p>    
+متابعة مؤشر تاسي والأسهم والقطاعات السعودية.    
+</p>  <span class="card-arrow">    
+السوق السعودي ←    
+</span>  </a>  <a    
+href="usa.html"    
+class="card quick-card">  <div class="card-icon">    
+🇺🇸    
+</div>  <h3>    
+السوق الأمريكي    
+</h3>  <p>    
+متابعة ناسداك والأسهم والقطاعات الأمريكية.    
+</p>  <span class="card-arrow">    
+السوق الأمريكي ←    
+</span>  </a>  </div>  </div>  </section>  <!-- ================= MARKETS ================= -->  <section id="markets">  <div class="container">  <div class="section-title">  <h2>    
+الأسواق    
+</h2>  <p>    
+نظرة سريعة على أهم المؤشرات    
+</p>  </div>  <div class="market-grid">  <div class="market-box">  <div class="market-box-header">  <h3>    
+🇸🇦 السوق السعودي    
+</h3>  <span class="positive">    
+متابعة يومية    
+</span>  </div>  <div    
+class="market-number"    
+id="tasiHomePrice">    
+10,872.54    
+</div>  <div    
+id="tasiHomeChange"    
+class="market-change negative">    
+▼ -0.05%    
+</div>  <p    
+style="color:#819197;margin-top:15px;">  مؤشر تاسي  </p>  </div>  <div class="market-box">  <div class="market-box-header">  <h3>    
+🇺🇸 Nasdaq 100    
+</h3>  <span class="positive">    
+إيجابي    
+</span>  </div>  <div    
+class="market-number"    
+id="nasdaqHomePrice">    
+30,482.35    
+</div>  <div    
+id="nasdaqHomeChange"    
+class="market-change positive">    
+▲ +2.83%    
+</div>  <p    
+style="color:#819197;margin-top:15px;">  مؤشر ناسداك 100  </p>  </div>  </div>  </div>  </section>  <!-- ================= SERVICES ================= -->  <section id="services">  <div class="container">  <div class="section-title">  <h2>    
+خدماتنا    
+</h2>  <p>    
+خدمات ومحتوى لمتابعة الأسواق    
+</p>  </div>  <div class="cards">  <div class="card">  <div class="card-icon">    
+📈    
+</div>  <h3>    
+التحليل الفني    
+</h3>  <p>    
+تحليل حركة المؤشرات والأسهم وتحديد مستويات الدعم والمقاومة.    
+</p>  </div>  <div class="card">  <div class="card-icon">    
+🎯    
+</div>  <h3>    
+التوصيات    
+</h3>  <p>    
+متابعة الفرص والأسهم التي تستحق المراقبة.    
+</p>  </div>  <div class="card">  <div class="card-icon">    
+🔔    
+</div>  <h3>    
+متابعة السوق    
+</h3>  <p>    
+أهم التحركات والأخبار التي قد تؤثر على السوق.    
+</p>  </div>  </div>  </div>  </section>  <!-- ================= NEWS ================= -->  <section id="news">  <div class="container">  <div class="section-title">  <h2>    
+أحدث الأخبار    
+</h2>  <p>    
+أهم التطورات في الأسواق السعودية والأمريكية    
+</p>  </div>  <div class="news-grid">  <div class="news-card">  <div class="news-date">    
+السوق السعودي    
+</div>  <h3>    
+متابعة حركة مؤشر تاسي    
+</h3>  <p>    
+نظرة يومية على حركة المؤشر وأهم مستويات الدعم والمقاومة.    
+</p>  </div>  <div class="news-card">  <div class="news-date">    
+السوق الأمريكي    
+</div>  <h3>    
+تحركات Nasdaq 100    
+</h3>  <p>    
+متابعة حركة المؤشر الأمريكي وأبرز المستويات الفنية.    
+</p>  </div>  <div class="news-card">  <div class="news-date">    
+Al Fayed Stocks    
+</div>  <h3>    
+تحديثات السوق اليومية    
+</h3>  <p>    
+تابع معنا أهم الأخبار والتحليلات بشكل مستمر.    
+</p>  </div>  </div>  </div>  </section>  <!-- ================= SURPRISE GAME ================= -->  <section>  <div class="container">  <div    
+class="contact-box"    
+style="border-color:rgba(32,200,120,.25);">  <h2>    
+🎁 عندنا مفاجأة ليك    
+</h2>  <p>  اختار صندوق وشوف المفاجأة اللي مستنياك من  <strong style="color:#20c878;">    
+Al Fayed Stocks    
+</strong>  </p>  <a    
+href="gift.html"    
+class="btn btn-gold">  🎁 جرب حظك الآن
+
+</a>  </div>  </div>  </section>  <!-- ================= ABOUT ================= -->  <section    
+class="about"    
+id="about">  <div class="container">  <div class="section-title">  <h2>
+عن Al Fayed Stocks
+
+</h2>  </div>  <div class="about-box">  <p>    
+Al Fayed Stocks منصة لمتابعة وتحليل الأسواق السعودية والأمريكية.    
+</p>  <p>    
+نقدم محتوى يومي يشمل تحليلات السوق، الأخبار،    
+مستويات الدعم والمقاومة، ومتابعة الأسهم والقطاعات.    
+</p>  </div>  </div>  </section>  <!-- ================= CONTACT ================= -->  <section id="contact">  <div class="container">  <div class="contact-box">  <h2>    
+تواصل معنا    
+</h2>  <p>    
+للاستفسارات والاشتراكات ومتابعة الخدمات    
+</p>  <div class="contact-links">  <a    
+href="https://wa.me/966575944806"    
+target="_blank"    
+rel="noopener"    
+class="contact-link">  📱 WhatsApp
+
+</a>  <a    
+href="https://t.me/alfayedstock"    
+target="_blank"    
+rel="noopener"    
+class="contact-link">
+
+✈️ Telegram
+
+</a>  <a    
+href="https://x.com/alfayed210"    
+target="_blank"    
+rel="noopener"    
+class="contact-link">
+
+𝕏 X
+
+</a>  </div>  </div>  </div>  </section>  <!-- ================= FOOTER ================= -->  <footer>  <div class="container">  <p>  © 2026
+
+<span>    
+Al Fayed Stocks    
+</span>  —  
+جميع الحقوق محفوظة  </p>  </div>  </footer>  <!-- ================= SCRIPT ================= -->  <script>    /* ================= MENU ================= */
+
+function toggleMenu(){
+
+const nav =    
+document.getElementById("mainNav");    
+
+nav.classList.toggle("show");
 
 }
 
-
-/* =====================================================
-   SAVE VISITOR
-===================================================== */
-
-async function registerVisitor(){
-
-    try{
-
-        if(
-            !window.SUPABASE_URL ||
-            !window.SUPABASE_ANON_KEY
-        ){
-
-            console.error(
-                "Supabase config غير موجود"
-            );
-
-            return;
-
-        }
-
-
-        supabaseClient =
-        window.supabase.createClient(
-            window.SUPABASE_URL,
-            window.SUPABASE_ANON_KEY
-        );
-
-
-        const token =
-        createVisitorToken();
-
-
-        const {
-            data,
-            error
-        } = await supabaseClient
-
-            .from("game_visitors")
-
-            .insert({
-
-                visitor_token:token,
-
-                whatsapp_shared:false
-
-            })
-
-            .select("id")
-
-            .single();
-
-
-        if(error){
-
-            console.error(
-                "Visitor insert error:",
-                error
-            );
-
-            return;
-
-        }
-
-
-        if(data){
-
-            visitorId =
-            data.id;
-
-        }
-
-
-        console.log(
-            "Visitor registered:",
-            visitorId
-        );
-
-
-    }
-    catch(error){
-
-        console.error(
-            "Register visitor error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   UPDATE VISITOR
-===================================================== */
-
-async function updateVisitor(values){
-
-    try{
-
-        if(
-            !supabaseClient ||
-            !visitorId
-        ){
-            return;
-        }
-
-
-        const {
-            error
-        } = await supabaseClient
-
-            .from("game_visitors")
-
-            .update(values)
-
-            .eq("id",visitorId);
-
-
-        if(error){
-
-            console.error(
-                "Visitor update error:",
-                error
-            );
-
-        }
-
-    }
-    catch(error){
-
-        console.error(
-            "Update visitor error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   START GAME
-===================================================== */
-
-async function startGame(){
-
-    const input =
-    document.getElementById("name");
-
-    const error =
-    document.getElementById("nameError");
-
-
-    const value =
-    input.value.trim();
-
-
-    error.textContent = "";
-
-
-    /* الاسم إجباري */
-
-    if(!value){
-
-        error.textContent =
-        "⚠️ من فضلك اكتب اسمك أولًا.";
-
-        input.focus();
-
-        return;
-
-    }
-
-
-    if(value.length < 2){
-
-        error.textContent =
-        "⚠️ اكتب اسمًا صحيحًا.";
-
-        input.focus();
-
-        return;
-
-    }
-
-
-    playerName =
-    value;
-
-
-    document
-    .getElementById("playerName")
-    .textContent =
-    playerName;
-
-
-    document
-    .getElementById("intro")
-    .classList
-    .add("hidden");
-
-
-    document
-    .getElementById("game")
-    .classList
-    .remove("hidden");
-
-
-    /* تسجيل الاسم */
-
-    await updateVisitor({
-
-        name:playerName
-
-    });
-
-}
-
-
-/* =====================================================
-   RESULTS
-===================================================== */
-
-const prizes = [
-
-    "🎉 مبروك! ربحت مفاجأة خاصة من Al Fayed Stocks ❤️",
-
-    "🔥 مبروك! عندك مفاجأة مميزة مستنياك!",
-
-    "⭐ اختيار موفق! تابع Al Fayed Stocks للمزيد من المفاجآت.",
-
-    "🎁 مبروك! أنت من أصحاب الحظ اليوم 😍",
-
-    "🚀 مفاجأتك وصلت! خليك متابع لـ Al Fayed Stocks."
-
-];
-
-
-/* =====================================================
-   CHOOSE BOX
-===================================================== */
-
-async function chooseBox(button){
-
-    if(selectedBox !== null){
-        return;
-    }
-
-
-    selectedBox =
-    Number(button.dataset.box);
-
-
-    selectedResult =
-    prizes[selectedBox - 1];
-
-
-    const buttons =
-    document.querySelectorAll(".box");
-
-
-    buttons.forEach(function(item){
-
-        item.disabled = true;
-
-    });
-
-
-    button.textContent = "🎉";
-
-
-    document
-    .getElementById("resultText")
-    .textContent =
-    selectedResult;
-
-
-    document
-    .getElementById("result")
-    .style.display =
-    "block";
-
-
-    /* حفظ الاختيار */
-
-    await updateVisitor({
-
-        box_number:selectedBox,
-
-        result:selectedResult
-
-    });
-
-
-    window.scrollTo({
-
-        top:document
-        .getElementById("result")
-        .offsetTop - 30,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* =====================================================
-   WHATSAPP SHARE
-===================================================== */
-
-async function shareWhatsapp(){
-
-    const phone =
-    "966575944806";
-
-
-    const message =
-    `🎁 أنا ${playerName} جربت مفاجأة Al Fayed Stocks وطلعت لي:
-
-${selectedResult}
-
-جرب حظك أنت كمان 🎁`;
-
-
-    const url =
-    "https://wa.me/" +
-    phone +
-    "?text=" +
-    encodeURIComponent(message);
-
-
-    /* تسجيل المشاركة */
-
-    await updateVisitor({
-
-        whatsapp_shared:true
-
-    });
-
-
-    window.open(
-        url,
-        "_blank",
-        "noopener"
-    );
-
-}
-
-
-/* =====================================================
-   AGAIN
-===================================================== */
-
-function playAgain(){
-
-    selectedBox = null;
-
-    selectedResult = "";
-
-
-    document
-    .getElementById("result")
-    .style.display =
-    "none";
-
-
-    document
-    .querySelectorAll(".box")
-    .forEach(function(button){
-
-        button.disabled = false;
-
-        button.innerHTML =
-        "🎁<span class='num'>الصندوق " +
-        button.dataset.box +
-        "</span>";
-
-    });
-
-}
-
-
-/* =====================================================
-   EVENTS
-===================================================== */
+/* إغلاق القائمة بعد اختيار أي صفحة */
 
 document
-.getElementById("start")
-.addEventListener(
-    "click",
-    startGame
-);
+.querySelectorAll("#mainNav a")
+.forEach(function(link){
 
+link.addEventListener("click",function(){    
 
-document
-.getElementById("name")
-.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            startGame();
-
-        }
-
-    }
-);
-
-
-document
-.querySelectorAll(".box")
-.forEach(function(button){
-
-    button.addEventListener(
-        "click",
-        function(){
-
-            chooseBox(button);
-
-        }
-    );
+    document    
+    .getElementById("mainNav")    
+    .classList    
+    .remove("show");    
 
 });
 
+});
 
-document
-.getElementById("shareWhatsapp")
-.addEventListener(
-    "click",
-    shareWhatsapp
-);
+/* ================= SUPABASE ================= */
+
+let supabaseClient = null;
+
+/* ================= HELPERS ================= */
+
+function formatNumber(value){
+
+if(    
+    value === null ||    
+    value === undefined ||    
+    value === ""    
+){    
+    return "—";    
+}    
+
+const number = Number(value);    
+
+if(!Number.isFinite(number)){    
+    return String(value);    
+}    
+
+return number.toLocaleString("en-US",{    
+    minimumFractionDigits:2,    
+    maximumFractionDigits:2    
+});
+
+}
+
+function getChangeValue(data){
+
+const direct =    
+Number(data.change_value);    
+
+if(Number.isFinite(direct)){    
+    return direct;    
+}    
+
+const price =    
+Number(data.price);    
+
+const previous =    
+Number(data.previous_close);    
+
+if(    
+    Number.isFinite(price) &&    
+    Number.isFinite(previous)    
+){    
+    return price - previous;    
+}    
+
+return 0;
+
+}
+
+function getChangePercent(data){
+
+const direct =    
+Number(data.change_percent);    
+
+if(Number.isFinite(direct)){    
+    return direct;    
+}    
+
+const price =    
+Number(data.price);    
+
+const previous =    
+Number(data.previous_close);    
+
+if(    
+    Number.isFinite(price) &&    
+    Number.isFinite(previous) &&    
+    previous !== 0    
+){    
+    return ((price - previous) / previous) * 100;    
+}    
+
+return 0;
+
+}
+
+function buildChangeText(data){
+
+const changeValue =    
+getChangeValue(data);    
+
+const changePercent =    
+getChangePercent(data);    
+
+if(changeValue > 0){    
+
+    return "▲ +" +    
+    formatNumber(changePercent) +    
+    "%";    
+
+}    
+
+if(changeValue < 0){    
+
+    return "▼ " +    
+    formatNumber(changePercent) +    
+    "%";    
+
+}    
+
+return "━ 0.00%";
+
+}
+
+/* ================= STYLE CHANGE ================= */
+
+function applyChangeStyle(element,data){
+
+if(!element){    
+    return;    
+}    
+
+const change =    
+getChangeValue(data);    
+
+element.classList.remove(    
+    "positive",    
+    "negative"    
+);    
+
+if(change > 0){    
+
+    element.classList.add(    
+        "positive"    
+    );    
+
+}    
+else if(change < 0){    
+
+    element.classList.add(    
+        "negative"    
+    );    
+
+}
+
+}
+
+/* ================= LOAD TASI ================= */
+
+async function loadTasiHome(){
+
+try{    
+
+    if(    
+        !window.SUPABASE_URL ||    
+        !window.SUPABASE_ANON_KEY    
+    ){    
+
+        console.error(    
+            "Supabase config غير موجود."    
+        );    
+
+        return;    
+
+    }    
 
 
-document
-.getElementById("again")
-.addEventListener(
-    "click",
-    playAgain
-);
+    const {    
+        data,    
+        error    
+    } = await supabaseClient    
+
+        .from("market_data")    
+
+        .select("*")    
+
+        .eq("market","tasi")    
+
+        .maybeSingle();    
 
 
-/* =====================================================
-   PAGE LOAD
-===================================================== */
+    if(error){    
+
+        console.error(    
+            "TASI Supabase Error:",    
+            error    
+        );    
+
+        return;    
+
+    }    
+
+
+    if(!data){    
+
+        console.warn(    
+            "لا توجد بيانات لـ TASI."    
+        );    
+
+        return;    
+
+    }    
+
+
+    const price =    
+    formatNumber(data.price);    
+
+
+    const change =    
+    buildChangeText(data);    
+
+
+    /* لوحة الأسواق */    
+
+    const heroPrice =    
+    document.getElementById(    
+        "heroTasiPrice"    
+    );    
+
+    const heroChange =    
+    document.getElementById(    
+        "heroTasiChange"    
+    );    
+
+
+    if(heroPrice){    
+        heroPrice.textContent =    
+        price;    
+    }    
+
+
+    if(heroChange){    
+
+        heroChange.textContent =    
+        change;    
+
+        applyChangeStyle(    
+            heroChange,    
+            data    
+        );    
+
+    }    
+
+
+    /* قسم الأسواق */    
+
+    const homePrice =    
+    document.getElementById(    
+        "tasiHomePrice"    
+    );    
+
+    const homeChange =    
+    document.getElementById(    
+        "tasiHomeChange"    
+    );    
+
+
+    if(homePrice){    
+
+        homePrice.textContent =    
+        price;    
+
+    }    
+
+
+    if(homeChange){    
+
+        homeChange.textContent =    
+        change;    
+
+        applyChangeStyle(    
+            homeChange,    
+            data    
+        );    
+
+    }    
+
+}    
+catch(error){    
+
+    console.error(    
+        "TASI Load Error:",    
+        error    
+    );    
+
+}
+
+}
+
+/* ================= LOAD NASDAQ ================= */
+
+async function loadNasdaqHome(){
+
+try{    
+
+    const {    
+        data,    
+        error    
+    } = await supabaseClient    
+
+        .from("market_data")    
+
+        .select("*")    
+
+        .eq("market","nasdaq100")    
+
+        .maybeSingle();    
+
+
+    if(error){    
+
+        console.error(    
+            "Nasdaq Supabase Error:",    
+            error    
+        );    
+
+        return;    
+
+    }    
+
+
+    if(!data){    
+
+        console.warn(    
+            "لا توجد بيانات لـ Nasdaq 100."    
+        );    
+
+        return;    
+
+    }    
+
+
+    const price =    
+    formatNumber(data.price);    
+
+
+    const change =    
+    buildChangeText(data);    
+
+
+    /* لوحة الأسواق */    
+
+    const heroPrice =    
+    document.getElementById(    
+        "heroNasdaqPrice"    
+    );    
+
+    const heroChange =    
+    document.getElementById(    
+        "heroNasdaqChange"    
+    );    
+
+
+    if(heroPrice){    
+
+        heroPrice.textContent =    
+        price;    
+
+    }    
+
+
+    if(heroChange){    
+
+        heroChange.textContent =    
+        change;    
+
+        applyChangeStyle(    
+            heroChange,    
+            data    
+        );    
+
+    }    
+
+
+    /* قسم الأسواق */    
+
+    const homePrice =    
+    document.getElementById(    
+        "nasdaqHomePrice"    
+    );    
+
+    const homeChange =    
+    document.getElementById(    
+        "nasdaqHomeChange"    
+    );    
+
+
+    if(homePrice){    
+
+        homePrice.textContent =    
+        price;    
+
+    }    
+
+
+    if(homeChange){    
+
+        homeChange.textContent =    
+        change;    
+
+        applyChangeStyle(    
+            homeChange,    
+            data    
+        );    
+
+    }    
+
+}    
+catch(error){    
+
+    console.error(    
+        "Nasdaq Load Error:",    
+        error    
+    );    
+
+}
+
+}
+
+/* ================= START ================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    async function(){
+"DOMContentLoaded",
+async function(){
 
-        await registerVisitor();
+try{    
 
-    }
+        if(    
+            !window.SUPABASE_URL ||    
+            !window.SUPABASE_ANON_KEY    
+        ){    
+
+            console.error(    
+                "SUPABASE_URL أو SUPABASE_ANON_KEY غير موجود."    
+            );    
+
+            return;    
+
+        }    
+
+
+        supabaseClient =    
+        window.supabase.createClient(    
+            window.SUPABASE_URL,    
+            window.SUPABASE_ANON_KEY    
+        );    
+
+
+        await Promise.all([    
+            loadTasiHome(),    
+            loadNasdaqHome()    
+        ]);    
+
+    }    
+    catch(error){    
+
+        console.error(    
+            "Supabase Initialization Error:",    
+            error    
+        );    
+
+    }    
+
+}
+
 );
 
+</script>  </body>
 
-</script>
+</html>   
 
-</body>
-</html>
