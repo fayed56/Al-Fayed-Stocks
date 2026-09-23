@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إحصائيات لعبة المفاجآت | Al Fayed Stocks</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
+<style>
+
+:root{
+  --bg:#06131a;
+  --bg2:#091b24;
+  --card:#0b2028;
+  --card2:#102832;
+  --green:#20c878;
+  --gold:#d8a94c;
+  --red:#ff6868;
+  --text:#f3f7f8;
+  --muted:#91a6ad;
+  --border:rgba(255,255,255,.08);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Cairo",sans-serif;
+  background:
+    radial-gradient(circle at top right,rgba(32,200,120,.08),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(216,169,76,.06),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1200px,94%);
+  margin:auto;
+}
+
+/* Header */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(6,19,26,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:var(--green);
+}
+
+.logo small{
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:-5px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.nav a{
+  padding:9px 14px;
+  border-radius:10px;
+  color:#b9c9ce;
+  font-size:13px;
+  transition:.2s;
+}
+
+.nav a:hover{
+  background:rgba(32,200,120,.08);
+  color:var(--green);
+}
+
+.nav a.active{
+  background:rgba(32,200,120,.12);
+  color:var(--green);
+}
+
+.back-btn{
+  background:linear-gradient(135deg,#20c878,#169b5c);
+  color:#03130c !important;
+  font-weight:800;
+}
+
+/* Main */
+
+main{
+  padding:38px 0 60px;
+}
+
+.page-title{
+  margin-bottom:28px;
+}
+
+.page-title h1{
+  font-size:29px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.page-title h1 span{
+  color:var(--green);
+}
+
+.page-title p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* Stats */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:25px;
+}
+
+.stat-card{
+  background:linear-gradient(145deg,var(--card),var(--card2));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:23px;
+  position:relative;
+  overflow:hidden;
+}
+
+.stat-card::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  left:-30px;
+  bottom:-45px;
+  background:rgba(32,200,120,.07);
+}
+
+.stat-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.stat-icon{
+  width:43px;
+  height:43px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(32,200,120,.1);
+  font-size:21px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.stat-value{
+  font-size:31px;
+  font-weight:800;
+  line-height:1.2;
+}
+
+.stat-sub{
+  margin-top:5px;
+  color:#7e969d;
+  font-size:11px;
+}
+
+/* Toolbar */
+
+.panel{
+  background:linear-gradient(145deg,var(--card),var(--card2));
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.panel-head{
+  padding:21px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  border-bottom:1px solid var(--border);
+}
+
+.panel-title h2{
+  font-size:19px;
+  font-weight:800;
+}
+
+.panel-title p{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+}
+
+.search{
+  width:250px;
+  max-width:100%;
+  height:43px;
+  border:1px solid var(--border);
+  background:#07171e;
+  color:#fff;
+  border-radius:11px;
+  padding:0 14px;
+  outline:none;
+  font-family:inherit;
+  font-size:12px;
+}
+
+.search:focus{
+  border-color:rgba(32,200,120,.5);
+}
+
+.btn{
+  height:43px;
+  border:none;
+  border-radius:11px;
+  padding:0 16px;
+  font-family:inherit;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-refresh{
+  background:rgba(32,200,120,.12);
+  color:var(--green);
+  border:1px solid rgba(32,200,120,.2);
+}
+
+.btn-refresh:hover{
+  background:rgba(32,200,120,.2);
+}
+
+.btn-refresh.loading{
+  opacity:.6;
+  pointer-events:none;
+}
+
+/* Table */
+
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+}
+
+thead{
+  background:rgba(255,255,255,.025);
+}
+
+th{
+  color:#9db1b7;
+  font-size:12px;
+  font-weight:700;
+  padding:15px 18px;
+  text-align:right;
+  white-space:nowrap;
+}
+
+td{
+  padding:15px 18px;
+  border-top:1px solid rgba(255,255,255,.05);
+  font-size:12px;
+  color:#e6edef;
+  white-space:nowrap;
+}
+
+tbody tr{
+  transition:.15s;
+}
+
+tbody tr:hover{
+  background:rgba(32,200,120,.035);
+}
+
+.number{
+  color:#71888f;
+  font-weight:700;
+}
+
+.name{
+  font-weight:700;
+}
+
+.box{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(216,169,76,.09);
+  color:#e7c26f;
+  border:1px solid rgba(216,169,76,.18);
+  border-radius:9px;
+  padding:6px 10px;
+}
+
+.whatsapp{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:8px;
+  padding:6px 10px;
+  font-weight:700;
+}
+
+.whatsapp.yes{
+  background:rgba(32,200,120,.1);
+  color:var(--green);
+}
+
+.whatsapp.no{
+  background:rgba(255,104,104,.08);
+  color:#ff8585;
+}
+
+.date{
+  color:#8fa4aa;
+  font-size:11px;
+}
+
+/* Empty */
+
+.empty{
+  padding:60px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.empty-icon{
+  font-size:45px;
+  margin-bottom:12px;
+}
+
+.empty h3{
+  color:#dce6e8;
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+/* Loading */
+
+.loading{
+  padding:55px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.spinner{
+  width:34px;
+  height:34px;
+  border:3px solid rgba(255,255,255,.08);
+  border-top-color:var(--green);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:0 auto 13px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* Error */
+
+.error{
+  display:none;
+  margin-bottom:18px;
+  padding:13px 16px;
+  border-radius:11px;
+  background:rgba(255,104,104,.08);
+  border:1px solid rgba(255,104,104,.18);
+  color:#ff9999;
+  font-size:12px;
+}
+
+/* Footer */
+
+.footer{
+  text-align:center;
+  color:#60777e;
+  font-size:11px;
+  padding:25px 0;
+}
+
+/* Mobile */
+
+@media(max-width:800px){
+
+  .header-inner{
+    padding:12px 0;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .logo{
+    text-align:center;
+  }
+
+  .nav{
+    justify-content:center;
+  }
+
+  .nav a{
+    font-size:11px;
+    padding:7px 9px;
+  }
+
+  main{
+    padding-top:25px;
+  }
+
+  .page-title h1{
+    font-size:24px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .panel-head{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .search{
+    width:100%;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Al Fayed <span>Stocks</span>
+      <small>الفايد للأسهم</small>
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html">الرئيسية</a>
+
+      <a href="admin.html">لوحة الإدارة</a>
+
+      <a href="saudi.html">السوق السعودي</a>
+
+      <a href="usa.html">السوق الأمريكي</a>
+
+      <a href="news.html">الأخبار</a>
+
+      <a href="gift.html">🎁 اللعبة</a>
+
+      <a href="admin.html" class="back-btn">← العودة للوحة</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<div class="container">
+
+  <div class="page-title">
+
+    <h1>🎁 إحصائيات <span>لعبة المفاجآت</span></h1>
+
+    <p>
+      متابعة المشاركين واختيارات الصناديق ومشاركات واتساب
+    </p>
+
+  </div>
+
+
+  <div id="errorBox" class="error"></div>
+
+
+  <!-- الإحصائيات -->
+
+  <section class="stats">
+
+    <div class="stat-card">
+
+      <div class="stat-top">
+
+        <div>
+          <div class="stat-label">إجمالي المشاركين</div>
+        </div>
+
+        <div class="stat-icon">👥</div>
+
+      </div>
+
+      <div id="totalVisitors" class="stat-value">0</div>
+
+      <div class="stat-sub">
+        جميع زيارات اللعبة المسجلة
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-top">
+
+        <div>
+          <div class="stat-label">اختيارات الصناديق</div>
+        </div>
+
+        <div class="stat-icon">🎁</div>
+
+      </div>
+
+      <div id="totalBoxes" class="stat-value">0</div>
+
+      <div class="stat-sub">
+        الأشخاص الذين اختاروا صندوقًا
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-top">
+
+        <div>
+          <div class="stat-label">مشاركات واتساب</div>
+        </div>
+
+        <div class="stat-icon">📱</div>
+
+      </div>
+
+      <div id="totalWhatsapp" class="stat-value">0</div>
+
+      <div class="stat-sub" id="whatsappPercent">
+        0% من المشاركين
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- المشاركون -->
+
+  <section class="panel">
+
+    <div class="panel-head">
+
+      <div class="panel-title">
+
+        <h2>👥 المشاركون</h2>
+
+        <p>
+          آخر المشاركات تظهر أولًا
+        </p>
+
+      </div>
+
+
+      <div class="actions">
+
+        <input
+          type="search"
+          id="searchInput"
+          class="search"
+          placeholder="🔍 ابحث عن اسم..."
+          autocomplete="off"
+        >
+
+        <button
+          id="refreshBtn"
+          class="btn btn-refresh"
+          onclick="loadVisitors()"
+        >
+          🔄 تحديث البيانات
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div id="tableContent">
+
+      <div class="loading">
+
+        <div class="spinner"></div>
+
+        جاري تحميل البيانات...
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="footer">
+    Al Fayed Stocks © 2026 — لوحة إحصائيات لعبة المفاجآت
+  </div>
+
+</div>
+
+</main>
+
+
+<script>
+
+let supabaseClient = null;
+
+let visitors = [];
+
+
+/* ===============================
+   تشغيل Supabase
+================================ */
+
+function initSupabase(){
+
+  try{
+
+    if(
+      !window.supabase ||
+      !window.SUPABASE_URL ||
+      !window.SUPABASE_ANON_KEY
+    ){
+
+      throw new Error(
+        "تعذر العثور على إعدادات Supabase في supabase-config.js"
+      );
+
+    }
+
+    supabaseClient = window.supabase.createClient(
+      window.SUPABASE_URL,
+      window.SUPABASE_ANON_KEY
+    );
+
+    return true;
+
+  }catch(error){
+
+    showError(error.message);
+
+    return false;
+
+  }
+
+}
+
+
+/* ===============================
+   تحميل البيانات
+================================ */
+
+async function loadVisitors(){
+
+  if(!supabaseClient){
+
+    if(!initSupabase()) return;
+
+  }
+
+  const refreshBtn =
+    document.getElementById("refreshBtn");
+
+  refreshBtn.classList.add("loading");
+
+  refreshBtn.textContent = "⏳ جاري التحديث...";
+
+  hideError();
+
+  try{
+
+    const { data, error } = await supabaseClient
+
+      .from("game_visitors")
+
+      .select(
+        "id,name,box_number,result,whatsapp_shared,created_at"
+      )
+
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    visitors = data || [];
+
+    updateStats();
+
+    renderTable(visitors);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showError(
+      "حدث خطأ أثناء تحميل بيانات اللعبة: " +
+      (error.message || "خطأ غير معروف")
+    );
+
+    document.getElementById("tableContent").innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">⚠️</div>
+
+        <h3>تعذر تحميل البيانات</h3>
+
+        <p>
+          تأكد من وجود جدول game_visitors وصلاحيات Supabase.
+        </p>
+
+      </div>
+
+    `;
+
+  }finally{
+
+    refreshBtn.classList.remove("loading");
+
+    refreshBtn.textContent = "🔄 تحديث البيانات";
+
+  }
+
+}
+
+
+/* ===============================
+   الإحصائيات
+================================ */
+
+function updateStats(){
+
+  const total =
+    visitors.length;
+
+
+  const boxes =
+    visitors.filter(
+      item =>
+        item.box_number !== null &&
+        item.box_number !== undefined
+    ).length;
+
+
+  const whatsapp =
+    visitors.filter(
+      item =>
+        item.whatsapp_shared === true
+    ).length;
+
+
+  let percent = 0;
+
+  if(total > 0){
+
+    percent =
+      Math.round(
+        (whatsapp / total) * 100
+      );
+
+  }
+
+
+  document.getElementById(
+    "totalVisitors"
+  ).textContent = total;
+
+
+  document.getElementById(
+    "totalBoxes"
+  ).textContent = boxes;
+
+
+  document.getElementById(
+    "totalWhatsapp"
+  ).textContent = whatsapp;
+
+
+  document.getElementById(
+    "whatsappPercent"
+  ).textContent =
+    percent + "% من المشاركين";
+
+}
+
+
+/* ===============================
+   عرض الجدول
+================================ */
+
+function renderTable(data){
+
+  const container =
+    document.getElementById(
+      "tableContent"
+    );
+
+
+  if(!data || data.length === 0){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">🎁</div>
+
+        <h3>لا توجد مشاركات</h3>
+
+        <p>
+          ستظهر المشاركات هنا عند دخول الأشخاص للعبة.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let rows = "";
+
+
+  data.forEach((item,index)=>{
+
+    const name =
+      item.name &&
+      item.name.trim()
+        ? escapeHtml(item.name)
+        : "لم يدخل الاسم";
+
+
+    let box = "لم يختر بعد";
+
+    if(
+      item.box_number !== null &&
+      item.box_number !== undefined
+    ){
+
+      box = `
+        <span class="box">
+          🎁 الصندوق ${escapeHtml(
+            String(item.box_number)
+          )}
+        </span>
+      `;
+
+    }
+
+
+    const whatsapp =
+      item.whatsapp_shared === true
+
+        ? `
+          <span class="whatsapp yes">
+            ✓ تمت المشاركة
+          </span>
+        `
+
+        : `
+          <span class="whatsapp no">
+            ✕ لم يشارك
+          </span>
+        `;
+
+
+    const date =
+      formatDate(item.created_at);
+
+
+    rows += `
+
+      <tr>
+
+        <td class="number">
+          ${index + 1}
+        </td>
+
+        <td class="name">
+          ${name}
+        </td>
+
+        <td>
+          ${box}
+        </td>
+
+        <td>
+          ${whatsapp}
+        </td>
+
+        <td class="date">
+          ${date}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  container.innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>الاسم</th>
+
+            <th>الصندوق</th>
+
+            <th>واتساب</th>
+
+            <th>وقت الدخول</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${rows}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ===============================
+   البحث
+================================ */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    function(){
+
+      const search =
+        this.value
+          .trim()
+          .toLowerCase();
+
+
+      if(!search){
+
+        renderTable(visitors);
+
+        return;
+
+      }
+
+
+      const filtered =
+        visitors.filter(item => {
+
+          const name =
+            String(
+              item.name || ""
+            ).toLowerCase();
+
+
+          const result =
+            String(
+              item.result || ""
+            ).toLowerCase();
+
+
+          const box =
+            String(
+              item.box_number || ""
+            ).toLowerCase();
+
+
+          return (
+            name.includes(search) ||
+            result.includes(search) ||
+            box.includes(search)
+          );
+
+        });
+
+
+      renderTable(filtered);
+
+    }
+  );
+
+
+/* ===============================
+   التاريخ
+================================ */
+
+function formatDate(value){
+
+  if(!value) return "—";
+
+
+  const date =
+    new Date(value);
+
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return "—";
+
+  }
+
+
+  return date.toLocaleString(
+    "ar-SA",
+    {
+      year:"numeric",
+      month:"2-digit",
+      day:"2-digit",
+      hour:"2-digit",
+      minute:"2-digit"
+    }
+  );
+
+}
+
+
+/* ===============================
+   حماية عرض النص
+================================ */
+
+function escapeHtml(value){
+
+  return value
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ===============================
+   رسائل الخطأ
+================================ */
+
+function showError(message){
+
+  const box =
+    document.getElementById(
+      "errorBox"
+    );
+
+  box.textContent = message;
+
+  box.style.display = "block";
+
+}
+
+
+function hideError(){
+
+  document.getElementById(
+    "errorBox"
+  ).style.display = "none";
+
+}
+
+
+/* ===============================
+   التشغيل
+================================ */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  async function(){
+
+    if(initSupabase()){
+
+      await loadVisitors();
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
