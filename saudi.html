@@ -15,77 +15,73 @@
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0;
+  padding:0
 }
 
 html{
-  scroll-behavior:smooth;
+  scroll-behavior:smooth
 }
 
 body{
   background:#06100e;
   color:#f4f8f6;
   font-family:Arial,Tahoma,sans-serif;
-  line-height:1.8;
+  line-height:1.8
 }
 
 .container{
   width:min(1100px,94%);
-  margin:auto;
+  margin:auto
 }
 
 /* HEADER */
 
 .top-header{
-  height:175px;
+  height:150px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-bottom:1px solid #18352e;
-  background:#07110f;
+  background:#07110f
 }
 
 .logo{
   font-size:42px;
   font-weight:800;
-  letter-spacing:-2px;
+  letter-spacing:-2px
 }
 
 .logo span{
-  color:#18d99b;
+  color:#18d99b
 }
 
 /* HERO */
 
 .hero{
   text-align:center;
-  padding:72px 15px 55px;
+  padding:60px 15px 45px
 }
 
 .hero-date{
   color:#21d99b;
-  font-size:17px;
+  font-size:16px;
   font-weight:700;
-  margin-bottom:28px;
-  letter-spacing:.5px;
+  margin-bottom:20px;
+  letter-spacing:.5px
 }
 
 .hero h1{
-  font-size:clamp(38px,7vw,66px);
+  font-size:clamp(38px,7vw,64px);
   line-height:1.25;
   font-weight:800;
-  margin-bottom:25px;
-}
-
-.hero h1 span{
-  color:#fff;
+  margin-bottom:18px
 }
 
 .hero-subtitle{
   color:#9aaba6;
-  font-size:clamp(19px,3vw,28px);
+  font-size:clamp(18px,3vw,25px);
   max-width:850px;
-  margin:auto;
+  margin:auto
 }
 
 /* MAIN CARD */
@@ -94,29 +90,30 @@ body{
   background:#091714;
   border:1px solid #193d35;
   border-radius:28px;
-  padding:42px;
-  margin-bottom:28px;
-  box-shadow:0 15px 45px rgba(0,0,0,.22);
+  padding:38px;
+  margin-bottom:26px;
+  box-shadow:0 15px 45px rgba(0,0,0,.22)
 }
 
 .card-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:28px;
+  margin-bottom:25px;
+  gap:15px
 }
 
 .card-name{
   color:#a9b7b3;
-  font-size:22px;
+  font-size:21px
 }
 
 .badge{
-  background:#351a1c;
-  color:#ff6a70;
+  background:#252d2a;
+  color:#c2cfca;
   border-radius:40px;
-  padding:8px 22px;
-  font-size:17px;
+  padding:7px 20px;
+  font-size:16px
 }
 
 .big-number{
@@ -124,7 +121,7 @@ body{
   font-size:clamp(48px,10vw,78px);
   font-weight:800;
   direction:ltr;
-  margin:8px 0;
+  margin:8px 0
 }
 
 .change{
@@ -132,7 +129,7 @@ body{
   color:#18d99b;
   font-size:25px;
   font-weight:700;
-  direction:ltr;
+  direction:ltr
 }
 
 .previous{
@@ -140,23 +137,24 @@ body{
   justify-content:space-between;
   color:#96a7a2;
   font-size:17px;
-  margin-top:35px;
+  margin-top:30px;
+  gap:15px
 }
 
 /* CHART */
 
 .chart{
-  margin-top:30px;
+  margin-top:28px;
   background:#06120f;
   border-radius:22px;
   padding:15px;
-  height:310px;
-  overflow:hidden;
+  height:290px;
+  overflow:hidden
 }
 
 .chart svg{
   width:100%;
-  height:100%;
+  height:100%
 }
 
 /* INFO */
@@ -165,39 +163,39 @@ body{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:14px;
-  margin-top:20px;
+  margin-top:18px
 }
 
 .info-box{
   background:#0a1b17;
   border:1px solid #173a32;
   border-radius:17px;
-  padding:18px;
-  text-align:center;
+  padding:17px;
+  text-align:center
 }
 
 .info-box small{
   color:#879994;
-  display:block;
+  display:block
 }
 
 .info-box strong{
   display:block;
   margin-top:5px;
   font-size:20px;
-  direction:ltr;
+  direction:ltr
 }
 
 /* SECTION */
 
 .section-title{
   font-size:27px;
-  margin-bottom:25px;
-  font-weight:800;
+  margin-bottom:23px;
+  font-weight:800
 }
 
 .section-title span{
-  color:#18d99b;
+  color:#18d99b
 }
 
 /* LEVELS */
@@ -205,7 +203,7 @@ body{
 .levels{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:12px;
+  gap:12px
 }
 
 .level{
@@ -213,26 +211,26 @@ body{
   border:1px solid #173a32;
   border-radius:15px;
   padding:17px;
-  text-align:center;
+  text-align:center
 }
 
 .level small{
-  color:#8d9e99;
+  color:#8d9e99
 }
 
 .level strong{
   display:block;
   font-size:20px;
   margin-top:5px;
-  direction:ltr;
+  direction:ltr
 }
 
 .support strong{
-  color:#ff686e;
+  color:#ff686e
 }
 
 .resistance strong{
-  color:#18d99b;
+  color:#18d99b
 }
 
 /* SCENARIOS */
@@ -240,60 +238,60 @@ body{
 .scenarios{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:18px
 }
 
 .scenario{
   padding:22px;
   border-radius:18px;
   background:#0a1a16;
-  border:1px solid #193d35;
+  border:1px solid #193d35
 }
 
 .scenario h3{
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .positive{
-  color:#18d99b;
+  color:#18d99b
 }
 
 .negative{
-  color:#ff686e;
+  color:#ff686e
 }
 
 /* TABLE */
 
 .table-wrap{
-  overflow-x:auto;
+  overflow-x:auto
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px;
+  min-width:650px
 }
 
 th{
   color:#18d99b;
   background:#0a1a16;
-  padding:14px 10px;
+  padding:14px 10px
 }
 
 td{
   padding:14px 10px;
   border-bottom:1px solid #17352e;
-  text-align:center;
+  text-align:center
 }
 
 .up{
-  color:#18d99b;
-  font-weight:700;
+  color:#18d99b!important;
+  font-weight:700
 }
 
 .down{
-  color:#ff686e;
-  font-weight:700;
+  color:#ff686e!important;
+  font-weight:700
 }
 
 /* SECTORS */
@@ -301,7 +299,7 @@ td{
 .sectors{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:14px;
+  gap:14px
 }
 
 .sector{
@@ -309,46 +307,89 @@ td{
   border:1px solid #193d35;
   border-radius:17px;
   padding:20px 10px;
-  text-align:center;
+  text-align:center
 }
 
 .sector-name{
   color:#a4b2ae;
-  display:block;
+  display:block
 }
 
 .sector-value{
   display:block;
-  color:#ff686e;
   font-size:21px;
   font-weight:700;
-  direction:ltr;
+  direction:ltr
 }
 
 /* WATCHLIST */
 
 .watchlist{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:12px;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
 }
 
 .watch{
   background:#0a1a16;
   border:1px solid #193d35;
-  border-radius:17px;
-  padding:20px 10px;
+  border-radius:18px;
+  padding:20px 12px;
   text-align:center;
+  transition:.2s
+}
+
+.watch:hover{
+  border-color:#18d99b;
+  transform:translateY(-2px)
+}
+
+.watch a{
+  text-decoration:none;
+  color:#f4f8f6;
+  display:block
 }
 
 .watch b{
   display:block;
-  font-size:18px;
+  font-size:18px
 }
 
 .watch span{
-  color:#18d99b;
+  color:#8fa19b;
   font-size:13px;
+  display:block
+}
+
+.watch-price{
+  color:#18d99b!important;
+  font-size:18px!important;
+  font-weight:700;
+  margin-top:6px;
+  direction:ltr
+}
+
+.watch-change{
+  font-size:13px!important;
+  margin-top:2px;
+  direction:ltr
+}
+
+.watch-empty{
+  grid-column:1/-1;
+  text-align:center;
+  color:#879994;
+  padding:25px
+}
+
+.details-link{
+  display:inline-block;
+  margin-top:12px;
+  padding:7px 13px;
+  border:1px solid #18d99b;
+  border-radius:10px;
+  color:#18d99b!important;
+  font-size:12px!important
 }
 
 /* REVIEWS */
@@ -356,42 +397,42 @@ td{
 .reviews{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  gap:15px
 }
 
 .review{
   background:#0a1a16;
   border:1px solid #193d35;
   border-radius:18px;
-  padding:22px;
+  padding:22px
 }
 
 .stars{
   color:#18d99b;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .review p{
   color:#b1bdb9;
-  font-size:15px;
+  font-size:15px
 }
 
 .review strong{
   display:block;
   margin-top:13px;
-  color:#fff;
+  color:#fff
 }
 
 /* SUMMARY */
 
 .summary{
   border:1px solid #18d99b;
-  background:rgba(24,217,155,.05);
+  background:rgba(24,217,155,.05)
 }
 
 .summary p{
   color:#b5c1bd;
-  font-size:18px;
+  font-size:18px
 }
 
 /* FOOTER */
@@ -401,103 +442,101 @@ footer{
   color:#71847e;
   border-top:1px solid #18352e;
   padding:30px 15px;
-  margin-top:20px;
+  margin-top:20px
 }
 
 /* MOBILE */
 
 @media(max-width:800px){
 
-.top-header{
-  height:145px;
-}
+  .top-header{
+    height:125px
+  }
 
-.hero{
-  padding:55px 10px 40px;
-}
+  .hero{
+    padding:48px 10px 35px
+  }
 
-.main-card{
-  padding:24px 18px;
-  border-radius:23px;
-}
+  .main-card{
+    padding:24px 18px;
+    border-radius:23px
+  }
 
-.previous{
-  font-size:14px;
-}
+  .info-grid{
+    grid-template-columns:1fr 1fr
+  }
 
-.info-grid{
-  grid-template-columns:1fr 1fr;
-}
+  .levels{
+    grid-template-columns:1fr 1fr
+  }
 
-.levels{
-  grid-template-columns:1fr 1fr;
-}
+  .sectors{
+    grid-template-columns:1fr 1fr
+  }
 
-.sectors{
-  grid-template-columns:1fr 1fr;
-}
+  .watchlist{
+    grid-template-columns:1fr 1fr
+  }
 
-.watchlist{
-  grid-template-columns:repeat(3,1fr);
-}
+  .reviews{
+    grid-template-columns:1fr
+  }
 
-.reviews{
-  grid-template-columns:1fr;
-}
-
-.scenarios{
-  grid-template-columns:1fr;
-}
-
+  .scenarios{
+    grid-template-columns:1fr
+  }
 }
 
 @media(max-width:480px){
 
-.logo{
-  font-size:34px;
-}
+  .logo{
+    font-size:34px
+  }
 
-.hero-date{
-  font-size:14px;
-}
+  .hero-date{
+    font-size:13px
+  }
 
-.hero h1{
-  font-size:39px;
-}
+  .hero h1{
+    font-size:39px
+  }
 
-.hero-subtitle{
-  font-size:19px;
-}
+  .hero-subtitle{
+    font-size:18px
+  }
 
-.main-card{
-  padding:20px 15px;
-}
+  .main-card{
+    padding:20px 15px
+  }
 
-.card-name{
-  font-size:18px;
-}
+  .card-name{
+    font-size:18px
+  }
 
-.badge{
-  font-size:14px;
-  padding:6px 14px;
-}
+  .badge{
+    font-size:13px;
+    padding:6px 13px
+  }
 
-.big-number{
-  font-size:48px;
-}
+  .big-number{
+    font-size:48px
+  }
 
-.change{
-  font-size:21px;
-}
+  .change{
+    font-size:21px
+  }
 
-.chart{
-  height:245px;
-}
+  .chart{
+    height:230px
+  }
 
-.watchlist{
-  grid-template-columns:1fr 1fr;
-}
+  .watchlist{
+    grid-template-columns:1fr
+  }
 
+  .previous{
+    font-size:13px
+  }
 }
 
 </style>
@@ -505,28 +544,19 @@ footer{
 
 <body>
 
-<!-- HEADER -->
-
 <header class="top-header">
-
   <div class="logo">
     Al Fayed <span>Stocks</span>
   </div>
-
 </header>
-
-
-<!-- HERO -->
 
 <section class="hero">
 
   <div class="hero-date" id="marketDate">
-    SAUDI MARKET • 17 SEPTEMBER 2026
+    SAUDI MARKET
   </div>
 
-  <h1>
-    🇸🇦 السوق السعودي
-  </h1>
+  <h1>🇸🇦 السوق السعودي</h1>
 
   <div class="hero-subtitle">
     متابعة مؤشر تاسي والأسهم السعودية والقطاعات وأبرز التحركات
@@ -534,11 +564,9 @@ footer{
 
 </section>
 
-
 <main class="container">
 
-
-<!-- TASI CARD -->
+<!-- TASI -->
 
 <section class="main-card">
 
@@ -549,38 +577,32 @@ footer{
     </div>
 
     <div class="badge" id="marketBadge">
-      إغلاق شبه محايد
+      جاري التحديث...
     </div>
 
   </div>
 
-
   <div class="big-number" id="tasiPrice">
-    10,779.96
+    —
   </div>
-
 
   <div class="change" id="tasiChange">
-    0.00% ━
+    —
   </div>
-
 
   <div class="previous">
 
     <span>
       الإغلاق السابق:
-      <strong id="previousClose">10,779.96</strong>
+      <strong id="previousClose">—</strong>
     </span>
 
     <span>
       افتتاح الجلسة:
-      <strong id="openingPrice">10,765.62</strong>
+      <strong id="openingPrice">—</strong>
     </span>
 
   </div>
-
-
-  <!-- CHART -->
 
   <div class="chart">
 
@@ -590,23 +612,56 @@ footer{
 
         <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
 
-          <stop offset="0%" stop-color="#18d99b" stop-opacity=".35"/>
+          <stop
+            offset="0%"
+            stop-color="#18d99b"
+            stop-opacity=".35"
+          />
 
-          <stop offset="100%" stop-color="#18d99b" stop-opacity="0"/>
+          <stop
+            offset="100%"
+            stop-color="#18d99b"
+            stop-opacity="0"
+          />
 
         </linearGradient>
 
       </defs>
 
+      <line
+        x1="0"
+        y1="55"
+        x2="900"
+        y2="55"
+        stroke="#183b32"
+      />
 
-      <line x1="0" y1="55" x2="900" y2="55" stroke="#183b32" stroke-width="1"/>
-      <line x1="0" y1="120" x2="900" y2="120" stroke="#183b32" stroke-width="1"/>
-      <line x1="0" y1="185" x2="900" y2="185" stroke="#183b32" stroke-width="1"/>
-      <line x1="0" y1="250" x2="900" y2="250" stroke="#183b32" stroke-width="1"/>
+      <line
+        x1="0"
+        y1="120"
+        x2="900"
+        y2="120"
+        stroke="#183b32"
+      />
+
+      <line
+        x1="0"
+        y1="185"
+        x2="900"
+        y2="185"
+        stroke="#183b32"
+      />
+
+      <line
+        x1="0"
+        y1="250"
+        x2="900"
+        y2="250"
+        stroke="#183b32"
+      />
 
       <path
-        d="
-        M0 205
+        d="M0 205
         L65 190
         L125 198
         L185 175
@@ -623,8 +678,7 @@ footer{
         L845 145
         L900 125
         L900 300
-        L0 300
-        Z"
+        L0 300 Z"
         fill="url(#area)"
       />
 
@@ -653,33 +707,37 @@ footer{
         stroke-linejoin="round"
       />
 
-      <circle cx="900" cy="125" r="7" fill="#25dda1"/>
+      <circle
+        cx="900"
+        cy="125"
+        r="7"
+        fill="#25dda1"
+      />
 
     </svg>
 
   </div>
 
-
   <div class="info-grid">
 
     <div class="info-box">
       <small>الاتجاه</small>
-      <strong id="trend">محايد</strong>
+      <strong id="trend">—</strong>
     </div>
 
     <div class="info-box">
       <small>الدعم الأهم</small>
-      <strong class="down" id="supportMain">10,750</strong>
+      <strong class="down" id="supportMain">—</strong>
     </div>
 
     <div class="info-box">
       <small>المقاومة الأولى</small>
-      <strong class="up" id="resistanceMain">10,800</strong>
+      <strong class="up" id="resistanceMain">—</strong>
     </div>
 
     <div class="info-box">
       <small>الإغلاق السابق</small>
-      <strong id="previousCloseBox">10,779.96</strong>
+      <strong id="previousCloseBox">—</strong>
     </div>
 
   </div>
@@ -699,27 +757,27 @@ footer{
 
     <div class="level support">
       <small>الدعم الأول</small>
-      <strong id="support1">10,750</strong>
+      <strong id="support1">—</strong>
     </div>
 
     <div class="level support">
       <small>الدعم الثاني</small>
-      <strong id="support2">10,700</strong>
+      <strong id="support2">—</strong>
     </div>
 
     <div class="level support">
       <small>الدعم الثالث</small>
-      <strong id="support3">10,650</strong>
+      <strong id="support3">—</strong>
     </div>
 
     <div class="level resistance">
       <small>المقاومة الأولى</small>
-      <strong id="resistance1">10,800</strong>
+      <strong id="resistance1">—</strong>
     </div>
 
     <div class="level resistance">
       <small>المقاومة الثانية</small>
-      <strong id="resistance2">10,850</strong>
+      <strong id="resistance2">—</strong>
     </div>
 
   </div>
@@ -744,11 +802,10 @@ footer{
       </h3>
 
       <p id="positiveScenario">
-        الثبات فوق 10,750 ثم تجاوز 10,800 قد يدعم اختبار 10,850 ثم 10,900، مع متابعة السيولة والأسهم القيادية.
+        سيتم تحديث السيناريو من لوحة التحكم.
       </p>
 
     </div>
-
 
     <div class="scenario">
 
@@ -757,7 +814,7 @@ footer{
       </h3>
 
       <p id="negativeScenario">
-        كسر 10,750 ثم 10,700 يفتح المجال لاختبار 10,650، خصوصًا مع استمرار اتساع عدد الأسهم المتراجعة.
+        سيتم تحديث السيناريو من لوحة التحكم عند توفر البيانات.
       </p>
 
     </div>
@@ -767,12 +824,12 @@ footer{
 </section>
 
 
-<!-- TOP GAINERS -->
+<!-- GAINERS -->
 
 <section class="main-card">
 
   <div class="section-title">
-    🟢 <span>الأكثر ارتفاعًا — جلسة 17 سبتمبر</span>
+    🟢 <span>الأكثر ارتفاعًا</span>
   </div>
 
   <div class="table-wrap">
@@ -780,39 +837,23 @@ footer{
     <table>
 
       <thead>
+
         <tr>
           <th>الرمز</th>
           <th>السهم</th>
-          <th>الإغلاق</th>
+          <th>السعر</th>
           <th>التغير</th>
           <th>%</th>
         </tr>
+
       </thead>
 
-      <tbody>
+      <tbody id="gainersBody">
 
         <tr>
-          <td>6012</td>
-          <td>ريدان</td>
-          <td>16.28</td>
-          <td class="up">+1.48</td>
-          <td class="up">+10.00%</td>
-        </tr>
-
-        <tr>
-          <td>9514</td>
-          <td>نُفث</td>
-          <td>6.57</td>
-          <td class="up">+0.59</td>
-          <td class="up">+9.87%</td>
-        </tr>
-
-        <tr>
-          <td>8311</td>
-          <td>عطاء</td>
-          <td>42.76</td>
-          <td class="up">+1.94</td>
-          <td class="up">+4.75%</td>
+          <td colspan="5">
+            جاري التحميل...
+          </td>
         </tr>
 
       </tbody>
@@ -824,12 +865,12 @@ footer{
 </section>
 
 
-<!-- TOP LOSERS -->
+<!-- LOSERS -->
 
 <section class="main-card">
 
   <div class="section-title">
-    🔴 <span>الأكثر انخفاضًا — جلسة 17 سبتمبر</span>
+    🔴 <span>الأكثر انخفاضًا</span>
   </div>
 
   <div class="table-wrap">
@@ -837,39 +878,23 @@ footer{
     <table>
 
       <thead>
+
         <tr>
           <th>الرمز</th>
           <th>السهم</th>
-          <th>الإغلاق</th>
+          <th>السعر</th>
           <th>التغير</th>
           <th>%</th>
         </tr>
+
       </thead>
 
-      <tbody>
+      <tbody id="losersBody">
 
         <tr>
-          <td>6022</td>
-          <td>أرماح</td>
-          <td>67.60</td>
-          <td class="down">-3.50</td>
-          <td class="down">-4.92%</td>
-        </tr>
-
-        <tr>
-          <td>4261</td>
-          <td>طيران ناس</td>
-          <td>42.02</td>
-          <td class="down">-1.96</td>
-          <td class="down">-4.46%</td>
-        </tr>
-
-        <tr>
-          <td>1835</td>
-          <td>سمو</td>
-          <td>25.08</td>
-          <td class="down">-1.08</td>
-          <td class="down">-4.13%</td>
+          <td colspan="5">
+            جاري التحميل...
+          </td>
         </tr>
 
       </tbody>
@@ -889,31 +914,13 @@ footer{
     📈 <span>أبرز القطاعات أداءً</span>
   </div>
 
-  <div class="sectors">
+  <div
+    class="sectors"
+    id="sectorsBox"
+  >
 
-    <div class="sector">
-      <span class="sector-name">النقل</span>
-      <span class="sector-value" style="color:#18d99b;">+1.77%</span>
-    </div>
-
-    <div class="sector">
-      <span class="sector-name">إنتاج الأغذية</span>
-      <span class="sector-value" style="color:#18d99b;">+1.52%</span>
-    </div>
-
-    <div class="sector">
-      <span class="sector-name">المنتجات المنزلية والشخصية</span>
-      <span class="sector-value" style="color:#18d99b;">+1.48%</span>
-    </div>
-
-    <div class="sector">
-      <span class="sector-name">المرافق العامة</span>
-      <span class="sector-value" style="color:#18d99b;">+1.28%</span>
-    </div>
-
-    <div class="sector">
-      <span class="sector-name">الخدمات التجارية والمهنية</span>
-      <span class="sector-value" style="color:#18d99b;">+0.87%</span>
+    <div class="watch-empty">
+      بيانات القطاعات تحتاج جدول قطاعات مستقل.
     </div>
 
   </div>
@@ -929,36 +936,13 @@ footer{
     👁️ <span>أسهم تحت المراقبة اليوم</span>
   </div>
 
-  <div class="watchlist">
+  <div
+    class="watchlist"
+    id="watchlist"
+  >
 
-    <div class="watch">
-      <b>الراجحي</b>
-      <span>1120</span>
-    </div>
-
-    <div class="watch">
-      <b>أرامكو</b>
-      <span>2222</span>
-    </div>
-
-    <div class="watch">
-      <b>معادن</b>
-      <span>1211</span>
-    </div>
-
-    <div class="watch">
-      <b>لوبريف</b>
-      <span>2223</span>
-    </div>
-
-    <div class="watch">
-      <b>الأسماك</b>
-      <span>6050</span>
-    </div>
-
-    <div class="watch">
-      <b>سابك</b>
-      <span>2010</span>
+    <div class="watch-empty">
+      جاري تحميل بيانات الأسهم...
     </div>
 
   </div>
@@ -978,45 +962,63 @@ footer{
 
     <div class="review">
 
-      <div class="stars">★★★★★</div>
+      <div class="stars">
+        ★★★★★
+      </div>
 
       <p id="reading1">
-        افتتح تاسي عند 10,765.62، أي أقل من الإغلاق السابق بـ14.34 نقطة، ثم أنهى الجلسة عند 10,779.96.
+        جاري تحديث قراءة السوق...
       </p>
 
-      <strong>— قراءة السوق</strong>
+      <strong>
+        — قراءة السوق
+      </strong>
 
     </div>
 
 
     <div class="review">
 
-      <div class="stars">★★★★☆</div>
+      <div class="stars">
+        ★★★★☆
+      </div>
 
       <p id="reading2">
-        الإغلاق عند 10,779.96 جاء مطابقًا للإغلاق السابق، ما يجعل التغير اليومي عند 0.00%.
+        جاري تحديث حركة السوق...
       </p>
 
-      <strong>— متابعة حركة السوق</strong>
+      <strong>
+        — متابعة حركة السوق
+      </strong>
 
     </div>
 
 
     <div class="review">
 
-      <div class="stars">★★★★☆</div>
+      <div class="stars">
+        ★★★★☆
+      </div>
 
       <p id="reading3">
-        مستوى 10,800 يمثل مقاومة قريبة للمراقبة، بينما يظل 10,750 مستوى دعم فني قريب.
+        جاري تحديث المستويات...
       </p>
 
-      <strong>— قراءة فنية</strong>
+      <strong>
+        — قراءة فنية
+      </strong>
 
     </div>
 
   </div>
 
-  <p style="color:#71847e;margin-top:18px;font-size:12px;">
+  <p
+    style="
+      color:#71847e;
+      margin-top:18px;
+      font-size:12px;
+    "
+  >
     * هذه القراءات تحليلية/تعليمية وليست توصية استثمارية.
   </p>
 
@@ -1032,17 +1034,16 @@ footer{
   </div>
 
   <p id="summary1">
-    افتتح تاسي عند <b>10,765.62</b>، مقابل إغلاق الجلسة السابقة عند <b>10,779.96</b>، أي فجوة افتتاحية قدرها <b>-14.34 نقطة (-0.13%)</b>، ثم أنهى الجلسة عند <b>10,779.96</b>، دون تغير عن الإغلاق السابق.
+    جاري تحميل الخلاصة...
   </p>
 
   <br>
 
   <p id="summary2">
-    الإغلاق جاء عند نفس مستوى الإغلاق السابق، بينما كان الافتتاح أدنى منه بـ14.34 نقطة. وتظل مستويات <b>10,750 – 10,800</b> من المستويات المهمة للمراقبة في القراءة الفنية التالية.
+    جاري تحميل الخلاصة...
   </p>
 
 </section>
-
 
 </main>
 
@@ -1060,15 +1061,25 @@ footer{
 
 <script>
 
-/* ==========================================
-   SUPABASE — SAUDI MARKET DATA
-========================================== */
-
 let supabaseClient = null;
+
+const WATCH_SYMBOLS = [
+  '1120',
+  '2222',
+  '1211',
+  '2223',
+  '6050',
+  '2010'
+];
+
 
 function formatNumber(value, decimals = 2){
 
-  if(value === null || value === undefined || value === ''){
+  if(
+    value === null ||
+    value === undefined ||
+    value === ''
+  ){
     return '—';
   }
 
@@ -1078,17 +1089,24 @@ function formatNumber(value, decimals = 2){
     return String(value);
   }
 
-  return number.toLocaleString('en-US',{
-    minimumFractionDigits:decimals,
-    maximumFractionDigits:decimals
-  });
+  return number.toLocaleString(
+    'en-US',
+    {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    }
+  );
 
 }
 
 
 function formatLevel(value){
 
-  if(value === null || value === undefined || value === ''){
+  if(
+    value === null ||
+    value === undefined ||
+    value === ''
+  ){
     return '—';
   }
 
@@ -1098,358 +1116,714 @@ function formatLevel(value){
     return String(value);
   }
 
-  return number.toLocaleString('en-US',{
-    maximumFractionDigits:2
-  });
+  return number.toLocaleString(
+    'en-US',
+    {
+      maximumFractionDigits:2
+    }
+  );
 
 }
 
 
 function setText(id,value){
 
-  const element=document.getElementById(id);
+  const element =
+    document.getElementById(id);
 
   if(element){
-    element.textContent=value;
+    element.textContent = value;
   }
 
 }
 
 
+function escapeHTML(value){
+
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+
+}
+
+
+/* =========================
+   TASI
+========================= */
+
 async function loadSaudiMarket(){
 
-  try{
+  const {
+    data,
+    error
+  } = await supabaseClient
+
+    .from('market_data')
+
+    .select('*')
+
+    .eq('market','tasi')
+
+    .maybeSingle();
+
+
+  if(error || !data){
+
+    console.error(
+      error || 'No TASI data'
+    );
+
+    return;
+  }
+
+
+  if(data.date_label){
+
+    setText(
+      'marketDate',
+      'SAUDI MARKET • ' +
+      data.date_label
+    );
+
+  }
+
+
+  const price =
+    formatNumber(data.price,2);
+
+  const previous =
+    formatNumber(data.previous_close,2);
+
+
+  const changePercent =
+    Number(data.change_percent || 0);
+
+  const changeValue =
+    Number(data.change_value || 0);
+
+
+  setText(
+    'tasiPrice',
+    price
+  );
+
+
+  setText(
+    'previousClose',
+    previous
+  );
+
+
+  setText(
+    'previousCloseBox',
+    previous
+  );
+
+
+  setText(
+    'tasiChange',
+
+    (changePercent > 0 ? '+' : '') +
+    formatNumber(changePercent,2) +
+    '% ' +
+    (
+      changePercent > 0
+      ? '▲'
+      : changePercent < 0
+      ? '▼'
+      : '━'
+    )
+
+  );
+
+
+  setText(
+    'trend',
+    data.trend || '—'
+  );
+
+
+  setText(
+    'supportMain',
+    formatLevel(data.support_1)
+  );
+
+  setText(
+    'support1',
+    formatLevel(data.support_1)
+  );
+
+  setText(
+    'support2',
+    formatLevel(data.support_2)
+  );
+
+  setText(
+    'support3',
+    formatLevel(data.support_3)
+  );
+
+
+  setText(
+    'resistanceMain',
+    formatLevel(data.resistance_1)
+  );
+
+  setText(
+    'resistance1',
+    formatLevel(data.resistance_1)
+  );
+
+  setText(
+    'resistance2',
+    formatLevel(data.resistance_2)
+  );
+
+
+  const opening =
+    data.opening_price ??
+    data.open_price;
+
+
+  if(
+    opening !== null &&
+    opening !== undefined &&
+    opening !== ''
+  ){
+
+    setText(
+      'openingPrice',
+      formatNumber(opening,2)
+    );
+
+  }
+
+
+  const badge =
+    document.getElementById(
+      'marketBadge'
+    );
+
+
+  if(badge){
+
+    if(changePercent > 0){
+
+      badge.textContent =
+        'إغلاق إيجابي';
+
+      badge.style.background =
+        '#0c3025';
+
+      badge.style.color =
+        '#18d99b';
+
+    }
+
+    else if(changePercent < 0){
+
+      badge.textContent =
+        'إغلاق سلبي';
+
+      badge.style.background =
+        '#351a1c';
+
+      badge.style.color =
+        '#ff6a70';
+
+    }
+
+    else{
+
+      badge.textContent =
+        'إغلاق شبه محايد';
+
+      badge.style.background =
+        '#252d2a';
+
+      badge.style.color =
+        '#c2cfca';
+
+    }
+
+  }
+
+
+  const changeElement =
+    document.getElementById(
+      'tasiChange'
+    );
+
+
+  if(changeElement){
+
+    changeElement.style.color =
+      changePercent < 0
+      ? '#ff686e'
+      : '#18d99b';
+
+  }
+
+
+  if(data.summary){
+
+    setText(
+      'positiveScenario',
+      data.summary
+    );
+
+  }
+
+
+  if(data.negative_scenario){
+
+    setText(
+      'negativeScenario',
+      data.negative_scenario
+    );
+
+  }
+
+
+  setText(
+    'reading1',
+
+    'مؤشر تاسي عند ' +
+    price +
+    ' نقطة، مقارنةً بالإغلاق السابق عند ' +
+    previous +
+    '، مع تغير قدره ' +
+    (changePercent > 0 ? '+' : '') +
+    formatNumber(changePercent,2) +
+    '%.'
+
+  );
+
+
+  setText(
+    'reading2',
+
+    'الاتجاه المسجل في بيانات السوق هو ' +
+    (data.trend || 'غير محدد') +
+    '، مع متابعة مستويات الدعم والمقاومة القريبة.'
+
+  );
+
+
+  setText(
+    'reading3',
+
+    'مستوى ' +
+    formatLevel(data.resistance_1) +
+    ' يمثل المقاومة الأولى، بينما ' +
+    formatLevel(data.support_1) +
+    ' يمثل مستوى الدعم الأول للمراقبة.'
+
+  );
+
+
+  setText(
+    'summary1',
+
+    'مؤشر تاسي عند ' +
+    price +
+    ' نقطة، مقابل إغلاق سابق عند ' +
+    previous +
+    '، والتغير الحالي ' +
+    (changePercent > 0 ? '+' : '') +
+    formatNumber(changePercent,2) +
+    '%.'
+
+  );
+
+
+  setText(
+    'summary2',
+
+    (data.summary ||
+    'تم تحديث بيانات السوق السعودي.') +
+
+    ' مستويات المراقبة: ' +
+
+    formatLevel(data.support_1) +
+
+    ' دعمًا و' +
+
+    formatLevel(data.resistance_1) +
+
+    ' مقاومة.'
+
+  );
+
+}
+
+
+/* =========================
+   STOCK ROW
+========================= */
+
+function renderStockRow(stock){
+
+  const percent =
+    Number(
+      stock.change_percent || 0
+    );
+
+  const change =
+    Number(
+      stock.change_value || 0
+    );
+
+
+  const className =
+    percent > 0
+    ? 'up'
+    : percent < 0
+    ? 'down'
+    : '';
+
+
+  const sign =
+    change > 0
+    ? '+'
+    : '';
+
+
+  return `
+
+    <tr>
+
+      <td>
+        ${escapeHTML(stock.symbol)}
+      </td>
+
+      <td>
+        ${escapeHTML(stock.name || '—')}
+      </td>
+
+      <td>
+        ${formatNumber(stock.price)}
+      </td>
+
+      <td class="${className}">
+        ${sign}${formatNumber(change)}
+      </td>
+
+      <td class="${className}">
+        ${percent > 0 ? '+' : ''}
+        ${formatNumber(percent)}%
+      </td>
+
+    </tr>
+
+  `;
+
+}
+
+
+/* =========================
+   SAUDI STOCKS
+========================= */
+
+async function loadSaudiStocks(){
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+
+    .from('saudi_stocks')
+
+    .select('*');
+
+
+  if(error){
+
+    console.error(
+      'Saudi stocks error:',
+      error
+    );
+
+    document.getElementById(
+      'watchlist'
+    ).innerHTML =
+
+      '<div class="watch-empty">' +
+      'تعذر تحميل بيانات الأسهم حاليًا.' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  const rows = data || [];
+
+
+  /* الأسهم المحددة للمراقبة */
+
+  const ordered =
+
+    WATCH_SYMBOLS
+
+      .map(
+        symbol =>
+
+          rows.find(
+            stock =>
+              String(stock.symbol) ===
+              symbol
+          )
+
+      )
+
+      .filter(Boolean);
+
+
+  const watchlist =
+    document.getElementById(
+      'watchlist'
+    );
+
+
+  if(!ordered.length){
+
+    watchlist.innerHTML =
+
+      '<div class="watch-empty">' +
+      'لا توجد بيانات أسهم مضافة من لوحة التحكم.' +
+      '</div>';
+
+  }
+
+  else{
+
+    watchlist.innerHTML =
+
+      ordered.map(stock => {
+
+        const percent =
+          Number(
+            stock.change_percent || 0
+          );
+
+        const change =
+          Number(
+            stock.change_value || 0
+          );
+
+
+        const className =
+          percent > 0
+          ? 'up'
+          : percent < 0
+          ? 'down'
+          : '';
+
+
+        return `
+
+          <div class="watch">
+
+            <a
+              href="stock.html?symbol=${encodeURIComponent(stock.symbol)}"
+            >
+
+              <b>
+                ${escapeHTML(
+                  stock.name || '—'
+                )}
+              </b>
+
+              <span>
+                ${escapeHTML(
+                  stock.symbol
+                )}
+                •
+                ${escapeHTML(
+                  stock.sector || '—'
+                )}
+              </span>
+
+              <span class="watch-price">
+                ${formatNumber(stock.price)}
+              </span>
+
+              <span
+                class="watch-change ${className}"
+              >
+
+                ${change > 0 ? '+' : ''}
+                ${formatNumber(change)}
+                |
+                ${percent > 0 ? '+' : ''}
+                ${formatNumber(percent)}%
+
+                ${
+                  percent > 0
+                  ? '▲'
+                  : percent < 0
+                  ? '▼'
+                  : '━'
+                }
+
+              </span>
+
+              <span class="details-link">
+                📊 عرض تفاصيل السهم
+              </span>
+
+            </a>
+
+          </div>
+
+        `;
+
+      }).join('');
+
+  }
+
+
+  /* الأكثر ارتفاعًا */
+
+  const gainers =
+
+    [...rows]
+
+      .filter(
+        stock =>
+          Number(stock.change_percent) > 0
+      )
+
+      .sort(
+        (a,b) =>
+          Number(b.change_percent) -
+          Number(a.change_percent)
+      )
+
+      .slice(0,5);
+
+
+  /* الأكثر انخفاضًا */
+
+  const losers =
+
+    [...rows]
+
+      .filter(
+        stock =>
+          Number(stock.change_percent) < 0
+      )
+
+      .sort(
+        (a,b) =>
+          Number(a.change_percent) -
+          Number(b.change_percent)
+      )
+
+      .slice(0,5);
+
+
+  const gainersBody =
+    document.getElementById(
+      'gainersBody'
+    );
+
+
+  const losersBody =
+    document.getElementById(
+      'losersBody'
+    );
+
+
+  if(gainers.length){
+
+    gainersBody.innerHTML =
+      gainers
+        .map(renderStockRow)
+        .join('');
+
+  }
+
+  else{
+
+    gainersBody.innerHTML =
+      '<tr>' +
+      '<td colspan="5">' +
+      'لا توجد بيانات ارتفاعات.' +
+      '</td>' +
+      '</tr>';
+
+  }
+
+
+  if(losers.length){
+
+    losersBody.innerHTML =
+      losers
+        .map(renderStockRow)
+        .join('');
+
+  }
+
+  else{
+
+    losersBody.innerHTML =
+      '<tr>' +
+      '<td colspan="5">' +
+      'لا توجد بيانات انخفاضات.' +
+      '</td>' +
+      '</tr>';
+
+  }
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  async function(){
 
     if(
       !window.SUPABASE_URL ||
       !window.SUPABASE_ANON_KEY
     ){
 
-      console.error('Supabase config غير موجود.');
+      console.error(
+        'Supabase config غير موجود.'
+      );
 
       return;
+
     }
 
 
     supabaseClient =
       window.supabase.createClient(
+
         window.SUPABASE_URL,
+
         window.SUPABASE_ANON_KEY
+
       );
 
 
-    /*
-      مهم:
-      Admin Panel يحفظ السوق السعودي
-      تحت market = "tasi"
-      لذلك يجب أن تقرأ الصفحة نفس القيمة.
-    */
+    await Promise.all([
 
-    const {data,error}=await supabaseClient
-      .from('market_data')
-      .select('*')
-      .eq('market','tasi')
-      .maybeSingle();
+      loadSaudiMarket(),
 
+      loadSaudiStocks()
 
-    if(error){
-
-      console.error(
-        'Supabase error:',
-        error
-      );
-
-      return;
-    }
-
-
-    if(!data){
-
-      console.warn(
-        'لا توجد بيانات للسوق السعودي.'
-      );
-
-      return;
-    }
-
-
-    /* التاريخ */
-
-    if(data.date_label){
-
-      setText(
-        'marketDate',
-        'SAUDI MARKET • ' +
-        data.date_label
-      );
-
-    }
-
-
-    /* السعر */
-
-    const price=formatNumber(
-      data.price,
-      2
-    );
-
-    setText(
-      'tasiPrice',
-      price
-    );
-
-
-    /* الإغلاق السابق */
-
-    const previousClose=
-      formatNumber(
-        data.previous_close,
-        2
-      );
-
-
-    setText(
-      'previousClose',
-      previousClose
-    );
-
-    setText(
-      'previousCloseBox',
-      previousClose
-    );
-
-
-    /* التغير */
-
-    const changePercent=
-      Number(data.change_percent || 0);
-
-
-    const changeValue=
-      Number(data.change_value || 0);
-
-
-    let changeText='';
-
-
-    if(changePercent > 0){
-
-      changeText=
-        '+' +
-        formatNumber(changePercent,2) +
-        '% ▲';
-
-    }
-    else if(changePercent < 0){
-
-      changeText=
-        formatNumber(changePercent,2) +
-        '% ▼';
-
-    }
-    else{
-
-      changeText='0.00% ━';
-
-    }
-
-
-    setText(
-      'tasiChange',
-      changeText
-    );
-
-
-    /* الاتجاه */
-
-    setText(
-      'trend',
-      data.trend || '—'
-    );
-
-
-    /* الدعم */
-
-    setText(
-      'supportMain',
-      formatLevel(data.support_1)
-    );
-
-    setText(
-      'support1',
-      formatLevel(data.support_1)
-    );
-
-    setText(
-      'support2',
-      formatLevel(data.support_2)
-    );
-
-    setText(
-      'support3',
-      formatLevel(data.support_3)
-    );
-
-
-    /* المقاومات */
-
-    setText(
-      'resistanceMain',
-      formatLevel(data.resistance_1)
-    );
-
-    setText(
-      'resistance1',
-      formatLevel(data.resistance_1)
-    );
-
-    setText(
-      'resistance2',
-      formatLevel(data.resistance_2)
-    );
-
-
-    /* تغيير لون التغير */
-
-    const changeElement=
-      document.getElementById('tasiChange');
-
-
-    if(changeElement){
-
-      if(changePercent < 0){
-
-        changeElement.style.color='#ff686e';
-
-      }
-      else{
-
-        changeElement.style.color='#18d99b';
-
-      }
-
-    }
-
-
-    /* افتتاح الجلسة */
-
-    /*
-      جدول market_data الحالي لا يحتوي على
-      opening_price لذلك نحافظ على القيمة
-      الموجودة في الصفحة.
-    */
-
-
-    /* السيناريو */
-
-    if(data.summary){
-
-      setText(
-        'positiveScenario',
-        data.summary
-      );
-
-    }
-
-
-    /* قراءة تلقائية */
-
-    setText(
-      'reading1',
-      'بيانات السوق المحدثة تشير إلى أن مستوى تاسي الحالي عند ' +
-      price +
-      ' نقطة، مقارنةً بالإغلاق السابق عند ' +
-      previousClose +
-      '.'
-    );
-
-
-    setText(
-      'reading2',
-      'التغير المسجل في المؤشر هو ' +
-      (changePercent > 0 ? '+' : '') +
-      formatNumber(changePercent,2) +
-      '%، مع اتجاه ' +
-      (data.trend || 'غير محدد') +
-      '.'
-    );
-
-
-    setText(
-      'reading3',
-      'مستوى ' +
-      formatLevel(data.resistance_1) +
-      ' يمثل المقاومة الأولى، بينما ' +
-      formatLevel(data.support_1) +
-      ' يمثل مستوى الدعم الأول للمراقبة.'
-    );
-
-
-    /* الخلاصة */
-
-    const summary=
-      data.summary ||
-      'تم تحديث بيانات السوق السعودي.';
-
-
-    const summary1 =
-      document.getElementById('summary1');
-
-    const summary2 =
-      document.getElementById('summary2');
-
-
-    if(summary1){
-
-      summary1.innerHTML=
-        'مؤشر تاسي عند <b>' +
-        price +
-        '</b> نقطة، مقابل إغلاق سابق عند <b>' +
-        previousClose +
-        '</b>، والتغير الحالي <b>' +
-        (changePercent > 0 ? '+' : '') +
-        formatNumber(changePercent,2) +
-        '%</b>.';
-
-    }
-
-
-    if(summary2){
-
-      summary2.innerHTML=
-        summary +
-        ' وتظل مستويات <b>' +
-        formatLevel(data.support_1) +
-        ' – ' +
-        formatLevel(data.resistance_1) +
-        '</b> من المستويات المهمة للمراقبة.';
-
-    }
-
-
-    console.log(
-      'Saudi market data loaded successfully:',
-      data
-    );
+    ]);
 
   }
-  catch(error){
-
-    console.error(
-      'Unexpected error:',
-      error
-    );
-
-  }
-
-}
-
-
-/* تشغيل جلب البيانات */
-
-document.addEventListener(
-  'DOMContentLoaded',
-  loadSaudiMarket
 );
 
 </script>
