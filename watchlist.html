@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>قائمة المراقبة | Al Fayed Stocks</title>
+<title>بحث الأسهم | Al Fayed Stocks</title>
 
 <link
 href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
@@ -17,7 +17,7 @@ rel="stylesheet">
 <style>
 
 /* =========================
-   WATCHLIST PAGE
+   STOCK SEARCH PAGE
 ========================= */
 
 .watch-page{
@@ -46,11 +46,6 @@ rel="stylesheet">
     line-height:1.4;
 }
 
-.watch-hero h1 span{
-    font-size:42px;
-    vertical-align:middle;
-}
-
 .watch-hero p{
     margin:12px auto 0;
     max-width:720px;
@@ -60,12 +55,12 @@ rel="stylesheet">
 }
 
 /* =========================
-   ADD BOX
+   SEARCH BOX
 ========================= */
 
 .watch-add{
     max-width:850px;
-    margin:0 auto 30px;
+    margin:0 auto 18px;
     background:#0b2028;
     border:1px solid rgba(32,200,120,.22);
     border-radius:24px;
@@ -89,6 +84,7 @@ rel="stylesheet">
 .watch-add input{
     width:100%;
     height:54px;
+    box-sizing:border-box;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.16);
     background:#06131a;
@@ -111,7 +107,7 @@ rel="stylesheet">
     height:54px;
     border:0;
     border-radius:12px;
-    padding:0 25px;
+    padding:0 28px;
     background:#d8a94c;
     color:#06131a;
     font-family:'Cairo',sans-serif;
@@ -134,7 +130,7 @@ rel="stylesheet">
     margin:0 auto 30px;
     text-align:center;
     color:#42515c;
-    font-size:16px;
+    font-size:15px;
     line-height:2;
 }
 
@@ -144,19 +140,40 @@ rel="stylesheet">
 }
 
 /* =========================
-   WATCHLIST
+   STATUS
+========================= */
+
+.search-status{
+    max-width:1000px;
+    margin:0 auto 18px;
+    text-align:center;
+    font-size:15px;
+    font-weight:700;
+    min-height:25px;
+}
+
+.search-status.loading{
+    color:#d8a94c;
+}
+
+.search-status.success{
+    color:#20c878;
+}
+
+.search-status.error{
+    color:#ff6868;
+}
+
+/* =========================
+   STOCK RESULT
 ========================= */
 
 .watch-list{
     max-width:1000px;
     margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
 }
 
 .watch-empty{
-    grid-column:1/-1;
     background:#0b2028;
     border-radius:24px;
     padding:45px 25px;
@@ -170,60 +187,85 @@ rel="stylesheet">
     margin-bottom:10px;
 }
 
+/* =========================
+   STOCK CARD
+========================= */
+
 .watch-card{
     background:#0b2028;
     border:1px solid rgba(255,255,255,.07);
-    border-radius:22px;
-    padding:22px;
+    border-radius:24px;
+    padding:25px;
     color:#fff;
     position:relative;
     overflow:hidden;
-    transition:.2s;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
 
-.watch-card:hover{
-    border-color:rgba(32,200,120,.45);
-    transform:translateY(-2px);
+.watch-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    height:3px;
+    background:#20c878;
 }
 
 .watch-card-top{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:12px;
-    margin-bottom:18px;
+    gap:20px;
+    margin-bottom:22px;
 }
 
 .watch-market{
     color:#20c878;
     font-size:14px;
     font-weight:800;
+    margin-bottom:5px;
 }
 
 .watch-symbol{
     color:#fff;
-    font-size:25px;
+    font-size:30px;
     font-weight:900;
 }
 
 .watch-name{
-    color:#9eafb5;
-    font-size:15px;
-    margin-top:2px;
+    color:#aebdc2;
+    font-size:16px;
+    margin-top:3px;
+}
+
+.watch-sector{
+    display:inline-block;
+    margin-top:9px;
+    padding:4px 10px;
+    border-radius:20px;
+    background:rgba(216,169,76,.10);
+    color:#d8a94c;
+    font-size:12px;
+    font-weight:700;
+}
+
+.watch-price-box{
+    text-align:left;
 }
 
 .watch-price{
-    font-size:25px;
+    font-size:32px;
     font-weight:900;
     color:#fff;
 }
 
 .watch-change{
     display:inline-block;
-    margin-top:5px;
-    padding:4px 10px;
+    margin-top:6px;
+    padding:5px 12px;
     border-radius:20px;
-    font-size:12px;
+    font-size:13px;
     font-weight:800;
     background:rgba(32,200,120,.10);
     color:#20c878;
@@ -234,18 +276,30 @@ rel="stylesheet">
     background:rgba(255,104,104,.10);
 }
 
+/* =========================
+   DETAILS
+========================= */
+
+.watch-section-title{
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    margin:22px 0 12px;
+    padding-right:10px;
+    border-right:3px solid #20c878;
+}
+
 .watch-details{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:18px;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
 }
 
 .watch-detail{
     background:#06131a;
     border:1px solid rgba(255,255,255,.06);
-    border-radius:11px;
-    padding:10px 7px;
+    border-radius:12px;
+    padding:12px 8px;
     text-align:center;
 }
 
@@ -253,43 +307,131 @@ rel="stylesheet">
     display:block;
     color:#82939a;
     font-size:11px;
-    margin-bottom:4px;
+    margin-bottom:5px;
 }
 
 .watch-detail b{
     color:#fff;
-    font-size:13px;
-}
-
-.watch-actions{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:18px;
-    gap:10px;
-}
-
-.watch-link{
-    color:#20c878;
-    font-weight:700;
-    text-decoration:none;
     font-size:14px;
 }
 
-.watch-remove{
-    border:1px solid rgba(255,104,104,.4);
-    background:transparent;
-    color:#ff6868;
-    border-radius:9px;
-    padding:7px 12px;
-    font-family:'Cairo',sans-serif;
-    cursor:pointer;
-    font-size:12px;
+/* =========================
+   SUPPORT / RESISTANCE
+========================= */
+
+.levels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
-.watch-remove:hover{
-    background:#ff6868;
-    color:#06131a;
+.level-box{
+    background:#06131a;
+    border-radius:14px;
+    padding:15px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.level-title{
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.level-title.support{
+    color:#20c878;
+}
+
+.level-title.resistance{
+    color:#d8a94c;
+}
+
+.level-values{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.level-value{
+    background:#0b2028;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:9px;
+    padding:6px 10px;
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+}
+
+/* =========================
+   ANALYSIS
+========================= */
+
+.analysis-box{
+    background:#06131a;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+    padding:17px;
+    color:#c2cdd1;
+    line-height:2;
+    font-size:14px;
+}
+
+.trade-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:12px;
+}
+
+.trade-item{
+    background:#06131a;
+    border-radius:12px;
+    padding:13px;
+    text-align:center;
+}
+
+.trade-item span{
+    display:block;
+    color:#82939a;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.trade-item b{
+    font-size:17px;
+}
+
+.trade-target b{
+    color:#20c878;
+}
+
+.trade-stop b{
+    color:#ff6868;
+}
+
+/* =========================
+   EMPTY / NOT FOUND
+========================= */
+
+.not-found{
+    background:#0b2028;
+    border:1px solid rgba(255,104,104,.15);
+    border-radius:24px;
+    padding:40px 25px;
+    text-align:center;
+    color:#9eafb5;
+}
+
+.not-found-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.not-found-title{
+    color:#fff;
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:7px;
 }
 
 /* =========================
@@ -312,10 +454,6 @@ rel="stylesheet">
 
     .watch-hero h1{
         font-size:31px;
-    }
-
-    .watch-hero h1 span{
-        font-size:32px;
     }
 
     .watch-hero p{
@@ -341,26 +479,33 @@ rel="stylesheet">
         height:50px;
     }
 
-    .watch-list{
-        grid-template-columns:1fr;
-        gap:15px;
-    }
-
     .watch-card{
         padding:18px;
         border-radius:20px;
     }
 
+    .watch-card-top{
+        align-items:flex-start;
+    }
+
     .watch-symbol{
-        font-size:22px;
+        font-size:24px;
     }
 
     .watch-price{
-        font-size:22px;
+        font-size:24px;
     }
 
     .watch-details{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .levels{
+        grid-template-columns:1fr;
+    }
+
+    .trade-box{
+        grid-template-columns:1fr 1fr;
     }
 
 }
@@ -388,27 +533,27 @@ rel="stylesheet">
 <div class="watch-hero">
 
 <div class="eyebrow">
-WATCHLIST • AL FAYED STOCKS
+STOCK SEARCH • AL FAYED STOCKS
 </div>
 
 <h1>
-⭐ قائمة المراقبة
+🔎 البحث عن الأسهم
 </h1>
 
 <p>
-أضف الأسهم أو المؤشرات التي تريد متابعتها بسرعة،
-واحتفظ بها للرجوع إليها في أي وقت.
+اكتب اسم السهم أو رمزه للبحث عن تفاصيله وبياناته
+من قاعدة بيانات Al Fayed Stocks.
 </p>
 
 </div>
 
 
-<!-- ================= ADD ================= -->
+<!-- ================= SEARCH ================= -->
 
 <div class="watch-add">
 
 <div class="watch-add-title">
-➕ إضافة سهم أو مؤشر
+🔎 ابحث عن سهم
 </div>
 
 <div class="watch-add-form">
@@ -416,10 +561,11 @@ WATCHLIST • AL FAYED STOCKS
 <input
 id="watchInput"
 type="text"
-placeholder="مثال: 6050 أو أرامكو أو AAPL أو NDX">
+autocomplete="off"
+placeholder="مثال: 2222 أو أرامكو أو 1120 أو الراجحي">
 
-<button onclick="addWatch()">
-إضافة للسلة
+<button id="searchButton" onclick="searchStock()">
+بحث عن السهم
 </button>
 
 </div>
@@ -431,16 +577,43 @@ placeholder="مثال: 6050 أو أرامكو أو AAPL أو NDX">
 
 <div class="watch-info">
 
-💡 بعد ربط البيانات المباشرة يمكن عرض
-<span>السعر الحالي</span>،
-نسبة التغير، الهدف، وقف الخسارة والتنبيهات.
+💡 يمكنك البحث باستخدام <span>اسم السهم</span>
+أو <span>رمز السهم</span>.
 
 </div>
 
 
-<!-- ================= LIST ================= -->
+<!-- ================= STATUS ================= -->
 
-<div id="watchList" class="watch-list"></div>
+<div id="searchStatus" class="search-status"></div>
+
+
+<!-- ================= RESULT ================= -->
+
+<div id="watchList" class="watch-list">
+
+<div class="watch-empty">
+
+<div class="watch-empty-icon">
+🔎
+</div>
+
+<div style="
+color:#fff;
+font-size:19px;
+font-weight:800;
+margin-bottom:7px;
+">
+ابحث عن سهم
+</div>
+
+<div>
+اكتب اسم السهم أو رمزه ثم اضغط بحث.
+</div>
+
+</div>
+
+</div>
 
 
 </div>
@@ -454,300 +627,672 @@ placeholder="مثال: 6050 أو أرامكو أو AAPL أو NDX">
 <div id="site-footer"></div>
 
 
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase-config.js"></script>
+
 <script src="app.js"></script>
 
 
 <script>
 
 /* =====================================
-   WATCHLIST
+   SUPABASE CLIENT
 ===================================== */
 
-const WATCH_KEY = 'alfayed_watchlist_v1';
+let supabaseClient = null;
 
+try {
 
-function getWatchlist(){
+    if (
+        window.supabase &&
+        window.SUPABASE_URL &&
+        window.SUPABASE_ANON_KEY
+    ) {
 
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(WATCH_KEY) || '[]'
-        );
-
-    }catch(e){
-
-        return [];
+        supabaseClient =
+            window.supabase.createClient(
+                window.SUPABASE_URL,
+                window.SUPABASE_ANON_KEY
+            );
 
     }
 
-}
+} catch(error) {
 
-
-function saveWatchlist(list){
-
-    localStorage.setItem(
-        WATCH_KEY,
-        JSON.stringify(list)
+    console.error(
+        'Supabase initialization error:',
+        error
     );
 
 }
 
 
-function addWatch(){
+/* =====================================
+   SEARCH STOCK
+===================================== */
+
+async function searchStock(){
 
     const input =
         document.getElementById('watchInput');
 
+    const button =
+        document.getElementById('searchButton');
+
+    const box =
+        document.getElementById('watchList');
+
+    const status =
+        document.getElementById('searchStatus');
+
+
     const value =
         input.value.trim();
+
 
     if(!value){
 
         input.focus();
 
-        return;
+        status.className =
+            'search-status error';
 
-    }
-
-
-    const list = getWatchlist();
-
-
-    const exists =
-        list.some(function(item){
-
-            return item.toLowerCase() ===
-                   value.toLowerCase();
-
-        });
-
-
-    if(exists){
-
-        alert('السهم موجود بالفعل في قائمة المراقبة.');
+        status.textContent =
+            'اكتب اسم السهم أو رمزه أولاً.';
 
         return;
 
     }
 
 
-    list.push(value);
+    if(!supabaseClient){
 
-    saveWatchlist(list);
+        status.className =
+            'search-status error';
 
-    input.value='';
+        status.textContent =
+            'تعذر الاتصال بقاعدة البيانات. تأكد من supabase-config.js';
 
-    renderWatchlist();
-
-}
-
-
-/* =====================================
-   REMOVE
-===================================== */
-
-function removeWatch(index){
-
-    const list = getWatchlist();
-
-    list.splice(index,1);
-
-    saveWatchlist(list);
-
-    renderWatchlist();
-
-}
-
-
-/* =====================================
-   MARKET DETECTION
-===================================== */
-
-function getMarket(symbol){
-
-    const s =
-        symbol.toUpperCase();
-
-    if(
-        s === 'AAPL' ||
-        s === 'NVDA' ||
-        s === 'MSFT' ||
-        s === 'TSLA' ||
-        s === 'AMZN' ||
-        s === 'NDX' ||
-        s === 'NASDAQ'
-    ){
-
-        return '🇺🇸 السوق الأمريكي';
+        return;
 
     }
 
-    return '🇸🇦 السوق السعودي';
 
-}
+    button.disabled = true;
 
+    button.textContent = 'جاري البحث...';
 
-/* =====================================
-   RENDER
-===================================== */
+    status.className =
+        'search-status loading';
 
-function renderWatchlist(){
-
-    const box =
-        document.getElementById('watchList');
-
-    const list =
-        getWatchlist();
+    status.textContent =
+        'جاري البحث عن السهم...';
 
 
-    if(!list.length){
+    box.innerHTML = '';
+
+
+    try {
+
+
+        /*
+         * البحث بالرمز أو الاسم
+         */
+
+        const cleanValue =
+            value.replace(/%/g,'').trim();
+
+
+        const { data, error } =
+            await supabaseClient
+            .from('saudi_stocks')
+            .select('*')
+            .or(
+                `symbol.ilike.%${cleanValue}%,name.ilike.%${cleanValue}%`
+            )
+            .limit(10);
+
+
+        if(error){
+
+            console.error(error);
+
+            throw error;
+
+        }
+
+
+        if(!data || !data.length){
+
+            box.innerHTML = `
+
+                <div class="not-found">
+
+                    <div class="not-found-icon">
+                        🔍
+                    </div>
+
+                    <div class="not-found-title">
+                        لم يتم العثور على السهم
+                    </div>
+
+                    <div>
+                        جرّب كتابة اسم السهم أو الرمز بشكل مختلف.
+                    </div>
+
+                </div>
+
+            `;
+
+            status.className =
+                'search-status error';
+
+            status.textContent =
+                'لا توجد نتائج لهذا البحث.';
+
+            return;
+
+        }
+
+
+        /*
+         * لو فيه أكثر من نتيجة
+         * نعرضها كلها
+         */
+
+        box.innerHTML =
+            data.map(renderStock).join('');
+
+
+        status.className =
+            'search-status success';
+
+        status.textContent =
+            `تم العثور على ${data.length} نتيجة`;
+
+
+    } catch(error) {
+
+        console.error(
+            'Search error:',
+            error
+        );
+
 
         box.innerHTML = `
 
-        <div class="watch-empty">
+            <div class="not-found">
 
-            <div class="watch-empty-icon">
-                ⭐
+                <div class="not-found-icon">
+                    ⚠️
+                </div>
+
+                <div class="not-found-title">
+                    حدث خطأ أثناء البحث
+                </div>
+
+                <div>
+                    حاول مرة أخرى.
+                </div>
+
             </div>
 
-            <div style="
-                color:#fff;
-                font-size:19px;
-                font-weight:800;
-                margin-bottom:7px;
-            ">
-                قائمة المراقبة فارغة
-            </div>
+        `;
+
+
+        status.className =
+            'search-status error';
+
+        status.textContent =
+            'حدث خطأ أثناء الاتصال بقاعدة البيانات.';
+
+
+    } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            'بحث عن السهم';
+
+    }
+
+}
+
+
+/* =====================================
+   RENDER STOCK
+===================================== */
+
+function renderStock(stock){
+
+    const price =
+        formatNumber(stock.price);
+
+    const changeValue =
+        formatNumber(stock.change_value);
+
+    const changePercent =
+        formatPercent(stock.change_percent);
+
+
+    const isDown =
+        Number(stock.change_percent) < 0;
+
+
+    const changeClass =
+        isDown ? 'watch-change down' : 'watch-change';
+
+
+    const changeSign =
+        Number(stock.change_percent) > 0 ? '+' : '';
+
+
+    return `
+
+    <article class="watch-card">
+
+        <div class="watch-card-top">
 
             <div>
-                أضف أول سهم أو مؤشر تريد متابعته.
+
+                <div class="watch-market">
+                    🇸🇦 السوق السعودي
+                </div>
+
+                <div class="watch-symbol">
+                    ${escapeHTML(stock.symbol)}
+                </div>
+
+                <div class="watch-name">
+                    ${escapeHTML(stock.name)}
+                </div>
+
+                ${
+                    stock.sector
+                    ?
+                    `
+                    <div class="watch-sector">
+                        ${escapeHTML(stock.sector)}
+                    </div>
+                    `
+                    :
+                    ''
+                }
+
+            </div>
+
+
+            <div class="watch-price-box">
+
+                <div class="watch-price">
+                    ${price}
+                </div>
+
+                <div class="${changeClass}">
+
+                    ${
+                        changeValue !== '—'
+                        ?
+                        changeSign + changeValue
+                        :
+                        ''
+                    }
+
+                    ${
+                        changePercent !== '—'
+                        ?
+                        ` (${changeSign}${changePercent}%)`
+                        :
+                        'بيانات التغير غير متوفرة'
+                    }
+
+                </div>
+
             </div>
 
         </div>
 
-        `;
 
-        return;
+        <!-- بيانات التداول -->
 
-    }
+        <div class="watch-section-title">
+            📊 بيانات التداول
+        </div>
 
+        <div class="watch-details">
 
-    box.innerHTML =
-        list.map(function(symbol,index){
+            ${detailBox('الافتتاح', stock.open_price)}
 
-            return `
+            ${detailBox('الأعلى', stock.high_price)}
 
-            <article class="watch-card">
+            ${detailBox('الأدنى', stock.low_price)}
 
-                <div class="watch-card-top">
+            ${detailBox('الإغلاق السابق', stock.previous_close)}
 
-                    <div>
+            ${detailBox('حجم التداول', formatVolume(stock.volume))}
 
-                        <div class="watch-market">
-                            ${getMarket(symbol)}
-                        </div>
+            ${detailBox('آخر تحديث', formatDate(stock.updated_at))}
 
-                        <div class="watch-symbol">
-                            ${escapeHTML(symbol)}
-                        </div>
-
-                        <div class="watch-name">
-                            تحت المتابعة
-                        </div>
-
-                    </div>
+        </div>
 
 
-                    <div style="text-align:left">
+        <!-- الدعم والمقاومة -->
 
-                        <div class="watch-price">
-                            —
-                        </div>
+        <div class="watch-section-title">
+            📈 مستويات فنية
+        </div>
 
-                        <div class="watch-change">
-                            انتظار التحديث
-                        </div>
+        <div class="levels">
 
-                    </div>
+            <div class="level-box">
+
+                <div class="level-title support">
+                    🟢 مناطق الدعم
+                </div>
+
+                <div class="level-values">
+
+                    ${levelValue(stock.support_1)}
+
+                    ${levelValue(stock.support_2)}
 
                 </div>
 
-
-                <div class="watch-details">
-
-                    <div class="watch-detail">
-
-                        <span>
-                            الهدف
-                        </span>
-
-                        <b>
-                            —
-                        </b>
-
-                    </div>
+            </div>
 
 
-                    <div class="watch-detail">
+            <div class="level-box">
 
-                        <span>
-                            وقف الخسارة
-                        </span>
+                <div class="level-title resistance">
+                    🟡 مناطق المقاومة
+                </div>
 
-                        <b>
-                            —
-                        </b>
+                <div class="level-values">
 
-                    </div>
+                    ${levelValue(stock.resistance_1)}
 
-
-                    <div class="watch-detail">
-
-                        <span>
-                            الحالة
-                        </span>
-
-                        <b>
-                            متابعة
-                        </b>
-
-                    </div>
+                    ${levelValue(stock.resistance_2)}
 
                 </div>
 
+            </div>
 
-                <div class="watch-actions">
-
-                    <a
-                    class="watch-link"
-                    href="analysis.html">
-
-                        📊 عرض التحليل ←
-
-                    </a>
+        </div>
 
 
-                    <button
-                    class="watch-remove"
-                    onclick="removeWatch(${index})">
+        <!-- المستهدف ووقف الخسارة -->
 
-                        حذف
+        <div class="watch-section-title">
+            🎯 خطة السهم
+        </div>
 
-                    </button>
+        <div class="trade-box">
 
-                </div>
+            <div class="trade-item trade-target">
 
-            </article>
+                <span>
+                    المستهدف
+                </span>
 
-            `;
+                <b>
+                    ${formatNumber(stock.target)}
+                </b>
 
-        }).join('');
+            </div>
+
+
+            <div class="trade-item trade-stop">
+
+                <span>
+                    وقف الخسارة
+                </span>
+
+                <b>
+                    ${formatNumber(stock.stop_loss)}
+                </b>
+
+            </div>
+
+        </div>
+
+
+        <!-- التحليل -->
+
+        <div class="watch-section-title">
+            📝 التحليل
+        </div>
+
+        <div class="analysis-box">
+
+            ${
+                stock.analysis
+                ?
+                escapeHTML(stock.analysis)
+                :
+                'لا يوجد تحليل مضاف لهذا السهم حاليًا.'
+            }
+
+        </div>
+
+    </article>
+
+    `;
 
 }
 
 
 /* =====================================
-   ESCAPE
+   DETAIL BOX
+===================================== */
+
+function detailBox(title,value){
+
+    return `
+
+        <div class="watch-detail">
+
+            <span>
+                ${title}
+            </span>
+
+            <b>
+                ${
+                    value === null ||
+                    value === undefined ||
+                    value === ''
+                    ?
+                    '—'
+                    :
+                    escapeHTML(
+                        String(value)
+                    )
+                }
+            </b>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   LEVEL VALUE
+===================================== */
+
+function levelValue(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ''
+    ){
+
+        return '';
+
+    }
+
+
+    return `
+
+        <div class="level-value">
+            ${escapeHTML(String(value))}
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   NUMBER FORMAT
+===================================== */
+
+function formatNumber(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ''
+    ){
+
+        return '—';
+
+    }
+
+
+    const number =
+        Number(value);
+
+
+    if(Number.isNaN(number)){
+
+        return escapeHTML(String(value));
+
+    }
+
+
+    return number.toLocaleString(
+        'en-US',
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+/* =====================================
+   PERCENT
+===================================== */
+
+function formatPercent(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ''
+    ){
+
+        return '—';
+
+    }
+
+
+    const number =
+        Number(value);
+
+
+    if(Number.isNaN(number)){
+
+        return escapeHTML(String(value));
+
+    }
+
+
+    return number.toFixed(2);
+
+}
+
+
+/* =====================================
+   VOLUME
+===================================== */
+
+function formatVolume(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ''
+    ){
+
+        return '—';
+
+    }
+
+
+    const number =
+        Number(value);
+
+
+    if(Number.isNaN(number)){
+
+        return escapeHTML(String(value));
+
+    }
+
+
+    return number.toLocaleString('en-US');
+
+}
+
+
+/* =====================================
+   DATE
+===================================== */
+
+function formatDate(value){
+
+    if(!value){
+
+        return '—';
+
+    }
+
+
+    try{
+
+        const date =
+            new Date(value);
+
+
+        return date.toLocaleDateString(
+            'ar-SA',
+            {
+                year:'numeric',
+                month:'numeric',
+                day:'numeric'
+            }
+        );
+
+    }catch(error){
+
+        return '—';
+
+    }
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
 ===================================== */
 
 function escapeHTML(value){
@@ -770,22 +1315,24 @@ function escapeHTML(value){
 }
 
 
-/* ENTER TO ADD */
+/* =====================================
+   ENTER TO SEARCH
+===================================== */
 
 document
 .getElementById('watchInput')
-.addEventListener('keydown',function(e){
+.addEventListener(
+    'keydown',
+    function(e){
 
-    if(e.key === 'Enter'){
+        if(e.key === 'Enter'){
 
-        addWatch();
+            searchStock();
+
+        }
 
     }
-
-});
-
-
-renderWatchlist();
+);
 
 </script>
 
