@@ -1,596 +1,946 @@
 <!doctype html>
-
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مفاجأتك مستنياك 🎁 | Al Fayed Stocks</title><style>
-*{box-sizing:border-box}
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>مفاجأتك مستنياك 🎁 | Al Fayed Stocks</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase-config.js"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
 
 body{
-  margin:0;
-  font-family:Arial,"Tahoma",sans-serif;
-  background:#06131a;
-  color:#f5f7f8;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px
+margin:0;
+font-family:'Cairo',Arial,sans-serif;
+background:#06131a;
+color:#f5f7f8;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
 .wrap{
-  width:min(760px,100%);
-  background:#0b2028;
-  border:1px solid #173842;
-  border-radius:28px;
-  padding:28px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-  text-align:center
+width:min(760px,100%);
+background:#0b2028;
+border:1px solid #173842;
+border-radius:28px;
+padding:28px;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+text-align:center;
 }
 
 .logo{
-  font-size:18px;
-  font-weight:800;
-  margin-bottom:10px
+font-size:20px;
+font-weight:900;
+margin-bottom:10px;
 }
 
 .logo span{
-  color:#20c878
+color:#20c878;
 }
 
 h1{
-  margin:8px 0;
-  font-size:30px
+margin:8px 0;
+font-size:30px;
+font-weight:900;
 }
 
 .sub{
-  color:#a9bbc1;
-  margin-bottom:22px
+color:#a9bbc1;
+margin-bottom:22px;
 }
 
 input{
-  width:min(430px,100%);
-  padding:15px;
-  border-radius:14px;
-  border:1px solid #31505a;
-  background:#091b24;
-  color:#fff;
-  font-size:16px;
-  text-align:right;
-  outline:none
+width:min(430px,100%);
+padding:15px;
+border-radius:14px;
+border:1px solid #31505a;
+background:#091b24;
+color:#fff;
+font-family:inherit;
+font-size:16px;
+text-align:right;
+outline:none;
+}
+
+input:focus{
+border-color:#20c878;
 }
 
 button{
-  font:inherit
+font:inherit;
 }
 
 .primary,
 .share,
 .again{
-  border:0;
-  border-radius:14px;
-  padding:13px 22px;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:12px
+border:0;
+border-radius:14px;
+padding:13px 22px;
+font-weight:800;
+cursor:pointer;
+margin-top:12px;
+transition:.2s;
 }
 
 .primary,
 .share{
-  background:#20c878;
-  color:#06131a
+background:#20c878;
+color:#06131a;
 }
 
 .again{
-  background:transparent;
-  color:#fff;
-  border:1px solid #31505a
+background:transparent;
+color:#fff;
+border:1px solid #31505a;
+}
+
+.primary:hover,
+.share:hover,
+.again:hover{
+transform:translateY(-2px);
+}
+
+.error{
+color:#ff6868;
+font-size:14px;
+margin-top:10px;
+min-height:24px;
 }
 
 .boxes{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  margin:25px auto;
-  max-width:650px
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+margin:25px auto;
+max-width:650px;
 }
 
 .box{
-  min-height:125px;
-  border:1px solid #244650;
-  border-radius:20px;
-  background:#091b24;
-  color:#fff;
-  cursor:pointer;
-  font-size:48px;
-  transition:.2s
+min-height:125px;
+border:1px solid #244650;
+border-radius:20px;
+background:#091b24;
+color:#fff;
+cursor:pointer;
+font-size:48px;
+transition:.2s;
+font-family:inherit;
 }
 
 .box:hover{
-  transform:translateY(-5px);
-  border-color:#20c878
+transform:translateY(-5px);
+border-color:#20c878;
+background:#0d252e;
 }
 
 .box:disabled{
-  cursor:default
+cursor:default;
 }
 
 .num{
-  display:block;
-  font-size:13px;
-  color:#9fb1b7;
-  margin-top:8px
+display:block;
+font-size:13px;
+color:#9fb1b7;
+margin-top:8px;
 }
 
 .result{
-  display:none;
-  background:#0d2a32;
-  border:1px solid #20c878;
-  border-radius:18px;
-  padding:20px;
-  font-size:20px;
-  font-weight:800;
-  line-height:1.8
+display:none;
+background:#0d2a32;
+border:1px solid #20c878;
+border-radius:18px;
+padding:20px;
+font-size:20px;
+font-weight:800;
+line-height:1.8;
+}
+
+.result small{
+display:block;
+color:#9fb1b7;
+font-size:13px;
+margin-top:8px;
+font-weight:500;
+}
+
+.actions{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-top:10px;
 }
 
 .note{
-  font-size:12px;
-  color:#82979e;
-  margin-top:12px
+font-size:12px;
+color:#82979e;
+margin-top:12px;
+}
+
+.visits{
+margin-top:20px;
+color:#7f969e;
+font-size:12px;
 }
 
 .hidden{
-  display:none!important
+display:none!important;
+}
+
+.whatsapp-note{
+margin-top:15px;
+font-size:13px;
+color:#20c878;
 }
 
 @media(max-width:620px){
-  .boxes{
-    grid-template-columns:repeat(2,1fr)
-  }
 
-  .box:last-child{
-    grid-column:1/-1;
-    max-width:190px;
-    width:100%;
-    justify-self:center
-  }
+.boxes{
+grid-template-columns:repeat(2,1fr);
 }
-</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script></head><body><main class="wrap">  <div class="logo">
-    Al Fayed <span>Stocks</span>
-  </div>  <h1>🎁 اختار صندوقك وخلي المفاجأة علينا!</h1>  <div class="sub">
-    قدامك 5 صناديق... اختار صندوق واحد فقط وشوف إيه اللي مستنيك 😍
-  </div>  <section id="intro"><input
-  id="name"
-  maxlength="40"
-  placeholder="اكتب اسمك هنا 👤"
-  autocomplete="name"
+
+.box:last-child{
+grid-column:1/-1;
+max-width:190px;
+width:100%;
+justify-self:center;
+}
+
+h1{
+font-size:25px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main class="wrap">
+
+<div class="logo">
+Al Fayed <span>Stocks</span>
+</div>
+
+
+<!-- ================= البداية ================= -->
+
+<section id="intro">
+
+<h1>
+🎁 اختار صندوقك وخلي المفاجأة علينا!
+</h1>
+
+<div class="sub">
+اكتب اسمك أولًا وبعدها هتظهر لك الصناديق 😍
+</div>
+
+<input
+id="name"
+maxlength="40"
+placeholder="اكتب اسمك هنا 👤"
+autocomplete="name"
 >
 
 <br>
 
-<button class="primary" id="start">
-  ابدأ اللعبة 🎁
+<button
+class="primary"
+id="start">
+
+ابدأ اللعبة 🎁
+
 </button>
 
-  </section>  <section id="game" class="hidden"><div class="boxes" id="boxes"></div>
-
-<div class="result" id="result"></div>
-
-<button class="share hidden" id="share">
-  📲 إرسال النتيجة على واتساب
-</button>
-
-<button class="again hidden" id="again">
-  🔄 لعب مرة أخرى
-</button>
-
-<div class="note">
-  يمكن اختيار صندوق واحد فقط في كل مرة على هذا الجهاز.
+<div
+class="error"
+id="nameError">
 </div>
 
-  </section></main><script>
-(() => {
+<div class="note">
+الاسم مطلوب للدخول إلى اللعبة
+</div>
 
-  /* =========================
-     الجوائز
-  ========================= */
+</section>
 
-  const prizes = [
-    "🎉 مبروك! حصلت على خصم 20% على سعر الاشتراك.",
-    "🎁 مبروك! حصلت على أسبوع مجاني على باقة الشهر.",
-    "📈 مبروك! حصلت على سهم مجاني من باقة الـ Standard.",
-    "🔥 مبروك! حصلت على سهم مجاني من باقة الـ VIP.",
-    "📊 مبروك! حصلت على سهم للمتابعة."
-  ];
 
+<!-- ================= اللعبة ================= -->
 
-  /* =========================
-     Supabase
-  ========================= */
+<section
+id="game"
+class="hidden">
 
-  let supabaseClient = null;
+<h1>
+أهلًا <span id="playerName"></span> 👋
+</h1>
 
-  try {
+<div class="sub">
+اختار صندوق واحد فقط وشوف المفاجأة 🎁
+</div>
 
-    if(
-      window.supabase &&
-      window.SUPABASE_URL &&
-      window.SUPABASE_ANON_KEY
-    ){
 
-      supabaseClient = window.supabase.createClient(
-        window.SUPABASE_URL,
-        window.SUPABASE_ANON_KEY
-      );
+<div
+class="boxes"
+id="boxes">
 
-    }
+<button
+class="box"
+data-box="1">
 
-  } catch(error){
+🎁
 
-    console.error(
-      "Supabase initialization error:",
-      error
-    );
+<span class="num">
+الصندوق 1
+</span>
 
-  }
+</button>
 
 
-  /* =========================
-     Visitor ID
-  ========================= */
+<button
+class="box"
+data-box="2">
 
-  let visitorId =
-    localStorage.getItem("af_gift_visitor_id");
+🎁
 
-  if(!visitorId){
+<span class="num">
+الصندوق 2
+</span>
 
-    visitorId =
-      "v_" +
-      Date.now().toString(36) +
-      "_" +
-      Math.random().toString(36).slice(2);
+</button>
 
-    localStorage.setItem(
-      "af_gift_visitor_id",
-      visitorId
-    );
 
-  }
+<button
+class="box"
+data-box="3">
 
+🎁
 
-  /* =========================
-     تسجيل الأحداث
-  ========================= */
+<span class="num">
+الصندوق 3
+</span>
 
-  async function logEvent(eventType, extra = {}){
+</button>
 
-    if(!supabaseClient){
 
-      console.warn(
-        "Supabase غير متصل - لم يتم تسجيل الحدث:",
-        eventType
-      );
+<button
+class="box"
+data-box="4">
 
-      return;
+🎁
 
-    }
+<span class="num">
+الصندوق 4
+</span>
 
-    const eventData = {
+</button>
 
-      event_type: eventType,
 
-      visitor_id: visitorId,
+<button
+class="box"
+data-box="5">
 
-      player_name:
-        extra.player_name || null,
+🎁
 
-      box_number:
-        Number.isInteger(extra.box_number)
-          ? extra.box_number
-          : null,
+<span class="num">
+الصندوق 5
+</span>
 
-      prize:
-        extra.prize || null
+</button>
 
-    };
+</div>
 
 
-    try{
+<!-- ================= النتيجة ================= -->
 
-      const { error } =
-        await supabaseClient
-          .from("gift_game_events")
-          .insert(eventData);
+<div
+class="result"
+id="result">
 
-      if(error){
+<div
+id="resultText">
+</div>
 
-        console.error(
-          "gift_game_events insert error:",
-          error
-        );
+<small>
+سيتم تحويلك إلى واتساب للتواصل معنا 🎁
+</small>
 
-      }else{
+<div class="whatsapp-note">
+📱 جاري فتح واتساب...
+</div>
 
-        console.log(
-          "Gift event recorded:",
-          eventType
-        );
 
-      }
+<div class="actions">
 
-    }catch(error){
+<button
+class="share"
+id="shareWhatsapp">
 
-      console.error(
-        "Gift tracking error:",
-        error
-      );
+📱 فتح واتساب
 
-    }
+</button>
 
-  }
 
+<button
+class="again"
+id="again">
 
-  /* =========================
-     تسجيل زيارة الصفحة
-  ========================= */
+🔄 تجربة جديدة
 
-  logEvent("visit");
+</button>
 
+</div>
 
-  /* =========================
-     عناصر الصفحة
-  ========================= */
+</div>
 
-  const intro =
-    document.getElementById("intro");
+</section>
 
-  const game =
-    document.getElementById("game");
 
-  const nameInput =
-    document.getElementById("name");
+<div
+class="visits"
+id="visits">
+</div>
 
-  const start =
-    document.getElementById("start");
+</main>
 
-  const boxes =
-    document.getElementById("boxes");
 
-  const result =
-    document.getElementById("result");
+<script>
 
-  const share =
-    document.getElementById("share");
+let supabaseClient = null;
 
-  const again =
-    document.getElementById("again");
+let visitorId = null;
 
+let playerName = "";
 
-  /* =========================
-     حالة اللعبة
-  ========================= */
+let selectedBox = null;
 
-  let player = "";
+let selectedResult = "";
 
-  let chosen = -1;
 
+/* ================= إنشاء معرف الزائر ================= */
 
-  /* =========================
-     إنشاء الصناديق
-  ========================= */
+function createVisitorToken(){
 
-  function buildBoxes(){
+return 'visitor_' +
+Date.now() +
+'_' +
+Math.random()
+.toString(36)
+.substring(2,10);
 
-    chosen = -1;
+}
 
-    boxes.innerHTML = "";
 
-    result.style.display = "none";
+/* ================= تسجيل الزائر ================= */
 
-    result.innerHTML = "";
+async function registerVisitor(){
 
-    share.classList.add("hidden");
+try{
 
-    again.classList.add("hidden");
+if(
+!window.SUPABASE_URL ||
+!window.SUPABASE_ANON_KEY
+){
 
+console.error(
+"Supabase config غير موجود"
+);
 
-    for(let i = 0; i < 5; i++){
+return;
 
-      const b =
-        document.createElement("button");
+}
 
-      b.className = "box";
 
-      b.type = "button";
+supabaseClient =
+window.supabase.createClient(
+window.SUPABASE_URL,
+window.SUPABASE_ANON_KEY
+);
 
-      b.innerHTML =
-        `🎁<span class="num">الصندوق ${i + 1}</span>`;
 
+const token =
+createVisitorToken();
 
-      b.addEventListener(
-        "click",
-        () => openBox(b, i)
-      );
 
+const {
+data,
+error
+} =
+await supabaseClient
+.from("game_visitors")
+.insert({
 
-      boxes.appendChild(b);
+visitor_token:token,
 
-    }
+whatsapp_shared:false
 
-  }
+})
+.select("id")
+.single();
 
 
-  /* =========================
-     فتح الصندوق
-  ========================= */
+if(error){
 
-  function openBox(btn, index){
+console.error(
+"Visitor insert error:",
+error
+);
 
-    if(chosen !== -1) return;
+return;
 
-    chosen = index;
+}
 
 
-    [
-      ...boxes.children
-    ].forEach(b => {
+if(data){
 
-      b.disabled = true;
+visitorId =
+data.id;
 
-    });
+}
 
 
-    btn.innerHTML =
-      `✨<span class="num">تم الاختيار</span>`;
+console.log(
+"Visitor registered:",
+visitorId
+);
 
 
-    result.textContent =
-      "جاري فتح الصندوق...";
+}
+catch(error){
 
-    result.style.display =
-      "block";
+console.error(
+"Register visitor error:",
+error
+);
 
+}
 
-    setTimeout(() => {
+}
 
-      const selectedPrize =
-        prizes[index];
 
+/* ================= تحديث بيانات الزائر ================= */
 
-      result.innerHTML =
-        `🎉 ${player || "صديقنا"}، مبروك!<br>${selectedPrize}`;
+async function updateVisitor(values){
 
+try{
 
-      /* تسجيل نتيجة اللعبة */
+if(
+!supabaseClient ||
+!visitorId
+){
 
-      logEvent(
-        "play",
-        {
-          player_name: player,
-          box_number: index + 1,
-          prize: selectedPrize
-        }
-      );
+return;
 
+}
 
-      share.classList.remove("hidden");
 
-      again.classList.remove("hidden");
+const {
+error
+} =
+await supabaseClient
+.from("game_visitors")
+.update(values)
+.eq("id",visitorId);
 
-    }, 900);
 
-  }
+if(error){
 
+console.error(
+"Visitor update error:",
+error
+);
 
-  /* =========================
-     بدء اللعبة
-  ========================= */
+}
 
-  start.addEventListener(
-    "click",
-    () => {
+}
+catch(error){
 
-      player =
-        nameInput.value.trim() ||
-        "صديقنا";
+console.error(
+"Update visitor error:",
+error
+);
 
+}
 
-      /* تسجيل بداية اللعبة */
+}
 
-      logEvent(
-        "start",
-        {
-          player_name: player
-        }
-      );
 
+/* ================= بدء اللعبة ================= */
 
-      intro.classList.add("hidden");
+async function startGame(){
 
-      game.classList.remove("hidden");
+const input =
+document.getElementById("name");
 
-      buildBoxes();
+const error =
+document.getElementById("nameError");
 
-    }
-  );
+const value =
+input.value.trim();
 
 
-  /* =========================
-     لعب مرة أخرى
-  ========================= */
+error.textContent="";
 
-  again.addEventListener(
-    "click",
-    () => {
 
-      buildBoxes();
+/* الاسم إجباري */
 
-    }
-  );
+if(!value){
 
+error.textContent =
+"⚠️ من فضلك اكتب اسمك أولًا.";
 
-  /* =========================
-     مشاركة واتساب
-  ========================= */
+input.focus();
 
-  share.addEventListener(
-    "click",
-    () => {
+return;
 
-      if(chosen === -1) return;
+}
 
 
-      const selectedPrize =
-        prizes[chosen];
+/* الحد الأدنى للاسم */
 
+if(value.length < 2){
 
-      const text =
-        `🎁 نتيجة لعبة الصناديق\n\n` +
-        `${player} اختار الصندوق رقم ${chosen + 1} 🎉\n` +
-        `${selectedPrize}\n\n` +
-        `🔥 جرب اللعبة أنت كمان!`;
+error.textContent =
+"⚠️ اكتب اسمًا صحيحًا.";
 
+input.focus();
 
-      /* تسجيل المشاركة */
+return;
 
-      logEvent(
-        "share",
-        {
-          player_name: player,
-          box_number: chosen + 1,
-          prize: selectedPrize
-        }
-      );
+}
 
 
-      window.open(
-        "https://wa.me/?text=" +
-        encodeURIComponent(text),
-        "_blank"
-      );
+playerName =
+value;
 
-    }
-  );
 
+document.getElementById(
+"playerName"
+).textContent =
+playerName;
 
-  /* =========================
-     Enter يبدأ اللعبة
-  ========================= */
 
-  nameInput.addEventListener(
-    "keydown",
-    e => {
+document.getElementById(
+"intro"
+).classList.add(
+"hidden"
+);
 
-      if(e.key === "Enter"){
 
-        start.click();
+document.getElementById(
+"game"
+).classList.remove(
+"hidden"
+);
 
-      }
 
-    }
-  );
+await updateVisitor({
 
-})();
-</script></body>
+name:playerName
+
+});
+
+}
+
+
+/* ================= الجوائز ================= */
+
+const prizes = [
+
+"🎉 مبروك! ربحت مفاجأة خاصة من Al Fayed Stocks ❤️",
+
+"🔥 مبروك! عندك مفاجأة مميزة مستنياك!",
+
+"⭐ اختيار موفق! تابع Al Fayed Stocks للمزيد من المفاجآت.",
+
+"🎁 مبروك! أنت من أصحاب الحظ اليوم 😍",
+
+"🚀 مفاجأتك وصلت! خليك متابع لـ Al Fayed Stocks."
+
+];
+
+
+/* ================= فتح واتساب ================= */
+
+async function openWhatsapp(){
+
+if(!playerName){
+
+return;
+
+}
+
+
+if(!selectedResult){
+
+return;
+
+}
+
+
+const phone =
+"966575944806";
+
+
+const message =
+
+`🎁 مرحبًا Al Fayed Stocks
+
+أنا ${playerName} جربت لعبة المفاجآت واخترت الصندوق رقم ${selectedBox}.
+
+🎁 المفاجأة التي ظهرت لي:
+${selectedResult}
+
+أريد معرفة تفاصيل المفاجأة والاستفادة منها.
+
+شكراً ❤️`;
+
+
+const url =
+"https://wa.me/" +
+phone +
+"?text=" +
+encodeURIComponent(message);
+
+
+/* تسجيل المشاركة */
+
+await updateVisitor({
+
+whatsapp_shared:true
+
+});
+
+
+/* فتح واتساب */
+
+window.open(
+url,
+"_blank",
+"noopener"
+);
+
+}
+
+
+/* ================= اختيار الصندوق ================= */
+
+async function chooseBox(button){
+
+/* منع اختيار صندوق ثاني */
+
+if(selectedBox !== null){
+
+return;
+
+}
+
+
+selectedBox =
+Number(button.dataset.box);
+
+
+selectedResult =
+prizes[selectedBox - 1];
+
+
+/* تعطيل جميع الصناديق */
+
+const buttons =
+document.querySelectorAll(".box");
+
+
+buttons.forEach(function(item){
+
+item.disabled = true;
+
+});
+
+
+/* تغيير الصندوق المختار */
+
+button.innerHTML =
+"🎉<span class='num'>تم الاختيار</span>";
+
+
+/* عرض النتيجة */
+
+document.getElementById(
+"resultText"
+).textContent =
+selectedResult;
+
+
+document.getElementById(
+"result"
+).style.display =
+"block";
+
+
+/* حفظ النتيجة */
+
+await updateVisitor({
+
+box_number:selectedBox,
+
+result:selectedResult
+
+});
+
+
+/* النزول للنتيجة */
+
+window.scrollTo({
+
+top:
+document.getElementById(
+"result"
+).offsetTop - 30,
+
+behavior:"smooth"
+
+});
+
+
+/*
+بعد ظهور النتيجة ننتظر
+لحظة قصيرة ثم نفتح واتساب
+*/
+
+setTimeout(function(){
+
+openWhatsapp();
+
+},1200);
+
+}
+
+
+/* ================= مشاركة واتساب يدويًا ================= */
+
+document.getElementById(
+"shareWhatsapp"
+).addEventListener(
+"click",
+openWhatsapp
+);
+
+
+/* ================= تجربة جديدة ================= */
+
+function playAgain(){
+
+selectedBox = null;
+
+selectedResult = "";
+
+
+document.getElementById(
+"result"
+).style.display =
+"none";
+
+
+document.querySelectorAll(
+".box"
+).forEach(
+function(button){
+
+button.disabled = false;
+
+
+button.innerHTML =
+"🎁<span class='num'>الصندوق " +
+button.dataset.box +
+"</span>";
+
+});
+
+
+/* لا نطلب الاسم مرة ثانية */
+
+}
+
+
+/* ================= الأحداث ================= */
+
+document.getElementById(
+"start"
+).addEventListener(
+"click",
+startGame
+);
+
+
+document.getElementById(
+"name"
+).addEventListener(
+"keydown",
+function(event){
+
+if(event.key === "Enter"){
+
+startGame();
+
+}
+
+});
+
+
+document.querySelectorAll(
+".box"
+).forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+chooseBox(button);
+
+});
+
+});
+
+
+/* ================= تشغيل Supabase ================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+async function(){
+
+await registerVisitor();
+
+});
+
+</script>
+
+</body>
+
 </html>
