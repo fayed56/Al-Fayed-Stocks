@@ -3,98 +3,3804 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>لوحة الإدارة | Al Fayed Stocks</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+>
+
 <link rel="stylesheet" href="style.css">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
+
 <style>
-.admin-page{min-height:100vh;padding:55px 0 90px;background:#f4f6f8}.admin-page,.admin-page *{font-family:'Cairo',sans-serif}.admin-wrap{width:min(1180px,92%);margin:auto}.admin-hero{text-align:center;margin-bottom:30px}.admin-eyebrow{color:#c99b43;font-size:14px;font-weight:900;letter-spacing:.5px;margin-bottom:8px}.admin-hero h1{margin:0;color:#06131a!important;font-size:38px;font-weight:900}.admin-hero p{margin:10px auto 0;max-width:780px;color:#66747b!important;font-size:17px;line-height:2}.admin-topbar{background:#0b2028;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:18px 22px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;box-shadow:0 10px 30px rgba(6,19,26,.08)}.admin-user{color:#fff!important}.admin-user strong{color:#20c878!important;display:block;font-size:17px}.admin-user span{color:#9eafb5!important;font-size:13px}.admin-card{background:#0b2028;border:1px solid rgba(32,200,120,.12);border-radius:22px;padding:28px;color:#fff;box-shadow:0 14px 35px rgba(6,19,26,.10);margin-bottom:22px}.admin-card h2{margin:0 0 22px;color:#fff!important;font-size:23px;font-weight:900}.admin-card p{color:#9eafb5!important}.setup-card h2{color:#d8a94c!important}.setup-warning{background:rgba(216,169,76,.08);border:1px solid rgba(216,169,76,.2);border-radius:12px;padding:13px 15px;color:#dbe4e7!important;line-height:2;font-size:13px}.login-box{max-width:550px;margin:0 auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form-label{display:block;color:#dbe4e7!important;font-size:14px;font-weight:700;margin-bottom:3px}.form-label input,.form-label select,.form-label textarea{width:100%;margin-top:7px;padding:13px 14px;border-radius:11px;border:1px solid rgba(255,255,255,.10);background:#06131a;color:#fff;font-family:'Cairo',sans-serif;font-size:14px;outline:none;transition:.2s;box-sizing:border-box}.form-label input::placeholder,.form-label textarea::placeholder{color:#71838a}.form-label input:focus,.form-label select:focus,.form-label textarea:focus{border-color:#20c878;box-shadow:0 0 0 3px rgba(32,200,120,.08)}.form-label select option{background:#06131a;color:#fff}.full{grid-column:1/-1}.section-title{display:flex;align-items:center;gap:10px;margin:25px 0 15px;padding-bottom:10px;color:#d8a94c!important;font-size:15px;font-weight:900;border-bottom:1px solid rgba(255,255,255,.08)}.level-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.level-box{background:#06131a;border:1px solid rgba(255,255,255,.06);border-radius:13px;padding:13px}.level-box.support{border-right:3px solid #20c878}.level-box.resistance{border-right:3px solid #d8a94c}.level-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.support .level-label{color:#20c878!important}.resistance .level-label{color:#d8a94c!important}.admin-submit{width:100%;margin-top:10px;border:0;border-radius:12px;padding:14px;background:#d8a94c;color:#06131a;font-family:'Cairo',sans-serif;font-size:15px;font-weight:900;cursor:pointer;transition:.2s}.admin-submit:hover{transform:translateY(-1px);filter:brightness(1.05)}.secondary-btn{width:100%;margin-top:10px;border:1px solid rgba(32,200,120,.4);border-radius:12px;padding:12px;background:transparent;color:#20c878;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer}.btn{border:0;border-radius:10px;padding:10px 16px;background:#d8a94c;color:#06131a;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer}.message{min-height:25px;margin-top:12px;color:#20c878!important;font-size:13px;font-weight:700}.message.error{color:#ff6868!important}.market-tabs{display:flex;gap:10px;margin-bottom:18px}.market-tab{flex:1;border:1px solid rgba(255,255,255,.10);background:#06131a;color:#9eafb5;border-radius:11px;padding:11px;font-family:'Cairo',sans-serif;font-weight:800;cursor:pointer}.market-tab.active{background:#102b20;color:#20c878;border-color:#205b44}.market-note{background:#06131a;border-radius:12px;padding:12px 14px;color:#9eafb5;font-size:12px;line-height:1.9;margin-bottom:16px}.rec-list{display:flex;flex-direction:column;gap:13px}.rec-item{background:#06131a;border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:17px}.rec-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}.rec-name{color:#fff!important;font-size:18px;font-weight:900}.rec-symbol{color:#20c878!important;font-size:13px;font-weight:800}.market-badge{color:#20c878!important;font-size:12px;font-weight:800}.rec-info{color:#9eafb5!important;font-size:12px;line-height:2}.rec-info strong{color:#fff!important}.rec-levels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.rec-level{background:#0b2028;border-radius:9px;padding:9px;font-size:12px;color:#dbe4e7!important}.rec-level b{display:block;margin-bottom:2px;color:#20c878!important}.rec-level.resistance b{color:#d8a94c!important}.rec-scenario{margin-top:12px;padding:11px 13px;background:#0b2028;border-right:3px solid #20c878;border-radius:9px;color:#dbe4e7!important;font-size:12px;line-height:1.9}.rec-scenario strong{color:#d8a94c!important}.delete-btn{width:100%;margin-top:12px;padding:9px;border:1px solid rgba(255,104,104,.5);border-radius:9px;background:transparent;color:#ff6868;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer}.delete-btn:hover{background:#ff6868;color:#06131a}.empty{text-align:center;color:#9eafb5!important;padding:25px 10px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat-card{background:#06131a;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px;text-align:center}.stat-icon{font-size:25px}.stat-number{font-size:30px;font-weight:900;color:#20c878;margin:4px 0}.stat-label{font-size:12px;color:#9eafb5}.box-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:15px}.box-stat{background:#06131a;border-radius:13px;padding:14px;text-align:center;border:1px solid rgba(255,255,255,.06)}.box-stat b{display:block;color:#d8a94c;font-size:14px}.box-stat span{display:block;color:#fff;font-size:23px;font-weight:900;margin-top:5px}.table-wrap{overflow:auto;margin-top:15px}.data-table{width:100%;border-collapse:collapse;min-width:720px}.data-table th,.data-table td{padding:11px 9px;border-bottom:1px solid rgba(255,255,255,.07);text-align:right;font-size:12px}.data-table th{color:#d8a94c;font-weight:900}.data-table td{color:#dbe4e7}.gift-tools{display:flex;gap:10px;flex-wrap:wrap}.gift-tools button{flex:1;min-width:180px}.gift-note{color:#82979e;font-size:12px;line-height:1.9;margin-top:12px}.admin-page h1,.admin-page h2,.admin-page h3,.admin-page label,.admin-page strong{opacity:1!important;visibility:visible!important}@media(max-width:850px){.admin-page{padding:35px 0 70px}.admin-wrap{width:92%}.admin-hero h1{font-size:29px}.admin-hero p{font-size:14px}.stats-grid{grid-template-columns:repeat(2,1fr)}.box-stats{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.admin-card{padding:20px 16px;border-radius:18px}.form-grid{grid-template-columns:1fr;gap:12px}.level-grid{grid-template-columns:1fr 1fr;gap:8px}.admin-topbar{padding:15px}.admin-card h2{font-size:20px}.rec-head{flex-direction:column}.market-tabs{flex-direction:column}.stats-grid{grid-template-columns:1fr 1fr}.box-stats{grid-template-columns:1fr 1fr}.box-stats .box-stat:last-child{grid-column:1/-1}}
+
+.admin-page{
+  min-height:100vh;
+  padding:55px 0 90px;
+  background:#f4f6f8
+}
+
+.admin-page,
+.admin-page *{
+  font-family:'Cairo',sans-serif
+}
+
+.admin-wrap{
+  width:min(1180px,92%);
+  margin:auto
+}
+
+.admin-hero{
+  text-align:center;
+  margin-bottom:30px
+}
+
+.admin-eyebrow{
+  color:#c99b43;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.5px;
+  margin-bottom:8px
+}
+
+.admin-hero h1{
+  margin:0;
+  color:#06131a!important;
+  font-size:38px;
+  font-weight:900
+}
+
+.admin-hero p{
+  margin:10px auto 0;
+  max-width:780px;
+  color:#66747b!important;
+  font-size:17px;
+  line-height:2
+}
+
+.admin-topbar{
+  background:#0b2028;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;
+  padding:18px 22px;
+  margin-bottom:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  box-shadow:0 10px 30px rgba(6,19,26,.08)
+}
+
+.admin-user{
+  color:#fff!important
+}
+
+.admin-user strong{
+  color:#20c878!important;
+  display:block;
+  font-size:17px
+}
+
+.admin-user span{
+  color:#9eafb5!important;
+  font-size:13px
+}
+
+.admin-card{
+  background:#0b2028;
+  border:1px solid rgba(32,200,120,.12);
+  border-radius:22px;
+  padding:28px;
+  color:#fff;
+  box-shadow:0 14px 35px rgba(6,19,26,.10);
+  margin-bottom:22px
+}
+
+.admin-card h2{
+  margin:0 0 22px;
+  color:#fff!important;
+  font-size:23px;
+  font-weight:900
+}
+
+.admin-card p{
+  color:#9eafb5!important
+}
+
+.setup-card h2{
+  color:#d8a94c!important
+}
+
+.setup-warning{
+  background:rgba(216,169,76,.08);
+  border:1px solid rgba(216,169,76,.2);
+  border-radius:12px;
+  padding:13px 15px;
+  color:#dbe4e7!important;
+  line-height:2;
+  font-size:13px
+}
+
+.login-box{
+  max-width:550px;
+  margin:0 auto
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px
+}
+
+.form-label{
+  display:block;
+  color:#dbe4e7!important;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:3px
+}
+
+.form-label input,
+.form-label select,
+.form-label textarea{
+  width:100%;
+  margin-top:7px;
+  padding:13px 14px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.10);
+  background:#06131a;
+  color:#fff;
+  font-family:'Cairo',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:.2s;
+  box-sizing:border-box
+}
+
+.form-label input::placeholder,
+.form-label textarea::placeholder{
+  color:#71838a
+}
+
+.form-label input:focus,
+.form-label select:focus,
+.form-label textarea:focus{
+  border-color:#20c878;
+  box-shadow:0 0 0 3px rgba(32,200,120,.08)
+}
+
+.form-label select option{
+  background:#06131a;
+  color:#fff
+}
+
+.full{
+  grid-column:1/-1
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:25px 0 15px;
+  padding-bottom:10px;
+  color:#d8a94c!important;
+  font-size:15px;
+  font-weight:900;
+  border-bottom:1px solid rgba(255,255,255,.08)
+}
+
+.level-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.level-box{
+  background:#06131a;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:13px;
+  padding:13px
+}
+
+.level-box.support{
+  border-right:3px solid #20c878
+}
+
+.level-box.resistance{
+  border-right:3px solid #d8a94c
+}
+
+.level-label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:5px
+}
+
+.support .level-label{
+  color:#20c878!important
+}
+
+.resistance .level-label{
+  color:#d8a94c!important
+}
+
+.admin-submit{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  background:#d8a94c;
+  color:#06131a;
+  font-family:'Cairo',sans-serif;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s
+}
+
+.admin-submit:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.05)
+}
+
+.secondary-btn{
+  width:100%;
+  margin-top:10px;
+  border:1px solid rgba(32,200,120,.4);
+  border-radius:12px;
+  padding:12px;
+  background:transparent;
+  color:#20c878;
+  font-family:'Cairo',sans-serif;
+  font-weight:900;
+  cursor:pointer
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 16px;
+  background:#d8a94c;
+  color:#06131a;
+  font-family:'Cairo',sans-serif;
+  font-weight:900;
+  cursor:pointer
+}
+
+.message{
+  min-height:25px;
+  margin-top:12px;
+  color:#20c878!important;
+  font-size:13px;
+  font-weight:700
+}
+
+.message.error{
+  color:#ff6868!important
+}
+
+.market-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px
+}
+
+.market-tab{
+  flex:1;
+  border:1px solid rgba(255,255,255,.10);
+  background:#06131a;
+  color:#9eafb5;
+  border-radius:11px;
+  padding:11px;
+  font-family:'Cairo',sans-serif;
+  font-weight:800;
+  cursor:pointer
+}
+
+.market-tab.active{
+  background:#102b20;
+  color:#20c878;
+  border-color:#205b44
+}
+
+.market-note{
+  background:#06131a;
+  border-radius:12px;
+  padding:12px 14px;
+  color:#9eafb5;
+  font-size:12px;
+  line-height:1.9;
+  margin-bottom:16px
+}
+
+.rec-list{
+  display:flex;
+  flex-direction:column;
+  gap:13px
+}
+
+.rec-item{
+  background:#06131a;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:15px;
+  padding:17px
+}
+
+.rec-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:10px
+}
+
+.rec-name{
+  color:#fff!important;
+  font-size:18px;
+  font-weight:900
+}
+
+.rec-symbol{
+  color:#20c878!important;
+  font-size:13px;
+  font-weight:800
+}
+
+.market-badge{
+  color:#20c878!important;
+  font-size:12px;
+  font-weight:800
+}
+
+.rec-info{
+  color:#9eafb5!important;
+  font-size:12px;
+  line-height:2
+}
+
+.rec-info strong{
+  color:#fff!important
+}
+
+.rec-levels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px
+}
+
+.rec-level{
+  background:#0b2028;
+  border-radius:9px;
+  padding:9px;
+  font-size:12px;
+  color:#dbe4e7!important
+}
+
+.rec-level b{
+  display:block;
+  margin-bottom:2px;
+  color:#20c878!important
+}
+
+.rec-level.resistance b{
+  color:#d8a94c!important
+}
+
+.rec-scenario{
+  margin-top:12px;
+  padding:11px 13px;
+  background:#0b2028;
+  border-right:3px solid #20c878;
+  border-radius:9px;
+  color:#dbe4e7!important;
+  font-size:12px;
+  line-height:1.9
+}
+
+.rec-scenario strong{
+  color:#d8a94c!important
+}
+
+.delete-btn{
+  width:100%;
+  margin-top:12px;
+  padding:9px;
+  border:1px solid rgba(255,104,104,.5);
+  border-radius:9px;
+  background:transparent;
+  color:#ff6868;
+  font-family:'Cairo',sans-serif;
+  font-weight:700;
+  cursor:pointer
+}
+
+.delete-btn:hover{
+  background:#ff6868;
+  color:#06131a
+}
+
+.empty{
+  text-align:center;
+  color:#9eafb5!important;
+  padding:25px 10px
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.stat-card{
+  background:#06131a;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;
+  padding:18px;
+  text-align:center
+}
+
+.stat-icon{
+  font-size:25px
+}
+
+.stat-number{
+  font-size:30px;
+  font-weight:900;
+  color:#20c878;
+  margin:4px 0
+}
+
+.stat-label{
+  font-size:12px;
+  color:#9eafb5
+}
+
+.box-stats{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-top:15px
+}
+
+.box-stat{
+  background:#06131a;
+  border-radius:13px;
+  padding:14px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.06)
+}
+
+.box-stat b{
+  display:block;
+  color:#d8a94c;
+  font-size:14px
+}
+
+.box-stat span{
+  display:block;
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
+  margin-top:5px
+}
+
+.table-wrap{
+  overflow:auto;
+  margin-top:15px
+}
+
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px
+}
+
+.data-table th,
+.data-table td{
+  padding:11px 9px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  text-align:right;
+  font-size:12px
+}
+
+.data-table th{
+  color:#d8a94c;
+  font-weight:900
+}
+
+.data-table td{
+  color:#dbe4e7
+}
+
+.gift-tools{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap
+}
+
+.gift-tools button{
+  flex:1;
+  min-width:180px
+}
+
+.gift-note{
+  color:#82979e;
+  font-size:12px;
+  line-height:1.9;
+  margin-top:12px
+}
+
+.admin-page h1,
+.admin-page h2,
+.admin-page h3,
+.admin-page label,
+.admin-page strong{
+  opacity:1!important;
+  visibility:visible!important
+}
+
+@media(max-width:850px){
+
+  .admin-page{
+    padding:35px 0 70px
+  }
+
+  .admin-wrap{
+    width:92%
+  }
+
+  .admin-hero h1{
+    font-size:29px
+  }
+
+  .admin-hero p{
+    font-size:14px
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .box-stats{
+    grid-template-columns:repeat(3,1fr)
+  }
+
+}
+
+@media(max-width:600px){
+
+  .admin-card{
+    padding:20px 16px;
+    border-radius:18px
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:12px
+  }
+
+  .level-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px
+  }
+
+  .admin-topbar{
+    padding:15px
+  }
+
+  .admin-card h2{
+    font-size:20px
+  }
+
+  .rec-head{
+    flex-direction:column
+  }
+
+  .market-tabs{
+    flex-direction:column
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr
+  }
+
+  .box-stats{
+    grid-template-columns:1fr 1fr
+  }
+
+  .box-stats .box-stat:last-child{
+    grid-column:1/-1
+  }
+
+}
+
 </style>
 </head>
+
 <body>
+
 <div id="site-header"></div>
-<main><section class="admin-page"><div class="admin-wrap">
-<div class="admin-hero"><div class="admin-eyebrow">ADMIN • AL FAYED STOCKS</div><h1>⚙️ لوحة إدارة Al Fayed Stocks</h1><p>تحديث بيانات السوق والأسهم والتحليلات، ومتابعة نتائج لعبة الصناديق من مكان واحد.</p></div>
 
-<div id="setup" class="admin-card setup-card" style="display:none"><h2>⚙️ إعداد الاتصال</h2><div class="setup-warning">تأكد أن ملف <strong>supabase-config.js</strong> يحتوي على <strong>SUPABASE_URL</strong> و<strong>SUPABASE_ANON_KEY</strong> فقط. لا تضع Service Role Key داخل الموقع.</div></div>
+<main>
 
-<div id="login" class="admin-card login-box" style="display:none"><h2>🔐 دخول لوحة التحكم</h2><p style="margin-bottom:20px">استخدم حساب الإدارة الذي أنشأته في Supabase.</p><label class="form-label">البريد الإلكتروني<input id="email" type="email" placeholder="admin@example.com" autocomplete="email"></label><label class="form-label" style="margin-top:15px">كلمة المرور<input id="password" type="password" placeholder="••••••••" autocomplete="current-password"></label><button class="admin-submit" onclick="loginAdmin()">دخول لوحة التحكم</button><div id="loginMsg" class="message"></div></div>
+<section class="admin-page">
 
-<div id="dashboard" style="display:none">
-<div class="admin-topbar"><div class="admin-user"><strong id="who"></strong><span>أنت مسجل كمدير للمنصة.</span></div><button class="btn" onclick="logoutAdmin()">تسجيل الخروج</button></div>
+<div class="admin-wrap">
 
-<!-- GIFT GAME STATS -->
+<div class="admin-hero">
+
+<div class="admin-eyebrow">
+ADMIN • AL FAYED STOCKS
+</div>
+
+<h1>
+⚙️ لوحة إدارة Al Fayed Stocks
+</h1>
+
+<p>
+تحديث بيانات السوق والأسهم والتحليلات، ومتابعة نتائج لعبة الصناديق من مكان واحد.
+</p>
+
+</div>
+
+
+<!-- SETUP -->
+
+<div
+  id="setup"
+  class="admin-card setup-card"
+  style="display:none"
+>
+
+<h2>⚙️ إعداد الاتصال</h2>
+
+<div class="setup-warning">
+
+تأكد أن ملف
+<strong>supabase-config.js</strong>
+يحتوي على
+<strong>SUPABASE_URL</strong>
+و
+<strong>SUPABASE_ANON_KEY</strong>
+فقط.
+
+لا تضع Service Role Key داخل الموقع.
+
+</div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div
+  id="login"
+  class="admin-card login-box"
+  style="display:none"
+>
+
+<h2>🔐 دخول لوحة التحكم</h2>
+
+<p style="margin-bottom:20px">
+استخدم حساب الإدارة الذي أنشأته في Supabase.
+</p>
+
+<label class="form-label">
+
+البريد الإلكتروني
+
+<input
+  id="email"
+  type="email"
+  placeholder="admin@example.com"
+  autocomplete="email"
+>
+
+</label>
+
+<label
+  class="form-label"
+  style="margin-top:15px"
+>
+
+كلمة المرور
+
+<input
+  id="password"
+  type="password"
+  placeholder="••••••••"
+  autocomplete="current-password"
+>
+
+</label>
+
+<button
+  class="admin-submit"
+  onclick="loginAdmin()"
+>
+دخول لوحة التحكم
+</button>
+
+<div
+  id="loginMsg"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div
+  id="dashboard"
+  style="display:none"
+>
+
+
+<div class="admin-topbar">
+
+<div class="admin-user">
+
+<strong id="who"></strong>
+
+<span>
+أنت مسجل كمدير للمنصة.
+</span>
+
+</div>
+
+<button
+  class="btn"
+  onclick="logoutAdmin()"
+>
+تسجيل الخروج
+</button>
+
+</div>
+
+
+<!-- =========================================
+     GIFT GAME STATS
+========================================= -->
+
 <div class="admin-card">
-<h2>🎁 إحصائيات لعبة الهدية</h2>
-<div class="market-note">الإحصائيات هنا تأتي مباشرة من جدول <strong>gift_game_events</strong>. بعد تشغيل SQL وربط <strong>gift.html</strong> ستظهر الزيارات والأسماء والصناديق ومشاركات واتساب والنتائج.</div>
+
+<h2>
+🎁 إحصائيات لعبة الهدية
+</h2>
+
+<div class="market-note">
+
+الإحصائيات هنا تأتي مباشرة من جدول
+<strong>gift_game_events</strong>.
+
+يتم حساب الزوار بشكل فريد باستخدام
+<strong>visitor_id</strong>.
+
+</div>
+
+
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon">👥</div><div id="giftVisitors" class="stat-number">—</div><div class="stat-label">عدد الزوار</div></div>
-<div class="stat-card"><div class="stat-icon">📝</div><div id="giftNames" class="stat-number">—</div><div class="stat-label">من كتبوا أسماءهم</div></div>
-<div class="stat-card"><div class="stat-icon">🎁</div><div id="giftSelections" class="stat-number">—</div><div class="stat-label">الصناديق المختارة</div></div>
-<div class="stat-card"><div class="stat-icon">📲</div><div id="giftShares" class="stat-number">—</div><div class="stat-label">مشاركات واتساب</div></div>
-</div>
-<div class="section-title">🎁 عدد اختيارات كل صندوق</div>
-<div id="boxStats" class="box-stats"></div>
-<div class="section-title">📋 المشاركون والنتائج</div>
-<div class="table-wrap"><table class="data-table"><thead><tr><th>الاسم</th><th>الصندوق</th><th>النتيجة</th><th>التاريخ</th></tr></thead><tbody id="giftParticipants"><tr><td colspan="4" class="empty">جاري التحميل...</td></tr></tbody></table></div>
-<div class="gift-tools"><button class="secondary-btn" onclick="loadGiftStats()">↻ تحديث الإحصائيات</button></div>
-<div class="gift-note">ملاحظة: الزائر يُحسب مرة واحدة لكل متصفح/جهاز عبر معرّف محلي. تغيير الجهاز أو مسح بيانات المتصفح قد يُنشئ زائرًا جديدًا.</div>
-<div id="giftMsg" class="message"></div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon">
+👥
 </div>
 
-<!-- MARKET -->
-<div class="admin-card"><h2>📊 تحديث بيانات الأسواق</h2><div class="market-tabs"><button id="tabNasdaq" class="market-tab active" onclick="selectMarket('nasdaq100')">🇺🇸 ناسداك 100</button><button id="tabSaudi" class="market-tab" onclick="selectMarket('tasi')">🇸🇦 تاسي</button></div><div class="market-note">عدّل الأرقام هنا ثم اضغط حفظ. الصف المرتبط هو <strong>market_data</strong>.</div><div class="form-grid">
-<label class="form-label">العنوان<input id="m_title"></label><label class="form-label">تاريخ البيانات<input id="m_date_label"></label><label class="form-label">السعر / الإغلاق الحالي<input id="m_price" type="text" inputmode="decimal"></label><label class="form-label">الإغلاق السابق<input id="m_previous_close" type="text" inputmode="decimal"></label><label class="form-label">التغير<input id="m_change_value" type="text" inputmode="decimal"></label><label class="form-label">التغير %<input id="m_change_percent" type="text" inputmode="decimal"></label><label class="form-label">الاتجاه<input id="m_trend"></label><label class="form-label full">الملخص<textarea id="m_summary" rows="4"></textarea></label></div>
-<div class="section-title">📉 الدعوم والمقاومات</div><div class="level-grid"><div class="level-box support"><span class="level-label">🟢 دعم 1</span><input id="m_support1"></div><div class="level-box support"><span class="level-label">🟢 دعم 2</span><input id="m_support2"></div><div class="level-box support"><span class="level-label">🟢 دعم 3</span><input id="m_support3"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 1</span><input id="m_resistance1"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 2</span><input id="m_resistance2"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 3</span><input id="m_resistance3"></div></div>
-<button class="admin-submit" onclick="saveMarketData()">💾 حفظ بيانات السوق</button><button class="secondary-btn" onclick="loadMarketData()">↻ إعادة تحميل البيانات</button><div id="marketMsg" class="message"></div></div>
+<div
+  id="giftVisitors"
+  class="stat-number"
+>
+—
+</div>
 
-<!-- SAUDI STOCKS -->
-<div class="admin-card"><h2>📈 إدارة الأسهم السعودية</h2><div class="market-note">إضافة وتعديل الأسهم في جدول <strong>saudi_stocks</strong>.</div><div class="form-grid"><label class="form-label full">اختر سهمًا موجودًا للتعديل<select id="stockSelect" onchange="loadSelectedStock()"><option value="">➕ إضافة سهم جديد</option></select></label><label class="form-label">رمز السهم<input id="stock_symbol"></label><label class="form-label">اسم السهم<input id="stock_name"></label><label class="form-label">القطاع<input id="stock_sector"></label><label class="form-label">السعر الحالي<input id="stock_price"></label><label class="form-label">قيمة التغير<input id="stock_change_value"></label><label class="form-label">نسبة التغير %<input id="stock_change_percent"></label><label class="form-label">الافتتاح<input id="stock_open"></label><label class="form-label">أعلى سعر<input id="stock_high"></label><label class="form-label">أدنى سعر<input id="stock_low"></label><label class="form-label">الإغلاق السابق<input id="stock_previous_close"></label><label class="form-label">حجم التداول<input id="stock_volume"></label></div><div class="section-title">📊 الدعوم والمقاومات</div><div class="level-grid"><div class="level-box support"><span class="level-label">🟢 دعم 1</span><input id="stock_support1"></div><div class="level-box support"><span class="level-label">🟢 دعم 2</span><input id="stock_support2"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 1</span><input id="stock_resistance1"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 2</span><input id="stock_resistance2"></div></div><div class="form-grid" style="margin-top:15px"><label class="form-label">🎯 الهدف<input id="stock_target"></label><label class="form-label">🛑 وقف الخسارة<input id="stock_stop_loss"></label></div><div class="section-title">📝 التحليل الفني</div><label class="form-label">التحليل<textarea id="stock_analysis" rows="5"></textarea></label><button class="admin-submit" onclick="saveSaudiStock()">💾 حفظ بيانات السهم</button><button class="secondary-btn" onclick="clearStockForm()">➕ إضافة سهم جديد</button><div id="stockMsg" class="message"></div><div class="section-title">📋 الأسهم الموجودة</div><div id="stockList"><div class="empty">جاري تحميل الأسهم...</div></div></div>
+<div class="stat-label">
+عدد الزوار
+</div>
 
-<!-- RECOMMENDATIONS -->
-<div class="admin-grid"><div class="admin-card"><h2>➕ إضافة تحليل / توصية</h2><div class="form-grid"><label class="form-label">السوق<select id="market"><option value="saudi">🇸🇦 السوق السعودي</option><option value="usa">🇺🇸 السوق الأمريكي</option></select></label><label class="form-label">الرمز<input id="symbol"></label><label class="form-label">اسم السهم<input id="name"></label><label class="form-label">النوع<input id="type"></label><label class="form-label">سعر الدخول<input id="entry"></label><label class="form-label">الهدف<input id="target"></label><label class="form-label">وقف الخسارة<input id="stop"></label><label class="form-label">الحالة<select id="status"><option value="open">مفتوحة</option><option value="watch">مراقبة</option><option value="closed">مغلقة</option></select></label></div><div class="section-title">📊 مستويات الدعم والمقاومة</div><div class="level-grid"><div class="level-box support"><span class="level-label">🟢 دعم 1</span><input id="support1"></div><div class="level-box support"><span class="level-label">🟢 دعم 2</span><input id="support2"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 1</span><input id="resistance1"></div><div class="level-box resistance"><span class="level-label">🟡 مقاومة 2</span><input id="resistance2"></div></div><div class="section-title">🎯 السيناريو</div><label class="form-label">السيناريو الفني<textarea id="scenario" rows="4"></textarea></label><label class="form-label" style="margin-top:15px">ملاحظة<textarea id="note" rows="3"></textarea></label><button class="admin-submit" onclick="addRec()">💾 حفظ التحليل</button><div id="saveMsg" class="message"></div></div><div class="admin-card"><h2>📋 التحليلات الحالية</h2><div id="list"><div class="empty">جاري تحميل البيانات...</div></div></div></div>
+</div>
 
-</div></div></section></main><div id="site-footer"></div><script src="app.js"></script>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+📝
+</div>
+
+<div
+  id="giftNames"
+  class="stat-number"
+>
+—
+</div>
+
+<div class="stat-label">
+من كتبوا أسماءهم
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon">
+🎁
+</div>
+
+<div
+  id="giftSelections"
+  class="stat-number"
+>
+—
+</div>
+
+<div class="stat-label">
+الصناديق المختارة
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon">
+📲
+</div>
+
+<div
+  id="giftShares"
+  class="stat-number"
+>
+—
+</div>
+
+<div class="stat-label">
+مشاركات واتساب
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="section-title">
+🎁 عدد اختيارات كل صندوق
+</div>
+
+<div
+  id="boxStats"
+  class="box-stats"
+></div>
+
+
+<div class="section-title">
+📋 المشاركون والنتائج
+</div>
+
+
+<div class="table-wrap">
+
+<table class="data-table">
+
+<thead>
+
+<tr>
+
+<th>
+الاسم
+</th>
+
+<th>
+الصندوق
+</th>
+
+<th>
+النتيجة
+</th>
+
+<th>
+التاريخ
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="giftParticipants">
+
+<tr>
+
+<td
+  colspan="4"
+  class="empty"
+>
+جاري التحميل...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="gift-tools">
+
+<button
+  class="secondary-btn"
+  onclick="loadGiftStats()"
+>
+↻ تحديث الإحصائيات
+</button>
+
+</div>
+
+
+<div class="gift-note">
+
+ملاحظة: الزائر يُحسب مرة واحدة لكل متصفح/جهاز عبر معرّف محلي.
+
+تغيير الجهاز أو مسح بيانات المتصفح قد يُنشئ زائرًا جديدًا.
+
+</div>
+
+
+<div
+  id="giftMsg"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- =========================================
+     MARKET
+========================================= -->
+
+<div class="admin-card">
+
+<h2>
+📊 تحديث بيانات الأسواق
+</h2>
+
+
+<div class="market-tabs">
+
+<button
+  id="tabNasdaq"
+  class="market-tab active"
+  onclick="selectMarket('nasdaq100')"
+>
+🇺🇸 ناسداك 100
+</button>
+
+
+<button
+  id="tabSaudi"
+  class="market-tab"
+  onclick="selectMarket('tasi')"
+>
+🇸🇦 تاسي
+</button>
+
+</div>
+
+
+<div class="market-note">
+
+عدّل الأرقام هنا ثم اضغط حفظ.
+
+الصف المرتبط هو
+<strong>market_data</strong>.
+
+</div>
+
+
+<div class="form-grid">
+
+
+<label class="form-label">
+
+العنوان
+
+<input id="m_title">
+
+</label>
+
+
+<label class="form-label">
+
+تاريخ البيانات
+
+<input id="m_date_label">
+
+</label>
+
+
+<label class="form-label">
+
+السعر / الإغلاق الحالي
+
+<input
+  id="m_price"
+  type="text"
+  inputmode="decimal"
+>
+
+</label>
+
+
+<label class="form-label">
+
+الإغلاق السابق
+
+<input
+  id="m_previous_close"
+  type="text"
+  inputmode="decimal"
+>
+
+</label>
+
+
+<label class="form-label">
+
+التغير
+
+<input
+  id="m_change_value"
+  type="text"
+  inputmode="decimal"
+>
+
+</label>
+
+
+<label class="form-label">
+
+التغير %
+
+<input
+  id="m_change_percent"
+  type="text"
+  inputmode="decimal"
+>
+
+</label>
+
+
+<label class="form-label">
+
+الاتجاه
+
+<input id="m_trend">
+
+</label>
+
+
+<label class="form-label full">
+
+الملخص
+
+<textarea
+  id="m_summary"
+  rows="4"
+></textarea>
+
+</label>
+
+
+</div>
+
+
+<div class="section-title">
+📉 الدعوم والمقاومات
+</div>
+
+
+<div class="level-grid">
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 1
+</span>
+
+<input id="m_support1">
+
+</div>
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 2
+</span>
+
+<input id="m_support2">
+
+</div>
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 3
+</span>
+
+<input id="m_support3">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 1
+</span>
+
+<input id="m_resistance1">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 2
+</span>
+
+<input id="m_resistance2">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 3
+</span>
+
+<input id="m_resistance3">
+
+</div>
+
+
+</div>
+
+
+<button
+  class="admin-submit"
+  onclick="saveMarketData()"
+>
+💾 حفظ بيانات السوق
+</button>
+
+
+<button
+  class="secondary-btn"
+  onclick="loadMarketData()"
+>
+↻ إعادة تحميل البيانات
+</button>
+
+
+<div
+  id="marketMsg"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- =========================================
+     SAUDI STOCKS
+========================================= -->
+
+<div class="admin-card">
+
+<h2>
+📈 إدارة الأسهم السعودية
+</h2>
+
+
+<div class="market-note">
+
+إضافة وتعديل الأسهم في جدول
+<strong>saudi_stocks</strong>.
+
+</div>
+
+
+<div class="form-grid">
+
+
+<label class="form-label full">
+
+اختر سهمًا موجودًا للتعديل
+
+<select
+  id="stockSelect"
+  onchange="loadSelectedStock()"
+>
+
+<option value="">
+➕ إضافة سهم جديد
+</option>
+
+</select>
+
+</label>
+
+
+<label class="form-label">
+
+رمز السهم
+
+<input id="stock_symbol">
+
+</label>
+
+
+<label class="form-label">
+
+اسم السهم
+
+<input id="stock_name">
+
+</label>
+
+
+<label class="form-label">
+
+القطاع
+
+<input id="stock_sector">
+
+</label>
+
+
+<label class="form-label">
+
+السعر الحالي
+
+<input id="stock_price">
+
+</label>
+
+
+<label class="form-label">
+
+قيمة التغير
+
+<input id="stock_change_value">
+
+</label>
+
+
+<label class="form-label">
+
+نسبة التغير %
+
+<input id="stock_change_percent">
+
+</label>
+
+
+<label class="form-label">
+
+الافتتاح
+
+<input id="stock_open">
+
+</label>
+
+
+<label class="form-label">
+
+أعلى سعر
+
+<input id="stock_high">
+
+</label>
+
+
+<label class="form-label">
+
+أدنى سعر
+
+<input id="stock_low">
+
+</label>
+
+
+<label class="form-label">
+
+الإغلاق السابق
+
+<input id="stock_previous_close">
+
+</label>
+
+
+<label class="form-label">
+
+حجم التداول
+
+<input id="stock_volume">
+
+</label>
+
+
+</div>
+
+
+<div class="section-title">
+📊 الدعوم والمقاومات
+</div>
+
+
+<div class="level-grid">
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 1
+</span>
+
+<input id="stock_support1">
+
+</div>
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 2
+</span>
+
+<input id="stock_support2">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 1
+</span>
+
+<input id="stock_resistance1">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 2
+</span>
+
+<input id="stock_resistance2">
+
+</div>
+
+
+</div>
+
+
+<div
+  class="form-grid"
+  style="margin-top:15px"
+>
+
+
+<label class="form-label">
+
+🎯 الهدف
+
+<input id="stock_target">
+
+</label>
+
+
+<label class="form-label">
+
+🛑 وقف الخسارة
+
+<input id="stock_stop_loss">
+
+</label>
+
+
+</div>
+
+
+<div class="section-title">
+📝 التحليل الفني
+</div>
+
+
+<label class="form-label">
+
+التحليل
+
+<textarea
+  id="stock_analysis"
+  rows="5"
+></textarea>
+
+</label>
+
+
+<button
+  class="admin-submit"
+  onclick="saveSaudiStock()"
+>
+💾 حفظ بيانات السهم
+</button>
+
+
+<button
+  class="secondary-btn"
+  onclick="clearStockForm()"
+>
+➕ إضافة سهم جديد
+</button>
+
+
+<div
+  id="stockMsg"
+  class="message"
+></div>
+
+
+<div class="section-title">
+📋 الأسهم الموجودة
+</div>
+
+
+<div id="stockList">
+
+<div class="empty">
+جاري تحميل الأسهم...
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     RECOMMENDATIONS
+========================================= -->
+
+<div class="admin-grid">
+
+
+<div class="admin-card">
+
+<h2>
+➕ إضافة تحليل / توصية
+</h2>
+
+
+<div class="form-grid">
+
+
+<label class="form-label">
+
+السوق
+
+<select id="market">
+
+<option value="saudi">
+🇸🇦 السوق السعودي
+</option>
+
+<option value="usa">
+🇺🇸 السوق الأمريكي
+</option>
+
+</select>
+
+</label>
+
+
+<label class="form-label">
+
+الرمز
+
+<input id="symbol">
+
+</label>
+
+
+<label class="form-label">
+
+اسم السهم
+
+<input id="name">
+
+</label>
+
+
+<label class="form-label">
+
+النوع
+
+<input id="type">
+
+</label>
+
+
+<label class="form-label">
+
+سعر الدخول
+
+<input id="entry">
+
+</label>
+
+
+<label class="form-label">
+
+الهدف
+
+<input id="target">
+
+</label>
+
+
+<label class="form-label">
+
+وقف الخسارة
+
+<input id="stop">
+
+</label>
+
+
+<label class="form-label">
+
+الحالة
+
+<select id="status">
+
+<option value="open">
+مفتوحة
+</option>
+
+<option value="watch">
+مراقبة
+</option>
+
+<option value="closed">
+مغلقة
+</option>
+
+</select>
+
+</label>
+
+
+</div>
+
+
+<div class="section-title">
+📊 مستويات الدعم والمقاومة
+</div>
+
+
+<div class="level-grid">
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 1
+</span>
+
+<input id="support1">
+
+</div>
+
+
+<div class="level-box support">
+
+<span class="level-label">
+🟢 دعم 2
+</span>
+
+<input id="support2">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 1
+</span>
+
+<input id="resistance1">
+
+</div>
+
+
+<div class="level-box resistance">
+
+<span class="level-label">
+🟡 مقاومة 2
+</span>
+
+<input id="resistance2">
+
+</div>
+
+
+</div>
+
+
+<div class="section-title">
+🎯 السيناريو
+</div>
+
+
+<label class="form-label">
+
+السيناريو الفني
+
+<textarea
+  id="scenario"
+  rows="4"
+></textarea>
+
+</label>
+
+
+<label
+  class="form-label"
+  style="margin-top:15px"
+>
+
+ملاحظة
+
+<textarea
+  id="note"
+  rows="3"
+></textarea>
+
+</label>
+
+
+<button
+  class="admin-submit"
+  onclick="addRec()"
+>
+💾 حفظ التحليل
+</button>
+
+
+<div
+  id="saveMsg"
+  class="message"
+></div>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>
+📋 التحليلات الحالية
+</h2>
+
+
+<div id="list">
+
+<div class="empty">
+جاري تحميل البيانات...
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<div id="site-footer"></div>
+
+<script src="app.js"></script>
+
+
 <script>
-let sb=null,session=null,selectedMarket='nasdaq100',stocksCache=[];
-const statusLabel={open:'مفتوحة',watch:'مراقبة',closed:'مغلقة'};
-function configured(){return window.SUPABASE_URL&&window.SUPABASE_ANON_KEY&&!String(window.SUPABASE_ANON_KEY).includes('PASTE_')}
-function msg(id,text,error=false){const e=document.getElementById(id);if(!e)return;e.textContent=text;e.className='message'+(error?' error':'')}
-function val(id){const e=document.getElementById(id);return e?e.value.trim():''}
-function num(id){const v=val(id).replace(/,/g,'');if(v==='')return null;const n=Number(v);return Number.isFinite(n)?n:null}
-function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function fmtDate(v){if(!v)return'—';const d=new Date(v);return Number.isNaN(d.getTime())?'—':d.toLocaleString('ar-EG',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}
-async function init(){if(!configured()){document.getElementById('setup').style.display='block';return}sb=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);const r=await sb.auth.getSession();session=r.data.session;if(session)await enter();else document.getElementById('login').style.display='block'}
-async function loginAdmin(){const email=val('email'),password=document.getElementById('password').value;if(!email||!password){msg('loginMsg','⚠️ اكتب البريد الإلكتروني وكلمة المرور.',true);return}msg('loginMsg','جاري تسجيل الدخول...');const r=await sb.auth.signInWithPassword({email,password});if(r.error){msg('loginMsg','❌ فشل الدخول: '+r.error.message,true);return}session=r.data.session;await enter()}
-async function enter(){const uid=session.user.id;const r=await sb.from('admins').select('user_id').eq('user_id',uid).maybeSingle();if(r.error||!r.data){await sb.auth.signOut();session=null;document.getElementById('login').style.display='block';msg('loginMsg','❌ هذا الحساب غير مضاف كمدير في جدول admins.',true);return}document.getElementById('login').style.display='none';document.getElementById('dashboard').style.display='block';document.getElementById('who').textContent=session.user.email;await Promise.all([loadGiftStats(),loadMarketData(),loadSaudiStocks(),loadRecs()])}
-async function logoutAdmin(){if(sb)await sb.auth.signOut();location.reload()}
 
-// GIFT STATS
-async function eventCount(type,box=null){let q=sb.from('gift_game_events').select('id',{count:'exact',head:true}).eq('event_type',type);if(box!==null)q=q.eq('box_number',box);const r=await q;return r.error?0:(r.count||0)}
-async function loadGiftStats(){if(!sb||!session)return;msg('giftMsg','⏳ جاري تحميل إحصائيات اللعبة...');const [vis,names,plays,shares]=await Promise.all([eventCount('visit'),eventCount('start'),eventCount('play'),eventCount('share')]);document.getElementById('giftVisitors').textContent=vis.toLocaleString('en-US');document.getElementById('giftNames').textContent=names.toLocaleString('en-US');document.getElementById('giftSelections').textContent=plays.toLocaleString('en-US');document.getElementById('giftShares').textContent=shares.toLocaleString('en-US');const boxes=await Promise.all([1,2,3,4,5].map(n=>eventCount('play',n)));document.getElementById('boxStats').innerHTML=boxes.map((n,i)=>`<div class="box-stat"><b>الصندوق ${i+1}</b><span>${n.toLocaleString('en-US')}</span></div>`).join('');const r=await sb.from('gift_game_events').select('player_name,box_number,prize,created_at').eq('event_type','play').order('created_at',{ascending:false}).limit(100);const body=document.getElementById('giftParticipants');if(r.error){body.innerHTML=`<tr><td colspan="4" class="empty">❌ ${esc(r.error.message)}</td></tr>`;msg('giftMsg','❌ تعذر تحميل المشاركين.',true);return}if(!r.data?.length){body.innerHTML='<tr><td colspan="4" class="empty">لا توجد نتائج حتى الآن.</td></tr>'}else body.innerHTML=r.data.map(x=>`<tr><td>${esc(x.player_name||'صديقنا')}</td><td>🎁 الصندوق ${esc(x.box_number)}</td><td>${esc(x.prize||'—')}</td><td>${esc(fmtDate(x.created_at))}</td></tr>`).join('');msg('giftMsg','✅ تم تحديث إحصائيات اللعبة.')}
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-// MARKET
-function selectMarket(m){selectedMarket=m;document.getElementById('tabNasdaq').classList.toggle('active',m==='nasdaq100');document.getElementById('tabSaudi').classList.toggle('active',m==='tasi');loadMarketData()}
-function fillMarket(d){['title','date_label','price','previous_close','change_value','change_percent','trend','summary'].forEach(k=>{const id='m_'+k;document.getElementById(id).value=d?.[k]??''});['support_1','support_2','support_3','resistance_1','resistance_2','resistance_3'].forEach(k=>{document.getElementById('m_'+k.replace('_','')).value=d?.[k]??''})}
-async function loadMarketData(){if(!sb||!session)return;const r=await sb.from('market_data').select('*').eq('market',selectedMarket).maybeSingle();if(r.error){msg('marketMsg','❌ '+r.error.message,true);return}if(!r.data){fillMarket(null);msg('marketMsg','⚠️ لا توجد بيانات لهذا السوق.',true);return}fillMarket(r.data);msg('marketMsg','✅ تم تحميل البيانات الحالية.')}
-async function saveMarketData(){if(!sb||!session)return msg('marketMsg','❌ يجب تسجيل الدخول أولًا.',true);const p={market:selectedMarket,title:val('m_title')||null,date_label:val('m_date_label')||null,price:num('m_price'),previous_close:num('m_previous_close'),change_value:num('m_change_value'),change_percent:num('m_change_percent'),trend:val('m_trend')||null,support_1:num('m_support1'),support_2:num('m_support2'),support_3:num('m_support3'),resistance_1:num('m_resistance1'),resistance_2:num('m_resistance2'),resistance_3:num('m_resistance3'),summary:val('m_summary')||null,updated_at:new Date().toISOString()};if(p.price===null)return msg('marketMsg','⚠️ اكتب السعر بشكل صحيح.',true);let r=await sb.from('market_data').upsert(p,{onConflict:'market'}).select().single();if(r.error)return msg('marketMsg','❌ '+r.error.message,true);fillMarket(r.data);msg('marketMsg','✅ تم حفظ بيانات السوق بنجاح.')}
+let sb = null;
+let session = null;
+let selectedMarket = 'nasdaq100';
+let stocksCache = [];
 
-// SAUDI STOCKS
-async function loadSaudiStocks(){const list=document.getElementById('stockList'),select=document.getElementById('stockSelect');const r=await sb.from('saudi_stocks').select('*').order('symbol',{ascending:true});if(r.error){list.innerHTML=`<div class="empty">❌ ${esc(r.error.message)}</div>`;return}stocksCache=r.data||[];select.innerHTML='<option value="">➕ إضافة سهم جديد</option>'+stocksCache.map(s=>`<option value="${esc(s.symbol)}">${esc(s.symbol)} — ${esc(s.name)}</option>`).join('');if(!stocksCache.length){list.innerHTML='<div class="empty">لا توجد أسهم حاليًا.</div>';return}list.innerHTML='<div class="rec-list">'+stocksCache.map(s=>`<div class="rec-item"><div class="rec-head"><div class="rec-name">${esc(s.name)} <span class="rec-symbol">• ${esc(s.symbol)}</span></div><div class="market-badge">${esc(s.sector||'—')}</div></div><div class="rec-info">السعر: <strong>${s.price??'—'}</strong> • التغير: ${s.change_value??'—'} • النسبة: ${s.change_percent??'—'}%<br>الافتتاح: ${s.open_price??'—'} • الأعلى: ${s.high_price??'—'} • الأدنى: ${s.low_price??'—'}<br>الإغلاق السابق: ${s.previous_close??'—'} • التداول: ${s.volume??'—'}</div><div class="rec-levels"><div class="rec-level"><b>🟢 دعم 1</b>${s.support_1??'—'}</div><div class="rec-level"><b>🟢 دعم 2</b>${s.support_2??'—'}</div><div class="rec-level resistance"><b>🟡 مقاومة 1</b>${s.resistance_1??'—'}</div><div class="rec-level resistance"><b>🟡 مقاومة 2</b>${s.resistance_2??'—'}</div></div><div class="rec-scenario"><strong>🎯 الهدف:</strong> ${s.target??'—'} &nbsp; | &nbsp; <strong>🛑 وقف الخسارة:</strong> ${s.stop_loss??'—'}</div><button class="secondary-btn" onclick="editSaudiStock('${esc(s.symbol)}')">✏️ تعديل السهم</button><button class="delete-btn" onclick="deleteSaudiStock('${esc(s.symbol)}')">🗑 حذف السهم</button></div>`).join('')+'</div>'}
-function fillStock(d){const m={stock_symbol:'symbol',stock_name:'name',stock_sector:'sector',stock_price:'price',stock_change_value:'change_value',stock_change_percent:'change_percent',stock_open:'open_price',stock_high:'high_price',stock_low:'low_price',stock_previous_close:'previous_close',stock_volume:'volume',stock_support1:'support_1',stock_support2:'support_2',stock_resistance1:'resistance_1',stock_resistance2:'resistance_2',stock_target:'target',stock_stop_loss:'stop_loss',stock_analysis:'analysis'};Object.entries(m).forEach(([id,k])=>document.getElementById(id).value=d?.[k]??'')}
-function loadSelectedStock(){const s=stocksCache.find(x=>String(x.symbol)===String(val('stockSelect')));if(s)fillStock(s);else clearStockForm()}
-function editSaudiStock(symbol){const s=stocksCache.find(x=>String(x.symbol)===String(symbol));if(!s)return;document.getElementById('stockSelect').value=s.symbol;fillStock(s);document.getElementById('stock_symbol').scrollIntoView({behavior:'smooth',block:'center'})}
-async function saveSaudiStock(){const symbol=val('stock_symbol'),name=val('stock_name');if(!symbol||!name)return msg('stockMsg','⚠️ اكتب رمز السهم واسم السهم.',true);const p={symbol,name,sector:val('stock_sector')||null,price:num('stock_price'),change_value:num('stock_change_value'),change_percent:num('stock_change_percent'),open_price:num('stock_open'),high_price:num('stock_high'),low_price:num('stock_low'),previous_close:num('stock_previous_close'),volume:num('stock_volume'),support_1:num('stock_support1'),support_2:num('stock_support2'),resistance_1:num('stock_resistance1'),resistance_2:num('stock_resistance2'),target:num('stock_target'),stop_loss:num('stock_stop_loss'),analysis:val('stock_analysis')||null,updated_at:new Date().toISOString()};const r=await sb.from('saudi_stocks').upsert(p,{onConflict:'symbol'}).select().single();if(r.error)return msg('stockMsg','❌ '+r.error.message,true);fillStock(r.data);msg('stockMsg','✅ تم حفظ بيانات السهم بنجاح.');await loadSaudiStocks()}
-function clearStockForm(){['stock_symbol','stock_name','stock_sector','stock_price','stock_change_value','stock_change_percent','stock_open','stock_high','stock_low','stock_previous_close','stock_volume','stock_support1','stock_support2','stock_resistance1','stock_resistance2','stock_target','stock_stop_loss','stock_analysis'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});document.getElementById('stockSelect').value='';msg('stockMsg','')}
-async function deleteSaudiStock(symbol){if(!confirm('هل أنت متأكد من حذف سهم '+symbol+'؟'))return;const r=await sb.from('saudi_stocks').delete().eq('symbol',symbol);if(r.error)return msg('stockMsg','❌ '+r.error.message,true);clearStockForm();msg('stockMsg','✅ تم حذف السهم.');await loadSaudiStocks()}
+const statusLabel = {
+  open:'مفتوحة',
+  watch:'مراقبة',
+  closed:'مغلقة'
+};
 
-// RECOMMENDATIONS
-async function addRec(){const r={market:val('market'),symbol:val('symbol'),name:val('name'),entry:val('entry')||null,target:val('target')||null,stop_loss:val('stop')||null,support1:val('support1')||null,support2:val('support2')||null,resistance1:val('resistance1')||null,resistance2:val('resistance2')||null,scenario:val('scenario')||null,status:val('status'),note:val('note')||null};if(!r.symbol||!r.name)return msg('saveMsg','⚠️ اكتب اسم السهم والرمز أولًا.',true);const type=val('type');if(type)r.note='النوع: '+type+(r.note?' — '+r.note:'');const x=await sb.from('recommendations').insert(r);if(x.error)return msg('saveMsg','❌ '+x.error.message,true);clearForm();msg('saveMsg','✅ تم حفظ التحليل بنجاح.');await loadRecs()}
-function clearForm(){['symbol','name','type','entry','target','stop','support1','support2','resistance1','resistance2','scenario','note'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''})}
-async function loadRecs(){const list=document.getElementById('list');const r=await sb.from('recommendations').select('*').order('created_at',{ascending:false});if(r.error){list.innerHTML=`<div class="empty">❌ ${esc(r.error.message)}</div>`;return}if(!r.data?.length){list.innerHTML='<div class="empty">لا توجد تحليلات حاليًا.</div>';return}list.innerHTML='<div class="rec-list">'+r.data.map(x=>`<div class="rec-item"><div class="rec-head"><div class="rec-name">${esc(x.name)} <span class="rec-symbol">• ${esc(x.symbol)}</span></div><div class="market-badge">${x.market==='saudi'?'🇸🇦 السوق السعودي':'🇺🇸 السوق الأمريكي'}</div></div><div class="rec-info">الحالة: ${esc(statusLabel[x.status]||x.status||'—')}<br>الدخول: ${esc(x.entry||'—')} • الهدف: ${esc(x.target||'—')} • وقف الخسارة: ${esc(x.stop_loss||'—')}</div><div class="rec-levels"><div class="rec-level"><b>🟢 دعم 1</b>${esc(x.support1||'—')}</div><div class="rec-level"><b>🟢 دعم 2</b>${esc(x.support2||'—')}</div><div class="rec-level resistance"><b>🟡 مقاومة 1</b>${esc(x.resistance1||'—')}</div><div class="rec-level resistance"><b>🟡 مقاومة 2</b>${esc(x.resistance2||'—')}</div></div><div class="rec-scenario"><strong>🎯 السيناريو:</strong> ${esc(x.scenario||'—')}</div><button class="delete-btn" onclick="delRec('${String(x.id).replace(/'/g,"\\'")}')">🗑 حذف التحليل</button></div>`).join('')+'</div>'}
-async function delRec(id){if(!confirm('هل تريد حذف هذا التحليل؟'))return;const r=await sb.from('recommendations').delete().eq('id',id);if(r.error)return msg('saveMsg','❌ '+r.error.message,true);msg('saveMsg','✅ تم حذف التحليل.');await loadRecs()}
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function configured(){
+
+  return (
+    window.SUPABASE_URL &&
+    window.SUPABASE_ANON_KEY &&
+    !String(window.SUPABASE_ANON_KEY).includes('PASTE_')
+  );
+
+}
+
+
+function msg(id,text,error=false){
+
+  const e = document.getElementById(id);
+
+  if(!e) return;
+
+  e.textContent = text;
+
+  e.className =
+    'message' +
+    (error ? ' error' : '');
+
+}
+
+
+function val(id){
+
+  const e = document.getElementById(id);
+
+  return e ? e.value.trim() : '';
+
+}
+
+
+function num(id){
+
+  const v =
+    val(id).replace(/,/g,'');
+
+  if(v === '') return null;
+
+  const n = Number(v);
+
+  return Number.isFinite(n)
+    ? n
+    : null;
+
+}
+
+
+function esc(s){
+
+  return String(s ?? '').replace(
+    /[&<>'"]/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      "'":'&#39;',
+      '"':'&quot;'
+    }[c])
+  );
+
+}
+
+
+function fmtDate(v){
+
+  if(!v) return '—';
+
+  const d = new Date(v);
+
+  if(Number.isNaN(d.getTime()))
+    return '—';
+
+  return d.toLocaleString(
+    'ar-EG',
+    {
+      year:'numeric',
+      month:'2-digit',
+      day:'2-digit',
+      hour:'2-digit',
+      minute:'2-digit'
+    }
+  );
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+  if(!configured()){
+
+    document.getElementById(
+      'setup'
+    ).style.display = 'block';
+
+    return;
+
+  }
+
+
+  sb =
+    window.supabase.createClient(
+      window.SUPABASE_URL,
+      window.SUPABASE_ANON_KEY
+    );
+
+
+  const r =
+    await sb.auth.getSession();
+
+
+  session =
+    r.data.session;
+
+
+  if(session){
+
+    await enter();
+
+  }else{
+
+    document.getElementById(
+      'login'
+    ).style.display = 'block';
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+async function loginAdmin(){
+
+  const email = val('email');
+
+  const password =
+    document.getElementById(
+      'password'
+    ).value;
+
+
+  if(!email || !password){
+
+    msg(
+      'loginMsg',
+      '⚠️ اكتب البريد الإلكتروني وكلمة المرور.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  msg(
+    'loginMsg',
+    'جاري تسجيل الدخول...'
+  );
+
+
+  const r =
+    await sb.auth.signInWithPassword({
+      email,
+      password
+    });
+
+
+  if(r.error){
+
+    msg(
+      'loginMsg',
+      '❌ فشل الدخول: ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  session =
+    r.data.session;
+
+
+  await enter();
+
+}
+
+
+/* =========================================================
+   ENTER DASHBOARD
+========================================================= */
+
+async function enter(){
+
+  const uid =
+    session.user.id;
+
+
+  const r =
+    await sb
+      .from('admins')
+      .select('user_id')
+      .eq('user_id',uid)
+      .maybeSingle();
+
+
+  if(r.error || !r.data){
+
+    await sb.auth.signOut();
+
+    session = null;
+
+    document.getElementById(
+      'login'
+    ).style.display = 'block';
+
+
+    msg(
+      'loginMsg',
+      '❌ هذا الحساب غير مضاف كمدير في جدول admins.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    'login'
+  ).style.display = 'none';
+
+
+  document.getElementById(
+    'dashboard'
+  ).style.display = 'block';
+
+
+  document.getElementById(
+    'who'
+  ).textContent =
+    session.user.email;
+
+
+  await Promise.all([
+    loadGiftStats(),
+    loadMarketData(),
+    loadSaudiStocks(),
+    loadRecs()
+  ]);
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logoutAdmin(){
+
+  if(sb)
+    await sb.auth.signOut();
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   GIFT GAME STATS
+========================================================= */
+
+
+/*
+  عدّ الأحداث حسب النوع
+*/
+
+async function eventCount(
+  type,
+  box = null
+){
+
+  let q =
+    sb
+      .from('gift_game_events')
+      .select(
+        'id',
+        {
+          count:'exact',
+          head:true
+        }
+      )
+      .eq(
+        'event_type',
+        type
+      );
+
+
+  if(box !== null){
+
+    q =
+      q.eq(
+        'box_number',
+        box
+      );
+
+  }
+
+
+  const r = await q;
+
+
+  if(r.error){
+
+    console.error(
+      'Gift event count error:',
+      r.error
+    );
+
+    return {
+      count:0,
+      error:r.error
+    };
+
+  }
+
+
+  return {
+    count:r.count || 0,
+    error:null
+  };
+
+}
+
+
+/*
+  حساب الزوار الفريدين
+  باستخدام visitor_id
+*/
+
+async function uniqueVisitorCount(){
+
+  const r =
+    await sb
+      .from('gift_game_events')
+      .select('visitor_id')
+      .not(
+        'visitor_id',
+        'is',
+        null
+      );
+
+
+  if(r.error){
+
+    console.error(
+      'Unique visitor error:',
+      r.error
+    );
+
+    return {
+      count:0,
+      error:r.error
+    };
+
+  }
+
+
+  const unique =
+    new Set();
+
+
+  (r.data || []).forEach(
+    row => {
+
+      if(row.visitor_id){
+
+        unique.add(
+          row.visitor_id
+        );
+
+      }
+
+    }
+  );
+
+
+  return {
+    count:unique.size,
+    error:null
+  };
+
+}
+
+
+/*
+  تحميل كل إحصائيات اللعبة
+*/
+
+async function loadGiftStats(){
+
+  if(!sb || !session)
+    return;
+
+
+  msg(
+    'giftMsg',
+    '⏳ جاري تحميل إحصائيات اللعبة...'
+  );
+
+
+  try{
+
+
+    /*
+      الزوار الفريدون
+    */
+
+    const visitors =
+      await uniqueVisitorCount();
+
+
+    /*
+      باقي الأحداث
+    */
+
+    const [
+      names,
+      plays,
+      shares
+    ] =
+      await Promise.all([
+
+        eventCount('start'),
+
+        eventCount('play'),
+
+        eventCount('share')
+
+      ]);
+
+
+    /*
+      لو حصل خطأ صلاحيات
+    */
+
+    const errors = [];
+
+    if(visitors.error)
+      errors.push(visitors.error);
+
+    if(names.error)
+      errors.push(names.error);
+
+    if(plays.error)
+      errors.push(plays.error);
+
+    if(shares.error)
+      errors.push(shares.error);
+
+
+    /*
+      عرض الأرقام
+    */
+
+    document.getElementById(
+      'giftVisitors'
+    ).textContent =
+      visitors.count.toLocaleString(
+        'en-US'
+      );
+
+
+    document.getElementById(
+      'giftNames'
+    ).textContent =
+      names.count.toLocaleString(
+        'en-US'
+      );
+
+
+    document.getElementById(
+      'giftSelections'
+    ).textContent =
+      plays.count.toLocaleString(
+        'en-US'
+      );
+
+
+    document.getElementById(
+      'giftShares'
+    ).textContent =
+      shares.count.toLocaleString(
+        'en-US'
+      );
+
+
+    /*
+      عدد اختيارات كل صندوق
+    */
+
+    const boxResults =
+      await Promise.all([
+
+        eventCount('play',1),
+
+        eventCount('play',2),
+
+        eventCount('play',3),
+
+        eventCount('play',4),
+
+        eventCount('play',5)
+
+      ]);
+
+
+    const boxErrors =
+      boxResults.filter(
+        x => x.error
+      );
+
+
+    boxErrors.forEach(
+      x => errors.push(x.error)
+    );
+
+
+    document.getElementById(
+      'boxStats'
+    ).innerHTML =
+
+      boxResults
+        .map(
+          (result,index) => `
+
+            <div class="box-stat">
+
+              <b>
+                الصندوق ${index + 1}
+              </b>
+
+              <span>
+                ${result.count.toLocaleString('en-US')}
+              </span>
+
+            </div>
+
+          `
+        )
+        .join('');
+
+
+    /*
+      آخر النتائج
+    */
+
+    const r =
+      await sb
+        .from('gift_game_events')
+        .select(
+          'player_name,box_number,prize,created_at'
+        )
+        .eq(
+          'event_type',
+          'play'
+        )
+        .order(
+          'created_at',
+          {
+            ascending:false
+          }
+        )
+        .limit(100);
+
+
+    const body =
+      document.getElementById(
+        'giftParticipants'
+      );
+
+
+    if(r.error){
+
+      body.innerHTML = `
+
+        <tr>
+
+          <td
+            colspan="4"
+            class="empty"
+          >
+
+            ❌ ${esc(r.error.message)}
+
+          </td>
+
+        </tr>
+
+      `;
+
+
+      errors.push(
+        r.error
+      );
+
+    }else{
+
+
+      if(!r.data || !r.data.length){
+
+        body.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="4"
+              class="empty"
+            >
+
+              لا توجد نتائج حتى الآن.
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }else{
+
+
+        body.innerHTML =
+
+          r.data
+            .map(
+              x => `
+
+                <tr>
+
+                  <td>
+                    ${esc(
+                      x.player_name ||
+                      'صديقنا'
+                    )}
+                  </td>
+
+                  <td>
+                    🎁 الصندوق
+                    ${esc(
+                      x.box_number
+                    )}
+                  </td>
+
+                  <td>
+                    ${esc(
+                      x.prize ||
+                      '—'
+                    )}
+                  </td>
+
+                  <td>
+                    ${esc(
+                      fmtDate(
+                        x.created_at
+                      )
+                    )}
+                  </td>
+
+                </tr>
+
+              `
+            )
+            .join('');
+
+      }
+
+    }
+
+
+    /*
+      عرض الرسالة النهائية
+    */
+
+    if(errors.length){
+
+      const firstError =
+        errors[0];
+
+      console.error(
+        'Gift stats errors:',
+        errors
+      );
+
+
+      msg(
+        'giftMsg',
+        '❌ توجد مشكلة في صلاحيات قراءة بيانات اللعبة: ' +
+        (
+          firstError?.message ||
+          'خطأ غير معروف'
+        ),
+        true
+      );
+
+
+    }else{
+
+      msg(
+        'giftMsg',
+        '✅ تم تحديث إحصائيات اللعبة.'
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(
+      'Gift stats error:',
+      error
+    );
+
+
+    msg(
+      'giftMsg',
+      '❌ حدث خطأ أثناء تحميل إحصائيات اللعبة: ' +
+      (
+        error?.message ||
+        'خطأ غير معروف'
+      ),
+      true
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   MARKET
+========================================================= */
+
+function selectMarket(m){
+
+  selectedMarket = m;
+
+
+  document
+    .getElementById('tabNasdaq')
+    .classList
+    .toggle(
+      'active',
+      m === 'nasdaq100'
+    );
+
+
+  document
+    .getElementById('tabSaudi')
+    .classList
+    .toggle(
+      'active',
+      m === 'tasi'
+    );
+
+
+  loadMarketData();
+
+}
+
+
+function fillMarket(d){
+
+  [
+    'title',
+    'date_label',
+    'price',
+    'previous_close',
+    'change_value',
+    'change_percent',
+    'trend',
+    'summary'
+  ].forEach(k => {
+
+    const id =
+      'm_' + k;
+
+    document.getElementById(
+      id
+    ).value =
+      d?.[k] ?? '';
+
+  });
+
+
+  [
+    'support_1',
+    'support_2',
+    'support_3',
+    'resistance_1',
+    'resistance_2',
+    'resistance_3'
+  ].forEach(k => {
+
+    document.getElementById(
+      'm_' +
+      k.replace('_','')
+    ).value =
+      d?.[k] ?? '';
+
+  });
+
+}
+
+
+async function loadMarketData(){
+
+  if(!sb || !session)
+    return;
+
+
+  const r =
+    await sb
+      .from('market_data')
+      .select('*')
+      .eq(
+        'market',
+        selectedMarket
+      )
+      .maybeSingle();
+
+
+  if(r.error){
+
+    msg(
+      'marketMsg',
+      '❌ ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  if(!r.data){
+
+    fillMarket(null);
+
+    msg(
+      'marketMsg',
+      '⚠️ لا توجد بيانات لهذا السوق.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  fillMarket(
+    r.data
+  );
+
+
+  msg(
+    'marketMsg',
+    '✅ تم تحميل البيانات الحالية.'
+  );
+
+}
+
+
+async function saveMarketData(){
+
+  if(!sb || !session){
+
+    msg(
+      'marketMsg',
+      '❌ يجب تسجيل الدخول أولًا.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  const p = {
+
+    market:selectedMarket,
+
+    title:
+      val('m_title') ||
+      null,
+
+    date_label:
+      val('m_date_label') ||
+      null,
+
+    price:
+      num('m_price'),
+
+    previous_close:
+      num('m_previous_close'),
+
+    change_value:
+      num('m_change_value'),
+
+    change_percent:
+      num('m_change_percent'),
+
+    trend:
+      val('m_trend') ||
+      null,
+
+    support_1:
+      num('m_support1'),
+
+    support_2:
+      num('m_support2'),
+
+    support_3:
+      num('m_support3'),
+
+    resistance_1:
+      num('m_resistance1'),
+
+    resistance_2:
+      num('m_resistance2'),
+
+    resistance_3:
+      num('m_resistance3'),
+
+    summary:
+      val('m_summary') ||
+      null,
+
+    updated_at:
+      new Date().toISOString()
+
+  };
+
+
+  if(p.price === null){
+
+    msg(
+      'marketMsg',
+      '⚠️ اكتب السعر بشكل صحيح.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  const r =
+    await sb
+      .from('market_data')
+      .upsert(
+        p,
+        {
+          onConflict:'market'
+        }
+      )
+      .select()
+      .single();
+
+
+  if(r.error){
+
+    msg(
+      'marketMsg',
+      '❌ ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  fillMarket(
+    r.data
+  );
+
+
+  msg(
+    'marketMsg',
+    '✅ تم حفظ بيانات السوق بنجاح.'
+  );
+
+}
+
+
+/* =========================================================
+   SAUDI STOCKS
+========================================================= */
+
+async function loadSaudiStocks(){
+
+  const list =
+    document.getElementById(
+      'stockList'
+    );
+
+  const select =
+    document.getElementById(
+      'stockSelect'
+    );
+
+
+  const r =
+    await sb
+      .from('saudi_stocks')
+      .select('*')
+      .order(
+        'symbol',
+        {
+          ascending:true
+        }
+      );
+
+
+  if(r.error){
+
+    list.innerHTML =
+      `
+        <div class="empty">
+          ❌ ${esc(
+            r.error.message
+          )}
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  stocksCache =
+    r.data || [];
+
+
+  select.innerHTML =
+    `
+      <option value="">
+        ➕ إضافة سهم جديد
+      </option>
+    ` +
+
+    stocksCache
+      .map(
+        s => `
+
+          <option
+            value="${esc(s.symbol)}"
+          >
+
+            ${esc(s.symbol)}
+            —
+            ${esc(s.name)}
+
+          </option>
+
+        `
+      )
+      .join('');
+
+
+  if(!stocksCache.length){
+
+    list.innerHTML =
+      `
+        <div class="empty">
+          لا توجد أسهم حاليًا.
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+
+    '<div class="rec-list">' +
+
+    stocksCache
+      .map(
+        s => `
+
+          <div class="rec-item">
+
+            <div class="rec-head">
+
+              <div class="rec-name">
+
+                ${esc(s.name)}
+
+                <span class="rec-symbol">
+                  • ${esc(s.symbol)}
+                </span>
+
+              </div>
+
+              <div class="market-badge">
+                ${esc(
+                  s.sector || '—'
+                )}
+              </div>
+
+            </div>
+
+
+            <div class="rec-info">
+
+              السعر:
+              <strong>
+                ${s.price ?? '—'}
+              </strong>
+
+              • التغير:
+              ${s.change_value ?? '—'}
+
+              • النسبة:
+              ${s.change_percent ?? '—'}%
+
+              <br>
+
+              الافتتاح:
+              ${s.open_price ?? '—'}
+
+              • الأعلى:
+              ${s.high_price ?? '—'}
+
+              • الأدنى:
+              ${s.low_price ?? '—'}
+
+              <br>
+
+              الإغلاق السابق:
+              ${s.previous_close ?? '—'}
+
+              • التداول:
+              ${s.volume ?? '—'}
+
+            </div>
+
+
+            <div class="rec-levels">
+
+              <div class="rec-level">
+
+                <b>
+                  🟢 دعم 1
+                </b>
+
+                ${s.support_1 ?? '—'}
+
+              </div>
+
+
+              <div class="rec-level">
+
+                <b>
+                  🟢 دعم 2
+                </b>
+
+                ${s.support_2 ?? '—'}
+
+              </div>
+
+
+              <div class="rec-level resistance">
+
+                <b>
+                  🟡 مقاومة 1
+                </b>
+
+                ${s.resistance_1 ?? '—'}
+
+              </div>
+
+
+              <div class="rec-level resistance">
+
+                <b>
+                  🟡 مقاومة 2
+                </b>
+
+                ${s.resistance_2 ?? '—'}
+
+              </div>
+
+            </div>
+
+
+            <div class="rec-scenario">
+
+              <strong>
+                🎯 الهدف:
+              </strong>
+
+              ${s.target ?? '—'}
+
+              &nbsp; | &nbsp;
+
+              <strong>
+                🛑 وقف الخسارة:
+              </strong>
+
+              ${s.stop_loss ?? '—'}
+
+            </div>
+
+
+            <button
+              class="secondary-btn"
+              onclick="editSaudiStock('${esc(s.symbol)}')"
+            >
+              ✏️ تعديل السهم
+            </button>
+
+
+            <button
+              class="delete-btn"
+              onclick="deleteSaudiStock('${esc(s.symbol)}')"
+            >
+              🗑 حذف السهم
+            </button>
+
+          </div>
+
+        `
+      )
+      .join('') +
+
+    '</div>';
+
+}
+
+
+function fillStock(d){
+
+  const m = {
+
+    stock_symbol:'symbol',
+
+    stock_name:'name',
+
+    stock_sector:'sector',
+
+    stock_price:'price',
+
+    stock_change_value:'change_value',
+
+    stock_change_percent:'change_percent',
+
+    stock_open:'open_price',
+
+    stock_high:'high_price',
+
+    stock_low:'low_price',
+
+    stock_previous_close:'previous_close',
+
+    stock_volume:'volume',
+
+    stock_support1:'support_1',
+
+    stock_support2:'support_2',
+
+    stock_resistance1:'resistance_1',
+
+    stock_resistance2:'resistance_2',
+
+    stock_target:'target',
+
+    stock_stop_loss:'stop_loss',
+
+    stock_analysis:'analysis'
+
+  };
+
+
+  Object.entries(m).forEach(
+    ([id,k]) => {
+
+      document.getElementById(
+        id
+      ).value =
+        d?.[k] ?? '';
+
+    }
+  );
+
+}
+
+
+function loadSelectedStock(){
+
+  const s =
+    stocksCache.find(
+      x =>
+        String(x.symbol) ===
+        String(
+          val('stockSelect')
+        )
+    );
+
+
+  if(s)
+    fillStock(s);
+  else
+    clearStockForm();
+
+}
+
+
+function editSaudiStock(symbol){
+
+  const s =
+    stocksCache.find(
+      x =>
+        String(x.symbol) ===
+        String(symbol)
+    );
+
+
+  if(!s)
+    return;
+
+
+  document.getElementById(
+    'stockSelect'
+  ).value =
+    s.symbol;
+
+
+  fillStock(s);
+
+
+  document.getElementById(
+    'stock_symbol'
+  ).scrollIntoView({
+    behavior:'smooth',
+    block:'center'
+  });
+
+}
+
+
+async function saveSaudiStock(){
+
+  const symbol =
+    val('stock_symbol');
+
+  const name =
+    val('stock_name');
+
+
+  if(!symbol || !name){
+
+    msg(
+      'stockMsg',
+      '⚠️ اكتب رمز السهم واسم السهم.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  const p = {
+
+    symbol,
+
+    name,
+
+    sector:
+      val('stock_sector') ||
+      null,
+
+    price:
+      num('stock_price'),
+
+    change_value:
+      num('stock_change_value'),
+
+    change_percent:
+      num('stock_change_percent'),
+
+    open_price:
+      num('stock_open'),
+
+    high_price:
+      num('stock_high'),
+
+    low_price:
+      num('stock_low'),
+
+    previous_close:
+      num('stock_previous_close'),
+
+    volume:
+      num('stock_volume'),
+
+    support_1:
+      num('stock_support1'),
+
+    support_2:
+      num('stock_support2'),
+
+    resistance_1:
+      num('stock_resistance1'),
+
+    resistance_2:
+      num('stock_resistance2'),
+
+    target:
+      num('stock_target'),
+
+    stop_loss:
+      num('stock_stop_loss'),
+
+    analysis:
+      val('stock_analysis') ||
+      null,
+
+    updated_at:
+      new Date().toISOString()
+
+  };
+
+
+  const r =
+    await sb
+      .from('saudi_stocks')
+      .upsert(
+        p,
+        {
+          onConflict:'symbol'
+        }
+      )
+      .select()
+      .single();
+
+
+  if(r.error){
+
+    msg(
+      'stockMsg',
+      '❌ ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  fillStock(
+    r.data
+  );
+
+
+  msg(
+    'stockMsg',
+    '✅ تم حفظ بيانات السهم بنجاح.'
+  );
+
+
+  await loadSaudiStocks();
+
+}
+
+
+function clearStockForm(){
+
+  [
+
+    'stock_symbol',
+
+    'stock_name',
+
+    'stock_sector',
+
+    'stock_price',
+
+    'stock_change_value',
+
+    'stock_change_percent',
+
+    'stock_open',
+
+    'stock_high',
+
+    'stock_low',
+
+    'stock_previous_close',
+
+    'stock_volume',
+
+    'stock_support1',
+
+    'stock_support2',
+
+    'stock_resistance1',
+
+    'stock_resistance2',
+
+    'stock_target',
+
+    'stock_stop_loss',
+
+    'stock_analysis'
+
+  ].forEach(
+    id => {
+
+      const e =
+        document.getElementById(id);
+
+      if(e)
+        e.value = '';
+
+    }
+  );
+
+
+  document.getElementById(
+    'stockSelect'
+  ).value = '';
+
+
+  msg(
+    'stockMsg',
+    ''
+  );
+
+}
+
+
+async function deleteSaudiStock(symbol){
+
+  if(
+    !confirm(
+      'هل أنت متأكد من حذف سهم ' +
+      symbol +
+      '؟'
+    )
+  )
+    return;
+
+
+  const r =
+    await sb
+      .from('saudi_stocks')
+      .delete()
+      .eq(
+        'symbol',
+        symbol
+      );
+
+
+  if(r.error){
+
+    msg(
+      'stockMsg',
+      '❌ ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  clearStockForm();
+
+
+  msg(
+    'stockMsg',
+    '✅ تم حذف السهم.'
+  );
+
+
+  await loadSaudiStocks();
+
+}
+
+
+/* =========================================================
+   RECOMMENDATIONS
+========================================================= */
+
+async function addRec(){
+
+  const r = {
+
+    market:
+      val('market'),
+
+    symbol:
+      val('symbol'),
+
+    name:
+      val('name'),
+
+    entry:
+      val('entry') ||
+      null,
+
+    target:
+      val('target') ||
+      null,
+
+    stop_loss:
+      val('stop') ||
+      null,
+
+    support1:
+      val('support1') ||
+      null,
+
+    support2:
+      val('support2') ||
+      null,
+
+    resistance1:
+      val('resistance1') ||
+      null,
+
+    resistance2:
+      val('resistance2') ||
+      null,
+
+    scenario:
+      val('scenario') ||
+      null,
+
+    status:
+      val('status'),
+
+    note:
+      val('note') ||
+      null
+
+  };
+
+
+  if(!r.symbol || !r.name){
+
+    msg(
+      'saveMsg',
+      '⚠️ اكتب اسم السهم والرمز أولًا.',
+      true
+    );
+
+    return;
+
+  }
+
+
+  const type =
+    val('type');
+
+
+  if(type){
+
+    r.note =
+      'النوع: ' +
+      type +
+      (
+        r.note
+          ? ' — ' + r.note
+          : ''
+      );
+
+  }
+
+
+  const x =
+    await sb
+      .from('recommendations')
+      .insert(r);
+
+
+  if(x.error){
+
+    msg(
+      'saveMsg',
+      '❌ ' +
+      x.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  clearForm();
+
+
+  msg(
+    'saveMsg',
+    '✅ تم حفظ التحليل بنجاح.'
+  );
+
+
+  await loadRecs();
+
+}
+
+
+function clearForm(){
+
+  [
+
+    'symbol',
+
+    'name',
+
+    'type',
+
+    'entry',
+
+    'target',
+
+    'stop',
+
+    'support1',
+
+    'support2',
+
+    'resistance1',
+
+    'resistance2',
+
+    'scenario',
+
+    'note'
+
+  ].forEach(
+    id => {
+
+      const e =
+        document.getElementById(id);
+
+      if(e)
+        e.value = '';
+
+    }
+  );
+
+}
+
+
+async function loadRecs(){
+
+  const list =
+    document.getElementById(
+      'list'
+    );
+
+
+  const r =
+    await sb
+      .from('recommendations')
+      .select('*')
+      .order(
+        'created_at',
+        {
+          ascending:false
+        }
+      );
+
+
+  if(r.error){
+
+    list.innerHTML =
+      `
+        <div class="empty">
+          ❌ ${esc(
+            r.error.message
+          )}
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  if(!r.data?.length){
+
+    list.innerHTML =
+      `
+        <div class="empty">
+          لا توجد تحليلات حاليًا.
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+
+    '<div class="rec-list">' +
+
+    r.data
+      .map(
+        x => `
+
+          <div class="rec-item">
+
+            <div class="rec-head">
+
+              <div class="rec-name">
+
+                ${esc(x.name)}
+
+                <span class="rec-symbol">
+                  • ${esc(x.symbol)}
+                </span>
+
+              </div>
+
+
+              <div class="market-badge">
+
+                ${
+                  x.market === 'saudi'
+                    ? '🇸🇦 السوق السعودي'
+                    : '🇺🇸 السوق الأمريكي'
+                }
+
+              </div>
+
+            </div>
+
+
+            <div class="rec-info">
+
+              الحالة:
+
+              ${esc(
+                statusLabel[x.status] ||
+                x.status ||
+                '—'
+              )}
+
+              <br>
+
+              الدخول:
+              ${esc(x.entry || '—')}
+
+              • الهدف:
+              ${esc(x.target || '—')}
+
+              • وقف الخسارة:
+              ${esc(x.stop_loss || '—')}
+
+            </div>
+
+
+            <div class="rec-levels">
+
+
+              <div class="rec-level">
+
+                <b>
+                  🟢 دعم 1
+                </b>
+
+                ${esc(
+                  x.support1 ||
+                  '—'
+                )}
+
+              </div>
+
+
+              <div class="rec-level">
+
+                <b>
+                  🟢 دعم 2
+                </b>
+
+                ${esc(
+                  x.support2 ||
+                  '—'
+                )}
+
+              </div>
+
+
+              <div class="rec-level resistance">
+
+                <b>
+                  🟡 مقاومة 1
+                </b>
+
+                ${esc(
+                  x.resistance1 ||
+                  '—'
+                )}
+
+              </div>
+
+
+              <div class="rec-level resistance">
+
+                <b>
+                  🟡 مقاومة 2
+                </b>
+
+                ${esc(
+                  x.resistance2 ||
+                  '—'
+                )}
+
+              </div>
+
+
+            </div>
+
+
+            <div class="rec-scenario">
+
+              <strong>
+                🎯 السيناريو:
+              </strong>
+
+              ${esc(
+                x.scenario ||
+                '—'
+              )}
+
+            </div>
+
+
+            <button
+              class="delete-btn"
+              onclick="delRec('${String(x.id).replace(/'/g,"\\'")}')"
+            >
+              🗑 حذف التحليل
+            </button>
+
+
+          </div>
+
+        `
+      )
+      .join('') +
+
+    '</div>';
+
+}
+
+
+async function delRec(id){
+
+  if(
+    !confirm(
+      'هل تريد حذف هذا التحليل؟'
+    )
+  )
+    return;
+
+
+  const r =
+    await sb
+      .from('recommendations')
+      .delete()
+      .eq(
+        'id',
+        id
+      );
+
+
+  if(r.error){
+
+    msg(
+      'saveMsg',
+      '❌ ' +
+      r.error.message,
+      true
+    );
+
+    return;
+
+  }
+
+
+  msg(
+    'saveMsg',
+    '✅ تم حذف التحليل.'
+  );
+
+
+  await loadRecs();
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
 init();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
