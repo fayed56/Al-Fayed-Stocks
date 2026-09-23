@@ -97,7 +97,8 @@ button{
 }
 
 .primary,
-.share{
+.share,
+.again{
   border:0;
   border-radius:14px;
   padding:13px 22px;
@@ -113,8 +114,15 @@ button{
   color:#06131a
 }
 
+.again{
+  background:transparent;
+  color:#fff;
+  border:1px solid #31505a
+}
+
 .primary:hover,
-.share:hover{
+.share:hover,
+.again:hover{
   transform:translateY(-2px)
 }
 
@@ -152,8 +160,7 @@ button{
 }
 
 .box:disabled{
-  cursor:default;
-  opacity:.75
+  cursor:default
 }
 
 .num{
@@ -169,37 +176,31 @@ button{
   border:1px solid #20c878;
   border-radius:18px;
   padding:20px;
-  font-size:19px;
+  font-size:20px;
   font-weight:800;
-  line-height:1.9
+  line-height:1.8
 }
 
 .result small{
   display:block;
   color:#9fb1b7;
   font-size:13px;
-  margin-top:10px;
+  margin-top:8px;
   font-weight:500
 }
 
-.whatsapp-status{
-  margin-top:15px;
-  color:#20c878;
-  font-size:14px;
-  font-weight:800
-}
-
-.share{
-  display:none;
-  text-decoration:none;
-  margin-top:15px
+.actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px
 }
 
 .note{
   font-size:12px;
   color:#82979e;
-  margin-top:12px;
-  line-height:1.8
+  margin-top:12px
 }
 
 .visits{
@@ -212,11 +213,14 @@ button{
   display:none!important
 }
 
-@media(max-width:620px){
+.redirect{
+  margin-top:15px;
+  color:#20c878;
+  font-size:14px;
+  font-weight:800
+}
 
-  .wrap{
-    padding:22px 16px
-  }
+@media(max-width:620px){
 
   .boxes{
     grid-template-columns:repeat(2,1fr)
@@ -239,12 +243,15 @@ button{
 
 </head>
 
+
 <body>
+
 
 <main class="wrap">
 
+
 <div class="logo">
-  Al Fayed <span>Stocks</span>
+Al Fayed <span>Stocks</span>
 </div>
 
 
@@ -255,17 +262,11 @@ button{
 <section id="intro">
 
 <h1>
-🎁 اختار رقم وخلي المفاجأة علينا!
+🎁 اختار صندوقك وخلي المفاجأة علينا!
 </h1>
 
-<<div class="sub">
-
-قدامك 5 اختيارات 👇<br>
-
-كل رقم وراه مفاجأة مختلفة 😍<br>
-
-اختار صندوق واحد فقط وشوف إيه المفاجأة اللي مستنياك 🎉
-
+<div class="sub">
+اكتب اسمك أولًا وبعدها هتظهر لك الصناديق 😍
 </div>
 
 
@@ -311,14 +312,14 @@ id="game"
 class="hidden"
 >
 
+
 <h1>
 أهلًا <span id="playerName"></span> 👋
 </h1>
 
+
 <div class="sub">
-
-اختار صندوق واحد فقط وشوف هديتك 🎁
-
+اختار صندوق واحد فقط وشوف المفاجأة 🎁
 </div>
 
 
@@ -326,6 +327,7 @@ class="hidden"
 class="boxes"
 id="boxes"
 >
+
 
 <button
 class="box"
@@ -381,13 +383,12 @@ data-box="5"
 </span>
 </button>
 
+
 </div>
 
 
 
-<!-- =========================
-     RESULT
-========================= -->
+<!-- RESULT -->
 
 <div
 class="result"
@@ -397,29 +398,37 @@ id="result"
 <div id="resultText"></div>
 
 
+<small>
+جاري تحويلك إلى واتساب 🎁
+</small>
+
+
 <div
-class="whatsapp-status"
-id="whatsappStatus"
+class="redirect"
+id="redirectText"
 >
-⏳ جاري تحويلك إلى واتساب...
+📲 جاري فتح واتساب...
 </div>
 
 
-<a
-id="shareWhatsapp"
+<div class="actions">
+
+<button
 class="share"
-target="_blank"
-rel="noopener"
+id="shareWhatsapp"
 >
 📱 فتح واتساب الآن
-</a>
+</button>
 
 
-<small>
+<button
+class="again"
+id="again"
+>
+🔄 تجربة جديدة
+</button>
 
-سيتم فتح واتساب وإرسال رسالة بالهدية التي ظهرت لك.
-
-</small>
+</div>
 
 </div>
 
@@ -440,93 +449,23 @@ id="visits"
 <script>
 
 /* =========================================================
-   SUPABASE
+   VARIABLES
 ========================================================= */
 
 let supabaseClient = null;
 
+let visitorId = null;
 
-/* =========================================================
-   GAME VARIABLES
-========================================================= */
-
-let visitorId = '';
 let playerName = '';
+
 let selectedBox = null;
+
 let selectedResult = '';
-let gameStarted = false;
 
-
-/* =========================================================
-   WHATSAPP NUMBER
-========================================================= */
-
-const whatsappPhone = '966575944806';
 
 
 /* =========================================================
-   PRIZES
-========================================================= */
-
-const prizes = {
-
-  1:
-  '🎉 خصم 20% على سعر الاشتراك',
-
-  2:
-  '🔥 أسبوع مجاني على باقة الشهر',
-
-  3:
-  '⭐ سهم مجاني من باقة الـ Standard',
-
-  4:
-  '💎 سهم مجاني من باقة الـ VIP',
-
-  5:
-  '📈 سهم للمتابعة'
-
-};
-
-
-/* =========================================================
-   CREATE VISITOR ID
-========================================================= */
-
-function createVisitorId(){
-
-  const key =
-    'alfayed_gift_visitor_id';
-
-  let id =
-    localStorage.getItem(key);
-
-
-  if(!id){
-
-    id =
-      'visitor_' +
-      Date.now() +
-      '_' +
-      Math.random()
-        .toString(36)
-        .substring(2,10);
-
-
-    localStorage.setItem(
-      key,
-      id
-    );
-
-  }
-
-
-  return id;
-
-}
-
-
-/* =========================================================
-   SUPABASE INIT
+   SUPABASE
 ========================================================= */
 
 function initSupabase(){
@@ -570,30 +509,71 @@ function initSupabase(){
 }
 
 
+
+/* =========================================================
+   VISITOR ID
+========================================================= */
+
+function getVisitorId(){
+
+  const key =
+    'alfayed_gift_visitor_id';
+
+
+  let id =
+    localStorage.getItem(key);
+
+
+  if(!id){
+
+    id =
+      'visitor_' +
+      Date.now() +
+      '_' +
+      Math.random()
+        .toString(36)
+        .substring(2,10);
+
+
+    localStorage.setItem(
+      key,
+      id
+    );
+
+  }
+
+
+  return id;
+
+}
+
+
+
 /* =========================================================
    INSERT EVENT
 ========================================================= */
 
 async function logEvent(
   eventType,
-  name = null,
-  boxNumber = null,
-  prize = null
+  data = {}
 ){
 
   try{
 
     if(!supabaseClient){
 
+      console.error(
+        'Supabase غير متصل'
+      );
+
       return {
-        success:false,
-        error:'Supabase غير متصل'
+        success:false
       };
 
     }
 
 
-    const payload = {
+    const row = {
 
       event_type:
         eventType,
@@ -602,23 +582,25 @@ async function logEvent(
         visitorId,
 
       player_name:
-        name,
+        data.player_name ||
+        playerName ||
+        null,
 
       box_number:
-        boxNumber,
+        data.box_number ??
+        null,
 
       prize:
-        prize
+        data.prize ||
+        null
 
     };
 
 
-    const {data,error} =
+    const {error} =
       await supabaseClient
         .from('gift_game_events')
-        .insert(payload)
-        .select('id')
-        .single();
+        .insert(row);
 
 
     if(error){
@@ -638,14 +620,12 @@ async function logEvent(
 
     console.log(
       'Gift event saved:',
-      eventType,
-      data
+      eventType
     );
 
 
     return {
-      success:true,
-      data:data
+      success:true
     };
 
 
@@ -666,25 +646,24 @@ async function logEvent(
 }
 
 
+
 /* =========================================================
-   REGISTER PAGE VISIT
+   START VISITOR
 ========================================================= */
 
-async function registerVisit(){
+async function registerVisitor(){
 
   visitorId =
-    createVisitorId();
+    getVisitorId();
 
 
-  /*
-    تسجيل زيارة الصفحة
-  */
-
-  await logEvent(
-    'visit'
+  console.log(
+    'Visitor ID:',
+    visitorId
   );
 
 }
+
 
 
 /* =========================================================
@@ -694,10 +673,15 @@ async function registerVisit(){
 async function startGame(){
 
   const input =
-    document.getElementById('name');
+    document.getElementById(
+      'name'
+    );
+
 
   const error =
-    document.getElementById('nameError');
+    document.getElementById(
+      'nameError'
+    );
 
 
   const value =
@@ -731,18 +715,8 @@ async function startGame(){
   }
 
 
-  if(gameStarted){
-
-    return;
-
-  }
-
-
   playerName =
     value;
-
-
-  gameStarted = true;
 
 
   document.getElementById(
@@ -753,55 +727,151 @@ async function startGame(){
 
   document.getElementById(
     'intro'
-  ).classList.add('hidden');
+  ).classList.add(
+    'hidden'
+  );
 
 
   document.getElementById(
     'game'
-  ).classList.remove('hidden');
+  ).classList.remove(
+    'hidden'
+  );
 
 
   /*
-    تسجيل بدء اللعبة والاسم
+    تسجيل بداية اللعبة
+    داخل gift_game_events
   */
 
   await logEvent(
     'start',
-    playerName,
-    null,
-    null
+    {
+      player_name:
+        playerName
+    }
   );
 
 }
 
 
+
 /* =========================================================
-   BUILD WHATSAPP MESSAGE
+   THE FIVE PRIZES
 ========================================================= */
 
-function buildWhatsappMessage(){
+const prizes = {
 
-  return `🎁 مرحبًا Al Fayed Stocks
+  1:
+    '🎉 مبروك! حصلت على خصم 20% على سعر الاشتراك.',
 
-أنا ${playerName} اخترت الصندوق رقم ${selectedBox}.
+  2:
+    '🎁 مبروك! حصلت على أسبوع مجاني على باقة الشهر.',
 
-🎁 هديتي:
+  3:
+    '⭐ مبروك! حصلت على سهم مجاني من باقة الـ Standard.',
+
+  4:
+    '👑 مبروك! حصلت على سهم مجاني من باقة الـ VIP.',
+
+  5:
+    '📊 مبروك! حصلت على سهم للمتابعة.'
+
+};
+
+
+
+/* =========================================================
+   WHATSAPP MESSAGE
+========================================================= */
+
+function getWhatsappUrl(){
+
+  const phone =
+    '966575944806';
+
+
+  const message =
+`🎁 مفاجأة Al Fayed Stocks
+
+👤 الاسم: ${playerName}
+
+🎁 الصندوق: ${selectedBox}
+
+🏆 المفاجأة:
 ${selectedResult}
 
-حابب أستفيد بيها.
+أرغب في الاستفادة من المفاجأة الخاصة بي.`;
 
-شكراً ❤️`;
+
+
+  return (
+    'https://wa.me/' +
+    phone +
+    '?text=' +
+    encodeURIComponent(
+      message
+    )
+  );
 
 }
+
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+async function shareWhatsapp(){
+
+  if(
+    !playerName ||
+    !selectedResult
+  ){
+
+    return;
+
+  }
+
+
+  /*
+    تسجيل مشاركة واتساب
+  */
+
+  await logEvent(
+    'share',
+    {
+      player_name:
+        playerName,
+
+      box_number:
+        selectedBox,
+
+      prize:
+        selectedResult
+
+    }
+  );
+
+
+  window.location.href =
+    getWhatsappUrl();
+
+}
+
 
 
 /* =========================================================
    CHOOSE BOX
 ========================================================= */
 
-async function chooseBox(button){
+async function chooseBox(
+  button
+){
 
-  if(selectedBox !== null){
+  if(
+    selectedBox !== null
+  ){
 
     return;
 
@@ -819,28 +889,32 @@ async function chooseBox(button){
 
 
   /*
-    إيقاف جميع الصناديق
+    تعطيل كل الصناديق
   */
 
   const buttons =
-    document.querySelectorAll('.box');
+    document.querySelectorAll(
+      '.box'
+    );
 
 
   buttons.forEach(
     function(item){
 
-      item.disabled = true;
+      item.disabled =
+        true;
 
     }
   );
 
 
-  /*
-    تغيير الصندوق المختار
-  */
-
   button.innerHTML =
-    '🎉<span class="num">تم الاختيار</span>';
+    `
+      🎉
+      <span class="num">
+        اختيارك
+      </span>
+    `;
 
 
   /*
@@ -849,11 +923,8 @@ async function chooseBox(button){
 
   document.getElementById(
     'resultText'
-  ).innerHTML =
-
-    `🎁 مبروك ${escapeHtml(playerName)}!<br><br>
-     اخترت الصندوق رقم ${selectedBox}<br><br>
-     <strong>${escapeHtml(selectedResult)}</strong>`;
+  ).textContent =
+    selectedResult;
 
 
   document.getElementById(
@@ -863,72 +934,65 @@ async function chooseBox(button){
 
 
   /*
-    إنشاء رابط واتساب
-  */
-
-  const message =
-    buildWhatsappMessage();
-
-
-  const whatsappUrl =
-    'https://wa.me/' +
-    whatsappPhone +
-    '?text=' +
-    encodeURIComponent(message);
-
-
-  /*
-    زر احتياطي في حالة عدم التحويل
-  */
-
-  const shareButton =
-    document.getElementById(
-      'shareWhatsapp'
-    );
-
-
-  shareButton.href =
-    whatsappUrl;
-
-
-  /*
     تسجيل اختيار الصندوق
   */
 
   const playResult =
     await logEvent(
       'play',
-      playerName,
-      selectedBox,
-      selectedResult
+      {
+        player_name:
+          playerName,
+
+        box_number:
+          selectedBox,
+
+        prize:
+          selectedResult
+
+      }
     );
 
 
   /*
-    تسجيل المشاركة
-    قبل التحويل إلى واتساب
+    تسجيل share مباشرة
+    لأن التحويل إلى واتساب تلقائي
   */
 
-  await logEvent(
-    'share',
-    playerName,
-    selectedBox,
-    selectedResult
-  );
+  const shareResult =
+    await logEvent(
+      'share',
+      {
+        player_name:
+          playerName,
+
+        box_number:
+          selectedBox,
+
+        prize:
+          selectedResult
+
+      }
+    );
 
 
   /*
-    رسالة التحويل
+    تجهيز التحويل
   */
+
+  const whatsappUrl =
+    getWhatsappUrl();
+
 
   document.getElementById(
-    'whatsappStatus'
+    'redirectText'
   ).textContent =
-    '📲 جاري تحويلك إلى واتساب الآن...';
+    '📲 جاري تحويلك إلى واتساب...';
 
 
   /*
-    فتح واتساب تلقائيًا
+    تحويل تلقائي
+    بعد لحظة قصيرة حتى يرى العميل النتيجة
   */
 
   setTimeout(
@@ -938,28 +1002,7 @@ async function chooseBox(button){
         whatsappUrl;
 
     },
-    1000
-  );
-
-
-  /*
-    في حالة منع التحويل
-    يظهر الزر الاحتياطي
-  */
-
-  setTimeout(
-    function(){
-
-      shareButton.style.display =
-        'inline-block';
-
-      document.getElementById(
-        'whatsappStatus'
-      ).textContent =
-        '📱 اضغط على الزر إذا لم يفتح واتساب تلقائيًا.';
-
-    },
-    2500
+    1200
   );
 
 
@@ -967,53 +1010,63 @@ async function chooseBox(button){
     التمرير للنتيجة
   */
 
-  setTimeout(
-    function(){
+  window.scrollTo({
 
-      window.scrollTo({
+    top:
+      document.getElementById(
+        'result'
+      ).offsetTop - 30,
 
-        top:
-          document.getElementById(
-            'result'
-          ).offsetTop - 30,
+    behavior:
+      'smooth'
 
-        behavior:'smooth'
-
-      });
-
-    },
-    100
-  );
+  });
 
 }
+
 
 
 /* =========================================================
-   ESCAPE HTML
+   PLAY AGAIN
 ========================================================= */
 
-function escapeHtml(value){
+function playAgain(){
 
-  return String(
-    value ?? ''
-  ).replace(
-    /[&<>'"]/g,
-    function(c){
+  selectedBox =
+    null;
 
-      return {
+  selectedResult =
+    '';
 
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        "'":'&#39;',
-        '"':'&quot;'
 
-      }[c];
+  document.getElementById(
+    'result'
+  ).style.display =
+    'none';
 
-    }
-  );
+
+  document
+    .querySelectorAll('.box')
+    .forEach(
+      function(button){
+
+        button.disabled =
+          false;
+
+
+        button.innerHTML =
+          `
+            🎁
+            <span class="num">
+              الصندوق ${button.dataset.box}
+            </span>
+          `;
+
+      }
+    );
 
 }
+
 
 
 /* =========================================================
@@ -1034,7 +1087,9 @@ document
     'keydown',
     function(event){
 
-      if(event.key === 'Enter'){
+      if(
+        event.key === 'Enter'
+      ){
 
         startGame();
 
@@ -1042,6 +1097,7 @@ document
 
     }
   );
+
 
 
 document
@@ -1053,7 +1109,9 @@ document
         'click',
         function(){
 
-          chooseBox(button);
+          chooseBox(
+            button
+          );
 
         }
       );
@@ -1062,30 +1120,38 @@ document
   );
 
 
+
+document
+  .getElementById(
+    'shareWhatsapp'
+  )
+  .addEventListener(
+    'click',
+    shareWhatsapp
+  );
+
+
+
+document
+  .getElementById('again')
+  .addEventListener(
+    'click',
+    playAgain
+  );
+
+
+
 /* =========================================================
    PAGE LOAD
 ========================================================= */
 
 document.addEventListener(
   'DOMContentLoaded',
-  async function(){
+  function(){
 
-    const connected =
-      initSupabase();
+    initSupabase();
 
-
-    if(!connected){
-
-      console.error(
-        'تعذر الاتصال بـ Supabase'
-      );
-
-      return;
-
-    }
-
-
-    await registerVisit();
+    registerVisitor();
 
   }
 );
