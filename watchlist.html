@@ -121,6 +121,12 @@ rel="stylesheet">
     transform:translateY(-2px);
 }
 
+.watch-add button:disabled{
+    opacity:.65;
+    cursor:wait;
+    transform:none;
+}
+
 /* =========================
    INFO
 ========================= */
@@ -165,7 +171,7 @@ rel="stylesheet">
 }
 
 /* =========================
-   STOCK RESULT
+   RESULT
 ========================= */
 
 .watch-list{
@@ -410,7 +416,7 @@ rel="stylesheet">
 }
 
 /* =========================
-   EMPTY / NOT FOUND
+   NOT FOUND
 ========================= */
 
 .not-found{
@@ -528,7 +534,9 @@ rel="stylesheet">
 <div class="wrap">
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     HERO
+========================= -->
 
 <div class="watch-hero">
 
@@ -548,7 +556,9 @@ STOCK SEARCH • AL FAYED STOCKS
 </div>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- =========================
+     SEARCH
+========================= -->
 
 <div class="watch-add">
 
@@ -564,8 +574,13 @@ type="text"
 autocomplete="off"
 placeholder="مثال: 2222 أو أرامكو أو 1120 أو الراجحي">
 
-<button id="searchButton" onclick="searchStock()">
+<button
+id="searchButton"
+type="button"
+onclick="searchStock()">
+
 بحث عن السهم
+
 </button>
 
 </div>
@@ -573,24 +588,37 @@ placeholder="مثال: 2222 أو أرامكو أو 1120 أو الراجحي">
 </div>
 
 
-<!-- ================= INFO ================= -->
+<!-- =========================
+     INFO
+========================= -->
 
 <div class="watch-info">
 
-💡 يمكنك البحث باستخدام <span>اسم السهم</span>
-أو <span>رمز السهم</span>.
+💡 يمكنك البحث باستخدام
+<span>اسم السهم</span>
+أو
+<span>رمز السهم</span>.
 
 </div>
 
 
-<!-- ================= STATUS ================= -->
+<!-- =========================
+     STATUS
+========================= -->
 
-<div id="searchStatus" class="search-status"></div>
+<div
+id="searchStatus"
+class="search-status">
+</div>
 
 
-<!-- ================= RESULT ================= -->
+<!-- =========================
+     RESULT
+========================= -->
 
-<div id="watchList" class="watch-list">
+<div
+id="watchList"
+class="watch-list">
 
 <div class="watch-empty">
 
@@ -604,7 +632,9 @@ font-size:19px;
 font-weight:800;
 margin-bottom:7px;
 ">
+
 ابحث عن سهم
+
 </div>
 
 <div>
@@ -646,6 +676,7 @@ margin-bottom:7px;
 
 let supabaseClient = null;
 
+
 try {
 
     if (
@@ -668,6 +699,26 @@ try {
         'Supabase initialization error:',
         error
     );
+
+}
+
+
+/* =====================================
+   NORMALIZE ARABIC
+===================================== */
+
+function normalizeArabic(value){
+
+    return String(value || '')
+        .toLowerCase()
+        .replace(/[أإآ]/g,'ا')
+        .replace(/ى/g,'ي')
+        .replace(/ة/g,'ه')
+        .replace(/ؤ/g,'و')
+        .replace(/ئ/g,'ي')
+        .replace(/[\u064B-\u065F\u0670]/g,'')
+        .replace(/\s+/g,' ')
+        .trim();
 
 }
 
@@ -725,7 +776,8 @@ async function searchStock(){
 
     button.disabled = true;
 
-    button.textContent = 'جاري البحث...';
+    button.textContent =
+        'جاري البحث...';
 
     status.className =
         'search-status loading';
@@ -739,35 +791,77 @@ async function searchStock(){
 
     try {
 
-
         /*
-         * البحث بالرمز أو الاسم
+         * نقرأ الأسهم الموجودة في قاعدة البيانات
+         * ثم نعمل المطابقة داخل الصفحة.
+         *
+         * هذا يسمح بالبحث مثل:
+         *
+         * أرامكو
+         * ارامكو
+         * أَرَامْكُو
+         * 2222
          */
 
-        const cleanValue =
-            value.replace(/%/g,'').trim();
+        const searchValue =
+            normalizeArabic(value);
 
 
         const { data, error } =
             await supabaseClient
             .from('saudi_stocks')
-            .select('*')
-            .or(
-                `symbol.ilike.%${cleanValue}%,name.ilike.%${cleanValue}%`
-            )
-            .limit(10);
+            .select('*');
 
 
         if(error){
 
-            console.error(error);
+            console.error(
+                'Supabase error:',
+                error
+            );
 
             throw error;
 
         }
 
 
-        if(!data || !data.length){
+        const results =
+            (data || []).filter(function(stock){
+
+                const symbol =
+                    String(stock.symbol || '')
+                    .toLowerCase()
+                    .trim();
+
+
+                const name =
+                    normalizeArabic(
+                        stock.name
+                    );
+
+
+                return (
+
+                    symbol === searchValue ||
+
+                    symbol.includes(
+                        searchValue
+                    ) ||
+
+                    name.includes(
+                        searchValue
+                    )
+
+                );
+
+            });
+
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        if(!results.length){
 
             box.innerHTML = `
 
@@ -800,20 +894,21 @@ async function searchStock(){
         }
 
 
-        /*
-         * لو فيه أكثر من نتيجة
-         * نعرضها كلها
-         */
+        /* =========================
+           SHOW RESULTS
+        ========================= */
 
         box.innerHTML =
-            data.map(renderStock).join('');
+            results
+            .map(renderStock)
+            .join('');
 
 
         status.className =
             'search-status success';
 
         status.textContent =
-            `تم العثور على ${data.length} نتيجة`;
+            `تم العثور على ${results.length} نتيجة`;
 
 
     } catch(error) {
@@ -871,30 +966,52 @@ async function searchStock(){
 function renderStock(stock){
 
     const price =
-        formatNumber(stock.price);
+        formatNumber(
+            stock.price
+        );
+
 
     const changeValue =
-        formatNumber(stock.change_value);
+        formatNumber(
+            stock.change_value
+        );
+
 
     const changePercent =
-        formatPercent(stock.change_percent);
+        formatPercent(
+            stock.change_percent
+        );
+
+
+    const percentNumber =
+        Number(
+            stock.change_percent
+        );
 
 
     const isDown =
-        Number(stock.change_percent) < 0;
+        percentNumber < 0;
 
 
     const changeClass =
-        isDown ? 'watch-change down' : 'watch-change';
+        isDown
+        ? 'watch-change down'
+        : 'watch-change';
 
 
     const changeSign =
-        Number(stock.change_percent) > 0 ? '+' : '';
+        percentNumber > 0
+        ? '+'
+        : '';
 
 
     return `
 
     <article class="watch-card">
+
+        <!-- =========================
+             STOCK HEADER
+        ========================= -->
 
         <div class="watch-card-top">
 
@@ -938,7 +1055,8 @@ function renderStock(stock){
                     ${
                         changeValue !== '—'
                         ?
-                        changeSign + changeValue
+                        changeSign +
+                        changeValue
                         :
                         ''
                     }
@@ -958,34 +1076,58 @@ function renderStock(stock){
         </div>
 
 
-        <!-- بيانات التداول -->
+        <!-- =========================
+             TRADING DATA
+        ========================= -->
 
         <div class="watch-section-title">
             📊 بيانات التداول
         </div>
 
+
         <div class="watch-details">
 
-            ${detailBox('الافتتاح', stock.open_price)}
+            ${detailBox(
+                'الافتتاح',
+                stock.open_price
+            )}
 
-            ${detailBox('الأعلى', stock.high_price)}
+            ${detailBox(
+                'الأعلى',
+                stock.high_price
+            )}
 
-            ${detailBox('الأدنى', stock.low_price)}
+            ${detailBox(
+                'الأدنى',
+                stock.low_price
+            )}
 
-            ${detailBox('الإغلاق السابق', stock.previous_close)}
+            ${detailBox(
+                'الإغلاق السابق',
+                stock.previous_close
+            )}
 
-            ${detailBox('حجم التداول', formatVolume(stock.volume))}
+            ${detailBox(
+                'حجم التداول',
+                formatVolume(stock.volume)
+            )}
 
-            ${detailBox('آخر تحديث', formatDate(stock.updated_at))}
+            ${detailBox(
+                'آخر تحديث',
+                formatDate(stock.updated_at)
+            )}
 
         </div>
 
 
-        <!-- الدعم والمقاومة -->
+        <!-- =========================
+             TECHNICAL LEVELS
+        ========================= -->
 
         <div class="watch-section-title">
             📈 مستويات فنية
         </div>
+
 
         <div class="levels">
 
@@ -997,9 +1139,13 @@ function renderStock(stock){
 
                 <div class="level-values">
 
-                    ${levelValue(stock.support_1)}
+                    ${levelValue(
+                        stock.support_1
+                    )}
 
-                    ${levelValue(stock.support_2)}
+                    ${levelValue(
+                        stock.support_2
+                    )}
 
                 </div>
 
@@ -1014,9 +1160,13 @@ function renderStock(stock){
 
                 <div class="level-values">
 
-                    ${levelValue(stock.resistance_1)}
+                    ${levelValue(
+                        stock.resistance_1
+                    )}
 
-                    ${levelValue(stock.resistance_2)}
+                    ${levelValue(
+                        stock.resistance_2
+                    )}
 
                 </div>
 
@@ -1025,11 +1175,14 @@ function renderStock(stock){
         </div>
 
 
-        <!-- المستهدف ووقف الخسارة -->
+        <!-- =========================
+             TARGET / STOP
+        ========================= -->
 
         <div class="watch-section-title">
             🎯 خطة السهم
         </div>
+
 
         <div class="trade-box">
 
@@ -1040,7 +1193,9 @@ function renderStock(stock){
                 </span>
 
                 <b>
-                    ${formatNumber(stock.target)}
+                    ${formatNumber(
+                        stock.target
+                    )}
                 </b>
 
             </div>
@@ -1053,7 +1208,9 @@ function renderStock(stock){
                 </span>
 
                 <b>
-                    ${formatNumber(stock.stop_loss)}
+                    ${formatNumber(
+                        stock.stop_loss
+                    )}
                 </b>
 
             </div>
@@ -1061,18 +1218,23 @@ function renderStock(stock){
         </div>
 
 
-        <!-- التحليل -->
+        <!-- =========================
+             ANALYSIS
+        ========================= -->
 
         <div class="watch-section-title">
             📝 التحليل
         </div>
+
 
         <div class="analysis-box">
 
             ${
                 stock.analysis
                 ?
-                escapeHTML(stock.analysis)
+                escapeHTML(
+                    stock.analysis
+                )
                 :
                 'لا يوجد تحليل مضاف لهذا السهم حاليًا.'
             }
@@ -1090,7 +1252,10 @@ function renderStock(stock){
    DETAIL BOX
 ===================================== */
 
-function detailBox(title,value){
+function detailBox(
+    title,
+    value
+){
 
     return `
 
@@ -1101,6 +1266,7 @@ function detailBox(title,value){
             </span>
 
             <b>
+
                 ${
                     value === null ||
                     value === undefined ||
@@ -1112,6 +1278,7 @@ function detailBox(title,value){
                         String(value)
                     )
                 }
+
             </b>
 
         </div>
@@ -1141,7 +1308,9 @@ function levelValue(value){
     return `
 
         <div class="level-value">
-            ${escapeHTML(String(value))}
+            ${escapeHTML(
+                String(value)
+            )}
         </div>
 
     `;
@@ -1170,9 +1339,13 @@ function formatNumber(value){
         Number(value);
 
 
-    if(Number.isNaN(number)){
+    if(
+        Number.isNaN(number)
+    ){
 
-        return escapeHTML(String(value));
+        return escapeHTML(
+            String(value)
+        );
 
     }
 
@@ -1209,9 +1382,13 @@ function formatPercent(value){
         Number(value);
 
 
-    if(Number.isNaN(number)){
+    if(
+        Number.isNaN(number)
+    ){
 
-        return escapeHTML(String(value));
+        return escapeHTML(
+            String(value)
+        );
 
     }
 
@@ -1242,14 +1419,20 @@ function formatVolume(value){
         Number(value);
 
 
-    if(Number.isNaN(number)){
+    if(
+        Number.isNaN(number)
+    ){
 
-        return escapeHTML(String(value));
+        return escapeHTML(
+            String(value)
+        );
 
     }
 
 
-    return number.toLocaleString('en-US');
+    return number.toLocaleString(
+        'en-US'
+    );
 
 }
 
@@ -1298,19 +1481,22 @@ function formatDate(value){
 function escapeHTML(value){
 
     return String(value ?? '')
-    .replace(/[&<>'"]/g,function(c){
+        .replace(
+            /[&<>'"]/g,
+            function(c){
 
-        return {
+                return {
 
-            '&':'&amp;',
-            '<':'&lt;',
-            '>':'&gt;',
-            "'":'&#39;',
-            '"':'&quot;'
+                    '&':'&amp;',
+                    '<':'&lt;',
+                    '>':'&gt;',
+                    "'":'&#39;',
+                    '"':'&quot;'
 
-        }[c];
+                }[c];
 
-    });
+            }
+        );
 
 }
 
