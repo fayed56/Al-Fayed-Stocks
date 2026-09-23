@@ -23,6 +23,8 @@ button{font:inherit}
 .hidden{display:none!important}
 @media(max-width:620px){.boxes{grid-template-columns:repeat(2,1fr)}.box:last-child{grid-column:1/-1;max-width:190px;width:100%;justify-self:center}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 </head>
 <body>
 <main class="wrap">
@@ -54,6 +56,36 @@ button{font:inherit}
     "🔥 مبروك! حصلت على سهم مجاني من باقة الـ VIP.",
     "📊 مبروك! حصلت على سهم للمتابعة."
   ];
+
+  let supabaseClient = null;
+  let visitorId = localStorage.getItem("af_gift_visitor_id");
+  if(!visitorId){
+    visitorId = "v_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
+    localStorage.setItem("af_gift_visitor_id", visitorId);
+  }
+
+  try{
+    if(window.supabase && window.SUPABASE_URL && window.SUPABASE_ANON_KEY){
+      supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    }
+  }catch(error){ console.error(error); }
+
+  async function logEvent(eventType, extra={}){
+    if(!supabaseClient) return;
+    try{
+      await supabaseClient.from("gift_game_events").insert({
+        event_type:eventType,
+        visitor_id:visitorId,
+        player_name:extra.player_name || null,
+        box_number:Number.isInteger(extra.box_number) ? extra.box_number : null,
+        prize:extra.prize || null
+      });
+    }catch(error){
+      console.error("gift tracking error", error);
+    }
+  }
+
+  logEvent("visit");
 
   const intro=document.getElementById("intro");
   const game=document.getElementById("game");
@@ -94,6 +126,7 @@ button{font:inherit}
 
     setTimeout(()=>{
       result.innerHTML=`🎉 ${player || "صديقنا"}، مبروك!<br>${prizes[index]}`;
+      logEvent("play", {player_name:player, box_number:index+1, prize:prizes[index]});
       share.classList.remove("hidden");
       again.classList.remove("hidden");
     },900);
@@ -101,6 +134,7 @@ button{font:inherit}
 
   start.addEventListener("click",()=>{
     player=nameInput.value.trim() || "صديقنا";
+    logEvent("start", {player_name:player});
     intro.classList.add("hidden");
     game.classList.remove("hidden");
     buildBoxes();
@@ -114,6 +148,7 @@ button{font:inherit}
       `${player} اختار الصندوق رقم ${chosen+1} 🎉\n`+
       `${prizes[chosen]}\n\n`+
       `🔥 جرب اللعبة أنت كمان!`;
+    logEvent("share", {player_name:player, box_number:chosen+1, prize:prizes[chosen]});
     window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
   });
 
